@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkne_sapi_bridge=self.webpackChunkne_sapi_bridge||[]).push([[2634],{9179:(e,s,a)=>{a.r(s),a.d(s,{default:()=>r});a(6540);var i=a(1410),n=a(4848);function r(){return(0,n.jsxs)(i.A,{children:[(0,n.jsx)("h1",{children:"My React page"}),(0,n.jsx)("p",{children:"This is a React page"})]})}}}]);
