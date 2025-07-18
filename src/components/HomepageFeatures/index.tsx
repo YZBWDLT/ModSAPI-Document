@@ -11,32 +11,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: '低性能损失',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        与ModSDK有相近甚至更快的速度
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '接口简洁',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        ModSAPI将接口以SAPI的方式整理，接口更方便寻找与开发
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '简化工作量',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        ModSAPI旨在减轻国际版与网易版双端开发的工作量，接口统一，方便跨平台
       </>
     ),
   },
