@@ -1,0 +1,679 @@
+{
+    "OldEntityUniqueID": {
+        "__type__": 4,
+        "__value__": -1L
+    },
+    "IsEating": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Strength": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "IsRoaring": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "ignoreHurt": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Armor": [
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        },
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        },
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        },
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        }
+    ],
+    "Invulnerable": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "hasSetCanPickupItems": {
+        "__type__": 1,
+        "__value__": 1
+    },
+    "Tags": [],
+    "TargetID": {
+        "__type__": 4,
+        "__value__": -1L
+    },
+    "MarkVariant": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "ChestItems": [
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Slot": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        }
+    ],
+    "IsStunned": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsBaby": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "VibrationListener": {
+        "selector": {}
+    },
+    "OwnerNew": {
+        "__type__": 4,
+        "__value__": -1L
+    },
+    "LootDropped": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "TradeTier": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "StrengthMax": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "HurtTime": {
+        "__type__": 2,
+        "__value__": 0
+    },
+    "AllayDuplicationCooldown": {
+        "__type__": 4,
+        "__value__": 0L
+    },
+    "IsAutonomous": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Offhand": [
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        }
+    ],
+    "Surface": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsScared": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "needDispatchKnock": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Variant": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "IsGlobal": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsGliding": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "LeasherID": {
+        "__type__": 4,
+        "__value__": -1L
+    },
+    "SkinID": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "Color2": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "TradeExperience": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "Saddled": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "InventoryVersion": {
+        "__type__": 8,
+        "__value__": "1.21.0"
+    },
+    "Rotation": [
+        {
+            "__type__": 5,
+            "__value__": 12.9244384765625
+        },
+        {
+            "__type__": 5,
+            "__value__": -29.979721069335938
+        }
+    ],
+    "IsPregnant": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "FallDistance": {
+        "__type__": 5,
+        "__value__": 0.0
+    },
+    "Sheared": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsAngry": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Chested": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "boundZ": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "IsSwimming": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "boundX": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "boundY": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "canPickupItems": {
+        "__type__": 1,
+        "__value__": 1
+    },
+    "IsTamed": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Persistent": {
+        "__type__": 1,
+        "__value__": 1
+    },
+    "Air": {
+        "__type__": 2,
+        "__value__": 300
+    },
+    "Mainhand": [
+        {
+            "Count": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "WasPickedUp": {
+                "__type__": 1,
+                "__value__": 0
+            },
+            "Damage": {
+                "__type__": 2,
+                "__value__": 0
+            },
+            "Name": {
+                "__type__": 8,
+                "__value__": ""
+            }
+        }
+    ],
+    "DeathTime": {
+        "__type__": 2,
+        "__value__": 0
+    },
+    "hasBoundOrigin": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Attributes": [
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:luck"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": -1024.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 1024.0
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 1024.0
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": -1024.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:health"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 20.0
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 20.0
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 20.0
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 20.0
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:absorption"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 16.0
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 16.0
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:knockback_resistance"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 1.0
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 1.0
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:movement"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.10000000149011612
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.10000000149011612
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:underwater_movement"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.019999999552965164
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.019999999552965164
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:lava_movement"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 0.019999999552965164
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 3.4028234663852886e+38
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 0.019999999552965164
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        },
+        {
+            "Name": {
+                "__type__": 8,
+                "__value__": "minecraft:follow_range"
+            },
+            "Min": {
+                "__type__": 5,
+                "__value__": 0.0
+            },
+            "Max": {
+                "__type__": 5,
+                "__value__": 2048.0
+            },
+            "Current": {
+                "__type__": 5,
+                "__value__": 1024.0
+            },
+            "DefaultMax": {
+                "__type__": 5,
+                "__value__": 2048.0
+            },
+            "Base": {
+                "__type__": 5,
+                "__value__": 1024.0
+            },
+            "DefaultMin": {
+                "__type__": 5,
+                "__value__": 0.0
+            }
+        }
+    ],
+    "PortalCooldown": {
+        "__type__": 3,
+        "__value__": 0
+    },
+    "IsIllagerCaptain": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsTrusting": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Motion": [
+        {
+            "__type__": 5,
+            "__value__": -0.004600021056830883
+        },
+        {
+            "__type__": 5,
+            "__value__": 0.0319482758641243
+        },
+        {
+            "__type__": 5,
+            "__value__": 0.053830720484256744
+        }
+    ],
+    "OnGround": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "IsOrphaned": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Color": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Sitting": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "Pos": [
+        {
+            "__type__": 5,
+            "__value__": 8.713101387023926
+        },
+        {
+            "__type__": 5,
+            "__value__": 121.83643341064453
+        },
+        {
+            "__type__": 5,
+            "__value__": 5.571370601654053
+        }
+    ],
+    "Dead": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "ShowBottom": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "ExtraSeats": [],
+    "NaturalSpawn": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "UniqueID": {
+        "__type__": 4,
+        "__value__": -4294967274L
+    },
+    "definitions": [
+        {
+            "__type__": 8,
+            "__value__": "+minecraft:allay"
+        },
+        {
+            "__type__": 8,
+            "__value__": "+"
+        },
+        {
+            "__type__": 8,
+            "__value__": "+pickup_item"
+        }
+    ],
+    "identifier": {
+        "__type__": 8,
+        "__value__": "minecraft:allay"
+    },
+    "IsOutOfControl": {
+        "__type__": 1,
+        "__value__": 0
+    },
+    "internalComponents": {
+        "EntityStorageKeyComponent": {
+            "StorageKey": {
+                "__type__": 8,
+                "__value__": "\x00\x00\x00\x01\x00\x00\x00\x16"
+            }
+        }
+    }
+}
