@@ -76,7 +76,7 @@ const config: Config = {
       title: 'ModSAPI',
       logo: {
         alt: 'ModSAPI',
-        src: 'img/logo.svg',
+        src: 'img/modsapi.png',
       },
       items: [
         {
@@ -87,8 +87,8 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      style: 'light',
+      copyright: `Copyright © ${new Date().getFullYear()} ModSAPI, Inc. Built with Jincarrot.`,
     },
     prism: {
       theme: prismThemes.github,

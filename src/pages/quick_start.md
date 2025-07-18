@@ -1,5 +1,5 @@
 ---
-title: Markdown page example
+title: 快速开始
 ---
 
 # Markdown page example
