@@ -41,11 +41,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/jincarrot/ModSAPI-Document',
+          sidebarPath: './sidebars.ts'
         },
         blog: {
           showReadingTime: true,

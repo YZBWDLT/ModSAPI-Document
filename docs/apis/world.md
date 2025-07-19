@@ -6,12 +6,14 @@ sidebar_position: 1
 
 包含了一系列关于世界（mc环境，维度等）的操作
 
+参考链接：[**微软文档** World](https://learn.microsoft.com/zh-cn/minecraft/creator/scriptapi/minecraft/server/world?view=minecraft-bedrock-experimental)
+
 ## 属性 {#属性}
 ### afterEvents {#afterEvents}
 ***只读*** 包含了一系列事件，这些事件已经发生并完成
 <details>
 #### 类型：
-*WorldAfterEvents*
+[*WorldAfterEvents*](../events/afterEvents.md)
 
 #### 示例：
 ```python
@@ -45,7 +47,7 @@ players = world.getAllPlayers()
 
 #### 参数:
 - options?=*None*
-    - 类型：[*EntityQueryOptions*](player.md)
+    - 类型：[*EntityQueryOptions*](../extra/options#EntityQueryOptions)
 
 #### 返回值类型:
 List[[*Player*](player.md)]
