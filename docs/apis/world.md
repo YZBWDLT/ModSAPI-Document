@@ -47,7 +47,7 @@ players = world.getAllPlayers()
 
 #### 参数:
 - options?=*None*
-    - 类型：[*EntityQueryOptions*](../extra/options#EntityQueryOptions)
+    - 类型：[*EntityQueryOptions*](../extra/options.md#EntityQueryOptions)
 
 #### 返回值类型:
 List[[*Player*](player.md)]
