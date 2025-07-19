@@ -80,8 +80,25 @@ const config: Config = {
       },
       items: [
         {
+            type: 'doc',
+            position: 'left',
+            docId: 'intro',
+            label: '快速开始',
+        },
+        {
+            type: 'doc',
+            position: 'left',
+            docId: 'apis/world',
+            label: '接口文档',
+        },
+        {
           href: 'https://github.com/jincarrot/ModSAPI',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://yzbwdlt.pages.dev/',
+          label: '量筒的文档',
           position: 'right',
         },
       ],
