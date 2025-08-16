@@ -11,15 +11,14 @@ sidebar_position: 3
 ## 属性 {#属性}
 
 ### id {#id}
-***只读*** 实体的唯一标识符
-
-类型：str
+- ***只读*** 实体的唯一标识符
+- 类型：str
 
 ### dimension {#dimension}
-***只读*** 实体当前所在的维度对象
+- ***只读*** 实体当前所在的维度对象
 <details>
 
-#### 类型：[*Dimension*](dimension.md)
+- 类型：[*Dimension*](dimension.md)
 
 #### 示例：
 ```python
@@ -29,45 +28,45 @@ entity.dimension.runCommnad("say 1")
 </details>
 
 ### isClimbing {#isClimbing}
-***只读*** 是否正在攀爬（如接触梯子或墙壁）
+- ***只读*** 是否正在攀爬（如接触梯子或墙壁）
 
-#### 类型：bool
+- 类型：bool
 
 
 ### isFalling {#isFalling}
-***只读*** 是否处于下落状态（坠落距离大于0）
+- ***只读*** 是否处于下落状态（坠落距离大于0）
 
-#### 类型：bool
+- 类型：bool
 
 ### isInWater {#isInWater}
-***只读*** 实体是否在水中
+- ***只读*** 实体是否在水中
 
-#### 类型：bool
+-  类型：bool
 
 ### isOnGround {#isOnGround}
-***只读*** 是否站在地面上
+- ***只读*** 是否站在地面上
 
-#### 类型：bool
+- 类型：bool
 
 ### isSleeping {#isSleeping}
-***只读*** 是否正在睡觉
+- ***只读*** 是否正在睡觉
 
-#### 类型：bool
+- 类型：bool
 
 ### isSneaking {#isSneaking}
-***只读*** 是否处于潜行状态
+- ***只读*** 是否处于潜行状态
 
-#### 类型：bool
+- 类型：bool
 
 ### isSprinting {#isSprinting}
-***只读*** 是否处于冲刺状态
+- ***只读*** 是否处于冲刺状态
 
-#### 类型：bool
+- 类型：bool
 
 ### isSwimming {#isSwimming}
-***只读*** 是否处于游泳状态
+- ***只读*** 是否处于游泳状态
 
-#### 类型：bool
+- 类型：bool
 
 ### location {#location}
 ***可读写*** 实体当前位置坐标
@@ -94,9 +93,9 @@ if not entity.nameTag:
 </details>
 
 ### typeId {#typeId}
-***只读*** 实体类型（如"minecraft:skeleton"）
+- ***只读*** 实体类型（如"minecraft:skeleton"）
 
-#### 类型：str
+- 类型：str
 
 ### *health {#health}
 ***可读写*** 实体生命值

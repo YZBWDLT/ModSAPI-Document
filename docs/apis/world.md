@@ -6,7 +6,7 @@ sidebar_position: 1
 
 包含了一系列关于世界（mc环境，维度等）的操作
 
-参考链接：[**微软文档** World](https://learn.microsoft.com/zh-cn/minecraft/creator/scriptapi/minecraft/server/world?view=minecraft-bedrock-experimental)
+参考链接：[**微软文档** World](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/world?view=minecraft-bedrock-experimental)
 
 ## 属性 {#属性}
 ### afterEvents {#afterEvents}
@@ -47,6 +47,7 @@ players = world.getAllPlayers()
 
 #### 参数:
 - options?=*None*
+    - 附加选项
     - 类型：[*EntityQueryOptions*](../extra/options.md#EntityQueryOptions)
 
 #### 返回值类型:
