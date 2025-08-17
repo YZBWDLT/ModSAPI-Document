@@ -7,6 +7,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useColorMode } from "@docusaurus/theme-common"
 
 import styles from './index.module.css';
 
@@ -36,6 +37,7 @@ const App = () => {
   const [titleVisible, setTitleVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
   const { siteConfig } = useDocusaurusContext();
+  const {colorMode} = useColorMode();
 
   useEffect(() => {
     // 图片消失后显示标题
@@ -55,16 +57,18 @@ const App = () => {
   }, []);
 
   return (
+    <main style={
+        {
+          backgroundImage: `url(../../img/bg_${colorMode}.png)`,
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+          opacity: 0.85,
+          width: "100vw",
+          height: "auto",
+        }
+      }>
     <Container>
       <Content>
-        {/* 图片 */}
-        {imageVisible && (
-          <Logo
-            src="../../img/modsapi.png"
-            alt="ModSAPI Logo"
-          />
-        )}
-
         {/* 标题 */}
         {titleVisible && (
           <TitleContainer>
@@ -90,6 +94,8 @@ const App = () => {
         </Button>
       </Content>
     </Container>
+    <HomepageFeatures></HomepageFeatures>
+    </main>
   );
 };
 
@@ -182,7 +188,21 @@ const SubtitleText = styled.p`
 `;
 
 function ModSAPIMain() {
-  return
+  const {colorMode} = useColorMode();
+  return (
+    <main style={
+        {
+          background: `url(../../img/bg.png)`,
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+          objectFit: "contain",
+          width: "100vw",
+          height: "auto",
+        }
+      }>
+
+    </main>
+  )
 }
 
 export default function Home(): ReactNode {
@@ -192,9 +212,6 @@ export default function Home(): ReactNode {
       title={`${siteConfig.title}文档`}
       description="ModSAPI">
       <App />
-      <main>
-        <HomepageFeatures></HomepageFeatures>
-      </main>
     </Layout>
   );
 }
