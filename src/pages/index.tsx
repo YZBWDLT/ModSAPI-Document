@@ -10,6 +10,7 @@ import styled, { keyframes } from 'styled-components';
 import { useColorMode } from "@docusaurus/theme-common"
 
 import styles from './index.module.css';
+import { translate } from '@docusaurus/Translate';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -38,6 +39,8 @@ const App = () => {
   const [subtitleVisible, setSubtitleVisible] = useState(false);
   const { siteConfig } = useDocusaurusContext();
   const {colorMode} = useColorMode();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // 图片消失后显示标题
@@ -50,11 +53,50 @@ const App = () => {
       setSubtitleVisible(true);
     }, 2);
 
+
+
+    fetchData()
+
     return () => {
       clearTimeout(titleTimer);
       clearTimeout(subtitleTimer);
     };
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://modsapi.pages.dev/img/bg_light.png');
+      const result = await response.json();
+      setData(result);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <main style={
+        {
+          width: '100vw',
+          height: '100vh',
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent: 'center'
+        }
+      }>
+      <img src='../../img/modsapi.ico' style={
+        {
+          width: "20vw",
+          height: "auto",
+          position: 'fixed',
+          transform: 'translateY(-10vh)'
+        }
+      }></img>
+      </main>
+    )
+  }
 
   return (
     <main style={
@@ -122,6 +164,11 @@ const Subtitle = ({ text, speed }) => {
 const fadeOut = keyframes`
   from { opacity: 1; transform: scale(1); }
   to { opacity: 0; transform: scale(0.8); }
+`;
+
+const breathe = keyframes`
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.8); }
 `;
 
 const fadeIn = keyframes`
