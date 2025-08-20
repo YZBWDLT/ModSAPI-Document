@@ -109,12 +109,12 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'YOUR_APP_ID',
+      appId: '3R4XIDOO7X',
 
       // Public API key: it is safe to commit it
-      apiKey: 'YOUR_SEARCH_API_KEY',
+      apiKey: '87ef09b6101f056001b157d2df405f62',
 
-      indexName: 'YOUR_INDEX_NAME',
+      indexName: 'ModSAPI',
 
       // Optional: see doc section below
       contextualSearch: true,
