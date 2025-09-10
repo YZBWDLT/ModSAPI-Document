@@ -6,7 +6,7 @@ sidebar_position: 2
 
 选项（Options）涵盖了大量可选信息。
 
-<font color="orange">***在使用时应当使用dict（使用大括号）***</font>
+<font color="orange">***在表示数据应当使用字典（dict）***</font>
 
 <details>
 <summary>示例</summary>

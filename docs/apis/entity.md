@@ -175,17 +175,20 @@ entity.addEffect("minecraft:night_vision", 300, {"amplifier": 0, "showParticle":
 </details>
 
 ### teleport {#teleport}
+
 传送实体到指定位置
+
 <details>
+
 #### 类型：
-`teleport(location, teleportOptions=TeleportOptions)`
+`teleport(location, teleportOptions?)`
 #### 参数：
 - location
     - 目标位置
-    - 类型：Union[Vector3, dict]
+    - 类型：Vector3
 - teleportOptions
     - 传送选项
-    - 类型：Union[dict, TeleportOptions]
+    - 类型：[*TeleportOptions*]
 #### 示例：
 ```python
 ```

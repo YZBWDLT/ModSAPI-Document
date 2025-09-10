@@ -29,7 +29,7 @@ print("Hello World!")
 def onChatSend(arg):
     if arg.message == 'Hello':
         # 如果发送的消息是"Hello"
-        arg.sender.runCommand("say World")
+        arg.sender.sendMessage("World")
         # 发送"World"
 
 world.afterEvents.chatSend.subscribe(onChatSend)
