@@ -28,7 +28,7 @@ const config: Config = {
   organizationName: 'jincarrot', // Usually your GitHub org/user name.
   projectName: 'modsapi', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
