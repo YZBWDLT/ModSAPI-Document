@@ -111,7 +111,7 @@ const config: Config = {
         {
             type: 'doc',
             position: 'left',
-            docId: 'extra_lib/MoreUI/intro',
+            docId: 'extra_lib/FormUI/intro',
             label: '独立库',
         },
         {
