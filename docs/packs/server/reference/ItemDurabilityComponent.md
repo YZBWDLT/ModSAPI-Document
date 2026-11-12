@@ -9,19 +9,26 @@ sidebar_label: "ItemDurabilityComponent"
 
 源码：`core_behavior/ModSAPI/modules/server/components/ItemComponents.py`；声明补充了静态类型信息。
 
-具有此组件的物品可在使用过程中损耗耐久。此组件只适用于数据驱动物品。
+独立物品上的损耗与剩余耐久；编辑不会直接写入槽位。
 
 ## 获取方式
 
-使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+通过 item.getComponent("durability") 或 [ItemDurabilityComponent.componentId](ItemDurabilityComponent.md#字段与常量) 取得；编辑后将物品写回容器。
 
 基类：[ItemComponent](ItemComponent.md).
+
+## 字段与常量
+
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `componentId` | [Final](../../common/type-system.md#final) | `'minecraft:durability'` |  |
+
+字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
 ## 成员索引
 
 | 名称 | 形态 |
 | --- | --- |
-| [__init__](#constructor) | 构造器 |
 | [maxDurability](#maxDurability) | 只读属性 |
 | [remain](#remain) | 可读写属性 |
 | [damage](#damage) | 可读写属性 |
@@ -37,31 +44,13 @@ sidebar_label: "ItemDurabilityComponent"
 | [isValid](Component.md#isValid) | [Component](Component.md) |
 | [typeId](Component.md#typeId) | [Component](Component.md) |
 
-## 构造器 {#constructor}
-
-```python
-ItemDurabilityComponent(data: dict) -> None
-```
-
-构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
-
-### 参数
-
-| 名称 | 类型线索 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `data` | [dict](../../common/type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
-
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
 ## maxDurability {#maxDurability}
 
 ```python
 maxDurability: int
 ```
 
-物品损坏前可承受的最大耐久损耗。
+当前物品类型的正整数原生耐久上限。
 
 **访问：** 只读。
 
@@ -84,7 +73,11 @@ def read_value(instance):
 remain: int
 ```
 
-当前耐久值。
+网易扩展的剩余耐久；公开编辑要求零到 maxDurability。原生已有越界值保持可读，不自动裁剪。
+
+:::note 当前实现说明
+网易扩展。公开编辑限制在零到最大值；已有原生非标准值只读保留，不在克隆时裁剪。
+:::
 
 **访问：** 可读写。
 
@@ -114,7 +107,7 @@ def write_value(instance, value):
 damage: int
 ```
 
-此物品当前的耐久损耗值。
+已经损耗的耐久；公开编辑要求零到 maxDurability 之间的整数。
 
 **访问：** 可读写。
 

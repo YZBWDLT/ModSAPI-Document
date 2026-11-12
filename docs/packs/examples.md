@@ -40,3 +40,4 @@ title: 使用示例与场景指南
 - [属性修饰器](guides/attribute-modifiers.md)
 - [客户端背包与装备](guides/client-inventory-and-equipment.md)
 - [服务端容器与物品数据](guides/server-containers-and-recovery.md)
+- [物品附魔、耐久与标签](guides/item-enchantments-and-durability.md)

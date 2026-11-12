@@ -22,6 +22,7 @@ sidebar_label: "ItemStack"
 | [__init__](#constructor) | 构造器 |
 | [typeId](#typeId) | 只读属性 |
 | [amount](#amount) | 可读写属性 |
+| [auxValue](#auxValue) | 只读属性 |
 | [keepOnDeath](#keepOnDeath) | 可读写属性 |
 | [lockMode](#lockMode) | 可读写属性 |
 | [nameTag](#nameTag) | 可读写属性 |
@@ -132,6 +133,33 @@ def read_value(instance):
 
 def write_value(instance, value):
     instance.amount = value
+```
+
+## auxValue {#auxValue}
+
+```python
+auxValue: int
+```
+
+网易扩展的原生变种值，用于基础定义与标签查询。
+
+:::note 当前实现说明
+网易原生变种，优先 newAuxValue；定义与标签查询都使用它，不能将该值一律当作耐久。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.auxValue
 ```
 
 ## keepOnDeath {#keepOnDeath}
@@ -564,7 +592,11 @@ def call_getComponents(instance):
 getTags() -> list[str]
 ```
 
-返回原生定义标签的副本；损坏的标签数据会报告错误。
+使用 GetItemTags 和当前原生变种读取定义标签副本。
+
+:::note 当前实现说明
+通过 GetItemTags 查询当前类型及变种的定义标签，返回独立列表；不是从 GetItemBasicInfo 的非标准 tags 字段读取。
+:::
 
 **返回类型：** [list](../../common/type-system.md#list)[[str](../../common/type-system.md#str)]。静态声明不替代本页的实现限制。
 
@@ -572,9 +604,11 @@ getTags() -> list[str]
 
 | 异常 | 校验信息 / 条件线索 |
 | --- | --- |
-| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetItemBasicInfo'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetItemTags'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetItemTags`, `GetLevelId`。
 
 ### 调用形状
 

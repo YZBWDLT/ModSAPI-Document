@@ -119,6 +119,15 @@ from ModSAPI.server.beta import world, system
 | [InvalidContainerSlotError](common/reference/InvalidContainerSlotError.md) | [InvalidContainerSlotError](common/reference/InvalidContainerSlotError.md) |
 | [ContainerRollbackError](common/reference/ContainerRollbackError.md) | [ContainerRollbackError](common/reference/ContainerRollbackError.md) |
 | [ContainerRollbackFailure](common/reference/ContainerRollbackFailure.md) | [ContainerRollbackFailure](common/reference/ContainerRollbackFailure.md) |
+| [Enchantment](common/reference/Enchantment.md) | [Enchantment](common/reference/Enchantment.md) |
+| [EnchantmentType](common/reference/EnchantmentType.md) | [EnchantmentType](common/reference/EnchantmentType.md) |
+| [EnchantmentTypes](server/reference/EnchantmentTypes.md) | [EnchantmentTypes](server/reference/EnchantmentTypes.md) |
+| [ItemComponent](server/reference/ItemComponent.md) | [ItemComponent](server/reference/ItemComponent.md) |
+| [ItemEnchantableComponent](server/reference/ItemEnchantableComponent.md) | [ItemEnchantableComponent](server/reference/ItemEnchantableComponent.md) |
+| [ItemDurabilityComponent](server/reference/ItemDurabilityComponent.md) | [ItemDurabilityComponent](server/reference/ItemDurabilityComponent.md) |
+| [EnchantmentLevelOutOfBoundsError](common/reference/EnchantmentLevelOutOfBoundsError.md) | [EnchantmentLevelOutOfBoundsError](common/reference/EnchantmentLevelOutOfBoundsError.md) |
+| [EnchantmentTypeNotCompatibleError](common/reference/EnchantmentTypeNotCompatibleError.md) | [EnchantmentTypeNotCompatibleError](common/reference/EnchantmentTypeNotCompatibleError.md) |
+| [EnchantmentTypeUnknownIdError](common/reference/EnchantmentTypeUnknownIdError.md) | [EnchantmentTypeUnknownIdError](common/reference/EnchantmentTypeUnknownIdError.md) |
 | [NativeEventData](common/reference/NativeEventData.md) | [NativeEventData](common/reference/NativeEventData.md) |
 | [NativeEventSignal](common/reference/NativeEventSignal.md) | [NativeEventSignal](common/reference/NativeEventSignal.md) |
 | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) |

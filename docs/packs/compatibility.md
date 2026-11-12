@@ -15,6 +15,8 @@ title: 官方对照与当前支持情况
 
 ### 已知限制
 
+- `ItemEnchantableComponent/native parity`：按网易 primary_slots 和 incompatible 校验，批量预检后才改动；未知原生编号保留但不能猜测新增兼容性。次级槽位、原版附魔差异及实际作用仍需实机核验。
+- `ItemDurabilityComponent/unbreakable and damage chance`：当前支持损耗和剩余耐久编辑及原生变种上限；不损坏状态、耐久损耗概率范围与耐久附魔算法没有可靠原生等价映射，尚未伪造实现。
 - `Container/native transactions`：批量读取与多槽写入不是原生事务。失败会尝试恢复并读回；无法确认恢复时报告 [ContainerRollbackError](common/reference/ContainerRollbackError.md)，不能保证跨模组隔离。
 - `Container.containerRules/weight`：网易容量和物品读写不能直接提供微软容器规则、嵌套重量及虚拟容器的等价语义，当前不伪造结果。
 - `ItemStack.setLore RawMessage`：当前支持普通文本及字符数量校验，getRawLore 返回 text 记录；完整 RawMessage 写入尚未适配。
@@ -199,12 +201,12 @@ title: 官方对照与当前支持情况
 | `EnchantRandomlyFunction` | 类 | 未实现 | conditions, treasure |
 | `EnchantWithLevelsFunction` | 类 | 未实现 | conditions, levels, treasure |
 | [Enchantment](common/reference/Enchantment.md) | 接口 | 结构契约 | — |
-| `EnchantmentLevelOutOfBoundsError` | 类 | 未实现 | — |
+| [EnchantmentLevelOutOfBoundsError](common/reference/EnchantmentLevelOutOfBoundsError.md) | 类 | 待行为核验 | — |
 | [EnchantmentSlot](common/reference/EnchantmentSlot.md) | 枚举 | 常量定义 | — |
-| `EnchantmentType` | 类 | 未实现 | id, maxLevel |
-| `EnchantmentTypeNotCompatibleError` | 类 | 未实现 | — |
-| `EnchantmentTypeUnknownIdError` | 类 | 未实现 | — |
-| `EnchantmentTypes` | 类 | 未实现 | get, getAll |
+| [EnchantmentType](common/reference/EnchantmentType.md) | 类 | 待行为核验 | — |
+| [EnchantmentTypeNotCompatibleError](common/reference/EnchantmentTypeNotCompatibleError.md) | 类 | 待行为核验 | — |
+| [EnchantmentTypeUnknownIdError](common/reference/EnchantmentTypeUnknownIdError.md) | 类 | 待行为核验 | — |
+| [EnchantmentTypes](server/reference/EnchantmentTypes.md) | 类 | 待行为核验 | — |
 | [Entity](server/apis/entity.md) | 类 | 部分 | addItem, getAABB, getAllBlocksStandingOn, getBlockStandingOn, localizationKey, lookAt, nameplateDepthTested, nameplateRenderDistance, teleport |
 | [EntityAddRiderComponent](server/reference/EntityAddRiderComponent.md) | 类 | 待行为核验 | — |
 | `EntityAgeableComponent` | 类 | 未实现 | duration, entity, getDropItems, getFeedItems, growUp, isValid, transformToItem, typeId |

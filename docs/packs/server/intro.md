@@ -44,6 +44,7 @@ title: 服务端
 | [EffectAddAfterEvent](reference/EffectAddAfterEvent.md) | 向实体添加状态效果时的信息，例如添加中毒效果。 |
 | [EffectAddAfterEventSignal](reference/EffectAddAfterEventSignal.md) | 管理向实体添加效果时的回调。 |
 | [EffectType](reference/EffectType.md) | 可添加到实体的效果类型，例如中毒。 |
+| [EnchantmentTypes](reference/EnchantmentTypes.md) | 查询当前原生附魔定义；每次调用重新读取一次目录。 |
 | [Entity](apis/entity.md) | 世界中的实体状态，包括生物、玩家、矿车等对象。 |
 | [EntityAddRiderComponent](reference/EntityAddRiderComponent.md) | 为实体生成时附加指定 entityType 的骑乘者。 |
 | [EntityAttributeComponent](reference/EntityAttributeComponent.md) | 通过 AttrType 定位的实时服务端属性，不使用 EntityComponentType。写入保留原生默认值，并在写入前拒绝超出当前原生最大值和 NBT 最小值的参数。默认值、最小值来自原生属性 NBT，最大值直接读取引擎。 |
@@ -78,9 +79,9 @@ title: 服务端
 | [ExplosionBeforeEventSignal](reference/ExplosionBeforeEventSignal.md) | 管理爆炸影响各个方块时的回调。 |
 | [ItemCompleteUseAfterEvent](reference/ItemCompleteUseAfterEvent.md) | 可蓄力物品完成蓄力的事件信息。 |
 | [ItemCompleteUseAfterEventSignal](reference/ItemCompleteUseAfterEventSignal.md) | 管理可蓄力物品完成蓄力时的回调。 |
-| [ItemComponent](reference/ItemComponent.md) | 方块组件的基类。 |
-| [ItemDurabilityComponent](reference/ItemDurabilityComponent.md) | 具有此组件的物品可在使用过程中损耗耐久。此组件只适用于数据驱动物品。 |
-| [ItemEnchantableComponent](reference/ItemEnchantableComponent.md) | 具有此组件的物品可以附魔。 |
+| [ItemComponent](reference/ItemComponent.md) | 独立 [ItemStack](apis/itemStack.md) 上的物品组件基类，不直接写入背包。 |
+| [ItemDurabilityComponent](reference/ItemDurabilityComponent.md) | 独立物品上的损耗与剩余耐久；编辑不会直接写入槽位。 |
+| [ItemEnchantableComponent](reference/ItemEnchantableComponent.md) | 根据当前原生定义编辑复制后的附魔值。槽位与冲突校验采用 primary_slots 和 incompatible 字段；整批使用一次当前目录，所有项目通过后才提交。编辑后的物品需要另行写回容器。 |
 | [ItemStack](apis/itemStack.md) | 一组同类物品的堆叠。 |
 | [ItemStartUseOnAfterEvent](reference/ItemStartUseOnAfterEvent.md) | 玩家按下使用物品或放置方块按钮并成功交互时的信息；连续建造中仅针对首个交互方块触发。此事件不适用于锄头或斧头。 |
 | [ItemStartUseOnAfterEventSignal](reference/ItemStartUseOnAfterEventSignal.md) | 管理物品使用事件的回调。 |

@@ -24,6 +24,7 @@ from client_state_content import CLIENT_STATE_GUIDES, CLIENT_STATE_ACQUIRE, CLIE
 from server_state_content import SERVER_STATE_GUIDES, SERVER_STATE_ACQUIRE, SERVER_STATE_NOTES
 from client_inventory_content import CLIENT_INVENTORY_GUIDES, CLIENT_INVENTORY_ACQUIRE, CLIENT_INVENTORY_NOTES
 from server_container_content import SERVER_CONTAINER_GUIDES, SERVER_CONTAINER_ACQUIRE, SERVER_CONTAINER_NOTES
+from item_components_content import ITEM_COMPONENT_GUIDES, ITEM_COMPONENT_ACQUIRE, ITEM_COMPONENT_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -45,6 +46,7 @@ GUIDES.update(CLIENT_STATE_GUIDES)
 GUIDES.update(SERVER_STATE_GUIDES)
 GUIDES.update(CLIENT_INVENTORY_GUIDES)
 GUIDES.update(SERVER_CONTAINER_GUIDES)
+GUIDES.update(ITEM_COMPONENT_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
 NOTES.update(VALUE_NOTES)
 NOTES.update(INPUT_NOTES)
@@ -52,6 +54,7 @@ NOTES.update(CLIENT_STATE_NOTES)
 NOTES.update(SERVER_STATE_NOTES)
 NOTES.update(CLIENT_INVENTORY_NOTES)
 NOTES.update(SERVER_CONTAINER_NOTES)
+NOTES.update(ITEM_COMPONENT_NOTES)
 
 
 def digest(data):
@@ -235,7 +238,7 @@ def load():
             cls = {'name':name,'group':classify(path),'path':path,'node':node,
                    'source':actual.get(name),'stub':declared.get(name),
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
-            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride', 'ClientEntityAttributeComponent', 'InvalidEntityError', 'EntityAttributeModifier', 'ClientContainer', 'ClientContainerSlot', 'ClientEntityInventoryComponent', 'ClientEntityEquippableComponent', 'Container', 'ContainerSlot', 'ContainerRollbackError', 'ContainerRollbackFailure'):
+            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride', 'ClientEntityAttributeComponent', 'InvalidEntityError', 'EntityAttributeModifier', 'ClientContainer', 'ClientContainerSlot', 'ClientEntityInventoryComponent', 'ClientEntityEquippableComponent', 'Container', 'ContainerSlot', 'ContainerRollbackError', 'ContainerRollbackFailure', 'ItemComponent', 'ItemEnchantableComponent', 'ItemDurabilityComponent'):
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):
@@ -700,6 +703,7 @@ ACQUIRE.update(CLIENT_STATE_ACQUIRE)
 ACQUIRE.update(SERVER_STATE_ACQUIRE)
 ACQUIRE.update(CLIENT_INVENTORY_ACQUIRE)
 ACQUIRE.update(SERVER_CONTAINER_ACQUIRE)
+ACQUIRE.update(ITEM_COMPONENT_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -1125,7 +1129,7 @@ def generate():
                 if not stale.is_relative_to(STAGE.resolve()):raise ValueError('Path escaped staging')
                 if stale.is_file():stale.unlink()
     # Include the portable generator and hand-authored guide module for future synchronization.
-    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','client_state_content.py','server_state_content.py','client_inventory_content.py','server_container_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
+    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','client_state_content.py','server_state_content.py','client_inventory_content.py','server_container_content.py','item_components_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
         destination=STAGE/'scripts/modsapi-docs'/filename
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((Path(__file__).parent/filename).read_bytes())

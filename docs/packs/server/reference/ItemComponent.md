@@ -9,11 +9,11 @@ sidebar_label: "ItemComponent"
 
 源码：`core_behavior/ModSAPI/modules/server/components/ItemComponents.py`；声明补充了静态类型信息。
 
-方块组件的基类。
+独立 [ItemStack](../apis/itemStack.md) 上的物品组件基类，不直接写入背包。
 
 ## 获取方式
 
-使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+通过 [ItemStack.getComponent](../apis/itemStack.md#getComponent) 或 getComponents 取得，表示独立物品上的组件；不会直接写入背包。
 
 基类：[Component](Component.md).
 
@@ -21,7 +21,6 @@ sidebar_label: "ItemComponent"
 
 | 名称 | 形态 |
 | --- | --- |
-| [__init__](#constructor) | 构造器 |
 | [asEnchantableComponent](#asEnchantableComponent) | 方法 |
 | [asDurabilityComponent](#asDurabilityComponent) | 方法 |
 
@@ -34,33 +33,21 @@ sidebar_label: "ItemComponent"
 | [isValid](Component.md#isValid) | [Component](Component.md) |
 | [typeId](Component.md#typeId) | [Component](Component.md) |
 
-## 构造器 {#constructor}
-
-```python
-ItemComponent(data)
-```
-
-构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
-
-### 参数
-
-| 名称 | 类型线索 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `data` | 由值/所属选项确定 | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
-
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
 ## asEnchantableComponent {#asEnchantableComponent}
 
 ```python
 asEnchantableComponent() -> ItemEnchantableComponent
 ```
 
-设置或追加 `asEnchantableComponent` 对应的配置，返回当前对象以便继续构建。
+返回当前附魔组件；拒绝不兼容的组件转换。
 
 **返回类型：** [ItemEnchantableComponent](ItemEnchantableComponent.md)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'This item component is not enchantable'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -79,9 +66,15 @@ def call_asEnchantableComponent(instance):
 asDurabilityComponent() -> ItemDurabilityComponent
 ```
 
-设置或追加 `asDurabilityComponent` 对应的配置，返回当前对象以便继续构建。
+返回当前耐久组件；拒绝不兼容的组件转换。
 
 **返回类型：** [ItemDurabilityComponent](ItemDurabilityComponent.md)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'This item component has no durability'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

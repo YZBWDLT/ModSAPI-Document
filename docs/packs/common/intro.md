@@ -55,8 +55,12 @@ title: 公共类型与错误
 | [EaseOptions](reference/EaseOptions.md) | 签名、字段、属性、方法与调用示例 |
 | [EasingType](reference/EasingType.md) | 签名、字段、属性、方法与调用示例 |
 | [EffectChangeEvent](reference/EffectChangeEvent.md) | [EffectChangeEvent](reference/EffectChangeEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
-| [Enchantment](reference/Enchantment.md) | 应用于物品的附魔及其等级。 |
+| [Enchantment](reference/Enchantment.md) | 独立的带等级附魔值；组件方法复制传入和返回的对象。[type](type-system.md#type) 是 [EnchantmentType](reference/EnchantmentType.md) 引用，typeId 保留原生名称兼容入口。公开等级必须为正整数，注册上限由物品操作校验，不在读取旧原生数据时强制改写。 |
+| [EnchantmentLevelOutOfBoundsError](reference/EnchantmentLevelOutOfBoundsError.md) | 请求等级超出该附魔的注册范围。 |
 | [EnchantmentSlot](reference/EnchantmentSlot.md) | 签名、字段、属性、方法与调用示例 |
+| [EnchantmentType](reference/EnchantmentType.md) | 已注册附魔类型，提供规范标识和等级上限。构造时查询当前服务端目录；原生物品使用按需解析的类型引用，避免仅为读取或克隆就额外查询目录，也保留已有未知附魔数据。 |
+| [EnchantmentTypeNotCompatibleError](reference/EnchantmentTypeNotCompatibleError.md) | 附魔与当前物品槽位或已有附魔冲突。 |
+| [EnchantmentTypeUnknownIdError](reference/EnchantmentTypeUnknownIdError.md) | 当前原生附魔目录中没有该标识。 |
 | [EntityApplyDamageByProjectileOptions](reference/EntityApplyDamageByProjectileOptions.md) | 通过投射物造成伤害时的附加选项。 |
 | [EntityApplyDamageOptions](reference/EntityApplyDamageOptions.md) | 伤害操作的附加说明与元数据。 |
 | [EntityAreaEvent](reference/EntityAreaEvent.md) | [EntityAreaEvent](reference/EntityAreaEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |

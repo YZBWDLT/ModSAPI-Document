@@ -18,6 +18,7 @@
 - [CustomCommandOrigin](../../common/reference/CustomCommandOrigin.md)
 - [CustomCommandResult](../../common/reference/CustomCommandResult.md)
 - [Enchantment](../../common/reference/Enchantment.md)
+- [EnchantmentType](../../common/reference/EnchantmentType.md)
 - [EntityApplyDamageByProjectileOptions](../../common/reference/EntityApplyDamageByProjectileOptions.md)
 - [EntityApplyDamageOptions](../../common/reference/EntityApplyDamageOptions.md)
 - [EntityEffectOptions](../../common/reference/EntityEffectOptions.md)

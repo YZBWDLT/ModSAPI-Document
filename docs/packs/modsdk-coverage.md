@@ -11,9 +11,9 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 303 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 已有离线核验路径 | 305 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
 | 发现原生调用，待核对 | 262 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
-| 尚未建立映射 | 1064 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
+| 尚未建立映射 | 1062 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
 常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
 
@@ -1529,14 +1529,14 @@ title: ModSDK 功能映射与待补接口
 | [CancelShearsDestroyBlockSpeedAll](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#cancelshearsdestroyblockspeedall) | 服务端 | 尚未建立映射 | — |
 | [ChangeArmorTextures](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#changearmortextures) | 客户端 | 尚未建立映射 | — |
 | [ChangeItemTexture](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#changeitemtexture) | 客户端 | 尚未建立映射 | — |
-| [GetAllEnchantsInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getallenchantsinfo) | 服务端 | 发现原生调用，待核对 | — |
+| [GetAllEnchantsInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getallenchantsinfo) | 服务端 | 已有离线核验路径 | [EnchantmentType.maxLevel](common/reference/EnchantmentType.md#maxLevel), [EnchantmentTypes.get](server/reference/EnchantmentTypes.md#get), [EnchantmentTypes.getAll](server/reference/EnchantmentTypes.md#getAll), [ItemEnchantableComponent.canAddEnchantment](server/reference/ItemEnchantableComponent.md#canAddEnchantment), [ItemEnchantableComponent.addEnchantments](server/reference/ItemEnchantableComponent.md#addEnchantments) |
 | [GetAllEnchantsInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getallenchantsinfo) | 客户端 | 发现原生调用，待核对 | — |
 | [GetBindBoneForBindItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getbindboneforbinditem) | 客户端 | 尚未建立映射 | — |
 | [GetBindItemOffset](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getbinditemoffset) | 客户端 | 尚未建立映射 | — |
 | [GetBindItemRotation](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getbinditemrotation) | 客户端 | 尚未建立映射 | — |
 | [GetBindItemScale](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getbinditemscale) | 客户端 | 尚未建立映射 | — |
 | [GetCustomName](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getcustomname) | 服务端 | 尚未建立映射 | — |
-| [GetItemBasicInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitembasicinfo) | 服务端 | 已有离线核验路径 | [EntityEquippableComponent.totalArmor](server/reference/EntityEquippableComponent.md#totalArmor), [EntityEquippableComponent.totalToughness](server/reference/EntityEquippableComponent.md#totalToughness), [ItemStack.clone](server/apis/itemStack.md#clone), [Container.getItem](server/apis/container.md#getItem) |
+| [GetItemBasicInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitembasicinfo) | 服务端 | 已有离线核验路径 | [EntityEquippableComponent.totalArmor](server/reference/EntityEquippableComponent.md#totalArmor), [EntityEquippableComponent.totalToughness](server/reference/EntityEquippableComponent.md#totalToughness), [ItemStack.clone](server/apis/itemStack.md#clone), [Container.getItem](server/apis/container.md#getItem), [ItemStack.auxValue](server/apis/itemStack.md#auxValue), [ItemDurabilityComponent.maxDurability](server/reference/ItemDurabilityComponent.md#maxDurability) |
 | [GetItemBasicInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitembasicinfo) | 客户端 | 发现原生调用，待核对 | — |
 | [GetItemDefenceAngle](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemdefenceangle) | 服务端 | 尚未建立映射 | — |
 | [GetItemDurability](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemdurability) | 服务端 | 尚未建立映射 | — |
@@ -1546,8 +1546,8 @@ title: ModSDK 功能映射与待补接口
 | [GetItemInfoByBlockName](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getiteminfobyblockname) | 服务端 | 尚未建立映射 | — |
 | [GetItemLayer](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemlayer) | 服务端 | 尚未建立映射 | — |
 | [GetItemMaxDurability](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemmaxdurability) | 服务端 | 尚未建立映射 | — |
-| [GetItemTags](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemtags) | 服务端 | 尚未建立映射 | — |
-| [GetItemTags](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemtags) | 客户端 | 尚未建立映射 | — |
+| [GetItemTags](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemtags) | 服务端 | 已有离线核验路径 | [ItemStack.getTags](server/apis/itemStack.md#getTags), [ItemStack.hasTag](server/apis/itemStack.md#hasTag), [ContainerSlot.getTags](server/reference/ContainerSlot.md#getTags), [ContainerSlot.hasTag](server/reference/ContainerSlot.md#hasTag) |
+| [GetItemTags](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemtags) | 客户端 | 发现原生调用，待核对 | — |
 | [GetItemTexture](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getitemtexture) | 客户端 | 尚未建立映射 | — |
 | [GetLoadItems](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getloaditems) | 服务端 | 尚未建立映射 | — |
 | [GetUserDataInEvent](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%89%A9%E5%93%81.md#getuserdatainevent) | 服务端 | 发现原生调用，待核对 | — |
