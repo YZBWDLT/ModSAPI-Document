@@ -3,6 +3,8 @@ title: "EntityEffectOptions"
 sidebar_label: "EntityEffectOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityEffectOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,8 +23,8 @@ sidebar_label: "EntityEffectOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `amplifier` | [int](../type-system.md#int) | `self.__data['amplifier'] if 'amplifier' in self.__data else 0` | 效果的强度。 |
-| `showParticles` | [bool](../type-system.md#bool) | `self.__data.get('showParticles', self.__data.get('showParticle', True))` |  |
+| <ApiFieldAnchor id="field-amplifier" />`amplifier` | [int](../type-system.md#int) | `self.__data['amplifier'] if 'amplifier' in self.__data else 0` | 效果的强度。 |
+| <ApiFieldAnchor id="field-showParticles" />`showParticles` | [bool](../type-system.md#bool) | `self.__data.get('showParticles', self.__data.get('showParticle', True))` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -198,7 +198,7 @@ def write_value(instance, value):
 lockMode: str
 ```
 
-使用 [ItemLockMode.none](../../common/reference/ItemLockMode.md#字段与常量)、inventory 或 slot，拒绝未支持的值。
+使用 [ItemLockMode.none](../../common/reference/ItemLockMode.md#field-none)、inventory 或 slot，拒绝未支持的值。
 
 **访问：** 可读写。
 

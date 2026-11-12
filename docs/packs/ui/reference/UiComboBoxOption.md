@@ -3,6 +3,8 @@ title: "UiComboBoxOption"
 sidebar_label: "UiComboBoxOption"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiComboBoxOption
 
 作用域：界面、控件和两端组合表单。
@@ -23,7 +25,7 @@ sidebar_label: "UiComboBoxOption"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `icon` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-icon" />`icon` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

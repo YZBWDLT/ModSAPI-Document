@@ -3,6 +3,8 @@ title: "ModalFormDataSliderOptions"
 sidebar_label: "ModalFormDataSliderOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ModalFormDataSliderOptions
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -21,9 +23,9 @@ sidebar_label: "ModalFormDataSliderOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `defaultValue` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `valueStep` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `tooltip` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-defaultValue" />`defaultValue` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-valueStep" />`valueStep` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-tooltip" />`tooltip` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

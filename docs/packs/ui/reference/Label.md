@@ -31,7 +31,7 @@ sidebar_label: "Label"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [onCreate](ControlDescriptor.md#字段与常量) | [ControlDescriptor](ControlDescriptor.md) |
+| [onCreate](ControlDescriptor.md#field-onCreate) | [ControlDescriptor](ControlDescriptor.md) |
 
 ## 构造器 {#constructor}
 

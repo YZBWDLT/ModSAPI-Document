@@ -3,6 +3,8 @@ title: "ClientCamera"
 sidebar_label: "ClientCamera"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientCamera
 
 作用域：客户端。
@@ -19,8 +21,8 @@ sidebar_label: "ClientCamera"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `position` | 由运行时值确定 | `location` |  |
-| `rangeY` | 由运行时值确定 | `pitchLimits` |  |
+| <ApiFieldAnchor id="field-position" />`position` | 由运行时值确定 | `location` |  |
+| <ApiFieldAnchor id="field-rangeY" />`rangeY` | 由运行时值确定 | `pitchLimits` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

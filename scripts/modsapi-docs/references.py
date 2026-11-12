@@ -64,6 +64,11 @@ def relative(current, target, anchor=''):
     return Path(os.path.relpath(target, Path(current).parent)).as_posix()+('#'+anchor if anchor else '')
 
 
+def field_anchor(name):
+    """Keep field targets distinct from method and property heading targets."""
+    return 'field-'+name
+
+
 def configure(classes, events):
     CLASSES.clear(); EVENTS.clear(); UNRESOLVED.clear()
     for cls in classes:
@@ -123,7 +128,7 @@ def resolve(token, current):
             if member in cls['members']:
                 return relative(current, cls['url'], 'constructor' if member=='__init__' else member)
             if member in cls['fields']:
-                return relative(current, cls['url'], '字段与常量')
+                return relative(current, cls['url'], field_anchor(member))
     name = ALIASES.get(parts[-1], parts[-1])
     if name in BUILTINS:
         return relative(current, TYPE_PAGE, name.lower())

@@ -3,6 +3,8 @@ title: "MoreUILayoutDict"
 sidebar_label: "MoreUILayoutDict"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # MoreUILayoutDict
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -21,8 +23,8 @@ sidebar_label: "MoreUILayoutDict"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `row` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `必填字段` |  |
-| `column` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `必填字段` |  |
+| <ApiFieldAnchor id="field-row" />`row` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `必填字段` |  |
+| <ApiFieldAnchor id="field-column" />`column` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `必填字段` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

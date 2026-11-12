@@ -30,21 +30,21 @@ sidebar_label: "PanelData"
 | 成员 | 定义位置 |
 | --- | --- |
 | [addControl](ControlData.md#addControl) | [ControlData](ControlData.md) |
-| [alpha](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [anchor](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [background](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controlName](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controls](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [alpha](ControlData.md#field-alpha) | [ControlData](ControlData.md) |
+| [anchor](ControlData.md#field-anchor) | [ControlData](ControlData.md) |
+| [background](ControlData.md#field-background) | [ControlData](ControlData.md) |
+| [controlName](ControlData.md#field-controlName) | [ControlData](ControlData.md) |
+| [controls](ControlData.md#field-controls) | [ControlData](ControlData.md) |
 | [copy](ControlData.md#copy) | [ControlData](ControlData.md) |
-| [inst](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [isStatic](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [offset](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [parent](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [inst](ControlData.md#field-inst) | [ControlData](ControlData.md) |
+| [isStatic](ControlData.md#field-isStatic) | [ControlData](ControlData.md) |
+| [offset](ControlData.md#field-offset) | [ControlData](ControlData.md) |
+| [parent](ControlData.md#field-parent) | [ControlData](ControlData.md) |
 | [path](ControlData.md#path) | [ControlData](ControlData.md) |
 | [removeControl](ControlData.md#removeControl) | [ControlData](ControlData.md) |
-| [shouldTrace](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [size](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [visible](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [shouldTrace](ControlData.md#field-shouldTrace) | [ControlData](ControlData.md) |
+| [size](ControlData.md#field-size) | [ControlData](ControlData.md) |
+| [visible](ControlData.md#field-visible) | [ControlData](ControlData.md) |
 
 ## 构造器 {#constructor}
 

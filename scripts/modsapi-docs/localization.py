@@ -14,6 +14,8 @@ TRANSLATIONS.update({normalize(k): v for k, v in json.loads(
     Path(__file__).with_name('ui-translations.zh-CN.json').read_text('utf-8')).items()})
 TRANSLATIONS.update({normalize(k): v for k, v in json.loads(
     Path(__file__).with_name('native-display-translations.zh-CN.json').read_text('utf-8')).items()})
+TRANSLATIONS.update({normalize(k): v for k, v in json.loads(
+    Path(__file__).with_name('interaction-translations.zh-CN.json').read_text('utf-8')).items()})
 MISSING = set()
 
 

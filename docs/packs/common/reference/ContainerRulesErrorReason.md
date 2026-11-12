@@ -3,6 +3,8 @@ title: "ContainerRulesErrorReason"
 sidebar_label: "ContainerRulesErrorReason"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ContainerRulesErrorReason
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,11 +19,11 @@ sidebar_label: "ContainerRulesErrorReason"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `BannedItem` | [str](../type-system.md#str) | `'BannedItem'` |  |
-| `NestedStorageItem` | [str](../type-system.md#str) | `'NestedStorageItem'` |  |
-| `NotAllowedItem` | [str](../type-system.md#str) | `'NotAllowedItem'` |  |
-| `OverWeightLimit` | [str](../type-system.md#str) | `'OverWeightLimit'` |  |
-| `ZeroWeightItem` | [str](../type-system.md#str) | `'ZeroWeightItem'` |  |
+| <ApiFieldAnchor id="field-BannedItem" />`BannedItem` | [str](../type-system.md#str) | `'BannedItem'` |  |
+| <ApiFieldAnchor id="field-NestedStorageItem" />`NestedStorageItem` | [str](../type-system.md#str) | `'NestedStorageItem'` |  |
+| <ApiFieldAnchor id="field-NotAllowedItem" />`NotAllowedItem` | [str](../type-system.md#str) | `'NotAllowedItem'` |  |
+| <ApiFieldAnchor id="field-OverWeightLimit" />`OverWeightLimit` | [str](../type-system.md#str) | `'OverWeightLimit'` |  |
+| <ApiFieldAnchor id="field-ZeroWeightItem" />`ZeroWeightItem` | [str](../type-system.md#str) | `'ZeroWeightItem'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

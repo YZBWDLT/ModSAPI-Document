@@ -3,6 +3,8 @@ title: "EventSubscriptionOptions"
 sidebar_label: "EventSubscriptionOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EventSubscriptionOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,28 +25,28 @@ sidebar_label: "EventSubscriptionOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `entities` | [list](../type-system.md#list)[[Union](../type-system.md#union)[[Entity](../../server/apis/entity.md), [ClientEntity](../../client/reference/ClientEntity.md)]] | `可选字段；省略规则见所属操作` |  |
-| `entityTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `dimensions` | [list](../type-system.md#list)[[Union](../type-system.md#union)[[Dimension](../../server/apis/dimension.md), [ClientDimension](../../client/reference/ClientDimension.md)]] | `可选字段；省略规则见所属操作` |  |
-| `buttons` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `actions` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `axes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `controlTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `state` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` |  |
-| `devices` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `screenNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `states` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `inventoryTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `allowedSlots` | [list](../type-system.md#list)[[int](../type-system.md#int)] | `可选字段；省略规则见所属操作` |  |
-| `includeItems` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `excludeItems` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `ignoreQuantityChange` | [bool](../type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
-| `areaNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `effectTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `changeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `weatherTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `lootTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
-| `blockTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-entities" />`entities` | [list](../type-system.md#list)[[Union](../type-system.md#union)[[Entity](../../server/apis/entity.md), [ClientEntity](../../client/reference/ClientEntity.md)]] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-entityTypes" />`entityTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-dimensions" />`dimensions` | [list](../type-system.md#list)[[Union](../type-system.md#union)[[Dimension](../../server/apis/dimension.md), [ClientDimension](../../client/reference/ClientDimension.md)]] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-buttons" />`buttons` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-actions" />`actions` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-axes" />`axes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-controlTypes" />`controlTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-state" />`state` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-devices" />`devices` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-screenNames" />`screenNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-states" />`states` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-inventoryTypes" />`inventoryTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-allowedSlots" />`allowedSlots` | [list](../type-system.md#list)[[int](../type-system.md#int)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-includeItems" />`includeItems` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-excludeItems" />`excludeItems` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-ignoreQuantityChange" />`ignoreQuantityChange` | [bool](../type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-areaNames" />`areaNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-effectTypes" />`effectTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-changeTypes" />`changeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-weatherTypes" />`weatherTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-lootTypes" />`lootTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-blockTypes" />`blockTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

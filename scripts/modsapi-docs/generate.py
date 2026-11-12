@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import re
+from html import escape
 from functools import lru_cache
 from collections import defaultdict
 from pathlib import Path
@@ -26,6 +27,7 @@ from client_inventory_content import CLIENT_INVENTORY_GUIDES, CLIENT_INVENTORY_A
 from server_container_content import SERVER_CONTAINER_GUIDES, SERVER_CONTAINER_ACQUIRE, SERVER_CONTAINER_NOTES
 from item_components_content import ITEM_COMPONENT_GUIDES, ITEM_COMPONENT_ACQUIRE, ITEM_COMPONENT_NOTES
 from native_display_content import NATIVE_DISPLAY_GUIDES, NATIVE_DISPLAY_ACQUIRE, NATIVE_DISPLAY_NOTES
+from interaction_content import INTERACTION_GUIDES, INTERACTION_ACQUIRE, INTERACTION_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -49,6 +51,7 @@ GUIDES.update(CLIENT_INVENTORY_GUIDES)
 GUIDES.update(SERVER_CONTAINER_GUIDES)
 GUIDES.update(ITEM_COMPONENT_GUIDES)
 GUIDES.update(NATIVE_DISPLAY_GUIDES)
+GUIDES.update(INTERACTION_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
 NOTES.update(VALUE_NOTES)
 NOTES.update(INPUT_NOTES)
@@ -58,6 +61,7 @@ NOTES.update(CLIENT_INVENTORY_NOTES)
 NOTES.update(SERVER_CONTAINER_NOTES)
 NOTES.update(ITEM_COMPONENT_NOTES)
 NOTES.update(NATIVE_DISPLAY_NOTES)
+NOTES.update(INTERACTION_NOTES)
 
 
 def digest(data):
@@ -708,6 +712,7 @@ ACQUIRE.update(CLIENT_INVENTORY_ACQUIRE)
 ACQUIRE.update(SERVER_CONTAINER_ACQUIRE)
 ACQUIRE.update(ITEM_COMPONENT_ACQUIRE)
 ACQUIRE.update(NATIVE_DISPLAY_ACQUIRE)
+ACQUIRE.update(INTERACTION_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -764,7 +769,10 @@ def event_sources():
 def render(cls, signals):
     name=cls['name']; url=cls['url']; source=cls['path'].relative_to(SOURCE).as_posix()
     title=name
-    out=['---','title: '+json.dumps(title,ensure_ascii=False),'sidebar_label: '+json.dumps(name,ensure_ascii=False),'---','', '# '+name, '']
+    out=['---','title: '+json.dumps(title,ensure_ascii=False),'sidebar_label: '+json.dumps(name,ensure_ascii=False),'---','']
+    if cls['fields']:
+        out += ["import ApiFieldAnchor from '@docusaurus/Link';",'']
+    out += ['# '+name,'']
     out += ['作用域：'+{'server':'服务端','client':'客户端','server_ui':'服务端表单 / 客户端 UI 底层类型','ui':'界面、控件和两端组合表单','common':'公共数据、选项、枚举与错误','architecture':'架构辅助接口'}[cls['group']]+'。', '',
             '源码：'+code(source)+('；声明补充了静态类型信息。' if cls['stub'] else '。'), '']
     if cls.get('dynamic_native'):
@@ -797,7 +805,9 @@ def render(cls, signals):
         for key,value in cls['fields'].items():
             origin=('必填字段' if value.get('required',True) else '可选字段；省略规则见所属操作') if structural else '运行时返回'
             field_description=chinese(value['description']) if value.get('description') else NOTES.get(name+'.'+key,'')
-            out+=['| '+code(key)+' | '+references.annotation(value.get('type','由运行时值确定'),url)+' | '+code(value.get('default',value.get('assignment',origin)))+' | '+cell(field_description)+' |']
+            # Explicit HTML in MDX bypasses the theme's anchor collector.
+            target='<ApiFieldAnchor id="'+escape(references.field_anchor(key),quote=True)+'" />'
+            out+=['| '+target+code(key)+' | '+references.annotation(value.get('type','由运行时值确定'),url)+' | '+code(value.get('default',value.get('assignment',origin)))+' | '+cell(field_description)+' |']
         out+=['','字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。','']
     members={key:value for key,value in cls['members'].items() if not key.startswith('_') or key=='__init__'}
     if members:
@@ -810,7 +820,7 @@ def render(cls, signals):
     if inherited_members:
         out+=['## 继承成员','', '下列成员沿用基类约定；点击名称查看签名、参数、返回值和示例。','', '| 成员 | 定义位置 |','| --- | --- |']
         for key,owner in sorted(inherited_members.items()):
-            anchor=key if key in owner['members'] else '字段与常量'
+            anchor=key if key in owner['members'] else references.field_anchor(key)
             out+=['| ['+key+']('+link(url,owner['url'],anchor)+') | '+owner['name']+' |']
         out+=['']
     for key,member in members.items():

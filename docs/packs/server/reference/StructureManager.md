@@ -53,7 +53,7 @@ createEmpty(identifier: str, size: Vector3, saveMode: str = StructureSaveMode.Me
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
 | `size` | [Vector3](../extra/vector.md) | `必填` | 传给 [StructureManager.createEmpty](StructureManager.md#createEmpty) 的 size 参数；结合上方功能说明和下方调用示例使用。 |
-| `saveMode` | [str](../../common/type-system.md#str) | [StructureSaveMode.Memory](../../common/reference/StructureSaveMode.md#字段与常量) | 传给 [StructureManager.createEmpty](StructureManager.md#createEmpty) 的 saveMode 参数；结合上方功能说明和下方调用示例使用。 |
+| `saveMode` | [str](../../common/type-system.md#str) | [StructureSaveMode.Memory](../../common/reference/StructureSaveMode.md#field-Memory) | 传给 [StructureManager.createEmpty](StructureManager.md#createEmpty) 的 saveMode 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [Structure](Structure.md)。静态声明不替代本页的实现限制。
 

@@ -3,6 +3,8 @@ title: "BlockPistonState"
 sidebar_label: "BlockPistonState"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # BlockPistonState
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,10 +19,10 @@ sidebar_label: "BlockPistonState"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Expanded` | [str](../type-system.md#str) | `'Expanded'` |  |
-| `Expanding` | [str](../type-system.md#str) | `'Expanding'` |  |
-| `Retracted` | [str](../type-system.md#str) | `'Retracted'` |  |
-| `Retracting` | [str](../type-system.md#str) | `'Retracting'` |  |
+| <ApiFieldAnchor id="field-Expanded" />`Expanded` | [str](../type-system.md#str) | `'Expanded'` |  |
+| <ApiFieldAnchor id="field-Expanding" />`Expanding` | [str](../type-system.md#str) | `'Expanding'` |  |
+| <ApiFieldAnchor id="field-Retracted" />`Retracted` | [str](../type-system.md#str) | `'Retracted'` |  |
+| <ApiFieldAnchor id="field-Retracting" />`Retracting` | [str](../type-system.md#str) | `'Retracting'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

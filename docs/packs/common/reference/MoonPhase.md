@@ -3,6 +3,8 @@ title: "MoonPhase"
 sidebar_label: "MoonPhase"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # MoonPhase
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,14 +19,14 @@ sidebar_label: "MoonPhase"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `FullMoon` | [int](../type-system.md#int) | `0` |  |
-| `WaningGibbous` | [int](../type-system.md#int) | `1` |  |
-| `FirstQuarter` | [int](../type-system.md#int) | `2` |  |
-| `WaningCrescent` | [int](../type-system.md#int) | `3` |  |
-| `NewMoon` | [int](../type-system.md#int) | `4` |  |
-| `WaxingCrescent` | [int](../type-system.md#int) | `5` |  |
-| `LastQuarter` | [int](../type-system.md#int) | `6` |  |
-| `WaxingGibbous` | [int](../type-system.md#int) | `7` |  |
+| <ApiFieldAnchor id="field-FullMoon" />`FullMoon` | [int](../type-system.md#int) | `0` |  |
+| <ApiFieldAnchor id="field-WaningGibbous" />`WaningGibbous` | [int](../type-system.md#int) | `1` |  |
+| <ApiFieldAnchor id="field-FirstQuarter" />`FirstQuarter` | [int](../type-system.md#int) | `2` |  |
+| <ApiFieldAnchor id="field-WaningCrescent" />`WaningCrescent` | [int](../type-system.md#int) | `3` |  |
+| <ApiFieldAnchor id="field-NewMoon" />`NewMoon` | [int](../type-system.md#int) | `4` |  |
+| <ApiFieldAnchor id="field-WaxingCrescent" />`WaxingCrescent` | [int](../type-system.md#int) | `5` |  |
+| <ApiFieldAnchor id="field-LastQuarter" />`LastQuarter` | [int](../type-system.md#int) | `6` |  |
+| <ApiFieldAnchor id="field-WaxingGibbous" />`WaxingGibbous` | [int](../type-system.md#int) | `7` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

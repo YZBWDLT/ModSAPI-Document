@@ -3,6 +3,8 @@ title: "ButtonCallbackArgument"
 sidebar_label: "ButtonCallbackArgument"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ButtonCallbackArgument
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -19,9 +21,9 @@ sidebar_label: "ButtonCallbackArgument"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `button` | 由运行时值确定 | `button` |  |
-| `ui` | 由运行时值确定 | `ui` |  |
-| `pos` | 由运行时值确定 | `Vector2(pos)` |  |
+| <ApiFieldAnchor id="field-button" />`button` | 由运行时值确定 | `button` |  |
+| <ApiFieldAnchor id="field-ui" />`ui` | 由运行时值确定 | `ui` |  |
+| <ApiFieldAnchor id="field-pos" />`pos` | 由运行时值确定 | `Vector2(pos)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

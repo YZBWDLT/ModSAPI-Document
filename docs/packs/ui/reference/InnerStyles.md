@@ -3,6 +3,8 @@ title: "InnerStyles"
 sidebar_label: "InnerStyles"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # InnerStyles
 
 作用域：界面、控件和两端组合表单。
@@ -19,9 +21,9 @@ sidebar_label: "InnerStyles"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `oreui` | [Final](../../common/type-system.md#final)[[OreUIStyles](OreUIStyles.md)] | `OreUIStyles()` |  |
-| `flutter` | [Final](../../common/type-system.md#final)[[FlutterStyles](FlutterStyles.md)] | `FlutterStyles()` |  |
-| `fluent` | [Final](../../common/type-system.md#final)[[FluentStyles](FluentStyles.md)] | `FluentStyles()` |  |
+| <ApiFieldAnchor id="field-oreui" />`oreui` | [Final](../../common/type-system.md#final)[[OreUIStyles](OreUIStyles.md)] | `OreUIStyles()` |  |
+| <ApiFieldAnchor id="field-flutter" />`flutter` | [Final](../../common/type-system.md#final)[[FlutterStyles](FlutterStyles.md)] | `FlutterStyles()` |  |
+| <ApiFieldAnchor id="field-fluent" />`fluent` | [Final](../../common/type-system.md#final)[[FluentStyles](FluentStyles.md)] | `FluentStyles()` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

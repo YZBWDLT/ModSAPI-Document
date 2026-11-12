@@ -3,6 +3,8 @@ title: "CustomForm"
 sidebar_label: "CustomForm"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CustomForm
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -21,8 +23,8 @@ sidebar_label: "CustomForm"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `ID` | 由运行时值确定 | `0` |  |
-| `id` | 由运行时值确定 | `id` |  |
+| <ApiFieldAnchor id="field-ID" />`ID` | 由运行时值确定 | `0` |  |
+| <ApiFieldAnchor id="field-id" />`id` | 由运行时值确定 | `id` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

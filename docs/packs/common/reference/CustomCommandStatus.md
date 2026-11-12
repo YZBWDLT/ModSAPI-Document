@@ -3,6 +3,8 @@ title: "CustomCommandStatus"
 sidebar_label: "CustomCommandStatus"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CustomCommandStatus
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,9 +21,9 @@ sidebar_label: "CustomCommandStatus"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Success` | 由运行时值确定 | `0` |  |
-| `Failed` | 由运行时值确定 | `1` |  |
-| `Failure` | 由运行时值确定 | `1` |  |
+| <ApiFieldAnchor id="field-Success" />`Success` | 由运行时值确定 | `0` |  |
+| <ApiFieldAnchor id="field-Failed" />`Failed` | 由运行时值确定 | `1` |  |
+| <ApiFieldAnchor id="field-Failure" />`Failure` | 由运行时值确定 | `1` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

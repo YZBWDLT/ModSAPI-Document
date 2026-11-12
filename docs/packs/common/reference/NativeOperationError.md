@@ -3,6 +3,8 @@ title: "NativeOperationError"
 sidebar_label: "NativeOperationError"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # NativeOperationError
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,9 +23,9 @@ sidebar_label: "NativeOperationError"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `operation` | [str](../type-system.md#str) | `operation` |  |
-| `code` | [Any](../type-system.md#any) | `code` |  |
-| `cause` | [Exception](../type-system.md#exception) \| [None](../type-system.md#none) | `cause` |  |
+| <ApiFieldAnchor id="field-operation" />`operation` | [str](../type-system.md#str) | `operation` |  |
+| <ApiFieldAnchor id="field-code" />`code` | [Any](../type-system.md#any) | `code` |  |
+| <ApiFieldAnchor id="field-cause" />`cause` | [Exception](../type-system.md#exception) \| [None](../type-system.md#none) | `cause` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

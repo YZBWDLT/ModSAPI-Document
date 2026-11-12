@@ -3,6 +3,8 @@ title: "ControlStyle"
 sidebar_label: "ControlStyle"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ControlStyle
 
 作用域：界面、控件和两端组合表单。
@@ -21,14 +23,14 @@ sidebar_label: "ControlStyle"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `class` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
-| `offsetX` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
-| `offsetY` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
-| `width` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
-| `height` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
-| `visible` | [BoolValue](../../common/type-aliases.md#boolvalue) | `可选字段；省略规则见所属操作` |  |
-| `fontSize` | [FontSize](../../common/type-aliases.md#fontsize) | `可选字段；省略规则见所属操作` |  |
-| `grid` | [GridPosition](GridPosition.md) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-class" />`class` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-offsetX" />`offsetX` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-offsetY" />`offsetY` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-width" />`width` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-height" />`height` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-visible" />`visible` | [BoolValue](../../common/type-aliases.md#boolvalue) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-fontSize" />`fontSize` | [FontSize](../../common/type-aliases.md#fontsize) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-grid" />`grid` | [GridPosition](GridPosition.md) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

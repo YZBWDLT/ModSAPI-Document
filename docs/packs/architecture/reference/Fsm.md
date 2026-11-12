@@ -3,6 +3,8 @@ title: "Fsm"
 sidebar_label: "Fsm"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Fsm
 
 作用域：架构辅助接口。
@@ -19,11 +21,11 @@ sidebar_label: "Fsm"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `states` | 由运行时值确定 | `{name: defaultState}` |  |
-| `defaultState` | 由运行时值确定 | `defaultState` |  |
-| `currentState` | 由运行时值确定 | `defaultState` |  |
-| `currentStateName` | 由运行时值确定 | `name` |  |
-| `defaultStateName` | 由运行时值确定 | `name` |  |
+| <ApiFieldAnchor id="field-states" />`states` | 由运行时值确定 | `{name: defaultState}` |  |
+| <ApiFieldAnchor id="field-defaultState" />`defaultState` | 由运行时值确定 | `defaultState` |  |
+| <ApiFieldAnchor id="field-currentState" />`currentState` | 由运行时值确定 | `defaultState` |  |
+| <ApiFieldAnchor id="field-currentStateName" />`currentStateName` | 由运行时值确定 | `name` |  |
+| <ApiFieldAnchor id="field-defaultStateName" />`defaultStateName` | 由运行时值确定 | `name` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

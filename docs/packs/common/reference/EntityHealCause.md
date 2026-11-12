@@ -3,6 +3,8 @@ title: "EntityHealCause"
 sidebar_label: "EntityHealCause"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityHealCause
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,10 +19,10 @@ sidebar_label: "EntityHealCause"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Heal` | [str](../type-system.md#str) | `'Heal'` |  |
-| `Regeneration` | [str](../type-system.md#str) | `'Regeneration'` |  |
-| `SelfHeal` | [str](../type-system.md#str) | `'SelfHeal'` |  |
-| `TotemOfUndying` | [str](../type-system.md#str) | `'TotemOfUndying'` |  |
+| <ApiFieldAnchor id="field-Heal" />`Heal` | [str](../type-system.md#str) | `'Heal'` |  |
+| <ApiFieldAnchor id="field-Regeneration" />`Regeneration` | [str](../type-system.md#str) | `'Regeneration'` |  |
+| <ApiFieldAnchor id="field-SelfHeal" />`SelfHeal` | [str](../type-system.md#str) | `'SelfHeal'` |  |
+| <ApiFieldAnchor id="field-TotemOfUndying" />`TotemOfUndying` | [str](../type-system.md#str) | `'TotemOfUndying'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

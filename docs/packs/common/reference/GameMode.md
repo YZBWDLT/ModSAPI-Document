@@ -3,6 +3,8 @@ title: "GameMode"
 sidebar_label: "GameMode"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # GameMode
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,10 +21,10 @@ sidebar_label: "GameMode"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Adventure` | 由运行时值确定 | `'adventure'` |  |
-| `Creative` | 由运行时值确定 | `'creative'` |  |
-| `Spectator` | 由运行时值确定 | `'spectator'` |  |
-| `Survival` | 由运行时值确定 | `'survival'` |  |
+| <ApiFieldAnchor id="field-Adventure" />`Adventure` | 由运行时值确定 | `'adventure'` |  |
+| <ApiFieldAnchor id="field-Creative" />`Creative` | 由运行时值确定 | `'creative'` |  |
+| <ApiFieldAnchor id="field-Spectator" />`Spectator` | 由运行时值确定 | `'spectator'` |  |
+| <ApiFieldAnchor id="field-Survival" />`Survival` | 由运行时值确定 | `'survival'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "UiNativeScreenOptions"
 sidebar_label: "UiNativeScreenOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiNativeScreenOptions
 
 作用域：界面、控件和两端组合表单。
@@ -23,9 +25,9 @@ sidebar_label: "UiNativeScreenOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `force` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` | 请求在已有菜单时也打开界面；仅聊天、暂停和背包支持。 |
-| `categoryName` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` | 背包分页名，或商店必填的分类名。背包默认使用建筑分页 construction。 |
-| `itemName` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` | 商店必填的商品名称；其他界面不接受此字段。 |
+| <ApiFieldAnchor id="field-force" />`force` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` | 请求在已有菜单时也打开界面；仅聊天、暂停和背包支持。 |
+| <ApiFieldAnchor id="field-categoryName" />`categoryName` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` | 背包分页名，或商店必填的分类名。背包默认使用建筑分页 construction。 |
+| <ApiFieldAnchor id="field-itemName" />`itemName` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` | 商店必填的商品名称；其他界面不接受此字段。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

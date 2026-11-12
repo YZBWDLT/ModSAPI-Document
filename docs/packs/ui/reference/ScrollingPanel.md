@@ -3,6 +3,8 @@ title: "ScrollingPanel"
 sidebar_label: "ScrollingPanel"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ScrollingPanel
 
 作用域：界面、控件和两端组合表单。
@@ -23,9 +25,9 @@ sidebar_label: "ScrollingPanel"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `scrollingPanelPath` | [str](../../common/type-system.md#str) | `scrollingPanelPath` |  |
-| `titlePath` | [str](../../common/type-system.md#str) | `titlePath` |  |
-| `closeButtonPath` | [str](../../common/type-system.md#str) | `closeButtonPath` |  |
+| <ApiFieldAnchor id="field-scrollingPanelPath" />`scrollingPanelPath` | [str](../../common/type-system.md#str) | `scrollingPanelPath` |  |
+| <ApiFieldAnchor id="field-titlePath" />`titlePath` | [str](../../common/type-system.md#str) | `titlePath` |  |
+| <ApiFieldAnchor id="field-closeButtonPath" />`closeButtonPath` | [str](../../common/type-system.md#str) | `closeButtonPath` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -41,7 +43,7 @@ sidebar_label: "ScrollingPanel"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [onCreate](ControlDescriptor.md#字段与常量) | [ControlDescriptor](ControlDescriptor.md) |
+| [onCreate](ControlDescriptor.md#field-onCreate) | [ControlDescriptor](ControlDescriptor.md) |
 
 ## 构造器 {#constructor}
 

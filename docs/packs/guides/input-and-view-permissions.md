@@ -107,6 +107,8 @@ if mouse is not None:
 
 ## 长按阈值与错误恢复
 
+本地动作请求、行走模式、触控布局、可恢复的电脑鼠标模式，以及初始化前的表情配置，见 [本地交互与触控布局](client-interaction-and-controls.md)。这些入口区分可读取旧值的状态与不能自动恢复的直接设置。
+
 [holdThresholdMilliseconds](../client/reference/ClientInput.md#holdThresholdMilliseconds) 使用整数毫秒，原生默认值为 400。写入时拒绝布尔值和负数，`reset()` 尝试恢复本服务修改前的值。
 
 ```python

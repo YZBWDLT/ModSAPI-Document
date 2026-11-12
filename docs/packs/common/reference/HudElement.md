@@ -3,6 +3,8 @@ title: "HudElement"
 sidebar_label: "HudElement"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # HudElement
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,19 +19,19 @@ sidebar_label: "HudElement"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `PaperDoll` | [int](../type-system.md#int) | `0` |  |
-| `Armor` | [int](../type-system.md#int) | `1` |  |
-| `ToolTips` | [int](../type-system.md#int) | `2` |  |
-| `TouchControls` | [int](../type-system.md#int) | `3` |  |
-| `Crosshair` | [int](../type-system.md#int) | `4` |  |
-| `Hotbar` | [int](../type-system.md#int) | `5` |  |
-| `Health` | [int](../type-system.md#int) | `6` |  |
-| `ProgressBar` | [int](../type-system.md#int) | `7` |  |
-| `Hunger` | [int](../type-system.md#int) | `8` |  |
-| `AirBubbles` | [int](../type-system.md#int) | `9` |  |
-| `HorseHealth` | [int](../type-system.md#int) | `10` |  |
-| `StatusEffects` | [int](../type-system.md#int) | `11` |  |
-| `ItemText` | [int](../type-system.md#int) | `12` |  |
+| <ApiFieldAnchor id="field-PaperDoll" />`PaperDoll` | [int](../type-system.md#int) | `0` |  |
+| <ApiFieldAnchor id="field-Armor" />`Armor` | [int](../type-system.md#int) | `1` |  |
+| <ApiFieldAnchor id="field-ToolTips" />`ToolTips` | [int](../type-system.md#int) | `2` |  |
+| <ApiFieldAnchor id="field-TouchControls" />`TouchControls` | [int](../type-system.md#int) | `3` |  |
+| <ApiFieldAnchor id="field-Crosshair" />`Crosshair` | [int](../type-system.md#int) | `4` |  |
+| <ApiFieldAnchor id="field-Hotbar" />`Hotbar` | [int](../type-system.md#int) | `5` |  |
+| <ApiFieldAnchor id="field-Health" />`Health` | [int](../type-system.md#int) | `6` |  |
+| <ApiFieldAnchor id="field-ProgressBar" />`ProgressBar` | [int](../type-system.md#int) | `7` |  |
+| <ApiFieldAnchor id="field-Hunger" />`Hunger` | [int](../type-system.md#int) | `8` |  |
+| <ApiFieldAnchor id="field-AirBubbles" />`AirBubbles` | [int](../type-system.md#int) | `9` |  |
+| <ApiFieldAnchor id="field-HorseHealth" />`HorseHealth` | [int](../type-system.md#int) | `10` |  |
+| <ApiFieldAnchor id="field-StatusEffects" />`StatusEffects` | [int](../type-system.md#int) | `11` |  |
+| <ApiFieldAnchor id="field-ItemText" />`ItemText` | [int](../type-system.md#int) | `12` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

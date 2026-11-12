@@ -3,6 +3,8 @@ title: "Direction"
 sidebar_label: "Direction"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Direction
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,12 +21,12 @@ sidebar_label: "Direction"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Down` | 由运行时值确定 | `'Down'` |  |
-| `East` | 由运行时值确定 | `'East'` |  |
-| `North` | 由运行时值确定 | `'North'` |  |
-| `South` | 由运行时值确定 | `'South'` |  |
-| `Up` | 由运行时值确定 | `'Up'` |  |
-| `West` | 由运行时值确定 | `'West'` |  |
+| <ApiFieldAnchor id="field-Down" />`Down` | 由运行时值确定 | `'Down'` |  |
+| <ApiFieldAnchor id="field-East" />`East` | 由运行时值确定 | `'East'` |  |
+| <ApiFieldAnchor id="field-North" />`North` | 由运行时值确定 | `'North'` |  |
+| <ApiFieldAnchor id="field-South" />`South` | 由运行时值确定 | `'South'` |  |
+| <ApiFieldAnchor id="field-Up" />`Up` | 由运行时值确定 | `'Up'` |  |
+| <ApiFieldAnchor id="field-West" />`West` | 由运行时值确定 | `'West'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "ClientEntityEquippableComponent"
 sidebar_label: "ClientEntityEquippableComponent"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientEntityEquippableComponent
 
 作用域：客户端。
@@ -13,13 +15,13 @@ sidebar_label: "ClientEntityEquippableComponent"
 
 ## 获取方式
 
-通过本地玩家 getComponent([ClientEntityComponentTypes.Equippable](ClientEntityComponentTypes.md#字段与常量)) 取得；无需主动构造。
+通过本地玩家 getComponent([ClientEntityComponentTypes.Equippable](ClientEntityComponentTypes.md#field-Equippable)) 取得；无需主动构造。
 
 ## 字段与常量
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `componentId` | 由运行时值确定 | `'minecraft:equippable'` |  |
+| <ApiFieldAnchor id="field-componentId" />`componentId` | 由运行时值确定 | `'minecraft:equippable'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -28,7 +28,7 @@ sidebar_label: "ObservableString"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [ID](Observable.md#字段与常量) | [Observable](Observable.md) |
+| [ID](Observable.md#field-ID) | [Observable](Observable.md) |
 | [create](Observable.md#create) | [Observable](Observable.md) |
 | [dispose](Observable.md#dispose) | [Observable](Observable.md) |
 | [getData](Observable.md#getData) | [Observable](Observable.md) |

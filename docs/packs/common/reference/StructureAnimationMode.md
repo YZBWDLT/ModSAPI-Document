@@ -3,6 +3,8 @@ title: "StructureAnimationMode"
 sidebar_label: "StructureAnimationMode"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # StructureAnimationMode
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,8 +19,8 @@ sidebar_label: "StructureAnimationMode"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Blocks` | [str](../type-system.md#str) | `'Blocks'` |  |
-| `Layers` | [str](../type-system.md#str) | `'Layers'` |  |
+| <ApiFieldAnchor id="field-Blocks" />`Blocks` | [str](../type-system.md#str) | `'Blocks'` |  |
+| <ApiFieldAnchor id="field-Layers" />`Layers` | [str](../type-system.md#str) | `'Layers'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

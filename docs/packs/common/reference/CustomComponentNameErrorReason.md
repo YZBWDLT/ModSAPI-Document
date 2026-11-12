@@ -3,6 +3,8 @@ title: "CustomComponentNameErrorReason"
 sidebar_label: "CustomComponentNameErrorReason"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CustomComponentNameErrorReason
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,8 +19,8 @@ sidebar_label: "CustomComponentNameErrorReason"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `NoNamespace` | [int](../type-system.md#int) | `1` |  |
-| `DisallowedNamespace` | [int](../type-system.md#int) | `2` |  |
+| <ApiFieldAnchor id="field-NoNamespace" />`NoNamespace` | [int](../type-system.md#int) | `1` |  |
+| <ApiFieldAnchor id="field-DisallowedNamespace" />`DisallowedNamespace` | [int](../type-system.md#int) | `2` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

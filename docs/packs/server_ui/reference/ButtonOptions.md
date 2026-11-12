@@ -3,6 +3,8 @@ title: "ButtonOptions"
 sidebar_label: "ButtonOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ButtonOptions
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -23,11 +25,11 @@ sidebar_label: "ButtonOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `visible` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
-| `disabled` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
-| `tooltip` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
-| `description` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
-| `icon` | [str](../../common/type-system.md#str) \| [Observable](Observable.md)[[str](../../common/type-system.md#str)] | `必填字段` | 按钮图标；空字符串表示隐藏。 |
+| <ApiFieldAnchor id="field-visible" />`visible` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-disabled" />`disabled` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-tooltip" />`tooltip` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-description" />`description` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-icon" />`icon` | [str](../../common/type-system.md#str) \| [Observable](Observable.md)[[str](../../common/type-system.md#str)] | `必填字段` | 按钮图标；空字符串表示隐藏。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

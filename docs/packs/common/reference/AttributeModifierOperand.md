@@ -3,6 +3,8 @@ title: "AttributeModifierOperand"
 sidebar_label: "AttributeModifierOperand"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # AttributeModifierOperand
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,9 +23,9 @@ sidebar_label: "AttributeModifierOperand"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Minimum` | 由运行时值确定 | `'Minimum'` |  |
-| `Maximum` | 由运行时值确定 | `'Maximum'` |  |
-| `Current` | 由运行时值确定 | `'Current'` |  |
+| <ApiFieldAnchor id="field-Minimum" />`Minimum` | 由运行时值确定 | `'Minimum'` |  |
+| <ApiFieldAnchor id="field-Maximum" />`Maximum` | 由运行时值确定 | `'Maximum'` |  |
+| <ApiFieldAnchor id="field-Current" />`Current` | 由运行时值确定 | `'Current'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "EntityDamageCause"
 sidebar_label: "EntityDamageCause"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityDamageCause
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,42 +21,42 @@ sidebar_label: "EntityDamageCause"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `anvil` | 由运行时值确定 | `'anvil'` |  |
-| `blockExplosion` | 由运行时值确定 | `'block_explosion'` |  |
-| `charging` | 由运行时值确定 | `'charging'` |  |
-| `contact` | 由运行时值确定 | `'contact'` |  |
-| `drowning` | 由运行时值确定 | `'drowning'` |  |
-| `entityAttack` | 由运行时值确定 | `'entity_attack'` |  |
-| `entityExplosion` | 由运行时值确定 | `'entity_explosion'` |  |
-| `fall` | 由运行时值确定 | `'fall'` |  |
-| `fallingBlock` | 由运行时值确定 | `'falling_block'` |  |
-| `fire` | 由运行时值确定 | `'fire'` |  |
-| `fireTick` | 由运行时值确定 | `'fire_tick'` |  |
-| `fireworks` | 由运行时值确定 | `'fireworks'` |  |
-| `flyIntoWall` | 由运行时值确定 | `'fly_into_wall'` |  |
-| `freezing` | 由运行时值确定 | `'freezing'` |  |
-| `lava` | 由运行时值确定 | `'lava'` |  |
-| `lightning` | 由运行时值确定 | `'lightning'` |  |
-| `maceSmash` | 由运行时值确定 | `'mace_smash'` |  |
-| `magic` | 由运行时值确定 | `'magic'` |  |
-| `magma` | 由运行时值确定 | `'magma'` |  |
-| `none` | 由运行时值确定 | `'none'` |  |
-| `override` | 由运行时值确定 | `'override'` |  |
-| `piston` | 由运行时值确定 | `'piston'` |  |
-| `projectile` | 由运行时值确定 | `'projectile'` |  |
-| `ramAttack` | 由运行时值确定 | `'ram_attack'` |  |
-| `selfDestruct` | 由运行时值确定 | `'self_destruct'` |  |
-| `sonicBoom` | 由运行时值确定 | `'sonic_boom'` |  |
-| `soulCampfire` | 由运行时值确定 | `'soul_campfire'` |  |
-| `stalactite` | 由运行时值确定 | `'stalactite'` |  |
-| `stalagmite` | 由运行时值确定 | `'stalagmite'` |  |
-| `starve` | 由运行时值确定 | `'starve'` |  |
-| `suffocation` | 由运行时值确定 | `'suffocation'` |  |
-| `suicide` | 由运行时值确定 | `'suicide'` |  |
-| `temperature` | 由运行时值确定 | `'temperature'` |  |
-| `thorns` | 由运行时值确定 | `'thorns'` |  |
-| `void` | 由运行时值确定 | `'void'` |  |
-| `wither` | 由运行时值确定 | `'wither'` |  |
+| <ApiFieldAnchor id="field-anvil" />`anvil` | 由运行时值确定 | `'anvil'` |  |
+| <ApiFieldAnchor id="field-blockExplosion" />`blockExplosion` | 由运行时值确定 | `'block_explosion'` |  |
+| <ApiFieldAnchor id="field-charging" />`charging` | 由运行时值确定 | `'charging'` |  |
+| <ApiFieldAnchor id="field-contact" />`contact` | 由运行时值确定 | `'contact'` |  |
+| <ApiFieldAnchor id="field-drowning" />`drowning` | 由运行时值确定 | `'drowning'` |  |
+| <ApiFieldAnchor id="field-entityAttack" />`entityAttack` | 由运行时值确定 | `'entity_attack'` |  |
+| <ApiFieldAnchor id="field-entityExplosion" />`entityExplosion` | 由运行时值确定 | `'entity_explosion'` |  |
+| <ApiFieldAnchor id="field-fall" />`fall` | 由运行时值确定 | `'fall'` |  |
+| <ApiFieldAnchor id="field-fallingBlock" />`fallingBlock` | 由运行时值确定 | `'falling_block'` |  |
+| <ApiFieldAnchor id="field-fire" />`fire` | 由运行时值确定 | `'fire'` |  |
+| <ApiFieldAnchor id="field-fireTick" />`fireTick` | 由运行时值确定 | `'fire_tick'` |  |
+| <ApiFieldAnchor id="field-fireworks" />`fireworks` | 由运行时值确定 | `'fireworks'` |  |
+| <ApiFieldAnchor id="field-flyIntoWall" />`flyIntoWall` | 由运行时值确定 | `'fly_into_wall'` |  |
+| <ApiFieldAnchor id="field-freezing" />`freezing` | 由运行时值确定 | `'freezing'` |  |
+| <ApiFieldAnchor id="field-lava" />`lava` | 由运行时值确定 | `'lava'` |  |
+| <ApiFieldAnchor id="field-lightning" />`lightning` | 由运行时值确定 | `'lightning'` |  |
+| <ApiFieldAnchor id="field-maceSmash" />`maceSmash` | 由运行时值确定 | `'mace_smash'` |  |
+| <ApiFieldAnchor id="field-magic" />`magic` | 由运行时值确定 | `'magic'` |  |
+| <ApiFieldAnchor id="field-magma" />`magma` | 由运行时值确定 | `'magma'` |  |
+| <ApiFieldAnchor id="field-none" />`none` | 由运行时值确定 | `'none'` |  |
+| <ApiFieldAnchor id="field-override" />`override` | 由运行时值确定 | `'override'` |  |
+| <ApiFieldAnchor id="field-piston" />`piston` | 由运行时值确定 | `'piston'` |  |
+| <ApiFieldAnchor id="field-projectile" />`projectile` | 由运行时值确定 | `'projectile'` |  |
+| <ApiFieldAnchor id="field-ramAttack" />`ramAttack` | 由运行时值确定 | `'ram_attack'` |  |
+| <ApiFieldAnchor id="field-selfDestruct" />`selfDestruct` | 由运行时值确定 | `'self_destruct'` |  |
+| <ApiFieldAnchor id="field-sonicBoom" />`sonicBoom` | 由运行时值确定 | `'sonic_boom'` |  |
+| <ApiFieldAnchor id="field-soulCampfire" />`soulCampfire` | 由运行时值确定 | `'soul_campfire'` |  |
+| <ApiFieldAnchor id="field-stalactite" />`stalactite` | 由运行时值确定 | `'stalactite'` |  |
+| <ApiFieldAnchor id="field-stalagmite" />`stalagmite` | 由运行时值确定 | `'stalagmite'` |  |
+| <ApiFieldAnchor id="field-starve" />`starve` | 由运行时值确定 | `'starve'` |  |
+| <ApiFieldAnchor id="field-suffocation" />`suffocation` | 由运行时值确定 | `'suffocation'` |  |
+| <ApiFieldAnchor id="field-suicide" />`suicide` | 由运行时值确定 | `'suicide'` |  |
+| <ApiFieldAnchor id="field-temperature" />`temperature` | 由运行时值确定 | `'temperature'` |  |
+| <ApiFieldAnchor id="field-thorns" />`thorns` | 由运行时值确定 | `'thorns'` |  |
+| <ApiFieldAnchor id="field-void" />`void` | 由运行时值确定 | `'void'` |  |
+| <ApiFieldAnchor id="field-wither" />`wither` | 由运行时值确定 | `'wither'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

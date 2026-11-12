@@ -3,6 +3,8 @@ title: "ClientKVDatabase"
 sidebar_label: "ClientKVDatabase"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientKVDatabase
 
 作用域：架构辅助接口。
@@ -19,8 +21,8 @@ sidebar_label: "ClientKVDatabase"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `conf` | 由运行时值确定 | `level.configClient` |  |
-| `data` | 由运行时值确定 | `self._read()` |  |
+| <ApiFieldAnchor id="field-conf" />`conf` | 由运行时值确定 | `level.configClient` |  |
+| <ApiFieldAnchor id="field-data" />`data` | 由运行时值确定 | `self._read()` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -41,7 +43,7 @@ sidebar_label: "ClientKVDatabase"
 | 成员 | 定义位置 |
 | --- | --- |
 | [broadcast](Subsystem.md#broadcast) | [Subsystem](Subsystem.md) |
-| [canTick](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [canTick](Subsystem.md#field-canTick) | [Subsystem](Subsystem.md) |
 | [createArrayView](DBSource.md#createArrayView) | [DBSource](DBSource.md) |
 | [createEffectBind](ClientSubsystem.md#createEffectBind) | [ClientSubsystem](ClientSubsystem.md) |
 | [createParticle](ClientSubsystem.md#createParticle) | [ClientSubsystem](ClientSubsystem.md) |
@@ -49,7 +51,7 @@ sidebar_label: "ClientKVDatabase"
 | [createView](DBSource.md#createView) | [DBSource](DBSource.md) |
 | [destroyEntity](ClientSubsystem.md#destroyEntity) | [ClientSubsystem](ClientSubsystem.md) |
 | [destroySfx](ClientSubsystem.md#destroySfx) | [ClientSubsystem](ClientSubsystem.md) |
-| [engine](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [engine](Subsystem.md#field-engine) | [Subsystem](Subsystem.md) |
 | [getEngine](Subsystem.md#getEngine) | [Subsystem](Subsystem.md) |
 | [getInstance](Subsystem.md#getInstance) | [Subsystem](Subsystem.md) |
 | [getSysName](Subsystem.md#getSysName) | [Subsystem](Subsystem.md) |
@@ -63,9 +65,9 @@ sidebar_label: "ClientKVDatabase"
 | [onUpdate](Subsystem.md#onUpdate) | [Subsystem](Subsystem.md) |
 | [sendServer](ClientSubsystem.md#sendServer) | [ClientSubsystem](ClientSubsystem.md) |
 | [spawnEntity](ClientSubsystem.md#spawnEntity) | [ClientSubsystem](ClientSubsystem.md) |
-| [sysName](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
-| [system](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
-| [ticks](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [sysName](Subsystem.md#field-sysName) | [Subsystem](Subsystem.md) |
+| [system](Subsystem.md#field-system) | [Subsystem](Subsystem.md) |
+| [ticks](Subsystem.md#field-ticks) | [Subsystem](Subsystem.md) |
 | [unlisten](Subsystem.md#unlisten) | [Subsystem](Subsystem.md) |
 
 ## 构造器 {#constructor}

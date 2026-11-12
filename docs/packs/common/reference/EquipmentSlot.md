@@ -3,6 +3,8 @@ title: "EquipmentSlot"
 sidebar_label: "EquipmentSlot"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EquipmentSlot
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,13 +21,13 @@ sidebar_label: "EquipmentSlot"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Body` | 由运行时值确定 | `'Body'` |  |
-| `Head` | 由运行时值确定 | `'Head'` |  |
-| `Chest` | 由运行时值确定 | `'Chest'` |  |
-| `Legs` | 由运行时值确定 | `'Legs'` |  |
-| `Feet` | 由运行时值确定 | `'Feet'` |  |
-| `Offhand` | 由运行时值确定 | `'Offhand'` |  |
-| `Mainhand` | 由运行时值确定 | `'Mainhand'` |  |
+| <ApiFieldAnchor id="field-Body" />`Body` | 由运行时值确定 | `'Body'` |  |
+| <ApiFieldAnchor id="field-Head" />`Head` | 由运行时值确定 | `'Head'` |  |
+| <ApiFieldAnchor id="field-Chest" />`Chest` | 由运行时值确定 | `'Chest'` |  |
+| <ApiFieldAnchor id="field-Legs" />`Legs` | 由运行时值确定 | `'Legs'` |  |
+| <ApiFieldAnchor id="field-Feet" />`Feet` | 由运行时值确定 | `'Feet'` |  |
+| <ApiFieldAnchor id="field-Offhand" />`Offhand` | 由运行时值确定 | `'Offhand'` |  |
+| <ApiFieldAnchor id="field-Mainhand" />`Mainhand` | 由运行时值确定 | `'Mainhand'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

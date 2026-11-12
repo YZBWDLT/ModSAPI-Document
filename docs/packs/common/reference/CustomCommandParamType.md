@@ -3,6 +3,8 @@ title: "CustomCommandParamType"
 sidebar_label: "CustomCommandParamType"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CustomCommandParamType
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,17 +19,17 @@ sidebar_label: "CustomCommandParamType"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| [BlockType](../../server/reference/BlockType.md) | 由运行时值确定 | `'BlockType'` |  |
-| `Boolean` | 由运行时值确定 | `'Boolean'` |  |
-| `EntitySelector` | 由运行时值确定 | `'EntitySelector'` |  |
-| `EntityType` | 由运行时值确定 | `'EntityType'` |  |
-| `Enum` | 由运行时值确定 | `'Enum'` |  |
-| `Float` | 由运行时值确定 | `'Float'` |  |
-| `Integer` | 由运行时值确定 | `'Integer'` |  |
-| [ItemType](../../server/reference/ItemType.md) | 由运行时值确定 | `'ItemType'` |  |
-| [Location](../../architecture/reference/Location.md) | 由运行时值确定 | `'Location'` |  |
-| `PlayerSelector` | 由运行时值确定 | `'PlayerSelector'` |  |
-| `String` | 由运行时值确定 | `'String'` |  |
+| <ApiFieldAnchor id="field-BlockType" />[BlockType](../../server/reference/BlockType.md) | 由运行时值确定 | `'BlockType'` |  |
+| <ApiFieldAnchor id="field-Boolean" />`Boolean` | 由运行时值确定 | `'Boolean'` |  |
+| <ApiFieldAnchor id="field-EntitySelector" />`EntitySelector` | 由运行时值确定 | `'EntitySelector'` |  |
+| <ApiFieldAnchor id="field-EntityType" />`EntityType` | 由运行时值确定 | `'EntityType'` |  |
+| <ApiFieldAnchor id="field-Enum" />`Enum` | 由运行时值确定 | `'Enum'` |  |
+| <ApiFieldAnchor id="field-Float" />`Float` | 由运行时值确定 | `'Float'` |  |
+| <ApiFieldAnchor id="field-Integer" />`Integer` | 由运行时值确定 | `'Integer'` |  |
+| <ApiFieldAnchor id="field-ItemType" />[ItemType](../../server/reference/ItemType.md) | 由运行时值确定 | `'ItemType'` |  |
+| <ApiFieldAnchor id="field-Location" />[Location](../../architecture/reference/Location.md) | 由运行时值确定 | `'Location'` |  |
+| <ApiFieldAnchor id="field-PlayerSelector" />`PlayerSelector` | 由运行时值确定 | `'PlayerSelector'` |  |
+| <ApiFieldAnchor id="field-String" />`String` | 由运行时值确定 | `'String'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

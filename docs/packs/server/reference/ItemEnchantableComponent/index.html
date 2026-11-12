@@ -11,8 +11,8 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.d47f6e88.js" defer="defer"></script>
-<script src="/assets/js/main.325efda7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.870f2c73.js" defer="defer"></script>
+<script src="/assets/js/main.b7a27e57.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -23,10 +23,10 @@
 <p>源码：<code>core_behavior/ModSAPI/modules/server/components/ItemComponents.py</code>；声明补充了静态类型信息。</p>
 <p>根据当前原生定义编辑复制后的附魔值。槽位与冲突校验采用 primary_slots 和 incompatible 字段；整批使用一次当前目录，所有项目通过后才提交。编辑后的物品需要另行写回容器。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="获取方式">获取方式<a href="#获取方式" class="hash-link" aria-label="获取方式的直接链接" title="获取方式的直接链接" translate="no">​</a></h2>
-<p>通过 item.getComponent(&quot;enchantable&quot;) 或 <a href="/docs/packs/server/reference/ItemEnchantableComponent#%E5%AD%97%E6%AE%B5%E4%B8%8E%E5%B8%B8%E9%87%8F">ItemEnchantableComponent.componentId</a> 取得；不具备该组件时为 <a href="/docs/packs/common/type-system#none">None</a>。</p>
+<p>通过 item.getComponent(&quot;enchantable&quot;) 或 <a href="/docs/packs/server/reference/ItemEnchantableComponent#field-componentId">ItemEnchantableComponent.componentId</a> 取得；不具备该组件时为 <a href="/docs/packs/common/type-system#none">None</a>。</p>
 <p>基类：<a href="/docs/packs/server/reference/ItemComponent">ItemComponent</a>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="字段与常量">字段与常量<a href="#字段与常量" class="hash-link" aria-label="字段与常量的直接链接" title="字段与常量的直接链接" translate="no">​</a></h2>
-<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><code>componentId</code></td><td><a href="/docs/packs/common/type-system#final">Final</a></td><td><code>&#x27;minecraft:enchantable&#x27;</code></td><td></td></tr></tbody></table>
+<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><a id="field-componentId"></a><code>componentId</code></td><td><a href="/docs/packs/common/type-system#final">Final</a></td><td><code>&#x27;minecraft:enchantable&#x27;</code></td><td></td></tr></tbody></table>
 <p>字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="成员索引">成员索引<a href="#成员索引" class="hash-link" aria-label="成员索引的直接链接" title="成员索引的直接链接" translate="no">​</a></h2>
 <table><thead><tr><th>名称</th><th>形态</th></tr></thead><tbody><tr><td><a href="#slots">slots</a></td><td>只读属性</td></tr><tr><td><a href="#canAddEnchantment">canAddEnchantment</a></td><td>方法</td></tr><tr><td><a href="#addEnchantment">addEnchantment</a></td><td>方法</td></tr><tr><td><a href="#addEnchantments">addEnchantments</a></td><td>方法</td></tr><tr><td><a href="#getEnchantment">getEnchantment</a></td><td>方法</td></tr><tr><td><a href="#getEnchantments">getEnchantments</a></td><td>方法</td></tr><tr><td><a href="#hasEnchantment">hasEnchantment</a></td><td>方法</td></tr><tr><td><a href="#removeEnchantment">removeEnchantment</a></td><td>方法</td></tr><tr><td><a href="#removeAllEnchantments">removeAllEnchantments</a></td><td>方法</td></tr></tbody></table>

@@ -3,6 +3,8 @@ title: "ClientPerspective"
 sidebar_label: "ClientPerspective"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientPerspective
 
 作用域：客户端。
@@ -19,9 +21,9 @@ sidebar_label: "ClientPerspective"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `FirstPerson` | [str](../../common/type-system.md#str) | `'FirstPerson'` |  |
-| `ThirdPersonBack` | [str](../../common/type-system.md#str) | `'ThirdPersonBack'` |  |
-| `ThirdPersonFront` | [str](../../common/type-system.md#str) | `'ThirdPersonFront'` |  |
+| <ApiFieldAnchor id="field-FirstPerson" />`FirstPerson` | [str](../../common/type-system.md#str) | `'FirstPerson'` |  |
+| <ApiFieldAnchor id="field-ThirdPersonBack" />`ThirdPersonBack` | [str](../../common/type-system.md#str) | `'ThirdPersonBack'` |  |
+| <ApiFieldAnchor id="field-ThirdPersonFront" />`ThirdPersonFront` | [str](../../common/type-system.md#str) | `'ThirdPersonFront'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

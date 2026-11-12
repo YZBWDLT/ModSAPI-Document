@@ -3,6 +3,8 @@ title: "UiNativeScreen"
 sidebar_label: "UiNativeScreen"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiNativeScreen
 
 作用域：界面、控件和两端组合表单。
@@ -19,13 +21,13 @@ sidebar_label: "UiNativeScreen"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Chat` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'chat'` | 原版聊天界面；打开时也会触发原生聊天按钮事件。 |
-| `Inventory` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'inventory'` | 原版背包界面，支持内置或模组定义的分页名称。 |
-| `Pause` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'pause'` | 原版暂停界面；打开界面不保证暂停多人世界。 |
-| `Emotes` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'emotes'` | 原版表情选择界面。 |
-| `Menu` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'menu'` | 原版下拉菜单。 |
-| `Report` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'report'` | 原版举报界面，是否支持由游戏平台决定。 |
-| `Store` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'store'` | 网易商品购买界面；打开界面不会自动购买商品。 |
+| <ApiFieldAnchor id="field-Chat" />`Chat` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'chat'` | 原版聊天界面；打开时也会触发原生聊天按钮事件。 |
+| <ApiFieldAnchor id="field-Inventory" />`Inventory` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'inventory'` | 原版背包界面，支持内置或模组定义的分页名称。 |
+| <ApiFieldAnchor id="field-Pause" />`Pause` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'pause'` | 原版暂停界面；打开界面不保证暂停多人世界。 |
+| <ApiFieldAnchor id="field-Emotes" />`Emotes` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'emotes'` | 原版表情选择界面。 |
+| <ApiFieldAnchor id="field-Menu" />`Menu` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'menu'` | 原版下拉菜单。 |
+| <ApiFieldAnchor id="field-Report" />`Report` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'report'` | 原版举报界面，是否支持由游戏平台决定。 |
+| <ApiFieldAnchor id="field-Store" />`Store` | [Final](../../common/type-system.md#final)[[str](../../common/type-system.md#str)] | `'store'` | 网易商品购买界面；打开界面不会自动购买商品。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

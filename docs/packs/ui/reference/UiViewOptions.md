@@ -3,6 +3,8 @@ title: "UiViewOptions"
 sidebar_label: "UiViewOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiViewOptions
 
 作用域：界面、控件和两端组合表单。
@@ -21,8 +23,8 @@ sidebar_label: "UiViewOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [Any](../../common/type-system.md#any)] | `可选字段；省略规则见所属操作` |  |
-| `inputPermissions` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` | 视图持有的临时本地输入权限，关闭时尝试恢复。 |
+| <ApiFieldAnchor id="field-data" />`data` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [Any](../../common/type-system.md#any)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-inputPermissions" />`inputPermissions` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` | 视图持有的临时本地输入权限，关闭时尝试恢复。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

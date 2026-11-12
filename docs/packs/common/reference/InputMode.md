@@ -3,6 +3,8 @@ title: "InputMode"
 sidebar_label: "InputMode"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # InputMode
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,10 +19,10 @@ sidebar_label: "InputMode"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Gamepad` | [str](../type-system.md#str) | `'Gamepad'` |  |
-| `KeyboardAndMouse` | [str](../type-system.md#str) | `'KeyboardAndMouse'` |  |
-| `MotionController` | [str](../type-system.md#str) | `'MotionController'` |  |
-| `Touch` | [str](../type-system.md#str) | `'Touch'` |  |
+| <ApiFieldAnchor id="field-Gamepad" />`Gamepad` | [str](../type-system.md#str) | `'Gamepad'` |  |
+| <ApiFieldAnchor id="field-KeyboardAndMouse" />`KeyboardAndMouse` | [str](../type-system.md#str) | `'KeyboardAndMouse'` |  |
+| <ApiFieldAnchor id="field-MotionController" />`MotionController` | [str](../type-system.md#str) | `'MotionController'` |  |
+| <ApiFieldAnchor id="field-Touch" />`Touch` | [str](../type-system.md#str) | `'Touch'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

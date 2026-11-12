@@ -11,8 +11,8 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.d47f6e88.js" defer="defer"></script>
-<script src="/assets/js/main.325efda7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.870f2c73.js" defer="defer"></script>
+<script src="/assets/js/main.b7a27e57.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -26,7 +26,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="获取方式">获取方式<a href="#获取方式" class="hash-link" aria-label="获取方式的直接链接" title="获取方式的直接链接" translate="no">​</a></h2>
 <p>使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="字段与常量">字段与常量<a href="#字段与常量" class="hash-link" aria-label="字段与常量的直接链接" title="字段与常量的直接链接" translate="no">​</a></h2>
-<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><code>notEquals</code></td><td><a href="/docs/packs/common/type-system#bool">bool</a> | <a href="/docs/packs/common/type-system#str">str</a> | <a href="/docs/packs/common/type-system#int">int</a></td><td><code>必填字段</code></td><td>参与比较的目标值。</td></tr></tbody></table>
+<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><a id="field-notEquals"></a><code>notEquals</code></td><td><a href="/docs/packs/common/type-system#bool">bool</a> | <a href="/docs/packs/common/type-system#str">str</a> | <a href="/docs/packs/common/type-system#int">int</a></td><td><code>必填字段</code></td><td>参与比较的目标值。</td></tr></tbody></table>
 <p>字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="使用示例">使用示例<a href="#使用示例" class="hash-link" aria-label="使用示例的直接链接" title="使用示例的直接链接" translate="no">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">inspect_options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">print</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">get</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;notEquals&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><br></span></code></pre></div></div>

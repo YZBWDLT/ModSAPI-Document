@@ -3,6 +3,8 @@ title: "ControlData"
 sidebar_label: "ControlData"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ControlData
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -19,18 +21,18 @@ sidebar_label: "ControlData"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `parent` | 由运行时值确定 | `parentData` |  |
-| `controls` | 由运行时值确定 | `[]` |  |
-| `size` | 由运行时值确定 | `[Expression(100), Expression(100)]` |  |
-| `controlName` | 由运行时值确定 | `'custom_control'` |  |
-| `offset` | 由运行时值确定 | `[Expression(0), Expression(0)]` |  |
-| `anchor` | 由运行时值确定 | `['center', 'center']` |  |
-| `alpha` | 由运行时值确定 | `Expression(1.0)` |  |
-| `background` | 由运行时值确定 | `BackgroundData()` |  |
-| `visible` | 由运行时值确定 | `True` |  |
-| `isStatic` | 由运行时值确定 | `False` |  |
-| `shouldTrace` | 由运行时值确定 | `False` |  |
-| `inst` | 由运行时值确定 | `inst` |  |
+| <ApiFieldAnchor id="field-parent" />`parent` | 由运行时值确定 | `parentData` |  |
+| <ApiFieldAnchor id="field-controls" />`controls` | 由运行时值确定 | `[]` |  |
+| <ApiFieldAnchor id="field-size" />`size` | 由运行时值确定 | `[Expression(100), Expression(100)]` |  |
+| <ApiFieldAnchor id="field-controlName" />`controlName` | 由运行时值确定 | `'custom_control'` |  |
+| <ApiFieldAnchor id="field-offset" />`offset` | 由运行时值确定 | `[Expression(0), Expression(0)]` |  |
+| <ApiFieldAnchor id="field-anchor" />`anchor` | 由运行时值确定 | `['center', 'center']` |  |
+| <ApiFieldAnchor id="field-alpha" />`alpha` | 由运行时值确定 | `Expression(1.0)` |  |
+| <ApiFieldAnchor id="field-background" />`background` | 由运行时值确定 | `BackgroundData()` |  |
+| <ApiFieldAnchor id="field-visible" />`visible` | 由运行时值确定 | `True` |  |
+| <ApiFieldAnchor id="field-isStatic" />`isStatic` | 由运行时值确定 | `False` |  |
+| <ApiFieldAnchor id="field-shouldTrace" />`shouldTrace` | 由运行时值确定 | `False` |  |
+| <ApiFieldAnchor id="field-inst" />`inst` | 由运行时值确定 | `inst` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

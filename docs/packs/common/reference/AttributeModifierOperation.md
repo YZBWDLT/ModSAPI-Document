@@ -3,6 +3,8 @@ title: "AttributeModifierOperation"
 sidebar_label: "AttributeModifierOperation"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # AttributeModifierOperation
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,10 +23,10 @@ sidebar_label: "AttributeModifierOperation"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Addition` | 由运行时值确定 | `'Addition'` |  |
-| `MultiplyBase` | 由运行时值确定 | `'MultiplyBase'` |  |
-| `MultiplyTotal` | 由运行时值确定 | `'MultiplyTotal'` |  |
-| `Cap` | 由运行时值确定 | `'Cap'` |  |
+| <ApiFieldAnchor id="field-Addition" />`Addition` | 由运行时值确定 | `'Addition'` |  |
+| <ApiFieldAnchor id="field-MultiplyBase" />`MultiplyBase` | 由运行时值确定 | `'MultiplyBase'` |  |
+| <ApiFieldAnchor id="field-MultiplyTotal" />`MultiplyTotal` | 由运行时值确定 | `'MultiplyTotal'` |  |
+| <ApiFieldAnchor id="field-Cap" />`Cap` | 由运行时值确定 | `'Cap'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

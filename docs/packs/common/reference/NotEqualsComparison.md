@@ -3,6 +3,8 @@ title: "NotEqualsComparison"
 sidebar_label: "NotEqualsComparison"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # NotEqualsComparison
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,7 +25,7 @@ sidebar_label: "NotEqualsComparison"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `notEquals` | [bool](../type-system.md#bool) \| [str](../type-system.md#str) \| [int](../type-system.md#int) | `必填字段` | 参与比较的目标值。 |
+| <ApiFieldAnchor id="field-notEquals" />`notEquals` | [bool](../type-system.md#bool) \| [str](../type-system.md#str) \| [int](../type-system.md#int) | `必填字段` | 参与比较的目标值。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

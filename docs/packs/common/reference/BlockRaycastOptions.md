@@ -3,6 +3,8 @@ title: "BlockRaycastOptions"
 sidebar_label: "BlockRaycastOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # BlockRaycastOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,9 +25,9 @@ sidebar_label: "BlockRaycastOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `includeLiquidBlock` | [bool](../type-system.md#bool) | `data['includeLiquidBlock'] if 'includeLiquidBlock' in data else True` |  |
-| `includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else True` |  |
-| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 32` |  |
+| <ApiFieldAnchor id="field-includeLiquidBlock" />`includeLiquidBlock` | [bool](../type-system.md#bool) | `data['includeLiquidBlock'] if 'includeLiquidBlock' in data else True` |  |
+| <ApiFieldAnchor id="field-includePassableBlocks" />`includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else True` |  |
+| <ApiFieldAnchor id="field-maxDistance" />`maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 32` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -41,12 +43,12 @@ sidebar_label: "BlockRaycastOptions"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [excludePermutations](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
-| [excludeTags](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
-| [excludeTypes](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
-| [includePermutations](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
-| [includeTags](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
-| [includeTypes](BlockFilter.md#字段与常量) | [BlockFilter](BlockFilter.md) |
+| [excludePermutations](BlockFilter.md#field-excludePermutations) | [BlockFilter](BlockFilter.md) |
+| [excludeTags](BlockFilter.md#field-excludeTags) | [BlockFilter](BlockFilter.md) |
+| [excludeTypes](BlockFilter.md#field-excludeTypes) | [BlockFilter](BlockFilter.md) |
+| [includePermutations](BlockFilter.md#field-includePermutations) | [BlockFilter](BlockFilter.md) |
+| [includeTags](BlockFilter.md#field-includeTags) | [BlockFilter](BlockFilter.md) |
+| [includeTypes](BlockFilter.md#field-includeTypes) | [BlockFilter](BlockFilter.md) |
 
 ## 构造器 {#constructor}
 

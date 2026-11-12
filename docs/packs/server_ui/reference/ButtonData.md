@@ -3,6 +3,8 @@ title: "ButtonData"
 sidebar_label: "ButtonData"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ButtonData
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -21,10 +23,10 @@ sidebar_label: "ButtonData"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `buttonInstance` | 由运行时值确定 | `buttonInstance` |  |
-| `callbacks` | 由运行时值确定 | `ButtonTouchCallbacks()` |  |
-| `label` | 由运行时值确定 | `LabelData()` |  |
-| `textures` | 由运行时值确定 | `ButtonTextures()` |  |
+| <ApiFieldAnchor id="field-buttonInstance" />`buttonInstance` | 由运行时值确定 | `buttonInstance` |  |
+| <ApiFieldAnchor id="field-callbacks" />`callbacks` | 由运行时值确定 | `ButtonTouchCallbacks()` |  |
+| <ApiFieldAnchor id="field-label" />`label` | 由运行时值确定 | `LabelData()` |  |
+| <ApiFieldAnchor id="field-textures" />`textures` | 由运行时值确定 | `ButtonTextures()` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -41,21 +43,21 @@ sidebar_label: "ButtonData"
 | 成员 | 定义位置 |
 | --- | --- |
 | [addControl](ControlData.md#addControl) | [ControlData](ControlData.md) |
-| [alpha](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [anchor](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [background](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controlName](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controls](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [alpha](ControlData.md#field-alpha) | [ControlData](ControlData.md) |
+| [anchor](ControlData.md#field-anchor) | [ControlData](ControlData.md) |
+| [background](ControlData.md#field-background) | [ControlData](ControlData.md) |
+| [controlName](ControlData.md#field-controlName) | [ControlData](ControlData.md) |
+| [controls](ControlData.md#field-controls) | [ControlData](ControlData.md) |
 | [copy](ControlData.md#copy) | [ControlData](ControlData.md) |
-| [inst](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [isStatic](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [offset](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [parent](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [inst](ControlData.md#field-inst) | [ControlData](ControlData.md) |
+| [isStatic](ControlData.md#field-isStatic) | [ControlData](ControlData.md) |
+| [offset](ControlData.md#field-offset) | [ControlData](ControlData.md) |
+| [parent](ControlData.md#field-parent) | [ControlData](ControlData.md) |
 | [path](ControlData.md#path) | [ControlData](ControlData.md) |
 | [removeControl](ControlData.md#removeControl) | [ControlData](ControlData.md) |
-| [shouldTrace](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [size](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [visible](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [shouldTrace](ControlData.md#field-shouldTrace) | [ControlData](ControlData.md) |
+| [size](ControlData.md#field-size) | [ControlData](ControlData.md) |
+| [visible](ControlData.md#field-visible) | [ControlData](ControlData.md) |
 
 ## 构造器 {#constructor}
 

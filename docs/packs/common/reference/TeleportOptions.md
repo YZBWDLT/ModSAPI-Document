@@ -3,6 +3,8 @@ title: "TeleportOptions"
 sidebar_label: "TeleportOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TeleportOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,11 +23,11 @@ sidebar_label: "TeleportOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `checkForBlocks` | [bool](../type-system.md#bool) | `data['checkForBlocks'] if 'checkForBlocks' in data else False` |  |
-| `dimension` | [Dimension](../../server/apis/dimension.md) \| [None](../type-system.md#none) | `data.get('dimension')` |  |
-| `facingLocation` | [Vector3](../../server/extra/vector.md) \| [None](../type-system.md#none) | `Vector3(data['facingLocation']) if data.get('facingLocation') is not None else None` |  |
-| `keepVelocity` | [bool](../type-system.md#bool) | `data['keepVelocity'] if 'keepVelocity' in data else False` |  |
-| `rotation` | [Vector2](Vector2.md) \| [None](../type-system.md#none) | `Vector2(data['rotation']) if data.get('rotation') is not None else None` |  |
+| <ApiFieldAnchor id="field-checkForBlocks" />`checkForBlocks` | [bool](../type-system.md#bool) | `data['checkForBlocks'] if 'checkForBlocks' in data else False` |  |
+| <ApiFieldAnchor id="field-dimension" />`dimension` | [Dimension](../../server/apis/dimension.md) \| [None](../type-system.md#none) | `data.get('dimension')` |  |
+| <ApiFieldAnchor id="field-facingLocation" />`facingLocation` | [Vector3](../../server/extra/vector.md) \| [None](../type-system.md#none) | `Vector3(data['facingLocation']) if data.get('facingLocation') is not None else None` |  |
+| <ApiFieldAnchor id="field-keepVelocity" />`keepVelocity` | [bool](../type-system.md#bool) | `data['keepVelocity'] if 'keepVelocity' in data else False` |  |
+| <ApiFieldAnchor id="field-rotation" />`rotation` | [Vector2](Vector2.md) \| [None](../type-system.md#none) | `Vector2(data['rotation']) if data.get('rotation') is not None else None` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

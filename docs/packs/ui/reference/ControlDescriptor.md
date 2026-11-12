@@ -3,6 +3,8 @@ title: "ControlDescriptor"
 sidebar_label: "ControlDescriptor"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ControlDescriptor
 
 作用域：界面、控件和两端组合表单。
@@ -21,7 +23,7 @@ sidebar_label: "ControlDescriptor"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `onCreate` | [CreateCallback](../../common/type-aliases.md#createcallback) \| [None](../../common/type-system.md#none) | `onCreate` |  |
+| <ApiFieldAnchor id="field-onCreate" />`onCreate` | [CreateCallback](../../common/type-aliases.md#createcallback) \| [None](../../common/type-system.md#none) | `onCreate` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

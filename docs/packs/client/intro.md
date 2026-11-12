@@ -39,6 +39,8 @@ title: 客户端
 | [ClientCommandOutputAfterEvent](reference/ClientCommandOutputAfterEvent.md) | [OnCommandOutputClientEvent](events.md#oncommandoutputclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientContainer](reference/ClientContainer.md) | 实时只读的本地玩家背包，容量来自原生结果。不长期缓存物品或容量。检查多个槽位时优先使用 getItems，一次完成批量读取；单格完整读取先查询轻量边界，再使用 GetPlayerItem 获取目标格数据。 |
 | [ClientContainerSlot](reference/ClientContainerSlot.md) | 实时只读的背包或装备槽位，空槽位仍然有效。 |
+| [ClientControlMode](reference/ClientControlMode.md) | 明确指定原生触控布局和交互方式。 |
+| [ClientControlModeOptions](reference/ClientControlModeOptions.md) | 可选的原生模式锁定配置，在请求布局之后应用。 |
 | [ClientCraftUpdateResultItemAfterEvent](reference/ClientCraftUpdateResultItemAfterEvent.md) | [CraftUpdateResultItemClientEvent](events.md#craftupdateresultitemclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCustomGamepadChangeAfterEvent](reference/ClientCustomGamepadChangeAfterEvent.md) | [OnCustomGamepadChangedEvent](events.md#oncustomgamepadchangedevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCustomGamepadPressInGameAfterEvent](reference/ClientCustomGamepadPressInGameAfterEvent.md) | [OnCustomGamepadPressInGame](events.md#oncustomgamepadpressingame) 的事件参数；同步分发结束后不能再写入输出字段。 |
@@ -75,7 +77,8 @@ title: 客户端
 | [ClientGyroSensorChangeAfterEvent](reference/ClientGyroSensorChangeAfterEvent.md) | [GyroSensorChangedClientEvent](events.md#gyrosensorchangedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientHoldBeforeEvent](reference/ClientHoldBeforeEvent.md) | [HoldBeforeClientEvent](events.md#holdbeforeclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientHudButtonChangeAfterEvent](reference/ClientHudButtonChangeAfterEvent.md) | [HudButtonChangedClientEvent](events.md#hudbuttonchangedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
-| [ClientInput](reference/ClientInput.md) | 通过 [client.input](apis/manager.md#input) 取得的本地输入服务。权限写入只影响当前设备的输入处理，不代表服务端授权。临时覆盖层可组合，无需轮询；直接写入修改有效覆盖层下的基础值。reset() 与客户端退出时尝试恢复本服务持有的初始值，释放时保留外部写入的不同值。 |
+| [ClientInput](reference/ClientInput.md) | 通过 [client.input](apis/manager.md#input) 取得本机输入服务。权限修改只影响当前设备的输入响应，不代表服务端授权。临时覆盖层无需轮询，可叠加管理；直接权限写入修改覆盖层下方的基础值。reset 与客户端退出会尝试恢复所持有的初始值，并保留不同的外部写入。鼠标模拟模式也会保留可读取的初始值。控制布局、布局锁定和原生点击响应没有已核验的读取接口，属于直接配置，不能由 reset 恢复未知旧值。 |
+| [ClientInputAction](reference/ClientInputAction.md) | 一次本地原生动作请求，不表示持续按住键盘或按钮。 |
 | [ClientInputOverride](reference/ClientInputOverride.md) | 持有独立所有权的权限覆盖层；所属界面关闭时应释放。重叠通道由较晚创建的层优先控制。原生释放失败后可重试，不会释放其他层持有的权限。 |
 | [ClientInputPermission](reference/ClientInputPermission.md) | 网易原生输入通道，与微软输入权限类别的含义和组合规则不同。 |
 | [ClientInventoryCloseAfterEvent](reference/ClientInventoryCloseAfterEvent.md) | [ClientPlayerInventoryCloseEvent](events.md#clientplayerinventorycloseevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
@@ -165,6 +168,7 @@ title: 客户端
 | [ClientUpdatePlayerSkinAfterEvent](reference/ClientUpdatePlayerSkinAfterEvent.md) | [UpdatePlayerSkinClientEvent](events.md#updateplayerskinclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientWalkAnimBeginAfterEvent](reference/ClientWalkAnimBeginAfterEvent.md) | [WalkAnimBeginClientEvent](events.md#walkanimbeginclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientWalkAnimEndAfterEvent](reference/ClientWalkAnimEndAfterEvent.md) | [WalkAnimEndClientEvent](events.md#walkanimendclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientWalkMode](reference/ClientWalkMode.md) | 原生选择的行走模式，与实际玩家速度分别读取。 |
 | [DynamicParticle](reference/DynamicParticle.md) | 表达式驱动的绘图对象，与原生粒子发射器不同。pattern 接受 x、y、z 和三通道颜色，各项可为数值、[ExpressionString](reference/ExpressionString.md) 或字符串。选项包括 mode（line 或 point）、interval（正数，每单位 1/20 秒）、maxAmount（正整数）和 visible（布尔值）。运行时表达式失败会停止更新、清理图形并设置 lastError。 |
 | [DynamicParticleOptions](reference/DynamicParticleOptions.md) | 限制保留的图形数量；interval 每单位为原生的 1/20 秒。 |
 | [DynamicParticlePattern](reference/DynamicParticlePattern.md) | 数值或文本表达式；颜色必须包含三个通道。 |

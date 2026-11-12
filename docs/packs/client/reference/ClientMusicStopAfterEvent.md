@@ -3,6 +3,8 @@ title: "ClientMusicStopAfterEvent"
 sidebar_label: "ClientMusicStopAfterEvent"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientMusicStopAfterEvent
 
 作用域：客户端。
@@ -19,7 +21,7 @@ sidebar_label: "ClientMusicStopAfterEvent"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `soundId` | [str](../../common/type-system.md#str) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-soundId" />`soundId` | [str](../../common/type-system.md#str) | `运行时返回` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

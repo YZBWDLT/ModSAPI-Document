@@ -3,6 +3,8 @@ title: "TintMethod"
 sidebar_label: "TintMethod"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TintMethod
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,12 +19,12 @@ sidebar_label: "TintMethod"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `BirchFoliage` | [str](../type-system.md#str) | `'BirchFoliage'` |  |
-| `DefaultFoliage` | [str](../type-system.md#str) | `'DefaultFoliage'` |  |
-| `DryFoliage` | [str](../type-system.md#str) | `'DryFoliage'` |  |
-| `EvergreenFoliage` | [str](../type-system.md#str) | `'EvergreenFoliage'` |  |
-| `Grass` | [str](../type-system.md#str) | `'Grass'` |  |
-| `Water` | [str](../type-system.md#str) | `'Water'` |  |
+| <ApiFieldAnchor id="field-BirchFoliage" />`BirchFoliage` | [str](../type-system.md#str) | `'BirchFoliage'` |  |
+| <ApiFieldAnchor id="field-DefaultFoliage" />`DefaultFoliage` | [str](../type-system.md#str) | `'DefaultFoliage'` |  |
+| <ApiFieldAnchor id="field-DryFoliage" />`DryFoliage` | [str](../type-system.md#str) | `'DryFoliage'` |  |
+| <ApiFieldAnchor id="field-EvergreenFoliage" />`EvergreenFoliage` | [str](../type-system.md#str) | `'EvergreenFoliage'` |  |
+| <ApiFieldAnchor id="field-Grass" />`Grass` | [str](../type-system.md#str) | `'Grass'` |  |
+| <ApiFieldAnchor id="field-Water" />`Water` | [str](../type-system.md#str) | `'Water'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

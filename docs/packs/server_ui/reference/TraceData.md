@@ -3,6 +3,8 @@ title: "TraceData"
 sidebar_label: "TraceData"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TraceData
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -17,9 +19,9 @@ sidebar_label: "TraceData"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `width` | 由运行时值确定 | `1` |  |
-| `interval` | 由运行时值确定 | `1` |  |
-| `amount` | 由运行时值确定 | `50` |  |
+| <ApiFieldAnchor id="field-width" />`width` | 由运行时值确定 | `1` |  |
+| <ApiFieldAnchor id="field-interval" />`interval` | 由运行时值确定 | `1` |  |
+| <ApiFieldAnchor id="field-amount" />`amount` | 由运行时值确定 | `50` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

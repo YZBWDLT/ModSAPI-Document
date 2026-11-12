@@ -3,6 +3,8 @@ title: "DisplaySlotId"
 sidebar_label: "DisplaySlotId"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # DisplaySlotId
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,9 +19,9 @@ sidebar_label: "DisplaySlotId"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `BelowName` | [str](../type-system.md#str) | `'BelowName'` |  |
-| [List](../type-system.md#list) | [str](../type-system.md#str) | `'List'` |  |
-| `Sidebar` | [str](../type-system.md#str) | `'Sidebar'` |  |
+| <ApiFieldAnchor id="field-BelowName" />`BelowName` | [str](../type-system.md#str) | `'BelowName'` |  |
+| <ApiFieldAnchor id="field-List" />[List](../type-system.md#list) | [str](../type-system.md#str) | `'List'` |  |
+| <ApiFieldAnchor id="field-Sidebar" />`Sidebar` | [str](../type-system.md#str) | `'Sidebar'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

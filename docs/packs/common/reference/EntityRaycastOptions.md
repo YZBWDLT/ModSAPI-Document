@@ -3,6 +3,8 @@ title: "EntityRaycastOptions"
 sidebar_label: "EntityRaycastOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityRaycastOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,10 +25,10 @@ sidebar_label: "EntityRaycastOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `ignoreBlockCollision` | [bool](../type-system.md#bool) | `data['ignoreBlockCollision'] if 'ignoreBlockCollision' in data else False` | 是否忽略方块碰撞。 |
-| `includeLiquidBlocks` | [bool](../type-system.md#bool) | `data['includeLiquidBlocks'] if 'includeLiquidBlocks' in data else False` | 射线检测是否包含流体方块。 |
-| `includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else False` | 射线检测是否包含可穿过的方块。 |
-| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 16` |  |
+| <ApiFieldAnchor id="field-ignoreBlockCollision" />`ignoreBlockCollision` | [bool](../type-system.md#bool) | `data['ignoreBlockCollision'] if 'ignoreBlockCollision' in data else False` | 是否忽略方块碰撞。 |
+| <ApiFieldAnchor id="field-includeLiquidBlocks" />`includeLiquidBlocks` | [bool](../type-system.md#bool) | `data['includeLiquidBlocks'] if 'includeLiquidBlocks' in data else False` | 射线检测是否包含流体方块。 |
+| <ApiFieldAnchor id="field-includePassableBlocks" />`includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else False` | 射线检测是否包含可穿过的方块。 |
+| <ApiFieldAnchor id="field-maxDistance" />`maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 16` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -42,24 +44,24 @@ sidebar_label: "EntityRaycastOptions"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [excludeFamilies](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeGameModes](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeNames](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeTags](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeTypes](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [families](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [gameMode](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxHorizontalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxLevel](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxVerticalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minHorizontalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minLevel](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minVerticalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [name](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [propertyOptions](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [scoreOptions](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [tags](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [type](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
+| [excludeFamilies](EntityFilter.md#field-excludeFamilies) | [EntityFilter](EntityFilter.md) |
+| [excludeGameModes](EntityFilter.md#field-excludeGameModes) | [EntityFilter](EntityFilter.md) |
+| [excludeNames](EntityFilter.md#field-excludeNames) | [EntityFilter](EntityFilter.md) |
+| [excludeTags](EntityFilter.md#field-excludeTags) | [EntityFilter](EntityFilter.md) |
+| [excludeTypes](EntityFilter.md#field-excludeTypes) | [EntityFilter](EntityFilter.md) |
+| [families](EntityFilter.md#field-families) | [EntityFilter](EntityFilter.md) |
+| [gameMode](EntityFilter.md#field-gameMode) | [EntityFilter](EntityFilter.md) |
+| [maxHorizontalRotation](EntityFilter.md#field-maxHorizontalRotation) | [EntityFilter](EntityFilter.md) |
+| [maxLevel](EntityFilter.md#field-maxLevel) | [EntityFilter](EntityFilter.md) |
+| [maxVerticalRotation](EntityFilter.md#field-maxVerticalRotation) | [EntityFilter](EntityFilter.md) |
+| [minHorizontalRotation](EntityFilter.md#field-minHorizontalRotation) | [EntityFilter](EntityFilter.md) |
+| [minLevel](EntityFilter.md#field-minLevel) | [EntityFilter](EntityFilter.md) |
+| [minVerticalRotation](EntityFilter.md#field-minVerticalRotation) | [EntityFilter](EntityFilter.md) |
+| [name](EntityFilter.md#field-name) | [EntityFilter](EntityFilter.md) |
+| [propertyOptions](EntityFilter.md#field-propertyOptions) | [EntityFilter](EntityFilter.md) |
+| [scoreOptions](EntityFilter.md#field-scoreOptions) | [EntityFilter](EntityFilter.md) |
+| [tags](EntityFilter.md#field-tags) | [EntityFilter](EntityFilter.md) |
+| [type](EntityFilter.md#field-type) | [EntityFilter](EntityFilter.md) |
 
 ## 构造器 {#constructor}
 

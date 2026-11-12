@@ -3,6 +3,8 @@ title: "CameraShakeType"
 sidebar_label: "CameraShakeType"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CameraShakeType
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,8 +19,8 @@ sidebar_label: "CameraShakeType"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Positional` | [str](../type-system.md#str) | `'Positional'` |  |
-| `Rotational` | [str](../type-system.md#str) | `'Rotational'` |  |
+| <ApiFieldAnchor id="field-Positional" />`Positional` | [str](../type-system.md#str) | `'Positional'` |  |
+| <ApiFieldAnchor id="field-Rotational" />`Rotational` | [str](../type-system.md#str) | `'Rotational'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

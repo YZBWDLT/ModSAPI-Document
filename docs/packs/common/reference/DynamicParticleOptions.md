@@ -3,6 +3,8 @@ title: "DynamicParticleOptions"
 sidebar_label: "DynamicParticleOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # DynamicParticleOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,10 +21,10 @@ sidebar_label: "DynamicParticleOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `mode` | [Literal](../type-system.md#literal)['point', 'line'] | `运行时返回` | 粒子模式，为“point”会以多个点的形式绘制，为“line”会以多个短线段形式绘制。默认为'line' |
-| `visible` | [bool](../type-system.md#bool) | `运行时返回` | 若设为false，则必须使用接口手动显示。默认为'true' |
-| `interval` | [int](../type-system.md#int) | `运行时返回` | 粒子更新的时间间隔，单位为tick，间隔时间越高性能越好。默认为1 |
-| `maxAmount` | [int](../type-system.md#int) | `运行时返回` | 粒子最大数量，超过这个数量后会开始删除旧的粒子。默认为200 |
+| <ApiFieldAnchor id="field-mode" />`mode` | [Literal](../type-system.md#literal)['point', 'line'] | `运行时返回` | 粒子模式，为“point”会以多个点的形式绘制，为“line”会以多个短线段形式绘制。默认为'line' |
+| <ApiFieldAnchor id="field-visible" />`visible` | [bool](../type-system.md#bool) | `运行时返回` | 若设为false，则必须使用接口手动显示。默认为'true' |
+| <ApiFieldAnchor id="field-interval" />`interval` | [int](../type-system.md#int) | `运行时返回` | 粒子更新的时间间隔，单位为tick，间隔时间越高性能越好。默认为1 |
+| <ApiFieldAnchor id="field-maxAmount" />`maxAmount` | [int](../type-system.md#int) | `运行时返回` | 粒子最大数量，超过这个数量后会开始删除旧的粒子。默认为200 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

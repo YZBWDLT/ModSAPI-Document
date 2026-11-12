@@ -3,6 +3,8 @@ title: "UiMapMarkerOptions"
 sidebar_label: "UiMapMarkerOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiMapMarkerOptions
 
 作用域：界面、控件和两端组合表单。
@@ -23,9 +25,9 @@ sidebar_label: "UiMapMarkerOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `size` | [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
-| `rotate` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
-| `flipZ` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-size" />`size` | [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-rotate" />`rotate` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-flipZ" />`flipZ` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

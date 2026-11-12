@@ -3,6 +3,8 @@ title: "ExpressionString"
 sidebar_label: "ExpressionString"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ExpressionString
 
 作用域：客户端。
@@ -17,7 +19,7 @@ sidebar_label: "ExpressionString"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `expression` | [str](../../common/type-system.md#str) | `expression` |  |
+| <ApiFieldAnchor id="field-expression" />`expression` | [str](../../common/type-system.md#str) | `expression` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

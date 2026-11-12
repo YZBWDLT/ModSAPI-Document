@@ -3,6 +3,8 @@ title: "ParticleBindEntityOptions"
 sidebar_label: "ParticleBindEntityOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ParticleBindEntityOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,9 +21,9 @@ sidebar_label: "ParticleBindEntityOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `bone` | [str](../type-system.md#str) | `运行时返回` |  |
-| `offset` | [Vector3](../../server/extra/vector.md) | `运行时返回` |  |
-| `rotate` | [Vector3](../../server/extra/vector.md) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-bone" />`bone` | [str](../type-system.md#str) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-offset" />`offset` | [Vector3](../../server/extra/vector.md) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-rotate" />`rotate` | [Vector3](../../server/extra/vector.md) | `运行时返回` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

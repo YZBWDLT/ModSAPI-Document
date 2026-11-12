@@ -3,6 +3,8 @@ title: "EventChain"
 sidebar_label: "EventChain"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EventChain
 
 作用域：架构辅助接口。
@@ -19,8 +21,8 @@ sidebar_label: "EventChain"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `guarded` | 由运行时值确定 | `True` |  |
-| `useCapture` | 由运行时值确定 | `False` |  |
+| <ApiFieldAnchor id="field-guarded" />`guarded` | 由运行时值确定 | `True` |  |
+| <ApiFieldAnchor id="field-useCapture" />`useCapture` | 由运行时值确定 | `False` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

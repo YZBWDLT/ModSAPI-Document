@@ -3,6 +3,8 @@ title: "ClientSoundOptions"
 sidebar_label: "ClientSoundOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientSoundOptions
 
 作用域：客户端。
@@ -23,11 +25,11 @@ sidebar_label: "ClientSoundOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `location` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
-| `volume` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `pitch` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `loop` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
-| `entity` | [ClientEntity](ClientEntity.md) \| [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-location" />`location` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-volume" />`volume` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-pitch" />`pitch` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-loop" />`loop` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-entity" />`entity` | [ClientEntity](ClientEntity.md) \| [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

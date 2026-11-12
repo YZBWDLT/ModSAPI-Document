@@ -3,6 +3,8 @@ title: "Scheduler"
 sidebar_label: "Scheduler"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Scheduler
 
 作用域：架构辅助接口。
@@ -17,7 +19,7 @@ sidebar_label: "Scheduler"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `scheduleSequence` | 由运行时值确定 | `('BeforeUpdate', 'Update', 'AfterUpdate')` |  |
+| <ApiFieldAnchor id="field-scheduleSequence" />`scheduleSequence` | 由运行时值确定 | `('BeforeUpdate', 'Update', 'AfterUpdate')` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

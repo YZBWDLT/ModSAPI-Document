@@ -23,6 +23,7 @@ sidebar_label: "UiService"
 | [views](#views) | 只读属性 |
 | [currentView](#currentView) | 只读属性 |
 | [hud](#hud) | 只读属性 |
+| [setEmotesEnabled](#setEmotesEnabled) | 方法 |
 | [screenSize](#screenSize) | 只读属性 |
 | [viewport](#viewport) | 只读属性 |
 | [getNativeArea](#getNativeArea) | 方法 |
@@ -134,6 +135,45 @@ hud: UiHud
 ```python
 def read_value(instance):
     return instance.hud
+```
+
+## setEmotesEnabled {#setEmotesEnabled}
+
+```python
+setEmotesEnabled(enabled: bool) -> None
+```
+
+在原生界面首次初始化前配置手机端表情功能，与隐藏已经创建的表情按钮不同。应在客户端初始化早期调用，不要放在界面就绪回调中；即使托管表单注册失败，原生初始化事件发生后也不能再配置。保留引擎报告的失败；具体平台支持由引擎决定，尚未实机验证。没有伪造原生读取或旧值自动恢复。
+
+:::note 当前实现说明
+仅在客户端、原生界面初始化事件之前配置；不使用 uiReady 回调。表单注册失败也不重新打开初始化窗口。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `enabled` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [UiService.setEmotesEnabled](UiService.md#setEmotesEnabled) 的 enabled 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Native emotes must be configured before UI initialization'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetEmoteSwitch`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setEmotesEnabled(instance, enabled):
+    return instance.setEmotesEnabled(enabled)
 ```
 
 ## screenSize {#screenSize}
@@ -287,7 +327,7 @@ def call_registerView(instance, name, template):
 openView(name: str, options: UiViewOptions | None = None) -> UiView
 ```
 
-打开托管的界面栈视图，可通过 inputPermissions 指定所属视图的临时输入权限。控件在就绪回调中可用；输入覆盖在原生创建前应用，并在关闭或创建失败时尝试释放。
+打开托管界面栈视图，可通过 inputPermissions 临时覆盖本地输入。控件在就绪后可用。输入覆盖在原生创建前应用，关闭或创建失败时释放。准备权限期间取消的视图不会继续创建原生界面。
 
 :::note 当前实现说明
 可在 inputPermissions 中传入本地输入通道与布尔值。覆盖在原生创建前应用，视图关闭或创建失败时尝试释放；不影响服务端权限。

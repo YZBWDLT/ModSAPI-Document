@@ -3,6 +3,8 @@ title: "Group"
 sidebar_label: "Group"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Group
 
 作用域：界面、控件和两端组合表单。
@@ -23,7 +25,7 @@ sidebar_label: "Group"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `controls` | [GroupDefinitions](../../common/type-aliases.md#groupdefinitions) | `validateGroupControls(controls)` |  |
+| <ApiFieldAnchor id="field-controls" />`controls` | [GroupDefinitions](../../common/type-aliases.md#groupdefinitions) | `validateGroupControls(controls)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -39,7 +41,7 @@ sidebar_label: "Group"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [onCreate](ControlDescriptor.md#字段与常量) | [ControlDescriptor](ControlDescriptor.md) |
+| [onCreate](ControlDescriptor.md#field-onCreate) | [ControlDescriptor](ControlDescriptor.md) |
 
 ## 构造器 {#constructor}
 

@@ -3,6 +3,8 @@ title: "TickingAreaErrorReason"
 sidebar_label: "TickingAreaErrorReason"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TickingAreaErrorReason
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,10 +19,10 @@ sidebar_label: "TickingAreaErrorReason"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `IdentifierAlreadyExists` | [str](../type-system.md#str) | `'IdentifierAlreadyExists'` |  |
-| `OverChunkLimit` | [str](../type-system.md#str) | `'OverChunkLimit'` |  |
-| `SideLengthExceeded` | [str](../type-system.md#str) | `'SideLengthExceeded'` |  |
-| `UnknownIdentifier` | [str](../type-system.md#str) | `'UnknownIdentifier'` |  |
+| <ApiFieldAnchor id="field-IdentifierAlreadyExists" />`IdentifierAlreadyExists` | [str](../type-system.md#str) | `'IdentifierAlreadyExists'` |  |
+| <ApiFieldAnchor id="field-OverChunkLimit" />`OverChunkLimit` | [str](../type-system.md#str) | `'OverChunkLimit'` |  |
+| <ApiFieldAnchor id="field-SideLengthExceeded" />`SideLengthExceeded` | [str](../type-system.md#str) | `'SideLengthExceeded'` |  |
+| <ApiFieldAnchor id="field-UnknownIdentifier" />`UnknownIdentifier` | [str](../type-system.md#str) | `'UnknownIdentifier'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

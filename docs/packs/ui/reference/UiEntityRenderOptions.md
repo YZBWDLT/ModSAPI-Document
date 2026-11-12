@@ -3,6 +3,8 @@ title: "UiEntityRenderOptions"
 sidebar_label: "UiEntityRenderOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiEntityRenderOptions
 
 作用域：界面、控件和两端组合表单。
@@ -25,11 +27,11 @@ sidebar_label: "UiEntityRenderOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `scale` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` | 有限数值缩放；原生默认值为 1.0。 |
-| `rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` | 初始 X、Y、Z 欧拉角，单位为度。 |
-| `rotationAxis` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` | 原生手势旋转轴；模板需要启用 freedom_gesture。 |
-| `variables` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` | 独立复制的变量名称与有限数值。 |
-| `depth` | [int](../../common/type-system.md#int) | `可选字段；省略规则见所属操作` | 原生整数渲染深度；省略时沿用原生默认值。 |
+| <ApiFieldAnchor id="field-scale" />`scale` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` | 有限数值缩放；原生默认值为 1.0。 |
+| <ApiFieldAnchor id="field-rotation" />`rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` | 初始 X、Y、Z 欧拉角，单位为度。 |
+| <ApiFieldAnchor id="field-rotationAxis" />`rotationAxis` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` | 原生手势旋转轴；模板需要启用 freedom_gesture。 |
+| <ApiFieldAnchor id="field-variables" />`variables` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` | 独立复制的变量名称与有限数值。 |
+| <ApiFieldAnchor id="field-depth" />`depth` | [int](../../common/type-system.md#int) | `可选字段；省略规则见所属操作` | 原生整数渲染深度；省略时沿用原生默认值。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

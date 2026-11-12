@@ -3,6 +3,8 @@ title: "ScriptEventMessageFilterOptions"
 sidebar_label: "ScriptEventMessageFilterOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ScriptEventMessageFilterOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,7 +23,7 @@ sidebar_label: "ScriptEventMessageFilterOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `namespaces` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `运行时返回` | 用于筛选传入脚本事件消息的可选命名空间列表。 |
+| <ApiFieldAnchor id="field-namespaces" />`namespaces` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `运行时返回` | 用于筛选传入脚本事件消息的可选命名空间列表。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

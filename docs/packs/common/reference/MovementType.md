@@ -3,6 +3,8 @@ title: "MovementType"
 sidebar_label: "MovementType"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # MovementType
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,10 +19,10 @@ sidebar_label: "MovementType"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Immovable` | [str](../type-system.md#str) | `'Immovable'` |  |
-| `Popped` | [str](../type-system.md#str) | `'Popped'` |  |
-| `Push` | [str](../type-system.md#str) | `'Push'` |  |
-| `PushPull` | [str](../type-system.md#str) | `'PushPull'` |  |
+| <ApiFieldAnchor id="field-Immovable" />`Immovable` | [str](../type-system.md#str) | `'Immovable'` |  |
+| <ApiFieldAnchor id="field-Popped" />`Popped` | [str](../type-system.md#str) | `'Popped'` |  |
+| <ApiFieldAnchor id="field-Push" />`Push` | [str](../type-system.md#str) | `'Push'` |  |
+| <ApiFieldAnchor id="field-PushPull" />`PushPull` | [str](../type-system.md#str) | `'PushPull'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

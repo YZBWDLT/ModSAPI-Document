@@ -3,6 +3,8 @@ title: "TimeOfDay"
 sidebar_label: "TimeOfDay"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TimeOfDay
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,12 +19,12 @@ sidebar_label: "TimeOfDay"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Day` | [int](../type-system.md#int) | `1000` |  |
-| `Noon` | [int](../type-system.md#int) | `6000` |  |
-| `Sunset` | [int](../type-system.md#int) | `12000` |  |
-| `Night` | [int](../type-system.md#int) | `13000` |  |
-| `Midnight` | [int](../type-system.md#int) | `18000` |  |
-| `Sunrise` | [int](../type-system.md#int) | `23000` |  |
+| <ApiFieldAnchor id="field-Day" />`Day` | [int](../type-system.md#int) | `1000` |  |
+| <ApiFieldAnchor id="field-Noon" />`Noon` | [int](../type-system.md#int) | `6000` |  |
+| <ApiFieldAnchor id="field-Sunset" />`Sunset` | [int](../type-system.md#int) | `12000` |  |
+| <ApiFieldAnchor id="field-Night" />`Night` | [int](../type-system.md#int) | `13000` |  |
+| <ApiFieldAnchor id="field-Midnight" />`Midnight` | [int](../type-system.md#int) | `18000` |  |
+| <ApiFieldAnchor id="field-Sunrise" />`Sunrise` | [int](../type-system.md#int) | `23000` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

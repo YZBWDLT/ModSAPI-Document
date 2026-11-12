@@ -3,6 +3,8 @@ title: "ServerKVDatabase"
 sidebar_label: "ServerKVDatabase"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ServerKVDatabase
 
 作用域：架构辅助接口。
@@ -19,7 +21,7 @@ sidebar_label: "ServerKVDatabase"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `data` | 由运行时值确定 | [LevelServer.extraData](LevelServer.md#字段与常量) |  |
+| <ApiFieldAnchor id="field-data" />`data` | 由运行时值确定 | [LevelServer.extraData](LevelServer.md#field-extraData) |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -37,10 +39,10 @@ sidebar_label: "ServerKVDatabase"
 | 成员 | 定义位置 |
 | --- | --- |
 | [broadcast](Subsystem.md#broadcast) | [Subsystem](Subsystem.md) |
-| [canTick](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [canTick](Subsystem.md#field-canTick) | [Subsystem](Subsystem.md) |
 | [clearData](ManagedStorage.md#clearData) | [ManagedStorage](ManagedStorage.md) |
 | [destroyEntity](ServerSubsystem.md#destroyEntity) | [ServerSubsystem](ServerSubsystem.md) |
-| [engine](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [engine](Subsystem.md#field-engine) | [Subsystem](Subsystem.md) |
 | [getData](ManagedStorage.md#getData) | [ManagedStorage](ManagedStorage.md) |
 | [getEngine](Subsystem.md#getEngine) | [Subsystem](Subsystem.md) |
 | [getInstance](Subsystem.md#getInstance) | [Subsystem](Subsystem.md) |
@@ -59,9 +61,9 @@ sidebar_label: "ServerKVDatabase"
 | [setData](ManagedStorage.md#setData) | [ManagedStorage](ManagedStorage.md) |
 | [spawnEntity](ServerSubsystem.md#spawnEntity) | [ServerSubsystem](ServerSubsystem.md) |
 | [spawnItem](ServerSubsystem.md#spawnItem) | [ServerSubsystem](ServerSubsystem.md) |
-| [sysName](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
-| [system](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
-| [ticks](Subsystem.md#字段与常量) | [Subsystem](Subsystem.md) |
+| [sysName](Subsystem.md#field-sysName) | [Subsystem](Subsystem.md) |
+| [system](Subsystem.md#field-system) | [Subsystem](Subsystem.md) |
+| [ticks](Subsystem.md#field-ticks) | [Subsystem](Subsystem.md) |
 | [unlisten](Subsystem.md#unlisten) | [Subsystem](Subsystem.md) |
 
 ## createView {#createView}

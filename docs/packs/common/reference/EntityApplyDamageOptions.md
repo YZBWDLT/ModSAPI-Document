@@ -3,6 +3,8 @@ title: "EntityApplyDamageOptions"
 sidebar_label: "EntityApplyDamageOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityApplyDamageOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,8 +23,8 @@ sidebar_label: "EntityApplyDamageOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `cause` | [EntityDamageCause](EntityDamageCause.md) | `getattr(EntityDamageCause, self.cause, self.cause)` | 伤害的根本原因。 |
-| `damagingEntity` | [Entity](../../server/apis/entity.md) \| [None](../type-system.md#none) | `data['damagingEntity'] if 'damagingEntity' in data else None` | 造成伤害的实体；可能不存在。 |
+| <ApiFieldAnchor id="field-cause" />`cause` | [EntityDamageCause](EntityDamageCause.md) | `getattr(EntityDamageCause, self.cause, self.cause)` | 伤害的根本原因。 |
+| <ApiFieldAnchor id="field-damagingEntity" />`damagingEntity` | [Entity](../../server/apis/entity.md) \| [None](../type-system.md#none) | `data['damagingEntity'] if 'damagingEntity' in data else None` | 造成伤害的实体；可能不存在。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "DynamicParticleOptions"
 sidebar_label: "DynamicParticleOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # DynamicParticleOptions
 
 作用域：客户端。
@@ -23,10 +25,10 @@ sidebar_label: "DynamicParticleOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `mode` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
-| `interval` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `maxAmount` | [int](../../common/type-system.md#int) | `可选字段；省略规则见所属操作` |  |
-| `visible` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-mode" />`mode` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-interval" />`interval` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-maxAmount" />`maxAmount` | [int](../../common/type-system.md#int) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-visible" />`visible` | [bool](../../common/type-system.md#bool) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

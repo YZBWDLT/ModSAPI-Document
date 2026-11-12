@@ -3,6 +3,8 @@ title: "AttributeModifierOptions"
 sidebar_label: "AttributeModifierOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # AttributeModifierOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,8 +25,8 @@ sidebar_label: "AttributeModifierOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `operation` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` | [AttributeModifierOperation](AttributeModifierOperation.md) 中支持的字符串常量。 |
-| `operand` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` | [AttributeModifierOperand](AttributeModifierOperand.md) 中支持的字符串常量。 |
+| <ApiFieldAnchor id="field-operation" />`operation` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` | [AttributeModifierOperation](AttributeModifierOperation.md) 中支持的字符串常量。 |
+| <ApiFieldAnchor id="field-operand" />`operand` | [str](../type-system.md#str) | `可选字段；省略规则见所属操作` | [AttributeModifierOperand](AttributeModifierOperand.md) 中支持的字符串常量。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

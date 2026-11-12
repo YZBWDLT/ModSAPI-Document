@@ -3,6 +3,8 @@ title: "ItemDurabilityComponent"
 sidebar_label: "ItemDurabilityComponent"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ItemDurabilityComponent
 
 作用域：服务端。
@@ -13,7 +15,7 @@ sidebar_label: "ItemDurabilityComponent"
 
 ## 获取方式
 
-通过 item.getComponent("durability") 或 [ItemDurabilityComponent.componentId](ItemDurabilityComponent.md#字段与常量) 取得；编辑后将物品写回容器。
+通过 item.getComponent("durability") 或 [ItemDurabilityComponent.componentId](ItemDurabilityComponent.md#field-componentId) 取得；编辑后将物品写回容器。
 
 基类：[ItemComponent](ItemComponent.md).
 
@@ -21,7 +23,7 @@ sidebar_label: "ItemDurabilityComponent"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `componentId` | [Final](../../common/type-system.md#final) | `'minecraft:durability'` |  |
+| <ApiFieldAnchor id="field-componentId" />`componentId` | [Final](../../common/type-system.md#final) | `'minecraft:durability'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "UiImageInsets"
 sidebar_label: "UiImageInsets"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiImageInsets
 
 作用域：界面、控件和两端组合表单。
@@ -23,10 +25,10 @@ sidebar_label: "UiImageInsets"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `left` | [float](../../common/type-system.md#float) | `必填字段` |  |
-| `right` | [float](../../common/type-system.md#float) | `必填字段` |  |
-| `top` | [float](../../common/type-system.md#float) | `必填字段` |  |
-| `bottom` | [float](../../common/type-system.md#float) | `必填字段` |  |
+| <ApiFieldAnchor id="field-left" />`left` | [float](../../common/type-system.md#float) | `必填字段` |  |
+| <ApiFieldAnchor id="field-right" />`right` | [float](../../common/type-system.md#float) | `必填字段` |  |
+| <ApiFieldAnchor id="field-top" />`top` | [float](../../common/type-system.md#float) | `必填字段` |  |
+| <ApiFieldAnchor id="field-bottom" />`bottom` | [float](../../common/type-system.md#float) | `必填字段` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

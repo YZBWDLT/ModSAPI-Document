@@ -3,6 +3,8 @@ title: "UiSelectionWheelEvents"
 sidebar_label: "UiSelectionWheelEvents"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiSelectionWheelEvents
 
 作用域：界面、控件和两端组合表单。
@@ -19,8 +21,8 @@ sidebar_label: "UiSelectionWheelEvents"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `selectionChange` | [UiEventSignal](UiEventSignal.md)[[UiChoiceEvent](UiChoiceEvent.md)] | `运行时返回` |  |
-| `select` | [UiEventSignal](UiEventSignal.md)[[UiChoiceEvent](UiChoiceEvent.md)] | `运行时返回` |  |
+| <ApiFieldAnchor id="field-selectionChange" />`selectionChange` | [UiEventSignal](UiEventSignal.md)[[UiChoiceEvent](UiChoiceEvent.md)] | `运行时返回` |  |
+| <ApiFieldAnchor id="field-select" />`select` | [UiEventSignal](UiEventSignal.md)[[UiChoiceEvent](UiChoiceEvent.md)] | `运行时返回` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

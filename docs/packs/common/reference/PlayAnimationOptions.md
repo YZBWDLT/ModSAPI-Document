@@ -3,6 +3,8 @@ title: "PlayAnimationOptions"
 sidebar_label: "PlayAnimationOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # PlayAnimationOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,11 +23,11 @@ sidebar_label: "PlayAnimationOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `blendOutTime` | [float](../type-system.md#float) | `data['blendOutTime'] if 'blendOutTime' in data else 0` |  |
-| `controller` | [str](../type-system.md#str) | `data['controller'] if 'controller' in data else ''` |  |
-| `nextState` | [str](../type-system.md#str) | `data['nextState'] if 'nextState' in data else ''` |  |
-| `players` | [list](../type-system.md#list)[[Player](../../server/apis/player.md)] | `data['players'] if 'players' in data else []` |  |
-| `stopExpression` | [str](../type-system.md#str) | `data['stopExpression'] if 'stopExpression' in data else ''` |  |
+| <ApiFieldAnchor id="field-blendOutTime" />`blendOutTime` | [float](../type-system.md#float) | `data['blendOutTime'] if 'blendOutTime' in data else 0` |  |
+| <ApiFieldAnchor id="field-controller" />`controller` | [str](../type-system.md#str) | `data['controller'] if 'controller' in data else ''` |  |
+| <ApiFieldAnchor id="field-nextState" />`nextState` | [str](../type-system.md#str) | `data['nextState'] if 'nextState' in data else ''` |  |
+| <ApiFieldAnchor id="field-players" />`players` | [list](../type-system.md#list)[[Player](../../server/apis/player.md)] | `data['players'] if 'players' in data else []` |  |
+| <ApiFieldAnchor id="field-stopExpression" />`stopExpression` | [str](../type-system.md#str) | `data['stopExpression'] if 'stopExpression' in data else ''` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

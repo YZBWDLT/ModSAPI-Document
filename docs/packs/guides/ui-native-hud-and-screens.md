@@ -35,6 +35,8 @@ def restore_status_bars():
 
 ## 全局隐藏与输入权限
 
+若需要配置表情功能本身，应在原生界面初始化之前调用 [UiService.setEmotesEnabled](../ui/reference/UiService.md#setEmotesEnabled)，而不是隐藏已经创建的表情按钮。调用阶段和本地动作示例见 [本地交互与触控布局](client-interaction-and-controls.md)。
+
 ```python
 def hide_native_hud():
     client.ui.hud.setHidden(True)

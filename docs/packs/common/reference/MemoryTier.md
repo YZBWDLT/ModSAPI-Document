@@ -3,6 +3,8 @@ title: "MemoryTier"
 sidebar_label: "MemoryTier"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # MemoryTier
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,11 +19,11 @@ sidebar_label: "MemoryTier"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `SuperLow` | [int](../type-system.md#int) | `0` |  |
-| `Low` | [int](../type-system.md#int) | `1` |  |
-| `Mid` | [int](../type-system.md#int) | `2` |  |
-| `High` | [int](../type-system.md#int) | `3` |  |
-| `SuperHigh` | [int](../type-system.md#int) | `4` |  |
+| <ApiFieldAnchor id="field-SuperLow" />`SuperLow` | [int](../type-system.md#int) | `0` |  |
+| <ApiFieldAnchor id="field-Low" />`Low` | [int](../type-system.md#int) | `1` |  |
+| <ApiFieldAnchor id="field-Mid" />`Mid` | [int](../type-system.md#int) | `2` |  |
+| <ApiFieldAnchor id="field-High" />`High` | [int](../type-system.md#int) | `3` |  |
+| <ApiFieldAnchor id="field-SuperHigh" />`SuperHigh` | [int](../type-system.md#int) | `4` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

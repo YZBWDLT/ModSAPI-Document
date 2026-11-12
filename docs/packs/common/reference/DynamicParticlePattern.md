@@ -3,6 +3,8 @@ title: "DynamicParticlePattern"
 sidebar_label: "DynamicParticlePattern"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # DynamicParticlePattern
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,10 +21,10 @@ sidebar_label: "DynamicParticlePattern"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `x` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
-| `y` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
-| `z` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
-| `color` | [tuple](../type-system.md#tuple)[[ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float), [ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float), [ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float)] | `运行时返回` | 图案的 [RGB](../../server/reference/RGB.md) 颜色；每个通道为 0～1 的数值，或求值结果在该范围内的表达式字符串。 |
+| <ApiFieldAnchor id="field-x" />`x` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-y" />`y` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-z" />`z` | [ExpressionString](../../client/reference/ExpressionString.md) \| [int](../type-system.md#int) \| [float](../type-system.md#float) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-color" />`color` | [tuple](../type-system.md#tuple)[[ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float), [ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float), [ExpressionString](../../client/reference/ExpressionString.md) \| [float](../type-system.md#float)] | `运行时返回` | 图案的 [RGB](../../server/reference/RGB.md) 颜色；每个通道为 0～1 的数值，或求值结果在该范围内的表达式字符串。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

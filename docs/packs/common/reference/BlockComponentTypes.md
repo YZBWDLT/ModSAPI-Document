@@ -3,6 +3,8 @@ title: "BlockComponentTypes"
 sidebar_label: "BlockComponentTypes"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # BlockComponentTypes
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,17 +19,17 @@ sidebar_label: "BlockComponentTypes"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `DynamicProperties` | [str](../type-system.md#str) | `'minecraft:dynamic_properties'` |  |
-| `FluidContainer` | [str](../type-system.md#str) | `'minecraft:fluid_container'` |  |
-| `Instrument` | [str](../type-system.md#str) | `'minecraft:instrument_sound'` |  |
-| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
-| `MapColor` | [str](../type-system.md#str) | `'minecraft:map_color'` |  |
-| `Movable` | [str](../type-system.md#str) | `'minecraft:movable'` |  |
-| `Piston` | [str](../type-system.md#str) | `'minecraft:piston'` |  |
-| `PrecipitationInteractions` | [str](../type-system.md#str) | `'minecraft:precipitation_interactions'` |  |
-| `RecordPlayer` | [str](../type-system.md#str) | `'minecraft:record_player'` |  |
-| `RedstoneProducer` | [str](../type-system.md#str) | `'minecraft:redstone_producer'` |  |
-| `Sign` | [str](../type-system.md#str) | `'minecraft:sign'` |  |
+| <ApiFieldAnchor id="field-DynamicProperties" />`DynamicProperties` | [str](../type-system.md#str) | `'minecraft:dynamic_properties'` |  |
+| <ApiFieldAnchor id="field-FluidContainer" />`FluidContainer` | [str](../type-system.md#str) | `'minecraft:fluid_container'` |  |
+| <ApiFieldAnchor id="field-Instrument" />`Instrument` | [str](../type-system.md#str) | `'minecraft:instrument_sound'` |  |
+| <ApiFieldAnchor id="field-Inventory" />`Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
+| <ApiFieldAnchor id="field-MapColor" />`MapColor` | [str](../type-system.md#str) | `'minecraft:map_color'` |  |
+| <ApiFieldAnchor id="field-Movable" />`Movable` | [str](../type-system.md#str) | `'minecraft:movable'` |  |
+| <ApiFieldAnchor id="field-Piston" />`Piston` | [str](../type-system.md#str) | `'minecraft:piston'` |  |
+| <ApiFieldAnchor id="field-PrecipitationInteractions" />`PrecipitationInteractions` | [str](../type-system.md#str) | `'minecraft:precipitation_interactions'` |  |
+| <ApiFieldAnchor id="field-RecordPlayer" />`RecordPlayer` | [str](../type-system.md#str) | `'minecraft:record_player'` |  |
+| <ApiFieldAnchor id="field-RedstoneProducer" />`RedstoneProducer` | [str](../type-system.md#str) | `'minecraft:redstone_producer'` |  |
+| <ApiFieldAnchor id="field-Sign" />`Sign` | [str](../type-system.md#str) | `'minecraft:sign'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

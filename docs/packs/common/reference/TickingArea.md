@@ -3,6 +3,8 @@ title: "TickingArea"
 sidebar_label: "TickingArea"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TickingArea
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,10 +23,10 @@ sidebar_label: "TickingArea"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
-| `identifier` | [str](../type-system.md#str) | `data['identifier']` |  |
-| `chunkCount` | [int](../type-system.md#int) | `data['chunkCount']` |  |
-| `boundingBox` | [BlockBoundingBox](BlockBoundingBox.md) | `data['boundingBox']` |  |
+| <ApiFieldAnchor id="field-dimension" />`dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
+| <ApiFieldAnchor id="field-identifier" />`identifier` | [str](../type-system.md#str) | `data['identifier']` |  |
+| <ApiFieldAnchor id="field-chunkCount" />`chunkCount` | [int](../type-system.md#int) | `data['chunkCount']` |  |
+| <ApiFieldAnchor id="field-boundingBox" />`boundingBox` | [BlockBoundingBox](BlockBoundingBox.md) | `data['boundingBox']` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

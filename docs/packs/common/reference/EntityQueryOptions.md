@@ -3,6 +3,8 @@ title: "EntityQueryOptions"
 sidebar_label: "EntityQueryOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityQueryOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -23,13 +25,13 @@ sidebar_label: "EntityQueryOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../type-system.md#dict) | `data` |  |
-| `closest` | [int](../type-system.md#int) | `data['closest'] if 'closest' in data else -1` | 最多返回最近的指定数量实体；必须同时提供参考位置。 |
-| `farthest` | [int](../type-system.md#int) | `data['farthest'] if 'farthest' in data else -1` | 最多返回最远的指定数量实体；必须同时提供参考位置。 |
-| `location` | [Vector3](../../server/extra/vector.md) | `Vector3(data['location']) if 'location' in data else Vector3({})` | 查询的参考位置；与最近、最远、数量、体积和距离筛选共同使用。 |
-| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else -1` | 只包含距离参考位置不大于该值的实体。 |
-| `minDistance` | [float](../type-system.md#float) | `data['minDistance'] if 'minDistance' in data else -1` | 只包含距离参考位置不小于该值的实体。 |
-| `volume` | [Vector3](../../server/extra/vector.md) | `Vector3(data['volume']) if 'volume' in data else None` | 与参考位置共同指定查询实体的长方体范围。 |
+| <ApiFieldAnchor id="field-data" />`data` | [dict](../type-system.md#dict) | `data` |  |
+| <ApiFieldAnchor id="field-closest" />`closest` | [int](../type-system.md#int) | `data['closest'] if 'closest' in data else -1` | 最多返回最近的指定数量实体；必须同时提供参考位置。 |
+| <ApiFieldAnchor id="field-farthest" />`farthest` | [int](../type-system.md#int) | `data['farthest'] if 'farthest' in data else -1` | 最多返回最远的指定数量实体；必须同时提供参考位置。 |
+| <ApiFieldAnchor id="field-location" />`location` | [Vector3](../../server/extra/vector.md) | `Vector3(data['location']) if 'location' in data else Vector3({})` | 查询的参考位置；与最近、最远、数量、体积和距离筛选共同使用。 |
+| <ApiFieldAnchor id="field-maxDistance" />`maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else -1` | 只包含距离参考位置不大于该值的实体。 |
+| <ApiFieldAnchor id="field-minDistance" />`minDistance` | [float](../type-system.md#float) | `data['minDistance'] if 'minDistance' in data else -1` | 只包含距离参考位置不小于该值的实体。 |
+| <ApiFieldAnchor id="field-volume" />`volume` | [Vector3](../../server/extra/vector.md) | `Vector3(data['volume']) if 'volume' in data else None` | 与参考位置共同指定查询实体的长方体范围。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -45,24 +47,24 @@ sidebar_label: "EntityQueryOptions"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [excludeFamilies](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeGameModes](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeNames](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeTags](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [excludeTypes](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [families](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [gameMode](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxHorizontalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxLevel](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [maxVerticalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minHorizontalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minLevel](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [minVerticalRotation](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [name](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [propertyOptions](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [scoreOptions](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [tags](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
-| [type](EntityFilter.md#字段与常量) | [EntityFilter](EntityFilter.md) |
+| [excludeFamilies](EntityFilter.md#field-excludeFamilies) | [EntityFilter](EntityFilter.md) |
+| [excludeGameModes](EntityFilter.md#field-excludeGameModes) | [EntityFilter](EntityFilter.md) |
+| [excludeNames](EntityFilter.md#field-excludeNames) | [EntityFilter](EntityFilter.md) |
+| [excludeTags](EntityFilter.md#field-excludeTags) | [EntityFilter](EntityFilter.md) |
+| [excludeTypes](EntityFilter.md#field-excludeTypes) | [EntityFilter](EntityFilter.md) |
+| [families](EntityFilter.md#field-families) | [EntityFilter](EntityFilter.md) |
+| [gameMode](EntityFilter.md#field-gameMode) | [EntityFilter](EntityFilter.md) |
+| [maxHorizontalRotation](EntityFilter.md#field-maxHorizontalRotation) | [EntityFilter](EntityFilter.md) |
+| [maxLevel](EntityFilter.md#field-maxLevel) | [EntityFilter](EntityFilter.md) |
+| [maxVerticalRotation](EntityFilter.md#field-maxVerticalRotation) | [EntityFilter](EntityFilter.md) |
+| [minHorizontalRotation](EntityFilter.md#field-minHorizontalRotation) | [EntityFilter](EntityFilter.md) |
+| [minLevel](EntityFilter.md#field-minLevel) | [EntityFilter](EntityFilter.md) |
+| [minVerticalRotation](EntityFilter.md#field-minVerticalRotation) | [EntityFilter](EntityFilter.md) |
+| [name](EntityFilter.md#field-name) | [EntityFilter](EntityFilter.md) |
+| [propertyOptions](EntityFilter.md#field-propertyOptions) | [EntityFilter](EntityFilter.md) |
+| [scoreOptions](EntityFilter.md#field-scoreOptions) | [EntityFilter](EntityFilter.md) |
+| [tags](EntityFilter.md#field-tags) | [EntityFilter](EntityFilter.md) |
+| [type](EntityFilter.md#field-type) | [EntityFilter](EntityFilter.md) |
 
 ## 构造器 {#constructor}
 

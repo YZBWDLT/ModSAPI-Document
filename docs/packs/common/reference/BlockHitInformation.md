@@ -3,6 +3,8 @@ title: "BlockHitInformation"
 sidebar_label: "BlockHitInformation"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # BlockHitInformation
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,9 +23,9 @@ sidebar_label: "BlockHitInformation"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `block` | [Block](../../server/apis/block.md) | `Block(data['block'])` | 被命中的方块。 |
-| `face` | [str](../type-system.md#str) | `Direction_ModSDK[data['face']]` | 被命中的方块面。 |
-| `faceLocation` | [Vector3](../../server/extra/vector.md) | `data['faceLocation']` | 相对于方块西北底角的坐标。 |
+| <ApiFieldAnchor id="field-block" />`block` | [Block](../../server/apis/block.md) | `Block(data['block'])` | 被命中的方块。 |
+| <ApiFieldAnchor id="field-face" />`face` | [str](../type-system.md#str) | `Direction_ModSDK[data['face']]` | 被命中的方块面。 |
+| <ApiFieldAnchor id="field-faceLocation" />`faceLocation` | [Vector3](../../server/extra/vector.md) | `data['faceLocation']` | 相对于方块西北底角的坐标。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

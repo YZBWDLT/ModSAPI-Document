@@ -3,6 +3,8 @@ title: "StructureMirrorAxis"
 sidebar_label: "StructureMirrorAxis"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # StructureMirrorAxis
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,9 +19,9 @@ sidebar_label: "StructureMirrorAxis"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `X` | [str](../type-system.md#str) | `'X'` |  |
-| `XZ` | [str](../type-system.md#str) | `'XZ'` |  |
-| `Z` | [str](../type-system.md#str) | `'Z'` |  |
+| <ApiFieldAnchor id="field-X" />`X` | [str](../type-system.md#str) | `'X'` |  |
+| <ApiFieldAnchor id="field-XZ" />`XZ` | [str](../type-system.md#str) | `'XZ'` |  |
+| <ApiFieldAnchor id="field-Z" />`Z` | [str](../type-system.md#str) | `'Z'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

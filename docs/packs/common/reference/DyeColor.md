@@ -3,6 +3,8 @@ title: "DyeColor"
 sidebar_label: "DyeColor"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # DyeColor
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,22 +19,22 @@ sidebar_label: "DyeColor"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Black` | [str](../type-system.md#str) | `'Black'` |  |
-| `Blue` | [str](../type-system.md#str) | `'Blue'` |  |
-| `Brown` | [str](../type-system.md#str) | `'Brown'` |  |
-| `Cyan` | [str](../type-system.md#str) | `'Cyan'` |  |
-| `Gray` | [str](../type-system.md#str) | `'Gray'` |  |
-| `Green` | [str](../type-system.md#str) | `'Green'` |  |
-| `LightBlue` | [str](../type-system.md#str) | `'LightBlue'` |  |
-| `Lime` | [str](../type-system.md#str) | `'Lime'` |  |
-| `Magenta` | [str](../type-system.md#str) | `'Magenta'` |  |
-| `Orange` | [str](../type-system.md#str) | `'Orange'` |  |
-| `Pink` | [str](../type-system.md#str) | `'Pink'` |  |
-| `Purple` | [str](../type-system.md#str) | `'Purple'` |  |
-| `Red` | [str](../type-system.md#str) | `'Red'` |  |
-| `Silver` | [str](../type-system.md#str) | `'Silver'` |  |
-| `White` | [str](../type-system.md#str) | `'White'` |  |
-| `Yellow` | [str](../type-system.md#str) | `'Yellow'` |  |
+| <ApiFieldAnchor id="field-Black" />`Black` | [str](../type-system.md#str) | `'Black'` |  |
+| <ApiFieldAnchor id="field-Blue" />`Blue` | [str](../type-system.md#str) | `'Blue'` |  |
+| <ApiFieldAnchor id="field-Brown" />`Brown` | [str](../type-system.md#str) | `'Brown'` |  |
+| <ApiFieldAnchor id="field-Cyan" />`Cyan` | [str](../type-system.md#str) | `'Cyan'` |  |
+| <ApiFieldAnchor id="field-Gray" />`Gray` | [str](../type-system.md#str) | `'Gray'` |  |
+| <ApiFieldAnchor id="field-Green" />`Green` | [str](../type-system.md#str) | `'Green'` |  |
+| <ApiFieldAnchor id="field-LightBlue" />`LightBlue` | [str](../type-system.md#str) | `'LightBlue'` |  |
+| <ApiFieldAnchor id="field-Lime" />`Lime` | [str](../type-system.md#str) | `'Lime'` |  |
+| <ApiFieldAnchor id="field-Magenta" />`Magenta` | [str](../type-system.md#str) | `'Magenta'` |  |
+| <ApiFieldAnchor id="field-Orange" />`Orange` | [str](../type-system.md#str) | `'Orange'` |  |
+| <ApiFieldAnchor id="field-Pink" />`Pink` | [str](../type-system.md#str) | `'Pink'` |  |
+| <ApiFieldAnchor id="field-Purple" />`Purple` | [str](../type-system.md#str) | `'Purple'` |  |
+| <ApiFieldAnchor id="field-Red" />`Red` | [str](../type-system.md#str) | `'Red'` |  |
+| <ApiFieldAnchor id="field-Silver" />`Silver` | [str](../type-system.md#str) | `'Silver'` |  |
+| <ApiFieldAnchor id="field-White" />`White` | [str](../type-system.md#str) | `'White'` |  |
+| <ApiFieldAnchor id="field-Yellow" />`Yellow` | [str](../type-system.md#str) | `'Yellow'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

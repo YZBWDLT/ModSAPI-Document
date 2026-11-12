@@ -3,6 +3,8 @@ title: "Toggle"
 sidebar_label: "Toggle"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Toggle
 
 作用域：界面、控件和两端组合表单。
@@ -23,8 +25,8 @@ sidebar_label: "Toggle"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `togglePath` | [str](../../common/type-system.md#str) | `togglePath` |  |
-| `labelPaths` | [LabelPaths](../../common/type-aliases.md#labelpaths) | `_copyPaths(labelPaths)` |  |
+| <ApiFieldAnchor id="field-togglePath" />`togglePath` | [str](../../common/type-system.md#str) | `togglePath` |  |
+| <ApiFieldAnchor id="field-labelPaths" />`labelPaths` | [LabelPaths](../../common/type-aliases.md#labelpaths) | `_copyPaths(labelPaths)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -40,7 +42,7 @@ sidebar_label: "Toggle"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [onCreate](ControlDescriptor.md#字段与常量) | [ControlDescriptor](ControlDescriptor.md) |
+| [onCreate](ControlDescriptor.md#field-onCreate) | [ControlDescriptor](ControlDescriptor.md) |
 
 ## 构造器 {#constructor}
 

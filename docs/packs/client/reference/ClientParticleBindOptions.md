@@ -3,6 +3,8 @@ title: "ClientParticleBindOptions"
 sidebar_label: "ClientParticleBindOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ClientParticleBindOptions
 
 作用域：客户端。
@@ -23,10 +25,10 @@ sidebar_label: "ClientParticleBindOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `bone` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
-| `offset` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
-| `rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
-| `rotate` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-bone" />`bone` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-offset" />`offset` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-rotation" />`rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-rotate" />`rotate` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

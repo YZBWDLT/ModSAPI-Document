@@ -3,6 +3,8 @@ title: "Subsystem"
 sidebar_label: "Subsystem"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Subsystem
 
 作用域：架构辅助接口。
@@ -17,11 +19,11 @@ sidebar_label: "Subsystem"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `system` | 由运行时值确定 | `system` |  |
-| `engine` | 由运行时值确定 | `engine` |  |
-| `sysName` | 由运行时值确定 | `sysName` |  |
-| `ticks` | 由运行时值确定 | `0` |  |
-| `canTick` | 由运行时值确定 | `False` |  |
+| <ApiFieldAnchor id="field-system" />`system` | 由运行时值确定 | `system` |  |
+| <ApiFieldAnchor id="field-engine" />`engine` | 由运行时值确定 | `engine` |  |
+| <ApiFieldAnchor id="field-sysName" />`sysName` | 由运行时值确定 | `sysName` |  |
+| <ApiFieldAnchor id="field-ticks" />`ticks` | 由运行时值确定 | `0` |  |
+| <ApiFieldAnchor id="field-canTick" />`canTick` | 由运行时值确定 | `False` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

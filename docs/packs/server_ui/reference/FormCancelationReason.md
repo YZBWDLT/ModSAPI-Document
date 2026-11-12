@@ -3,6 +3,8 @@ title: "FormCancelationReason"
 sidebar_label: "FormCancelationReason"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # FormCancelationReason
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -17,8 +19,8 @@ sidebar_label: "FormCancelationReason"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `UserBusy` | [str](../../common/type-system.md#str) | `'UserBusy'` |  |
-| `UserClosed` | [str](../../common/type-system.md#str) | `'UserClosed'` |  |
+| <ApiFieldAnchor id="field-UserBusy" />`UserBusy` | [str](../../common/type-system.md#str) | `'UserBusy'` |  |
+| <ApiFieldAnchor id="field-UserClosed" />`UserClosed` | [str](../../common/type-system.md#str) | `'UserClosed'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

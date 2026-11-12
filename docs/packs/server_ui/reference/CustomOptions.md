@@ -3,6 +3,8 @@ title: "CustomOptions"
 sidebar_label: "CustomOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # CustomOptions
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -21,10 +23,10 @@ sidebar_label: "CustomOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `movable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
-| `resizable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
-| `style` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
-| `closable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-movable" />`movable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-resizable" />`resizable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-style" />`style` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-closable" />`closable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

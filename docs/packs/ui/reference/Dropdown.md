@@ -3,6 +3,8 @@ title: "Dropdown"
 sidebar_label: "Dropdown"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Dropdown
 
 作用域：界面、控件和两端组合表单。
@@ -23,12 +25,12 @@ sidebar_label: "Dropdown"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `labelPaths` | [LabelPaths](../../common/type-aliases.md#labelpaths) | `_copyPaths(labelPaths)` |  |
-| `dropdownPath` | [str](../../common/type-system.md#str) | `dropdownPath` |  |
-| `boxLabelPaths` | [ControlPaths](../../common/type-aliases.md#controlpaths) | `_copyPaths(boxLabelPaths)` |  |
-| `itemLabelPaths` | [ControlPaths](../../common/type-aliases.md#controlpaths) | `_copyPaths(itemLabelPaths)` |  |
-| `contentPath` | [str](../../common/type-system.md#str) | `contentPath` |  |
-| `itemControl` | [str](../../common/type-system.md#str) | `itemControl` |  |
+| <ApiFieldAnchor id="field-labelPaths" />`labelPaths` | [LabelPaths](../../common/type-aliases.md#labelpaths) | `_copyPaths(labelPaths)` |  |
+| <ApiFieldAnchor id="field-dropdownPath" />`dropdownPath` | [str](../../common/type-system.md#str) | `dropdownPath` |  |
+| <ApiFieldAnchor id="field-boxLabelPaths" />`boxLabelPaths` | [ControlPaths](../../common/type-aliases.md#controlpaths) | `_copyPaths(boxLabelPaths)` |  |
+| <ApiFieldAnchor id="field-itemLabelPaths" />`itemLabelPaths` | [ControlPaths](../../common/type-aliases.md#controlpaths) | `_copyPaths(itemLabelPaths)` |  |
+| <ApiFieldAnchor id="field-contentPath" />`contentPath` | [str](../../common/type-system.md#str) | `contentPath` |  |
+| <ApiFieldAnchor id="field-itemControl" />`itemControl` | [str](../../common/type-system.md#str) | `itemControl` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -44,7 +46,7 @@ sidebar_label: "Dropdown"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [onCreate](ControlDescriptor.md#字段与常量) | [ControlDescriptor](ControlDescriptor.md) |
+| [onCreate](ControlDescriptor.md#field-onCreate) | [ControlDescriptor](ControlDescriptor.md) |
 
 ## 构造器 {#constructor}
 

@@ -11,8 +11,8 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.d47f6e88.js" defer="defer"></script>
-<script src="/assets/js/main.325efda7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.870f2c73.js" defer="defer"></script>
+<script src="/assets/js/main.b7a27e57.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -26,7 +26,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="获取方式">获取方式<a href="#获取方式" class="hash-link" aria-label="获取方式的直接链接" title="获取方式的直接链接" translate="no">​</a></h2>
 <p>使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="字段与常量">字段与常量<a href="#字段与常量" class="hash-link" aria-label="字段与常量的直接链接" title="字段与常量的直接链接" translate="no">​</a></h2>
-<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><code>exclude</code></td><td><a href="/docs/packs/common/type-system#bool">bool</a></td><td><code>data[&#x27;exclude&#x27;] if &#x27;exclude&#x27; in data else False</code></td><td>为 True 时，排除分数位于给定区间的实体和玩家。</td></tr><tr><td><code>objective</code></td><td><a href="/docs/packs/common/type-system#str">str</a></td><td><code>data[&#x27;objective&#x27;] if &#x27;objective&#x27; in data else &#x27;&#x27;</code></td><td>用于筛选的计分板目标标识。</td></tr><tr><td><code>minScore</code></td><td><a href="/docs/packs/common/type-system#int">int</a></td><td><code>data[&#x27;minScore&#x27;] if &#x27;minScore&#x27; in data else -2147483648</code></td><td>只包含分数不小于 minScore 的玩家。</td></tr><tr><td><code>maxScore</code></td><td><a href="/docs/packs/common/type-system#int">int</a></td><td><code>data[&#x27;maxScore&#x27;] if &#x27;maxScore&#x27; in data else 2147483647</code></td><td>只包含分数不大于 maxScore 的玩家。</td></tr></tbody></table>
+<table><thead><tr><th>名称</th><th>类型线索</th><th>默认值 / 来源</th><th>说明</th></tr></thead><tbody><tr><td><a id="field-exclude"></a><code>exclude</code></td><td><a href="/docs/packs/common/type-system#bool">bool</a></td><td><code>data[&#x27;exclude&#x27;] if &#x27;exclude&#x27; in data else False</code></td><td>为 True 时，排除分数位于给定区间的实体和玩家。</td></tr><tr><td><a id="field-objective"></a><code>objective</code></td><td><a href="/docs/packs/common/type-system#str">str</a></td><td><code>data[&#x27;objective&#x27;] if &#x27;objective&#x27; in data else &#x27;&#x27;</code></td><td>用于筛选的计分板目标标识。</td></tr><tr><td><a id="field-minScore"></a><code>minScore</code></td><td><a href="/docs/packs/common/type-system#int">int</a></td><td><code>data[&#x27;minScore&#x27;] if &#x27;minScore&#x27; in data else -2147483648</code></td><td>只包含分数不小于 minScore 的玩家。</td></tr><tr><td><a id="field-maxScore"></a><code>maxScore</code></td><td><a href="/docs/packs/common/type-system#int">int</a></td><td><code>data[&#x27;maxScore&#x27;] if &#x27;maxScore&#x27; in data else 2147483647</code></td><td>只包含分数不大于 maxScore 的玩家。</td></tr></tbody></table>
 <p>字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="成员索引">成员索引<a href="#成员索引" class="hash-link" aria-label="成员索引的直接链接" title="成员索引的直接链接" translate="no">​</a></h2>
 <table><thead><tr><th>名称</th><th>形态</th></tr></thead><tbody><tr><td><a href="#constructor"><strong>init</strong></a></td><td>构造器</td></tr></tbody></table>

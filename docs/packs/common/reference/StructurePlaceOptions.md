@@ -3,6 +3,8 @@ title: "StructurePlaceOptions"
 sidebar_label: "StructurePlaceOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # StructurePlaceOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -19,15 +21,15 @@ sidebar_label: "StructurePlaceOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `animationMode` | [str](../type-system.md#str) | `运行时返回` |  |
-| `animationSeconds` | [str](../type-system.md#str) | `运行时返回` |  |
-| `includeBlocks` | [bool](../type-system.md#bool) | `运行时返回` |  |
-| `includeEntities` | [bool](../type-system.md#bool) | `运行时返回` |  |
-| `integrity` | [float](../type-system.md#float) | `运行时返回` |  |
-| `integritySeed` | [int](../type-system.md#int) | `运行时返回` |  |
-| `mirror` | [StructureMirrorAxis](StructureMirrorAxis.md) | `运行时返回` |  |
-| `rotation` | [StructureRotation](StructureRotation.md) | `运行时返回` |  |
-| `waterlogged` | [bool](../type-system.md#bool) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-animationMode" />`animationMode` | [str](../type-system.md#str) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-animationSeconds" />`animationSeconds` | [str](../type-system.md#str) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-includeBlocks" />`includeBlocks` | [bool](../type-system.md#bool) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-includeEntities" />`includeEntities` | [bool](../type-system.md#bool) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-integrity" />`integrity` | [float](../type-system.md#float) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-integritySeed" />`integritySeed` | [int](../type-system.md#int) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-mirror" />`mirror` | [StructureMirrorAxis](StructureMirrorAxis.md) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-rotation" />`rotation` | [StructureRotation](StructureRotation.md) | `运行时返回` |  |
+| <ApiFieldAnchor id="field-waterlogged" />`waterlogged` | [bool](../type-system.md#bool) | `运行时返回` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

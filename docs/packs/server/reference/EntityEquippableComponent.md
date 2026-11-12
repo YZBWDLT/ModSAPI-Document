@@ -3,6 +3,8 @@ title: "EntityEquippableComponent"
 sidebar_label: "EntityEquippableComponent"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityEquippableComponent
 
 作用域：服务端。
@@ -21,7 +23,7 @@ sidebar_label: "EntityEquippableComponent"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `componentId` | [Literal](../../common/type-system.md#literal)['minecraft:equippable'] | `'minecraft:equippable'` |  |
+| <ApiFieldAnchor id="field-componentId" />`componentId` | [Literal](../../common/type-system.md#literal)['minecraft:equippable'] | `'minecraft:equippable'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

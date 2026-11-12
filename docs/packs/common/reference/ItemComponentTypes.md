@@ -3,6 +3,8 @@ title: "ItemComponentTypes"
 sidebar_label: "ItemComponentTypes"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ItemComponentTypes
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,16 +19,16 @@ sidebar_label: "ItemComponentTypes"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `BlockDynamicProperties` | [str](../type-system.md#str) | `'minecraft:block_actor_dynamic_properties'` |  |
-| `Book` | [str](../type-system.md#str) | `'minecraft:book'` |  |
-| `Compostable` | [str](../type-system.md#str) | `'minecraft:compostable'` |  |
-| `Cooldown` | [str](../type-system.md#str) | `'minecraft:cooldown'` |  |
-| `Durability` | [str](../type-system.md#str) | `'minecraft:durability'` |  |
-| `Dyeable` | [str](../type-system.md#str) | `'minecraft:dyeable'` |  |
-| `Enchantable` | [str](../type-system.md#str) | `'minecraft:enchantable'` |  |
-| `Food` | [str](../type-system.md#str) | `'minecraft:food'` |  |
-| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
-| `Potion` | [str](../type-system.md#str) | `'minecraft:potion'` |  |
+| <ApiFieldAnchor id="field-BlockDynamicProperties" />`BlockDynamicProperties` | [str](../type-system.md#str) | `'minecraft:block_actor_dynamic_properties'` |  |
+| <ApiFieldAnchor id="field-Book" />`Book` | [str](../type-system.md#str) | `'minecraft:book'` |  |
+| <ApiFieldAnchor id="field-Compostable" />`Compostable` | [str](../type-system.md#str) | `'minecraft:compostable'` |  |
+| <ApiFieldAnchor id="field-Cooldown" />`Cooldown` | [str](../type-system.md#str) | `'minecraft:cooldown'` |  |
+| <ApiFieldAnchor id="field-Durability" />`Durability` | [str](../type-system.md#str) | `'minecraft:durability'` |  |
+| <ApiFieldAnchor id="field-Dyeable" />`Dyeable` | [str](../type-system.md#str) | `'minecraft:dyeable'` |  |
+| <ApiFieldAnchor id="field-Enchantable" />`Enchantable` | [str](../type-system.md#str) | `'minecraft:enchantable'` |  |
+| <ApiFieldAnchor id="field-Food" />`Food` | [str](../type-system.md#str) | `'minecraft:food'` |  |
+| <ApiFieldAnchor id="field-Inventory" />`Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
+| <ApiFieldAnchor id="field-Potion" />`Potion` | [str](../type-system.md#str) | `'minecraft:potion'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

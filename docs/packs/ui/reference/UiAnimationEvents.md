@@ -3,6 +3,8 @@ title: "UiAnimationEvents"
 sidebar_label: "UiAnimationEvents"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiAnimationEvents
 
 作用域：界面、控件和两端组合表单。
@@ -19,8 +21,8 @@ sidebar_label: "UiAnimationEvents"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `complete` | [UiEventSignal](UiEventSignal.md)[[UiAnimationEvent](UiAnimationEvent.md)] | `UiEventSignal(animation)` |  |
-| `error` | [UiEventSignal](UiEventSignal.md)[[UiAnimationEvent](UiAnimationEvent.md)] | `UiEventSignal(animation)` |  |
+| <ApiFieldAnchor id="field-complete" />`complete` | [UiEventSignal](UiEventSignal.md)[[UiAnimationEvent](UiAnimationEvent.md)] | `UiEventSignal(animation)` |  |
+| <ApiFieldAnchor id="field-error" />`error` | [UiEventSignal](UiEventSignal.md)[[UiAnimationEvent](UiAnimationEvent.md)] | `UiEventSignal(animation)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

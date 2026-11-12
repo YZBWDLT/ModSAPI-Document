@@ -35,17 +35,17 @@ sidebar_label: "DragableButton"
 | [addLabel](Control.md#addLabel) | [Control](Control.md) |
 | [addPanel](Control.md#addPanel) | [Control](Control.md) |
 | [addScrollPanel](Control.md#addScrollPanel) | [Control](Control.md) |
-| [alpha](Button.md#字段与常量) | [Button](Button.md) |
+| [alpha](Button.md#field-alpha) | [Button](Button.md) |
 | [anchor](Control.md#anchor) | [Control](Control.md) |
 | [asStaticControl](Control.md#asStaticControl) | [Control](Control.md) |
 | [background](Control.md#background) | [Control](Control.md) |
 | [callbacks](Button.md#callbacks) | [Button](Button.md) |
 | [copy](Control.md#copy) | [Control](Control.md) |
 | [label](Button.md#label) | [Button](Button.md) |
-| [name](Button.md#字段与常量) | [Button](Button.md) |
-| [offset](Button.md#字段与常量) | [Button](Button.md) |
+| [name](Button.md#field-name) | [Button](Button.md) |
+| [offset](Button.md#field-offset) | [Button](Button.md) |
 | [parent](Control.md#parent) | [Control](Control.md) |
-| [size](Button.md#字段与常量) | [Button](Button.md) |
+| [size](Button.md#field-size) | [Button](Button.md) |
 | [textures](Button.md#textures) | [Button](Button.md) |
 | [trace](Control.md#trace) | [Control](Control.md) |
 

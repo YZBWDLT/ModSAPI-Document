@@ -3,6 +3,8 @@ title: "UiAnimationOptions"
 sidebar_label: "UiAnimationOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # UiAnimationOptions
 
 作用域：界面、控件和两端组合表单。
@@ -21,10 +23,10 @@ sidebar_label: "UiAnimationOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `from` | [float](../../common/type-system.md#float) \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
-| `duration` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
-| `onComplete` | [Callable](../../common/type-system.md#callable)[[[UiAnimationEvent](UiAnimationEvent.md)], [None](../../common/type-system.md#none)] | `可选字段；省略规则见所属操作` |  |
-| `onError` | [Callable](../../common/type-system.md#callable)[[[UiAnimationEvent](UiAnimationEvent.md)], [None](../../common/type-system.md#none)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-from" />`from` | [float](../../common/type-system.md#float) \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-duration" />`duration` | [float](../../common/type-system.md#float) | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-onComplete" />`onComplete` | [Callable](../../common/type-system.md#callable)[[[UiAnimationEvent](UiAnimationEvent.md)], [None](../../common/type-system.md#none)] | `可选字段；省略规则见所属操作` |  |
+| <ApiFieldAnchor id="field-onError" />`onError` | [Callable](../../common/type-system.md#callable)[[[UiAnimationEvent](UiAnimationEvent.md)], [None](../../common/type-system.md#none)] | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

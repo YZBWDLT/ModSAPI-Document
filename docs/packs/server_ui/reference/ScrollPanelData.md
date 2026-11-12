@@ -3,6 +3,8 @@ title: "ScrollPanelData"
 sidebar_label: "ScrollPanelData"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ScrollPanelData
 
 作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
@@ -19,7 +21,7 @@ sidebar_label: "ScrollPanelData"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `content` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
+| <ApiFieldAnchor id="field-content" />`content` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -36,21 +38,21 @@ sidebar_label: "ScrollPanelData"
 | 成员 | 定义位置 |
 | --- | --- |
 | [addControl](ControlData.md#addControl) | [ControlData](ControlData.md) |
-| [alpha](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [anchor](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [background](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controlName](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [controls](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [alpha](ControlData.md#field-alpha) | [ControlData](ControlData.md) |
+| [anchor](ControlData.md#field-anchor) | [ControlData](ControlData.md) |
+| [background](ControlData.md#field-background) | [ControlData](ControlData.md) |
+| [controlName](ControlData.md#field-controlName) | [ControlData](ControlData.md) |
+| [controls](ControlData.md#field-controls) | [ControlData](ControlData.md) |
 | [copy](ControlData.md#copy) | [ControlData](ControlData.md) |
-| [inst](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [isStatic](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [offset](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [parent](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [inst](ControlData.md#field-inst) | [ControlData](ControlData.md) |
+| [isStatic](ControlData.md#field-isStatic) | [ControlData](ControlData.md) |
+| [offset](ControlData.md#field-offset) | [ControlData](ControlData.md) |
+| [parent](ControlData.md#field-parent) | [ControlData](ControlData.md) |
 | [path](ControlData.md#path) | [ControlData](ControlData.md) |
 | [removeControl](ControlData.md#removeControl) | [ControlData](ControlData.md) |
-| [shouldTrace](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [size](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
-| [visible](ControlData.md#字段与常量) | [ControlData](ControlData.md) |
+| [shouldTrace](ControlData.md#field-shouldTrace) | [ControlData](ControlData.md) |
+| [size](ControlData.md#field-size) | [ControlData](ControlData.md) |
+| [visible](ControlData.md#field-visible) | [ControlData](ControlData.md) |
 
 ## 构造器 {#constructor}
 

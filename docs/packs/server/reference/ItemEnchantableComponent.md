@@ -3,6 +3,8 @@ title: "ItemEnchantableComponent"
 sidebar_label: "ItemEnchantableComponent"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ItemEnchantableComponent
 
 作用域：服务端。
@@ -13,7 +15,7 @@ sidebar_label: "ItemEnchantableComponent"
 
 ## 获取方式
 
-通过 item.getComponent("enchantable") 或 [ItemEnchantableComponent.componentId](ItemEnchantableComponent.md#字段与常量) 取得；不具备该组件时为 [None](../../common/type-system.md#none)。
+通过 item.getComponent("enchantable") 或 [ItemEnchantableComponent.componentId](ItemEnchantableComponent.md#field-componentId) 取得；不具备该组件时为 [None](../../common/type-system.md#none)。
 
 基类：[ItemComponent](ItemComponent.md).
 
@@ -21,7 +23,7 @@ sidebar_label: "ItemEnchantableComponent"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `componentId` | [Final](../../common/type-system.md#final) | `'minecraft:enchantable'` |  |
+| <ApiFieldAnchor id="field-componentId" />`componentId` | [Final](../../common/type-system.md#final) | `'minecraft:enchantable'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

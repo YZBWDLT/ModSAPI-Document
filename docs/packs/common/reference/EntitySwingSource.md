@@ -3,6 +3,8 @@ title: "EntitySwingSource"
 sidebar_label: "EntitySwingSource"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntitySwingSource
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,14 +19,14 @@ sidebar_label: "EntitySwingSource"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `Attack` | [str](../type-system.md#str) | `'Attack'` |  |
-| `Build` | [str](../type-system.md#str) | `'Build'` |  |
-| `DropItem` | [str](../type-system.md#str) | `'DropItem'` |  |
-| `Event` | [str](../type-system.md#str) | `'Event'` |  |
-| `Interact` | [str](../type-system.md#str) | `'Interact'` |  |
-| `Mine` | [str](../type-system.md#str) | `'Mine'` |  |
-| `ThrowItem` | [str](../type-system.md#str) | `'ThrowItem'` |  |
-| `UseItem` | [str](../type-system.md#str) | `'UseItem'` |  |
+| <ApiFieldAnchor id="field-Attack" />`Attack` | [str](../type-system.md#str) | `'Attack'` |  |
+| <ApiFieldAnchor id="field-Build" />`Build` | [str](../type-system.md#str) | `'Build'` |  |
+| <ApiFieldAnchor id="field-DropItem" />`DropItem` | [str](../type-system.md#str) | `'DropItem'` |  |
+| <ApiFieldAnchor id="field-Event" />`Event` | [str](../type-system.md#str) | `'Event'` |  |
+| <ApiFieldAnchor id="field-Interact" />`Interact` | [str](../type-system.md#str) | `'Interact'` |  |
+| <ApiFieldAnchor id="field-Mine" />`Mine` | [str](../type-system.md#str) | `'Mine'` |  |
+| <ApiFieldAnchor id="field-ThrowItem" />`ThrowItem` | [str](../type-system.md#str) | `'ThrowItem'` |  |
+| <ApiFieldAnchor id="field-UseItem" />`UseItem` | [str](../type-system.md#str) | `'UseItem'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

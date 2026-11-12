@@ -3,6 +3,8 @@ title: "LocatorBarErrorReason"
 sidebar_label: "LocatorBarErrorReason"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # LocatorBarErrorReason
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,9 +19,9 @@ sidebar_label: "LocatorBarErrorReason"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `WaypointAlreadyExists` | [str](../type-system.md#str) | `'WaypointAlreadyExists'` |  |
-| `WaypointLimitExceeded` | [str](../type-system.md#str) | `'WaypointLimitExceeded'` |  |
-| `WaypointNotFound` | [str](../type-system.md#str) | `'WaypointNotFound'` |  |
+| <ApiFieldAnchor id="field-WaypointAlreadyExists" />`WaypointAlreadyExists` | [str](../type-system.md#str) | `'WaypointAlreadyExists'` |  |
+| <ApiFieldAnchor id="field-WaypointLimitExceeded" />`WaypointLimitExceeded` | [str](../type-system.md#str) | `'WaypointLimitExceeded'` |  |
+| <ApiFieldAnchor id="field-WaypointNotFound" />`WaypointNotFound` | [str](../type-system.md#str) | `'WaypointNotFound'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

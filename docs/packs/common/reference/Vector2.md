@@ -3,6 +3,8 @@ title: "Vector2"
 sidebar_label: "Vector2"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Vector2
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,8 +23,8 @@ sidebar_label: "Vector2"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `x` | [float](../type-system.md#float) | `data[0]` |  |
-| `y` | [float](../type-system.md#float) | `data[1]` |  |
+| <ApiFieldAnchor id="field-x" />`x` | [float](../type-system.md#float) | `data[0]` |  |
+| <ApiFieldAnchor id="field-y" />`y` | [float](../type-system.md#float) | `data[1]` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -3,6 +3,8 @@ title: "EnchantmentSlot"
 sidebar_label: "EnchantmentSlot"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EnchantmentSlot
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,26 +19,26 @@ sidebar_label: "EnchantmentSlot"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `ArmorFeet` | [str](../type-system.md#str) | `'ArmorFeet'` |  |
-| `ArmorHead` | [str](../type-system.md#str) | `'ArmorHead'` |  |
-| `ArmorLegs` | [str](../type-system.md#str) | `'ArmorLegs'` |  |
-| `ArmorTorso` | [str](../type-system.md#str) | `'ArmorTorso'` |  |
-| `Axe` | [str](../type-system.md#str) | `'Axe'` |  |
-| `Bow` | [str](../type-system.md#str) | `'Bow'` |  |
-| `CarrotStick` | [str](../type-system.md#str) | `'CarrotStick'` |  |
-| `CosmeticHead` | [str](../type-system.md#str) | `'CosmeticHead'` |  |
-| `Crossbow` | [str](../type-system.md#str) | `'Crossbow'` |  |
-| `Elytra` | [str](../type-system.md#str) | `'Elytra'` |  |
-| `FishingRod` | [str](../type-system.md#str) | `'FishingRod'` |  |
-| `Flintsteel` | [str](../type-system.md#str) | `'Flintsteel'` |  |
-| `Hoe` | [str](../type-system.md#str) | `'Hoe'` |  |
-| `MeleeSpear` | [str](../type-system.md#str) | `'MeleeSpear'` |  |
-| `Pickaxe` | [str](../type-system.md#str) | `'Pickaxe'` |  |
-| `Shears` | [str](../type-system.md#str) | `'Shears'` |  |
-| `Shield` | [str](../type-system.md#str) | `'Shield'` |  |
-| `Shovel` | [str](../type-system.md#str) | `'Shovel'` |  |
-| `Spear` | [str](../type-system.md#str) | `'Spear'` |  |
-| `Sword` | [str](../type-system.md#str) | `'Sword'` |  |
+| <ApiFieldAnchor id="field-ArmorFeet" />`ArmorFeet` | [str](../type-system.md#str) | `'ArmorFeet'` |  |
+| <ApiFieldAnchor id="field-ArmorHead" />`ArmorHead` | [str](../type-system.md#str) | `'ArmorHead'` |  |
+| <ApiFieldAnchor id="field-ArmorLegs" />`ArmorLegs` | [str](../type-system.md#str) | `'ArmorLegs'` |  |
+| <ApiFieldAnchor id="field-ArmorTorso" />`ArmorTorso` | [str](../type-system.md#str) | `'ArmorTorso'` |  |
+| <ApiFieldAnchor id="field-Axe" />`Axe` | [str](../type-system.md#str) | `'Axe'` |  |
+| <ApiFieldAnchor id="field-Bow" />`Bow` | [str](../type-system.md#str) | `'Bow'` |  |
+| <ApiFieldAnchor id="field-CarrotStick" />`CarrotStick` | [str](../type-system.md#str) | `'CarrotStick'` |  |
+| <ApiFieldAnchor id="field-CosmeticHead" />`CosmeticHead` | [str](../type-system.md#str) | `'CosmeticHead'` |  |
+| <ApiFieldAnchor id="field-Crossbow" />`Crossbow` | [str](../type-system.md#str) | `'Crossbow'` |  |
+| <ApiFieldAnchor id="field-Elytra" />`Elytra` | [str](../type-system.md#str) | `'Elytra'` |  |
+| <ApiFieldAnchor id="field-FishingRod" />`FishingRod` | [str](../type-system.md#str) | `'FishingRod'` |  |
+| <ApiFieldAnchor id="field-Flintsteel" />`Flintsteel` | [str](../type-system.md#str) | `'Flintsteel'` |  |
+| <ApiFieldAnchor id="field-Hoe" />`Hoe` | [str](../type-system.md#str) | `'Hoe'` |  |
+| <ApiFieldAnchor id="field-MeleeSpear" />`MeleeSpear` | [str](../type-system.md#str) | `'MeleeSpear'` |  |
+| <ApiFieldAnchor id="field-Pickaxe" />`Pickaxe` | [str](../type-system.md#str) | `'Pickaxe'` |  |
+| <ApiFieldAnchor id="field-Shears" />`Shears` | [str](../type-system.md#str) | `'Shears'` |  |
+| <ApiFieldAnchor id="field-Shield" />`Shield` | [str](../type-system.md#str) | `'Shield'` |  |
+| <ApiFieldAnchor id="field-Shovel" />`Shovel` | [str](../type-system.md#str) | `'Shovel'` |  |
+| <ApiFieldAnchor id="field-Spear" />`Spear` | [str](../type-system.md#str) | `'Spear'` |  |
+| <ApiFieldAnchor id="field-Sword" />`Sword` | [str](../type-system.md#str) | `'Sword'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

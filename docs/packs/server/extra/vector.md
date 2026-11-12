@@ -3,6 +3,8 @@ title: "Vector3"
 sidebar_label: "Vector3"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Vector3
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,9 +23,9 @@ sidebar_label: "Vector3"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `x` | [float](../../common/type-system.md#float) | `data.x` |  |
-| `y` | [float](../../common/type-system.md#float) | `data.y` |  |
-| `z` | [float](../../common/type-system.md#float) | `data.z` |  |
+| <ApiFieldAnchor id="field-x" />`x` | [float](../../common/type-system.md#float) | `data.x` |  |
+| <ApiFieldAnchor id="field-y" />`y` | [float](../../common/type-system.md#float) | `data.y` |  |
+| <ApiFieldAnchor id="field-z" />`z` | [float](../../common/type-system.md#float) | `data.z` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

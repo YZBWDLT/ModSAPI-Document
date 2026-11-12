@@ -3,6 +3,8 @@ title: "ControlScheme"
 sidebar_label: "ControlScheme"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # ControlScheme
 
 作用域：公共数据、选项、枚举与错误。
@@ -17,11 +19,11 @@ sidebar_label: "ControlScheme"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `CameraRelative` | [str](../type-system.md#str) | `'CameraRelative'` |  |
-| `CameraRelativeStrafe` | [str](../type-system.md#str) | `'CameraRelativeStrafe'` |  |
-| `LockedPlayerRelativeStrafe` | [str](../type-system.md#str) | `'LockedPlayerRelativeStrafe'` |  |
-| `PlayerRelative` | [str](../type-system.md#str) | `'PlayerRelative'` |  |
-| `PlayerRelativeStrafe` | [str](../type-system.md#str) | `'PlayerRelativeStrafe'` |  |
+| <ApiFieldAnchor id="field-CameraRelative" />`CameraRelative` | [str](../type-system.md#str) | `'CameraRelative'` |  |
+| <ApiFieldAnchor id="field-CameraRelativeStrafe" />`CameraRelativeStrafe` | [str](../type-system.md#str) | `'CameraRelativeStrafe'` |  |
+| <ApiFieldAnchor id="field-LockedPlayerRelativeStrafe" />`LockedPlayerRelativeStrafe` | [str](../type-system.md#str) | `'LockedPlayerRelativeStrafe'` |  |
+| <ApiFieldAnchor id="field-PlayerRelative" />`PlayerRelative` | [str](../type-system.md#str) | `'PlayerRelative'` |  |
+| <ApiFieldAnchor id="field-PlayerRelativeStrafe" />`PlayerRelativeStrafe` | [str](../type-system.md#str) | `'PlayerRelativeStrafe'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -21,7 +21,7 @@ sidebar_label: "InvalidFormModificationError"
 
 | 成员 | 定义位置 |
 | --- | --- |
-| [formId](InvalidFormError.md#字段与常量) | [InvalidFormError](InvalidFormError.md) |
+| [formId](InvalidFormError.md#field-formId) | [InvalidFormError](InvalidFormError.md) |
 
 ## 使用示例
 

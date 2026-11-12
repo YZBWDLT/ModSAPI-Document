@@ -3,6 +3,8 @@ title: "TickingAreaOptions"
 sidebar_label: "TickingAreaOptions"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # TickingAreaOptions
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,8 +23,8 @@ sidebar_label: "TickingAreaOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
-| `to` | [Vector3](../../server/extra/vector.md) | `Vector3(self.to)` |  |
+| <ApiFieldAnchor id="field-dimension" />`dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
+| <ApiFieldAnchor id="field-to" />`to` | [Vector3](../../server/extra/vector.md) | `Vector3(self.to)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

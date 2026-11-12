@@ -3,6 +3,8 @@ title: "Task"
 sidebar_label: "Task"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # Task
 
 作用域：架构辅助接口。
@@ -17,10 +19,10 @@ sidebar_label: "Task"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `taskId` | 由运行时值确定 | `0` |  |
-| `fn` | 由运行时值确定 | `fn` |  |
-| `id` | 由运行时值确定 | [Task.taskId](Task.md#字段与常量) |  |
-| `finished` | 由运行时值确定 | `False` |  |
+| <ApiFieldAnchor id="field-taskId" />`taskId` | 由运行时值确定 | `0` |  |
+| <ApiFieldAnchor id="field-fn" />`fn` | 由运行时值确定 | `fn` |  |
+| <ApiFieldAnchor id="field-id" />`id` | 由运行时值确定 | [Task.taskId](Task.md#field-taskId) |  |
+| <ApiFieldAnchor id="field-finished" />`finished` | 由运行时值确定 | `False` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

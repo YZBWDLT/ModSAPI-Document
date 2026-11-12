@@ -3,6 +3,8 @@ title: "EntityFilter"
 sidebar_label: "EntityFilter"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # EntityFilter
 
 作用域：公共数据、选项、枚举与错误。
@@ -21,24 +23,24 @@ sidebar_label: "EntityFilter"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `excludeFamilies` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeFamilies'] if 'excludeFamilies' in data else []` | 排除属于列表中任一族群的实体。 |
-| `excludeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeTypes'] if 'excludeTypes' in data else []` | 排除列表中的实体定义类型。 |
-| `excludeGameModes` | [list](../type-system.md#list)[[GameMode](GameMode.md)] | `data['excludeGameModes'] if 'excludeGameModes' in data else []` | 排除处于列表中任一游戏模式的玩家。 |
-| `excludeNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeNames'] if 'excludeNames' in data else []` | 排除名称位于列表中的实体。 |
-| `excludeTags` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeTags'] if 'excludeTags' in data else []` | 排除具有列表中任一标签的实体。 |
-| `families` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['families'] if 'families' in data else []` | 按指定族群筛选实体。 |
-| `gameMode` | [GameMode](GameMode.md) | `data['gameMode'] if 'gameMode' in data else None` | 按指定游戏模式筛选玩家。 |
-| `maxHorizontalRotation` | [float](../type-system.md#float) | `data['maxHorizontalRotation'] if 'maxHorizontalRotation' in data else None` | 水平旋转角筛选上限，单位为度。 |
-| `maxLevel` | [int](../type-system.md#int) | `data['maxLevel'] if 'maxLevel' in data else None` | 玩家等级筛选上限。 |
-| `maxVerticalRotation` | [float](../type-system.md#float) | `data['maxVerticalRotation'] if 'maxVerticalRotation' in data else None` | 垂直旋转角筛选上限，单位为度。 |
-| `minLevel` | [int](../type-system.md#int) | `data['minLevel'] if 'minLevel' in data else None` | 玩家等级筛选下限。 |
-| `minHorizontalRotation` | [float](../type-system.md#float) | `data['minHorizontalRotation'] if 'minHorizontalRotation' in data else None` | 水平旋转角筛选下限，单位为度。 |
-| `minVerticalRotation` | [float](../type-system.md#float) | `data['minVerticalRotation'] if 'minVerticalRotation' in data else None` | 垂直旋转角筛选下限，单位为度。 |
-| `name` | [str](../type-system.md#str) | `data['name'] if 'name' in data else ''` | 要求实体名称与指定名称一致。 |
-| `propertyOptions` | [list](../type-system.md#list)[[EntityQueryPropertyOptions](EntityQueryPropertyOptions.md)] | `data['propertyOptions'] if 'propertyOptions' in data else None` | 应用给定的实体属性筛选条件。 |
-| `scoreOptions` | [list](../type-system.md#list)[[EntityQueryScoreOptions](EntityQueryScoreOptions.md)] | `data['scoreOptions'] if 'scoreOptions' in data else None` | 应用给定的计分板筛选条件。 |
-| `tags` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['tags'] if 'tags' in data else []` | 要求实体具有指定标签。 |
-| [type](../type-system.md#type) | [str](../type-system.md#str) | `data['type'] if 'type' in data else ''` | 要求实体属于指定定义类型。 |
+| <ApiFieldAnchor id="field-excludeFamilies" />`excludeFamilies` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeFamilies'] if 'excludeFamilies' in data else []` | 排除属于列表中任一族群的实体。 |
+| <ApiFieldAnchor id="field-excludeTypes" />`excludeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeTypes'] if 'excludeTypes' in data else []` | 排除列表中的实体定义类型。 |
+| <ApiFieldAnchor id="field-excludeGameModes" />`excludeGameModes` | [list](../type-system.md#list)[[GameMode](GameMode.md)] | `data['excludeGameModes'] if 'excludeGameModes' in data else []` | 排除处于列表中任一游戏模式的玩家。 |
+| <ApiFieldAnchor id="field-excludeNames" />`excludeNames` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeNames'] if 'excludeNames' in data else []` | 排除名称位于列表中的实体。 |
+| <ApiFieldAnchor id="field-excludeTags" />`excludeTags` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['excludeTags'] if 'excludeTags' in data else []` | 排除具有列表中任一标签的实体。 |
+| <ApiFieldAnchor id="field-families" />`families` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['families'] if 'families' in data else []` | 按指定族群筛选实体。 |
+| <ApiFieldAnchor id="field-gameMode" />`gameMode` | [GameMode](GameMode.md) | `data['gameMode'] if 'gameMode' in data else None` | 按指定游戏模式筛选玩家。 |
+| <ApiFieldAnchor id="field-maxHorizontalRotation" />`maxHorizontalRotation` | [float](../type-system.md#float) | `data['maxHorizontalRotation'] if 'maxHorizontalRotation' in data else None` | 水平旋转角筛选上限，单位为度。 |
+| <ApiFieldAnchor id="field-maxLevel" />`maxLevel` | [int](../type-system.md#int) | `data['maxLevel'] if 'maxLevel' in data else None` | 玩家等级筛选上限。 |
+| <ApiFieldAnchor id="field-maxVerticalRotation" />`maxVerticalRotation` | [float](../type-system.md#float) | `data['maxVerticalRotation'] if 'maxVerticalRotation' in data else None` | 垂直旋转角筛选上限，单位为度。 |
+| <ApiFieldAnchor id="field-minLevel" />`minLevel` | [int](../type-system.md#int) | `data['minLevel'] if 'minLevel' in data else None` | 玩家等级筛选下限。 |
+| <ApiFieldAnchor id="field-minHorizontalRotation" />`minHorizontalRotation` | [float](../type-system.md#float) | `data['minHorizontalRotation'] if 'minHorizontalRotation' in data else None` | 水平旋转角筛选下限，单位为度。 |
+| <ApiFieldAnchor id="field-minVerticalRotation" />`minVerticalRotation` | [float](../type-system.md#float) | `data['minVerticalRotation'] if 'minVerticalRotation' in data else None` | 垂直旋转角筛选下限，单位为度。 |
+| <ApiFieldAnchor id="field-name" />`name` | [str](../type-system.md#str) | `data['name'] if 'name' in data else ''` | 要求实体名称与指定名称一致。 |
+| <ApiFieldAnchor id="field-propertyOptions" />`propertyOptions` | [list](../type-system.md#list)[[EntityQueryPropertyOptions](EntityQueryPropertyOptions.md)] | `data['propertyOptions'] if 'propertyOptions' in data else None` | 应用给定的实体属性筛选条件。 |
+| <ApiFieldAnchor id="field-scoreOptions" />`scoreOptions` | [list](../type-system.md#list)[[EntityQueryScoreOptions](EntityQueryScoreOptions.md)] | `data['scoreOptions'] if 'scoreOptions' in data else None` | 应用给定的计分板筛选条件。 |
+| <ApiFieldAnchor id="field-tags" />`tags` | [list](../type-system.md#list)[[str](../type-system.md#str)] | `data['tags'] if 'tags' in data else []` | 要求实体具有指定标签。 |
+| <ApiFieldAnchor id="field-type" />[type](../type-system.md#type) | [str](../type-system.md#str) | `data['type'] if 'type' in data else ''` | 要求实体属于指定定义类型。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

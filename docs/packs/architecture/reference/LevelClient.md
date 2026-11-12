@@ -3,6 +3,8 @@ title: "LevelClient"
 sidebar_label: "LevelClient"
 ---
 
+import ApiFieldAnchor from '@docusaurus/Link';
+
 # LevelClient
 
 作用域：架构辅助接口。
@@ -17,34 +19,34 @@ sidebar_label: "LevelClient"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `levelId` | 由运行时值确定 | `levelId` |  |
-| `localPlayerId` | 由运行时值确定 | `localPlayerId` |  |
-| `localPlayer` | 由运行时值确定 | `compClient.CreatePlayer(localPlayerId)` |  |
-| `achievement` | 由运行时值确定 | `compClient.CreateAchievement(levelId)` |  |
-| `actorRender` | 由运行时值确定 | `compClient.CreateActorRender(levelId)` |  |
-| `biome` | 由运行时值确定 | `compClient.CreateBiome(levelId)` |  |
-| `block` | 由运行时值确定 | `compClient.CreateBlock(levelId)` |  |
-| `blockGeometry` | 由运行时值确定 | `compClient.CreateBlockGeometry(levelId)` |  |
-| `blockInfo` | 由运行时值确定 | `compClient.CreateBlockInfo(levelId)` |  |
-| `blockUseEventWhiteList` | 由运行时值确定 | `compClient.CreateBlockUseEventWhiteList(levelId)` |  |
-| `camera` | 由运行时值确定 | `compClient.CreateCamera(levelId)` |  |
-| `chunkSource` | 由运行时值确定 | `compClient.CreateChunkSource(levelId)` |  |
-| `configClient` | 由运行时值确定 | `compClient.CreateConfigClient(levelId)` |  |
-| `customAudio` | 由运行时值确定 | `compClient.CreateCustomAudio(levelId)` |  |
-| `dimension` | 由运行时值确定 | `compClient.CreateDimension(levelId)` |  |
-| `drawing` | 由运行时值确定 | `compClient.CreateDrawing(levelId)` |  |
-| `fog` | 由运行时值确定 | `compClient.CreateFog(levelId)` |  |
-| `game` | 由运行时值确定 | `compClient.CreateGame(levelId)` |  |
-| `model` | 由运行时值确定 | `compClient.CreateModel(levelId)` |  |
-| `neteaseShop` | 由运行时值确定 | `compClient.CreateNeteaseShop(levelId)` |  |
-| `operation` | 由运行时值确定 | `compClient.CreateOperation(levelId)` |  |
-| `playerView` | 由运行时值确定 | `compClient.CreatePlayerView(localPlayerId)` |  |
-| `postProcess` | 由运行时值确定 | `compClient.CreatePostProcess(levelId)` |  |
-| `recipe` | 由运行时值确定 | `compClient.CreateRecipe(levelId)` |  |
-| `skyRender` | 由运行时值确定 | `compClient.CreateSkyRender(levelId)` |  |
-| `textBoard` | 由运行时值确定 | `compClient.CreateTextBoard(levelId)` |  |
-| `textNotify` | 由运行时值确定 | `compClient.CreateTextNotifyClient(levelId)` |  |
-| `virtualWorld` | 由运行时值确定 | `compClient.CreateVirtualWorld(levelId)` |  |
+| <ApiFieldAnchor id="field-levelId" />`levelId` | 由运行时值确定 | `levelId` |  |
+| <ApiFieldAnchor id="field-localPlayerId" />`localPlayerId` | 由运行时值确定 | `localPlayerId` |  |
+| <ApiFieldAnchor id="field-localPlayer" />`localPlayer` | 由运行时值确定 | `compClient.CreatePlayer(localPlayerId)` |  |
+| <ApiFieldAnchor id="field-achievement" />`achievement` | 由运行时值确定 | `compClient.CreateAchievement(levelId)` |  |
+| <ApiFieldAnchor id="field-actorRender" />`actorRender` | 由运行时值确定 | `compClient.CreateActorRender(levelId)` |  |
+| <ApiFieldAnchor id="field-biome" />`biome` | 由运行时值确定 | `compClient.CreateBiome(levelId)` |  |
+| <ApiFieldAnchor id="field-block" />`block` | 由运行时值确定 | `compClient.CreateBlock(levelId)` |  |
+| <ApiFieldAnchor id="field-blockGeometry" />`blockGeometry` | 由运行时值确定 | `compClient.CreateBlockGeometry(levelId)` |  |
+| <ApiFieldAnchor id="field-blockInfo" />`blockInfo` | 由运行时值确定 | `compClient.CreateBlockInfo(levelId)` |  |
+| <ApiFieldAnchor id="field-blockUseEventWhiteList" />`blockUseEventWhiteList` | 由运行时值确定 | `compClient.CreateBlockUseEventWhiteList(levelId)` |  |
+| <ApiFieldAnchor id="field-camera" />`camera` | 由运行时值确定 | `compClient.CreateCamera(levelId)` |  |
+| <ApiFieldAnchor id="field-chunkSource" />`chunkSource` | 由运行时值确定 | `compClient.CreateChunkSource(levelId)` |  |
+| <ApiFieldAnchor id="field-configClient" />`configClient` | 由运行时值确定 | `compClient.CreateConfigClient(levelId)` |  |
+| <ApiFieldAnchor id="field-customAudio" />`customAudio` | 由运行时值确定 | `compClient.CreateCustomAudio(levelId)` |  |
+| <ApiFieldAnchor id="field-dimension" />`dimension` | 由运行时值确定 | `compClient.CreateDimension(levelId)` |  |
+| <ApiFieldAnchor id="field-drawing" />`drawing` | 由运行时值确定 | `compClient.CreateDrawing(levelId)` |  |
+| <ApiFieldAnchor id="field-fog" />`fog` | 由运行时值确定 | `compClient.CreateFog(levelId)` |  |
+| <ApiFieldAnchor id="field-game" />`game` | 由运行时值确定 | `compClient.CreateGame(levelId)` |  |
+| <ApiFieldAnchor id="field-model" />`model` | 由运行时值确定 | `compClient.CreateModel(levelId)` |  |
+| <ApiFieldAnchor id="field-neteaseShop" />`neteaseShop` | 由运行时值确定 | `compClient.CreateNeteaseShop(levelId)` |  |
+| <ApiFieldAnchor id="field-operation" />`operation` | 由运行时值确定 | `compClient.CreateOperation(levelId)` |  |
+| <ApiFieldAnchor id="field-playerView" />`playerView` | 由运行时值确定 | `compClient.CreatePlayerView(localPlayerId)` |  |
+| <ApiFieldAnchor id="field-postProcess" />`postProcess` | 由运行时值确定 | `compClient.CreatePostProcess(levelId)` |  |
+| <ApiFieldAnchor id="field-recipe" />`recipe` | 由运行时值确定 | `compClient.CreateRecipe(levelId)` |  |
+| <ApiFieldAnchor id="field-skyRender" />`skyRender` | 由运行时值确定 | `compClient.CreateSkyRender(levelId)` |  |
+| <ApiFieldAnchor id="field-textBoard" />`textBoard` | 由运行时值确定 | `compClient.CreateTextBoard(levelId)` |  |
+| <ApiFieldAnchor id="field-textNotify" />`textNotify` | 由运行时值确定 | `compClient.CreateTextNotifyClient(levelId)` |  |
+| <ApiFieldAnchor id="field-virtualWorld" />`virtualWorld` | 由运行时值确定 | `compClient.CreateVirtualWorld(levelId)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
