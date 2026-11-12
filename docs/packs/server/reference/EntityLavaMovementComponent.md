@@ -42,11 +42,12 @@ sidebar_label: "EntityLavaMovementComponent"
 | [effectiveMax](EntityAttributeComponent.md#effectiveMax) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [effectiveMin](EntityAttributeComponent.md#effectiveMin) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [entity](EntityComponent.md#entity) | [EntityComponent](EntityComponent.md) |
-| [isValid](Component.md#isValid) | [Component](Component.md) |
+| [isValid](EntityAttributeComponent.md#isValid) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToDefaultValue](EntityAttributeComponent.md#resetToDefaultValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToMaxValue](EntityAttributeComponent.md#resetToMaxValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToMinValue](EntityAttributeComponent.md#resetToMinValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [setCurrentValue](EntityAttributeComponent.md#setCurrentValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
+| [setMaxValue](EntityAttributeComponent.md#setMaxValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [typeId](Component.md#typeId) | [Component](Component.md) |
 
 ## 构造器 {#constructor}

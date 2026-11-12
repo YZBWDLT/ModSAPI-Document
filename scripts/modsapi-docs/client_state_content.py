@@ -55,7 +55,7 @@ print(position.x, rotation.y, velocity.y, direction.z)
 
 | 读取方式 | 返回值与约定 |
 | --- | --- |
-| [location](../client/reference/ClientEntity.md#location) | 脚底位置，返回独立 [Vector3](../server/extra/vector.md) |
+| [location](../client/reference/ClientEntity.md#location) | 原生脚底位置，返回独立 [Vector3](../server/extra/vector.md)；睡眠姿态保留原生坐标例外 |
 | [getRotation](../client/reference/ClientEntity.md#getRotation) | 独立 [Vector2](../common/reference/Vector2.md)，x 为俯仰角、y 为偏航角，单位为度 |
 | [getViewDirection](../client/reference/ClientEntity.md#getViewDirection) | 按原生头部旋转换算的世界方向 |
 | [getVelocity](../client/reference/ClientEntity.md#getVelocity) | 客户端上一帧的原生运动向量，不包含服务端摩擦计算 |

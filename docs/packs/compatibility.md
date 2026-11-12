@@ -15,6 +15,9 @@ title: 官方对照与当前支持情况
 
 ### 已知限制
 
+- [EntityAttributeComponent.effectiveMin](server/reference/EntityAttributeComponent.md#effectiveMin)：当前读取属性 NBT 的 Min；尚未证明额外最小值修饰因素与微软有效最小值完全等价。
+- [EntityAttributeComponent.resetToMaxValue](server/reference/EntityAttributeComponent.md#resetToMaxValue)：使用原生重置；未显式设置过的无穷上限按网易规则恢复默认值，不能宣称所有无穷边界行为与微软运行时一致。
+- `EntityEquippableComponent.getEquipment/setEquipment Body`：网易 ArmorSlotType.BODY 是胸甲槽，不是 SAPI 的 Body 槽；尚无经核验的 Body 映射，当前明确拒绝。
 - [Player.playSound](server/apis/player.md#playSound)：仅向指定在线玩家播放一次并上报失败；loopCount 非零会明确拒绝，当前后端不能返回新版 SoundInstance 句柄。
 - [Player.camera](server/apis/player.md#camera)：服务端仍为空返回；网易客户端摄像机与 SAPI 相机预设/栈/缓动/瞄准并非同一接口，需逐项适配。
 - [Player.clientSystemInfo](server/apis/player.md#clientSystemInfo)：现有同步属性为空返回；网易客户端数据只能通过通信获得，尚未建立可靠缓存。
@@ -388,7 +391,7 @@ title: 官方对照与当前支持情况
 | `InvalidContainerError` | 类 | 未实现 | — |
 | `InvalidContainerSlotError` | 类 | 未实现 | — |
 | `InvalidEntityComponentError` | 类 | 未实现 | — |
-| `InvalidEntityError` | 类 | 未实现 | id, [type](common/type-system.md#type) |
+| [InvalidEntityError](common/reference/InvalidEntityError.md) | 类 | 待行为核验 | — |
 | `InvalidItemStackError` | 类 | 未实现 | itemType |
 | `InvalidIteratorError` | 类 | 未实现 | — |
 | `InvalidPotionDeliveryTypeError` | 类 | 未实现 | — |

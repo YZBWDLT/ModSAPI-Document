@@ -152,7 +152,11 @@ def read_value(instance):
 location: Vector3
 ```
 
-脚部位置，返回独立的 [Vector3](../../server/extra/vector.md) 副本。
+独立的原生脚底坐标 [Vector3](../../server/extra/vector.md)；睡眠姿态保留原生坐标例外。
+
+:::note 当前实现说明
+保留 GetFootPos 的原生坐标约定；睡眠姿态例外同样适用。
+:::
 
 **访问：** 只读。
 

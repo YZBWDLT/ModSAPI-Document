@@ -109,6 +109,8 @@ from ModSAPI.server.beta import world, system
 | [ScriptBridgeAfterEvents](common/reference/ScriptBridgeAfterEvents.md) | [ScriptBridgeAfterEvents](common/reference/ScriptBridgeAfterEvents.md) |
 | [ScriptBridgeMessageSignal](common/reference/ScriptBridgeMessageSignal.md) | [ScriptBridgeMessageSignal](common/reference/ScriptBridgeMessageSignal.md) |
 | [ScriptBridgeError](common/reference/ScriptBridgeError.md) | [ScriptBridgeError](common/reference/ScriptBridgeError.md) |
+| [InvalidEntityError](common/reference/InvalidEntityError.md) | [InvalidEntityError](common/reference/InvalidEntityError.md) |
+| [ArgumentOutOfBoundsError](common/reference/ArgumentOutOfBoundsError.md) | [ArgumentOutOfBoundsError](common/reference/ArgumentOutOfBoundsError.md) |
 | [NativeEventData](common/reference/NativeEventData.md) | [NativeEventData](common/reference/NativeEventData.md) |
 | [NativeEventSignal](common/reference/NativeEventSignal.md) | [NativeEventSignal](common/reference/NativeEventSignal.md) |
 | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) |

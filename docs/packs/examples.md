@@ -36,3 +36,4 @@ title: 使用示例与场景指南
 - [坐标对象、选项与空结果](guides/values-and-options.md)
 - [本地输入与界面权限](guides/input-and-view-permissions.md)
 - [客户端实体、属性与玩家状态](guides/client-entity-state.md)
+- [服务端属性与实体状态](guides/server-attributes-and-state.md)

@@ -45,7 +45,7 @@ title: 服务端
 | [EffectType](reference/EffectType.md) | 可添加到实体的效果类型，例如中毒。 |
 | [Entity](apis/entity.md) | 世界中的实体状态，包括生物、玩家、矿车等对象。 |
 | [EntityAddRiderComponent](reference/EntityAddRiderComponent.md) | 为实体生成时附加指定 entityType 的骑乘者。 |
-| [EntityAttributeComponent](reference/EntityAttributeComponent.md) | 通过 AttrType 定位的引擎属性，不使用 EntityComponentType。 |
+| [EntityAttributeComponent](reference/EntityAttributeComponent.md) | 通过 AttrType 定位的实时服务端属性，不使用 EntityComponentType。写入保留原生默认值，并在写入前拒绝超出当前原生最大值和 NBT 最小值的参数。默认值、最小值来自原生属性 NBT，最大值直接读取引擎。 |
 | [EntityComponent](reference/EntityComponent.md) | 实体组件的基类。 |
 | [EntityDieAfterEvent](reference/EntityDieAfterEvent.md) | 游戏中实体死亡的事件数据。 |
 | [EntityDieAfterEventSignal](reference/EntityDieAfterEventSignal.md) | 实体死亡后的事件订阅入口。 |

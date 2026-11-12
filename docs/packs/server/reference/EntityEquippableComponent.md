@@ -77,8 +77,6 @@ totalArmor: int
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetEntityItem`, `GetItemBasicInfo`。
-
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -102,8 +100,6 @@ totalToughness: int
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetEntityItem`, `GetItemBasicInfo`。
-
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -116,22 +112,30 @@ def read_value(instance):
 ## getEquipment {#getEquipment}
 
 ```python
-getEquipment(equipmentSlot: EquipmentSlot) -> ItemStack
+getEquipment(equipmentSlot: str) -> ItemStack | None
 ```
 
-读取指定 [EquipmentSlot](../../common/reference/EquipmentSlot.md) 中的装备。
+读取已支持的装备槽，空槽返回 [None](../../common/type-system.md#none)。未知槽位会被拒绝。SAPI 的 Body 与网易表示胸甲的 BODY 常量不同，没有经过核验的 Body 映射会明确报告不支持。
+
+:::note 当前实现说明
+支持 Mainhand、Offhand、Head、Chest、Legs、Feet 六种 [EquipmentSlot](../../common/reference/EquipmentSlot.md) 常量。空槽返回 [None](../../common/type-system.md#none)；SAPI Body 尚无经核验的原生映射，会抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `equipmentSlot` | [EquipmentSlot](../../common/reference/EquipmentSlot.md) | `必填` | 传给 [EntityEquippableComponent.getEquipment](EntityEquippableComponent.md#getEquipment) 的 equipmentSlot 参数；结合上方功能说明和下方调用示例使用。 |
+| `equipmentSlot` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityEquippableComponent.getEquipment](EntityEquippableComponent.md#getEquipment) 的 equipmentSlot 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回类型：** [ItemStack](../apis/itemStack.md)。静态声明不替代本页的实现限制。
+**返回类型：** [ItemStack](../apis/itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetEntityItem'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetEntityItem`。
 
 ### 调用形状
 
@@ -145,19 +149,29 @@ def call_getEquipment(instance, equipmentSlot):
 ## setEquipment {#setEquipment}
 
 ```python
-setEquipment(equipmentSlot: EquipmentSlot, itemStack: ItemStack | None = None) -> None
+setEquipment(equipmentSlot: str, itemStack: ItemStack | EventItemStack | None = None) -> bool
 ```
 
-替换指定 [EquipmentSlot](../../common/reference/EquipmentSlot.md) 中的物品。
+使用复制的物品值替换或清除已支持的槽位。接受服务端 [ItemStack](../apis/itemStack.md) 或事件物品快照；[None](../../common/type-system.md#none) 只清除指定槽位。原生正常拒绝返回 False，畸形状态值或引擎异常抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)。
+
+:::note 当前实现说明
+接受服务端 [ItemStack](../apis/itemStack.md)、事件 [EventItemStack](../../common/reference/EventItemStack.md) 或 [None](../../common/type-system.md#none)。参数在原生写入前复制；未知槽位与未支持的 Body 不会被映射到头盔或胸甲。原生正常拒绝返回 False。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `equipmentSlot` | [EquipmentSlot](../../common/reference/EquipmentSlot.md) | `必填` | 传给 [EntityEquippableComponent.setEquipment](EntityEquippableComponent.md#setEquipment) 的 equipmentSlot 参数；结合上方功能说明和下方调用示例使用。 |
-| `itemStack` | [ItemStack](../apis/itemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
+| `equipmentSlot` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityEquippableComponent.setEquipment](EntityEquippableComponent.md#setEquipment) 的 equipmentSlot 参数；结合上方功能说明和下方调用示例使用。 |
+| `itemStack` | [ItemStack](../apis/itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
 
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'itemStack must be an ItemStack, event item snapshot, or None'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

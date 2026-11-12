@@ -84,6 +84,37 @@ sidebar_label: "Entity"
 | [triggerEvent](#triggerEvent) | 方法 |
 | [tryTeleport](#tryTeleport) | 方法 |
 | [asPlayer](#asPlayer) | 方法 |
+| [isAngry](#isAngry) | 只读属性 |
+| [isBaby](#isBaby) | 只读属性 |
+| [isPregnant](#isPregnant) | 只读属性 |
+| [isSheared](#isSheared) | 只读属性 |
+| [isTamed](#isTamed) | 只读属性 |
+| [isOutOfControl](#isOutOfControl) | 只读属性 |
+| [isIllagerCaptain](#isIllagerCaptain) | 只读属性 |
+| [isChested](#isChested) | 只读属性 |
+| [isSaddled](#isSaddled) | 只读属性 |
+| [variant](#variant) | 只读属性 |
+| [markVariant](#markVariant) | 只读属性 |
+| [tradeLevel](#tradeLevel) | 只读属性 |
+| [strength](#strength) | 只读属性 |
+| [maxStrength](#maxStrength) | 只读属性 |
+| [deathTimeTicks](#deathTimeTicks) | 只读属性 |
+| [color](#color) | 只读属性 |
+| [setAngry](#setAngry) | 方法 |
+| [growUp](#growUp) | 方法 |
+| [setSheared](#setSheared) | 方法 |
+| [setSitting](#setSitting) | 方法 |
+| [setOutOfControl](#setOutOfControl) | 方法 |
+| [setChested](#setChested) | 方法 |
+| [promoteToIllagerCaptain](#promoteToIllagerCaptain) | 方法 |
+| [setVariant](#setVariant) | 方法 |
+| [setMarkVariant](#setMarkVariant) | 方法 |
+| [setTradeLevel](#setTradeLevel) | 方法 |
+| [setStrength](#setStrength) | 方法 |
+| [setMaxStrength](#setMaxStrength) | 方法 |
+| [setColor](#setColor) | 方法 |
+| [getOwner](#getOwner) | 方法 |
+| [setOwner](#setOwner) | 方法 |
 
 ## 构造器 {#constructor}
 
@@ -137,6 +168,13 @@ isValid: bool
 **访问：** 只读。
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'CreateGame'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'IsEntityAlive'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -407,7 +445,11 @@ def read_value(instance):
 location: Vector3
 ```
 
-实体的当前位置。
+独立的原生脚底坐标 [Vector3](../extra/vector.md)；睡眠姿态保留原生坐标例外。
+
+:::note 当前实现说明
+保留 GetFootPos 的原生坐标约定，睡眠姿态有原生例外，不伪造床方向或模型骨骼位置。
+:::
 
 **访问：** 只读。
 
@@ -463,22 +505,28 @@ def write_value(instance, value):
 ## health {#health}
 
 ```python
-health
+health: float
 ```
 
-读取 `health` 的当前值。底层调用 `GetAttrValue`。
+通过实时生命属性组件读取生命值。
 
 **访问：** 可读写。
 
-写入方式：`instance.health = value`。参数类型线索：`(value)`。
+写入方式：`instance.health = value`。参数类型线索：`(value: float) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+在当前上下限内修改生命值，并保留原生默认值。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+写入参数 `value`：[float](../../common/type-system.md#float)。
+
+**返回类型：** [float](../../common/type-system.md#float)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'SetAttrValue'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetAttrValue`。
 
 ### 调用形状
 
@@ -1845,6 +1893,862 @@ asPlayer() -> Player
 ```python
 def call_asPlayer(instance):
     return instance.asPlayer()
+```
+
+## isAngry {#isAngry}
+
+```python
+isAngry: bool
+```
+
+原生实体是否处于激怒状态；不支持的实体定义会报告失败。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsAngry`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isAngry
+```
+
+## isBaby {#isBaby}
+
+```python
+isBaby: bool
+```
+
+原生实体是否为幼年状态。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsBaby`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isBaby
+```
+
+## isPregnant {#isPregnant}
+
+```python
+isPregnant: bool
+```
+
+原生怀孕状态是否有效，具体支持取决于实体种类。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsPregnant`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isPregnant
+```
+
+## isSheared {#isSheared}
+
+```python
+isSheared: bool
+```
+
+原生实体是否已被剪毛，需要实体定义支持。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsSheared`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isSheared
+```
+
+## isTamed {#isTamed}
+
+```python
+isTamed: bool
+```
+
+原生实体是否已经驯服。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsTamed`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isTamed
+```
+
+## isOutOfControl {#isOutOfControl}
+
+```python
+isOutOfControl: bool
+```
+
+原生失控状态是否有效，通常用于船。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsOutOfControl`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isOutOfControl
+```
+
+## isIllagerCaptain {#isIllagerCaptain}
+
+```python
+isIllagerCaptain: bool
+```
+
+实体是否为袭击队长，具体支持取决于实体定义。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `IsIllagerCaptain`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isIllagerCaptain
+```
+
+## isChested {#isChested}
+
+```python
+isChested: bool
+```
+
+支持的羊驼、驴、骡等载体是否背负箱子。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `HasChest`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isChested
+```
+
+## isSaddled {#isSaddled}
+
+```python
+isSaddled: bool
+```
+
+原生实体是否装备了鞍。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `HasSaddle`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isSaddled
+```
+
+## variant {#variant}
+
+```python
+variant: int
+```
+
+非负的原生变种值，具体含义由实体 JSON 定义决定。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetVariant`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.variant
+```
+
+## markVariant {#markVariant}
+
+```python
+markVariant: int
+```
+
+非负的原生标记变种，例如马的花纹或村民服装。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMarkVariant`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.markVariant
+```
+
+## tradeLevel {#tradeLevel}
+
+```python
+tradeLevel: int
+```
+
+原生村民交易等级；原生失败哨兵不被当成正常等级。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetTradeLevel`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.tradeLevel
+```
+
+## strength {#strength}
+
+```python
+strength: int
+```
+
+原生羊驼携带强度，文档范围为一到五。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMobStrength`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.strength
+```
+
+## maxStrength {#maxStrength}
+
+```python
+maxStrength: int
+```
+
+原生羊驼最大强度；引擎重新加载时可能恢复 JSON 配置值。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMobStrengthMax`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.maxStrength
+```
+
+## deathTimeTicks {#deathTimeTicks}
+
+```python
+deathTimeTicks: int
+```
+
+原生死亡动画持续时间，以每秒二十个逻辑刻计量；未死亡时为零。特意允许查询仍被原生引擎保留的死亡实体。凋零死亡动画不受此原生方法支持。
+
+:::note 当前实现说明
+特意允许仍被引擎保留的死亡实体。无效原生结果报告错误，不改变实体存活状态；凋零使用特殊死亡动画。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetDeathTime`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.deathTimeTicks
+```
+
+## color {#color}
+
+```python
+color: str
+```
+
+以标准 [DyeColor](../../common/reference/DyeColor.md) 字符串读取原生羊或鱼的颜色。
+
+**访问：** 只读。
+
+**返回类型：** [str](../../common/type-system.md#str)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetMobColor'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMobColor`, `GetMinecraftEnum`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.color
+```
+
+## setAngry {#setAngry}
+
+```python
+setAngry(isAngry: bool, target: Entity | None = None) -> None
+```
+
+设置怒气；启用时使用有效的目标包装对象。True 必须提供目标，False 必须省略目标。仍受原生实体定义和感知范围限制。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `isAngry` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [Entity.setAngry](entity.md#setAngry) 的 isAngry 参数；结合上方功能说明和下方调用示例使用。 |
+| `target` | [Entity](entity.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Entity.setAngry](entity.md#setAngry) 的 target 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [ValueError](../../common/type-system.md#valueerror) | `'Enabling anger requires a target'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'A target is not used when clearing anger'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetAngry`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setAngry(instance, isAngry):
+    return instance.setAngry(isAngry)
+```
+
+## growUp {#growUp}
+
+```python
+growUp() -> None
+```
+
+请求原生成长；实体定义需要具有 ageable_grow_up 事件。
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetAsAdult`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_growUp(instance):
+    return instance.growUp()
+```
+
+## setSheared {#setSheared}
+
+```python
+setSheared(isSheared: bool) -> None
+```
+
+设置受支持实体的原生剪毛状态，例如羊。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `isSheared` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [Entity.setSheared](entity.md#setSheared) 的 isSheared 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetSheared`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setSheared(instance, isSheared):
+    return instance.setSheared(isSheared)
+```
+
+## setSitting {#setSitting}
+
+```python
+setSitting(isSitting: bool) -> None
+```
+
+设置原生坐姿；熊猫使用其他原生行为。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `isSitting` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [Entity.setSitting](entity.md#setSitting) 的 isSitting 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetSitting`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setSitting(instance, isSitting):
+    return instance.setSitting(isSitting)
+```
+
+## setOutOfControl {#setOutOfControl}
+
+```python
+setOutOfControl(isOutOfControl: bool) -> None
+```
+
+设置受支持实体的原生失控状态，例如船。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `isOutOfControl` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [Entity.setOutOfControl](entity.md#setOutOfControl) 的 isOutOfControl 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetOutOfControl`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setOutOfControl(instance, isOutOfControl):
+    return instance.setOutOfControl(isOutOfControl)
+```
+
+## setChested {#setChested}
+
+```python
+setChested(isChested: bool) -> None
+```
+
+设置受支持羊驼、驴、骡的背负箱子状态。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `isChested` | [bool](../../common/type-system.md#bool) | `必填` | 传给 [Entity.setChested](entity.md#setChested) 的 isChested 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetChest`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setChested(instance, isChested):
+    return instance.setChested(isChested)
+```
+
+## promoteToIllagerCaptain {#promoteToIllagerCaptain}
+
+```python
+promoteToIllagerCaptain() -> None
+```
+
+将支持的掠夺者或卫道士晋升为袭击队长。
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `PromoteToIllagerCaptain`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_promoteToIllagerCaptain(instance):
+    return instance.promoteToIllagerCaptain()
+```
+
+## setVariant {#setVariant}
+
+```python
+setVariant(variant: int) -> None
+```
+
+设置实体 JSON 支持的非负变种整数。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `variant` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.setVariant](entity.md#setVariant) 的 variant 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetVariant`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setVariant(instance, variant):
+    return instance.setVariant(variant)
+```
+
+## setMarkVariant {#setMarkVariant}
+
+```python
+setMarkVariant(variant: int) -> None
+```
+
+设置实体定义支持的非负标记变种整数。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `variant` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.setMarkVariant](entity.md#setMarkVariant) 的 variant 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetMarkVariant`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setMarkVariant(instance, variant):
+    return instance.setMarkVariant(variant)
+```
+
+## setTradeLevel {#setTradeLevel}
+
+```python
+setTradeLevel(level: int) -> None
+```
+
+设置原生村民交易等级整数；不支持的值会报告原生失败。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `level` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.setTradeLevel](entity.md#setTradeLevel) 的 level 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetTradeLevel`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setTradeLevel(instance, level):
+    return instance.setTradeLevel(level)
+```
+
+## setStrength {#setStrength}
+
+```python
+setStrength(strength: int) -> None
+```
+
+设置羊驼强度，避免被原生最大值静默截断。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `strength` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.setStrength](entity.md#setStrength) 的 strength 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetMobStrengthMax'` |
+| [ArgumentOutOfBoundsError](../../common/reference/ArgumentOutOfBoundsError.md) | `'Strength exceeds the current native maximum'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMobStrengthMax`, `SetMobStrength`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setStrength(instance, strength):
+    return instance.setStrength(strength)
+```
+
+## setMaxStrength {#setMaxStrength}
+
+```python
+setMaxStrength(strength: int) -> None
+```
+
+设置原生羊驼强度上限；引擎重新加载时可能重置。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `strength` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.setMaxStrength](entity.md#setMaxStrength) 的 strength 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetMobStrengthMax`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setMaxStrength(instance, strength):
+    return instance.setMaxStrength(strength)
+```
+
+## setColor {#setColor}
+
+```python
+setColor(color: str) -> None
+```
+
+使用标准 [DyeColor](../../common/reference/DyeColor.md) 字符串设置支持的羊或鱼的颜色。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `color` | [str](../../common/type-system.md#str) | `必填` | 传给 [Entity.setColor](entity.md#setColor) 的 color 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [ValueError](../../common/type-system.md#valueerror) | `'Unknown DyeColor: ' + color` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetMobColor`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setColor(instance, color):
+    return instance.setColor(color)
+```
+
+## getOwner {#getOwner}
+
+```python
+getOwner() -> Entity | None
+```
+
+读取实体属主包装对象，包含驯服主人及弹射物发射者等关系。
+
+**返回类型：** [Entity](entity.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'CreateEngineType'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetEngineTypeStr'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetEntityOwner'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetEntityOwner`, `GetEngineTypeStr`, `GetEngineCompFactory`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getOwner(instance):
+    return instance.getOwner()
+```
+
+## setOwner {#setOwner}
+
+```python
+setOwner(owner: Entity | None = None) -> None
+```
+
+使用服务端实体包装对象设置属主，传入 [None](../../common/type-system.md#none) 可清除属主。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `owner` | [Entity](entity.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Entity.setOwner](entity.md#setOwner) 的 owner 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetEntityOwner`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setOwner(instance):
+    return instance.setOwner()
 ```
 
 ## 使用示例

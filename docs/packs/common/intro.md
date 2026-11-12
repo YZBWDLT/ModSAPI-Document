@@ -12,6 +12,7 @@ title: 公共类型与错误
 | 类型 | 说明 |
 | --- | --- |
 | [AimAssistTargetMode](reference/AimAssistTargetMode.md) | 签名、字段、属性、方法与调用示例 |
+| [ArgumentOutOfBoundsError](reference/ArgumentOutOfBoundsError.md) | 数值参数超出了该操作当前的原生边界。 |
 | [BlockBoundingBox](reference/BlockBoundingBox.md) | 签名、字段、属性、方法与调用示例 |
 | [BlockComponentTypes](reference/BlockComponentTypes.md) | 签名、字段、属性、方法与调用示例 |
 | [BlockEventOptions](reference/BlockEventOptions.md) | 方块事件订阅的可选参数。 |
@@ -98,6 +99,7 @@ title: 公共类型与错误
 | [InputMode](reference/InputMode.md) | 签名、字段、属性、方法与调用示例 |
 | [InputPermissionCategory](reference/InputPermissionCategory.md) | 签名、字段、属性、方法与调用示例 |
 | [InvalidClientObjectError](reference/InvalidClientObjectError.md) | 客户端、实体或效果对象已超出可用生命周期。 |
+| [InvalidEntityError](reference/InvalidEntityError.md) | 服务端实体已经失效；保留的身份信息仍可读取。 |
 | [InvalidStructureError](reference/InvalidStructureError.md) | 结构无效时抛出。结构被删除后会失效。 |
 | [InventoryChangeEvent](reference/InventoryChangeEvent.md) | [InventoryChangeEvent](reference/InventoryChangeEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
 | [ItemComponentTypes](reference/ItemComponentTypes.md) | 签名、字段、属性、方法与调用示例 |
