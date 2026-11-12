@@ -115,6 +115,10 @@ from ModSAPI.server.beta import world, system
 | [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) | [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) |
 | [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) | [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) |
 | [ItemStackSnapshot](common/reference/ItemStackSnapshot.md) | [ItemStackSnapshot](common/reference/ItemStackSnapshot.md) |
+| [InvalidContainerError](common/reference/InvalidContainerError.md) | [InvalidContainerError](common/reference/InvalidContainerError.md) |
+| [InvalidContainerSlotError](common/reference/InvalidContainerSlotError.md) | [InvalidContainerSlotError](common/reference/InvalidContainerSlotError.md) |
+| [ContainerRollbackError](common/reference/ContainerRollbackError.md) | [ContainerRollbackError](common/reference/ContainerRollbackError.md) |
+| [ContainerRollbackFailure](common/reference/ContainerRollbackFailure.md) | [ContainerRollbackFailure](common/reference/ContainerRollbackFailure.md) |
 | [NativeEventData](common/reference/NativeEventData.md) | [NativeEventData](common/reference/NativeEventData.md) |
 | [NativeEventSignal](common/reference/NativeEventSignal.md) | [NativeEventSignal](common/reference/NativeEventSignal.md) |
 | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) |

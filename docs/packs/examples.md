@@ -39,3 +39,4 @@ title: 使用示例与场景指南
 - [服务端属性与实体状态](guides/server-attributes-and-state.md)
 - [属性修饰器](guides/attribute-modifiers.md)
 - [客户端背包与装备](guides/client-inventory-and-equipment.md)
+- [服务端容器与物品数据](guides/server-containers-and-recovery.md)

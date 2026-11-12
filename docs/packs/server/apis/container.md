@@ -9,96 +9,51 @@ sidebar_label: "Container"
 
 源码：`core_behavior/ModSAPI/modules/server/Container.py`；声明补充了静态类型信息。
 
-容纳多组物品的容器，可属于玩家、运输矿车、羊驼等实体。
+提供校验读取和写入失败后尽力恢复的服务端容器。
 
 ## 获取方式
 
-从实体/方块的库存组件读取 container。不要直接构造与引擎脱离的容器。
+从玩家、实体或方块的库存组件 container 属性取得。容器和槽位随所属系统及原生对象失效；不要直接构造。
 
 ## 成员索引
 
 | 名称 | 形态 |
 | --- | --- |
-| [__init__](#constructor) | 构造器 |
-| [emptySlotsCount](#emptySlotsCount) | 只读属性 |
 | [size](#size) | 只读属性 |
 | [isValid](#isValid) | 只读属性 |
-| [addItem](#addItem) | 方法 |
-| [clearAll](#clearAll) | 方法 |
-| [getSlot](#getSlot) | 方法 |
+| [getItem](#getItem) | 方法 |
+| [getItems](#getItems) | 方法 |
+| [emptySlotsCount](#emptySlotsCount) | 只读属性 |
 | [firstEmptySlot](#firstEmptySlot) | 方法 |
 | [firstItem](#firstItem) | 方法 |
+| [getSlot](#getSlot) | 方法 |
 | [find](#find) | 方法 |
 | [findLast](#findLast) | 方法 |
 | [contains](#contains) | 方法 |
-| [getItem](#getItem) | 方法 |
-| [moveItem](#moveItem) | 方法 |
 | [setItem](#setItem) | 方法 |
+| [addItem](#addItem) | 方法 |
+| [clearAll](#clearAll) | 方法 |
+| [moveItem](#moveItem) | 方法 |
 | [swapItems](#swapItems) | 方法 |
 | [transferItem](#transferItem) | 方法 |
 
-## 构造器 {#constructor}
+## size {#size}
 
 ```python
-Container(location: tuple = None, entityId: str = None, dimId: int = None) -> None
+size: int
 ```
 
-构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
+读取当前容量；失效容器报告 [InvalidContainerError](../../common/reference/InvalidContainerError.md)。玩家采用原生批量列表的长度，只有 SDK 缺少该方法时回退到三十六格。方块与实体容量每次重新查询，异常原生值不会变成空容器。
 
-### 参数
-
-| 名称 | 类型线索 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `location` | [tuple](../../common/type-system.md#tuple) | [None](../../common/type-system.md#none) | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
-| `entityId` | [str](../../common/type-system.md#str) | [None](../../common/type-system.md#none) | 实体运行 ID；跨回调使用前重新确认实体有效性。 |
-| `dimId` | [int](../../common/type-system.md#int) | [None](../../common/type-system.md#none) | 传给 [Container.__init__](container.md#constructor) 的 dimId 参数；结合上方功能说明和下方调用示例使用。 |
-
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetEngineTypeStr`。
-
-## emptySlotsCount {#emptySlotsCount}
-
-```python
-emptySlotsCount: int
-```
-
-容器中空槽位的数量。容器无效时返回 [None](../../common/type-system.md#none)。
+:::note 当前实现说明
+返回当前整数容量；失效时抛出 [InvalidContainerError](../../common/reference/InvalidContainerError.md)，不再返回 [None](../../common/type-system.md#none)。玩家原生批量方法缺失时才回退到三十六格。
+:::
 
 **访问：** 只读。
 
 **返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetLevelId`, `GetPlayerItem`, `GetEntityItem`, `GetContainerItem`。
-
-### 调用形状
-
-此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
-
-```python
-def read_value(instance):
-    return instance.emptySlotsCount
-```
-
-## size {#size}
-
-```python
-size: int | None
-```
-
-容器的槽位总数。例如单个箱子为 27；玩家库存为 36，包括 9 个快捷栏槽位和 27 个背包槽位。
-
-**访问：** 只读。
-
-**返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetBlockNew`, `GetContainerSize`, `GetLevelId`, `GetComponents`。
 
 ### 调用形状
 
@@ -115,15 +70,13 @@ def read_value(instance):
 isValid: bool
 ```
 
-容器及其关联实体或方块是否仍可在当前上下文中使用。
+所属会话和原生容器是否仍可使用。明确的原生缺失返回 False，损坏的返回值或缺少的能力仍作为诊断错误报告。
 
 **访问：** 只读。
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `IsEntityAlive`, `GetLevelId`。
 
 ### 调用形状
 
@@ -134,31 +87,56 @@ def read_value(instance):
     return instance.isValid
 ```
 
-## addItem {#addItem}
+## getItem {#getItem}
 
 ```python
-addItem(itemStack: ItemStack) -> ItemStack | None
+getItem(slot: int) -> ItemStack | None
 ```
 
-添加物品堆叠的副本，返回无法放入的剩余部分。
+检查当前槽位边界后读取独立 [ItemStack](itemStack.md) 或 [None](../../common/type-system.md#none)。请求完整原生 userData，异常数据保留实际读取操作，不会被当作空格。
 
 :::note 当前实现说明
-返回未能放入的剩余 [ItemStack](itemStack.md)；全部放入时为 [None](../../common/type-system.md#none)。
+返回物品副本，修改后要 setItem 回写；空槽为 [None](../../common/type-system.md#none)。
 :::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `itemStack` | [ItemStack](itemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+| `slot` | [int](../../common/type-system.md#int) | `必填` | 零起始槽位索引，必须在容器容量内。 |
 
 **返回类型：** [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
-### 显式异常
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Container is no longer available'` |
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getItem(instance, slot):
+    return instance.getItem(slot)
+```
+
+## getItems {#getItems}
+
+```python
+getItems(options: ContainerReadOptions | None = None) -> list[ItemStack | None]
+```
+
+批量读取独立 [ItemStack](itemStack.md)，保留 [None](../../common/type-system.md#none) 和槽位顺序。includeUserData 默认 True；玩家优先使用一次原生批量查询，其他容器在一次容量检查后逐格读取。这些读取不是原生事务。
+
+:::note 当前实现说明
+本库批量扩展，保留 [None](../../common/type-system.md#none) 与真实槽位顺序。关闭 includeUserData 的部分结果不应直接用于保留数据的写回。多次原生读取不是事务。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `options` | [ContainerReadOptions](../reference/ContainerReadOptions.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+
+**返回类型：** [list](../../common/type-system.md#list)[[ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)]。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -167,25 +145,21 @@ addItem(itemStack: ItemStack) -> ItemStack | None
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
 
 ```python
-def call_addItem(instance, itemStack):
-    return instance.addItem(itemStack)
+def call_getItems(instance):
+    return instance.getItems()
 ```
 
-## clearAll {#clearAll}
+## emptySlotsCount {#emptySlotsCount}
 
 ```python
-clearAll() -> None
+emptySlotsCount: int
 ```
 
-通过开发包清空容器，同时更新引擎库存状态。
+使用一次轻量扫描统计空槽；所属对象失效时报告错误。
 
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+**访问：** 只读。
 
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Container is no longer available'` |
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -194,8 +168,50 @@ clearAll() -> None
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
 
 ```python
-def call_clearAll(instance):
-    return instance.clearAll()
+def read_value(instance):
+    return instance.emptySlotsCount
+```
+
+## firstEmptySlot {#firstEmptySlot}
+
+```python
+firstEmptySlot() -> int | None
+```
+
+使用一次轻量扫描取得第一个空位置的下标，未找到时为 [None](../../common/type-system.md#none)。
+
+**返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_firstEmptySlot(instance):
+    return instance.firstEmptySlot()
+```
+
+## firstItem {#firstItem}
+
+```python
+firstItem() -> int | None
+```
+
+使用一次轻量扫描取得第一个有物品的位置下标，未找到时为 [None](../../common/type-system.md#none)。
+
+**返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_firstItem(instance):
+    return instance.firstItem()
 ```
 
 ## getSlot {#getSlot}
@@ -204,7 +220,7 @@ def call_clearAll(instance):
 getSlot(slot: int) -> ContainerSlot
 ```
 
-读取 `getSlot` 操作。参数形态和结果约定如下。
+检查下标及所属对象后返回实时 [ContainerSlot](../reference/ContainerSlot.md) 句柄。
 
 :::note 当前实现说明
 返回槽位包装器；支持的属性修改会回写原生容器。
@@ -229,73 +245,19 @@ def call_getSlot(instance, slot):
     return instance.getSlot(slot)
 ```
 
-## firstEmptySlot {#firstEmptySlot}
-
-```python
-firstEmptySlot() -> int | None
-```
-
-执行 `firstEmptySlot` 操作。参数形态和结果约定如下。
-
-**返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Container is no longer available'` |
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-### 调用形状
-
-此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
-
-```python
-def call_firstEmptySlot(instance):
-    return instance.firstEmptySlot()
-```
-
-## firstItem {#firstItem}
-
-```python
-firstItem() -> int | None
-```
-
-执行 `firstItem` 操作。参数形态和结果约定如下。
-
-**返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Container is no longer available'` |
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-### 调用形状
-
-此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
-
-```python
-def call_firstItem(instance):
-    return instance.firstItem()
-```
-
 ## find {#find}
 
 ```python
-find(itemStack: ItemStack) -> int | None
+find(itemStack: ItemStack | EventItemStack) -> int | None
 ```
 
-执行 `find` 操作。参数形态和结果约定如下。
+查找第一个匹配物品，忽略数量并保留原生元数据参与比较。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `itemStack` | [ItemStack](itemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
 
 **返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -313,16 +275,16 @@ def call_find(instance, itemStack):
 ## findLast {#findLast}
 
 ```python
-findLast(itemStack: ItemStack) -> int | None
+findLast(itemStack: ItemStack | EventItemStack) -> int | None
 ```
 
-执行 `findLast` 操作。参数形态和结果约定如下。
+使用一次完整原生数据扫描查找最后一个匹配物品。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `itemStack` | [ItemStack](itemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
 
 **返回类型：** [int](../../common/type-system.md#int) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -340,16 +302,16 @@ def call_findLast(instance, itemStack):
 ## contains {#contains}
 
 ```python
-contains(itemStack: ItemStack) -> bool
+contains(itemStack: ItemStack | EventItemStack) -> bool
 ```
 
-检查 `contains` 操作。参数形态和结果约定如下。
+使用完整原生数据扫描判断是否包含指定物品值。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `itemStack` | [ItemStack](itemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
@@ -364,16 +326,16 @@ def call_contains(instance, itemStack):
     return instance.contains(itemStack)
 ```
 
-## getItem {#getItem}
+## setItem {#setItem}
 
 ```python
-getItem(slot: int) -> ItemStack | None
+setItem(slot: int, itemStack: ItemStack | EventItemStack | None = None) -> None
 ```
 
-读取指定槽位的 [ItemStack](itemStack.md)；空槽位返回 [None](../../common/type-system.md#none)。读取不会修改或清空槽位。需要槽位引用时使用 [Container.getSlot](container.md#getSlot)。
+替换一个槽位；只有 itemStack 为 [None](../../common/type-system.md#none) 时清空，返回 [None](../../common/type-system.md#none)。接受服务端 [ItemStack](itemStack.md) 和独立物品快照。失败会读回并尽力恢复原内容；仍无法确认恢复时抛出带诊断信息的 [ContainerRollbackError](../../common/reference/ContainerRollbackError.md)。
 
 :::note 当前实现说明
-返回物品副本，修改后要 setItem 回写；空槽为 [None](../../common/type-system.md#none)。
+返回 [None](../../common/type-system.md#none)。仅 [None](../../common/type-system.md#none) 表示清空；其他非法空值明确拒绝。失败会核对并尝试恢复，恢复不完整时抛出 [ContainerRollbackError](../../common/reference/ContainerRollbackError.md)。
 :::
 
 ### 参数
@@ -381,29 +343,80 @@ getItem(slot: int) -> ItemStack | None
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `slot` | [int](../../common/type-system.md#int) | `必填` | 零起始槽位索引，必须在容器容量内。 |
+| `itemStack` | [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
 
-**返回类型：** [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `GetPlayerItem`, `GetLevelId`, `GetEntityItem`, `GetContainerItem`。
 
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
 
 ```python
-def call_getItem(instance, slot):
-    return instance.getItem(slot)
+def call_setItem(instance, slot):
+    return instance.setItem(slot)
+```
+
+## addItem {#addItem}
+
+```python
+addItem(itemStack: ItemStack | EventItemStack | None) -> ItemStack | None
+```
+
+插入输入物品的副本，仅对空间不足返回余量。对有效容器传入 [None](../../common/type-system.md#none) 保持兼容的空操作；原生失败是错误，不代表空间不足。失败后尝试恢复所有已触及的槽位，恢复不完整时报告 [ContainerRollbackError](../../common/reference/ContainerRollbackError.md)。
+
+:::note 当前实现说明
+返回因容量不足未能放入的剩余 [ItemStack](itemStack.md)，全部放入时为 [None](../../common/type-system.md#none)。原生写入失败会报告错误并尝试恢复，不会冒充空间不足。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `itemStack` | [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+
+**返回类型：** [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_addItem(instance, itemStack):
+    return instance.addItem(itemStack)
+```
+
+## clearAll {#clearAll}
+
+```python
+clearAll() -> None
+```
+
+清空有物品的槽位；原生写入失败时尽力恢复。
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_clearAll(instance):
+    return instance.clearAll()
 ```
 
 ## moveItem {#moveItem}
 
 ```python
-moveItem(fromSlot: int, toSlot: int, toContainer: Container = None) -> None
+moveItem(fromSlot: int, toSlot: int, toContainer: Container | None = None) -> None
 ```
 
-将物品从一个槽位移至另一个槽位，可以跨容器操作。
+移动到经过校验的目标槽位；失败后尝试恢复两个已触及的槽位。
 
 ### 参数
 
@@ -411,7 +424,7 @@ moveItem(fromSlot: int, toSlot: int, toContainer: Container = None) -> None
 | --- | --- | --- | --- |
 | `fromSlot` | [int](../../common/type-system.md#int) | `必填` | 传给 [Container.moveItem](container.md#moveItem) 的 fromSlot 参数；结合上方功能说明和下方调用示例使用。 |
 | `toSlot` | [int](../../common/type-system.md#int) | `必填` | 传给 [Container.moveItem](container.md#moveItem) 的 toSlot 参数；结合上方功能说明和下方调用示例使用。 |
-| `toContainer` | [Container](container.md) | [None](../../common/type-system.md#none) | 传给 [Container.moveItem](container.md#moveItem) 的 toContainer 参数；结合上方功能说明和下方调用示例使用。 |
+| `toContainer` | [Container](container.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Container.moveItem](container.md#moveItem) 的 toContainer 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -426,50 +439,13 @@ def call_moveItem(instance, fromSlot, toSlot):
     return instance.moveItem(fromSlot, toSlot)
 ```
 
-## setItem {#setItem}
-
-```python
-setItem(slot: int, itemStack: ItemStack | None = None) -> None
-```
-
-设置指定槽位的物品堆叠。
-
-### 参数
-
-| 名称 | 类型线索 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `slot` | [int](../../common/type-system.md#int) | `必填` | 零起始槽位索引，必须在容器容量内。 |
-| `itemStack` | [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
-
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Could not write inventory slot'` |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Could not write container slot'` |
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `SetInvItemNum`, `SpawnItemToPlayerInv`, `SetEntityItem`, `GetLevelId`, `SpawnItemToContainer`。
-
-### 调用形状
-
-此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
-
-```python
-def call_setItem(instance, slot):
-    return instance.setItem(slot)
-```
-
 ## swapItems {#swapItems}
 
 ```python
-swapItems(slot: int, otherSlot: int, otherContainer: Container = None) -> None
+swapItems(slot: int, otherSlot: int, otherContainer: Container | None = None) -> None
 ```
 
-交换两个容器槽位中的物品。
+交换经过校验的两个槽位，保留最初故障和恢复结果。
 
 ### 参数
 
@@ -477,7 +453,7 @@ swapItems(slot: int, otherSlot: int, otherContainer: Container = None) -> None
 | --- | --- | --- | --- |
 | `slot` | [int](../../common/type-system.md#int) | `必填` | 零起始槽位索引，必须在容器容量内。 |
 | `otherSlot` | [int](../../common/type-system.md#int) | `必填` | 传给 [Container.swapItems](container.md#swapItems) 的 otherSlot 参数；结合上方功能说明和下方调用示例使用。 |
-| `otherContainer` | [Container](container.md) | [None](../../common/type-system.md#none) | 传给 [Container.swapItems](container.md#swapItems) 的 otherContainer 参数；结合上方功能说明和下方调用示例使用。 |
+| `otherContainer` | [Container](container.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Container.swapItems](container.md#swapItems) 的 otherContainer 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -495,25 +471,23 @@ def call_swapItems(instance, slot, otherSlot):
 ## transferItem {#transferItem}
 
 ```python
-transferItem(fromSlot: int, toContainer: Container) -> ItemStack
+transferItem(fromSlot: int, toContainer: Container | None) -> ItemStack | None
 ```
 
-将物品移至其他容器，或当前容器中首个可用槽位。
+转移到可用槽位，也可转移到当前容器的其他位置。返回尚未转入的余量或 [None](../../common/type-system.md#none)；同容器转移跳过来源格。原生失败时恢复所有已触及的写入，多次读写不是原生事务。
+
+:::note 当前实现说明
+同容器转移跳过来源格，返回尚未转入的余量或 [None](../../common/type-system.md#none)。多次读写不是原生事务，不能保证其他模组不会在中途改变内容。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `fromSlot` | [int](../../common/type-system.md#int) | `必填` | 传给 [Container.transferItem](container.md#transferItem) 的 fromSlot 参数；结合上方功能说明和下方调用示例使用。 |
-| `toContainer` | [Container](container.md) | `必填` | 传给 [Container.transferItem](container.md#transferItem) 的 toContainer 参数；结合上方功能说明和下方调用示例使用。 |
+| `toContainer` | [Container](container.md) \| [None](../../common/type-system.md#none) | `必填` | 传给 [Container.transferItem](container.md#transferItem) 的 toContainer 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回类型：** [ItemStack](itemStack.md)。静态声明不替代本页的实现限制。
-
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [RuntimeError](../../common/type-system.md#runtimeerror) | `'Destination container is no longer available'` |
+**返回类型：** [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

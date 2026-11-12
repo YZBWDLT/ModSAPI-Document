@@ -33,7 +33,8 @@ title: 服务端
 | [ClientRequestDataAfterEventSignal](reference/ClientRequestDataAfterEventSignal.md) | 注册用于接收 /scriptevent 命令的事件处理器。 |
 | [CommandResult](reference/CommandResult.md) | 命令执行结果的数据。 |
 | [Component](reference/Component.md) | 组件实现的基类。 |
-| [Container](apis/container.md) | 容纳多组物品的容器，可属于玩家、运输矿车、羊驼等实体。 |
+| [Container](apis/container.md) | 提供校验读取和写入失败后尽力恢复的服务端容器。 |
+| [ContainerReadOptions](reference/ContainerReadOptions.md) | 服务端容器完整读取的选项；默认包含 userData。 |
 | [ContainerSlot](reference/ContainerSlot.md) | 容器内的一个槽位，例如实体库存中的槽位。 |
 | [CustomCommandRegistry](reference/CustomCommandRegistry.md) | 签名、字段、属性、方法与调用示例 |
 | [DataDrivenEntityTriggerAfterEvent](reference/DataDrivenEntityTriggerAfterEvent.md) | 数据驱动实体事件的订阅入口，例如鸡的 minecraft:ageable_grow_up。 |

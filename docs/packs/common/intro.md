@@ -33,6 +33,8 @@ title: 公共类型与错误
 | [CameraShakeType](reference/CameraShakeType.md) | 签名、字段、属性、方法与调用示例 |
 | [CloneMode](reference/CloneMode.md) | 签名、字段、属性、方法与调用示例 |
 | [CommandPermissionLevel](reference/CommandPermissionLevel.md) | 签名、字段、属性、方法与调用示例 |
+| [ContainerRollbackError](reference/ContainerRollbackError.md) | 修改失败，且至少一个槽位无法恢复。cause 保留最初故障，failures 为只读诊断记录；恢复会继续尝试所有受影响槽位。此错误不表示原生背包具备事务能力，也不保证内容未变。 |
+| [ContainerRollbackFailure](reference/ContainerRollbackFailure.md) | 一个在恢复后仍无法确认内容还原的槽位记录。 |
 | [ContainerRulesErrorReason](reference/ContainerRulesErrorReason.md) | 签名、字段、属性、方法与调用示例 |
 | [ControlScheme](reference/ControlScheme.md) | 签名、字段、属性、方法与调用示例 |
 | [CustomCommand](reference/CustomCommand.md) | 定义自定义命令的名称、权限及参数。 |
@@ -103,6 +105,8 @@ title: 公共类型与错误
 | [InputMode](reference/InputMode.md) | 签名、字段、属性、方法与调用示例 |
 | [InputPermissionCategory](reference/InputPermissionCategory.md) | 签名、字段、属性、方法与调用示例 |
 | [InvalidClientObjectError](reference/InvalidClientObjectError.md) | 客户端、实体或效果对象已超出可用生命周期。 |
+| [InvalidContainerError](reference/InvalidContainerError.md) | 容器或所属会话已不可使用。 |
+| [InvalidContainerSlotError](reference/InvalidContainerSlotError.md) | 槽位下标非法，或需要物品的操作遇到了空槽。 |
 | [InvalidEntityError](reference/InvalidEntityError.md) | 服务端实体已经失效；保留的身份信息仍可读取。 |
 | [InvalidStructureError](reference/InvalidStructureError.md) | 结构无效时抛出。结构被删除后会失效。 |
 | [InventoryChangeEvent](reference/InventoryChangeEvent.md) | [InventoryChangeEvent](reference/InventoryChangeEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |

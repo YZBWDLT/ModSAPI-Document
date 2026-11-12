@@ -15,6 +15,11 @@ title: 官方对照与当前支持情况
 
 ### 已知限制
 
+- `Container/native transactions`：批量读取与多槽写入不是原生事务。失败会尝试恢复并读回；无法确认恢复时报告 [ContainerRollbackError](common/reference/ContainerRollbackError.md)，不能保证跨模组隔离。
+- `Container.containerRules/weight`：网易容量和物品读写不能直接提供微软容器规则、嵌套重量及虚拟容器的等价语义，当前不伪造结果。
+- `ItemStack.setLore RawMessage`：当前支持普通文本及字符数量校验，getRawLore 返回 text 记录；完整 RawMessage 写入尚未适配。
+- `ItemStack/dynamic property persistence`：使用独立版本化原生标签，保留外部 extraId；载荷最多三万二千七百六十七个 UTF-8 字节，含格式开销。实机保存、跨版本和第三方处理链仍待核验。
+- `ItemStack.getDynamicPropertyTotalByteCount`：尚未取得微软原生动态属性物理存储大小的等价计量，不能用适配器 JSON 长度冒充。
 - [EntityAttributeComponent.effectiveMin](server/reference/EntityAttributeComponent.md#effectiveMin)：当前读取属性 NBT 的 Min；尚未证明额外最小值修饰因素与微软有效最小值完全等价。
 - `EntityAttributeComponent/modifier persistence`：原生五项修饰器接口已封装；没有证据表明修饰器跨存档或重载持久化，不能将 ModAttr.SaveAttr 冒充修饰器保存。叠加次序、上限运算和最小值修饰器影响仍待实测。
 - [EntityAttributeComponent.resetToMaxValue](server/reference/EntityAttributeComponent.md#resetToMaxValue)：使用原生重置；未显式设置过的无穷上限按网易规则恢复默认值，不能宣称所有无穷边界行为与微软运行时一致。
@@ -389,8 +394,8 @@ title: 官方对照与当前支持情况
 | [InputMode](common/reference/InputMode.md) | 枚举 | 常量定义 | — |
 | [InputPermissionCategory](common/reference/InputPermissionCategory.md) | 枚举 | 常量定义 | — |
 | `InvalidBlockComponentError` | 类 | 未实现 | — |
-| `InvalidContainerError` | 类 | 未实现 | — |
-| `InvalidContainerSlotError` | 类 | 未实现 | — |
+| [InvalidContainerError](common/reference/InvalidContainerError.md) | 类 | 待行为核验 | — |
+| [InvalidContainerSlotError](common/reference/InvalidContainerSlotError.md) | 类 | 待行为核验 | — |
 | `InvalidEntityComponentError` | 类 | 未实现 | — |
 | [InvalidEntityError](common/reference/InvalidEntityError.md) | 类 | 待行为核验 | — |
 | `InvalidItemStackError` | 类 | 未实现 | itemType |

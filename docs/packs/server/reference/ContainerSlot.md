@@ -13,13 +13,12 @@ sidebar_label: "ContainerSlot"
 
 ## 获取方式
 
-使用 `container.getSlot(index)`，index 从零开始。
+使用 container.getSlot(index) 取得实时槽位句柄；index 从零开始，空槽仍可能有效。
 
 ## 成员索引
 
 | 名称 | 形态 |
 | --- | --- |
-| [__init__](#constructor) | 构造器 |
 | [amount](#amount) | 可读写属性 |
 | [isStackable](#isStackable) | 只读属性 |
 | [isValid](#isValid) | 只读属性 |
@@ -44,25 +43,6 @@ sidebar_label: "ContainerSlot"
 | [setDynamicProperties](#setDynamicProperties) | 方法 |
 | [clearDynamicProperties](#clearDynamicProperties) | 方法 |
 
-## 构造器 {#constructor}
-
-```python
-ContainerSlot(container: Container, slotId: int) -> None
-```
-
-构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
-
-### 参数
-
-| 名称 | 类型线索 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `container` | [Container](../apis/container.md) | `必填` | 传给 [ContainerSlot.__init__](ContainerSlot.md#constructor) 的 container 参数；结合上方功能说明和下方调用示例使用。 |
-| `slotId` | [int](../../common/type-system.md#int) | `必填` | 传给 [ContainerSlot.__init__](ContainerSlot.md#constructor) 的 slotId 参数；结合上方功能说明和下方调用示例使用。 |
-
-**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
-
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
 ## amount {#amount}
 
 ```python
@@ -73,11 +53,17 @@ amount: int
 
 **访问：** 可读写。
 
-写入方式：`instance.amount = value`。参数类型线索：`(value: int)`。
+写入方式：`instance.amount = value`。参数类型线索：`(value: int) -> None`。
 
 写入参数 `value`：[int](../../common/type-system.md#int)。
 
 **返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [ValueError](../../common/type-system.md#valueerror) | `'Item amount must be an integer between 1 and 255'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -145,7 +131,7 @@ def read_value(instance):
 getItem() -> ItemStack | None
 ```
 
-读取此槽位的 [ItemStack](../apis/itemStack.md)；槽位为空时返回 [None](../../common/type-system.md#none)。
+读取当前有效槽位的独立 [ItemStack](../apis/itemStack.md)；空位置返回 [None](../../common/type-system.md#none)。
 
 **返回类型：** [ItemStack](../apis/itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -163,18 +149,18 @@ def call_getItem(instance):
 ## setItem {#setItem}
 
 ```python
-setItem(itemStack: ItemStack | None)
+setItem(itemStack: ItemStack | EventItemStack | None = None) -> None
 ```
 
-设置此槽位的 [ItemStack](../apis/itemStack.md)。
+替换当前槽位，传入 [None](../../common/type-system.md#none) 清空；恢复不完整时报告错误。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `itemStack` | [ItemStack](../apis/itemStack.md) \| [None](../../common/type-system.md#none) | `必填` | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](../apis/itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -183,8 +169,8 @@ setItem(itemStack: ItemStack | None)
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
 
 ```python
-def call_setItem(instance, itemStack):
-    return instance.setItem(itemStack)
+def call_setItem(instance):
+    return instance.setItem()
 ```
 
 ## hasItem {#hasItem}
@@ -193,7 +179,7 @@ def call_setItem(instance, itemStack):
 hasItem() -> bool
 ```
 
-检查 `hasItem` 操作。参数形态和结果约定如下。
+当前有效槽位是否存在非空物品。
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
@@ -214,7 +200,7 @@ def call_hasItem(instance):
 typeId: str
 ```
 
-读取 `typeId` 的当前值。
+当前物品的类型标识；空槽读取会报告槽位错误。
 
 **访问：** 只读。
 
@@ -234,14 +220,14 @@ def read_value(instance):
 ## type {#type}
 
 ```python
-type
+type: ItemType
 ```
 
-读取 [type](../../common/type-system.md#type) 的当前值。
+当前物品的 [ItemType](ItemType.md)；空槽报告 [InvalidContainerSlotError](../../common/reference/InvalidContainerSlotError.md)。
 
 **访问：** 只读。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [ItemType](ItemType.md)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -260,7 +246,7 @@ def read_value(instance):
 maxAmount: int
 ```
 
-读取 `maxAmount` 的当前值。
+当前物品的最大数量；槽位必须存在物品。
 
 **访问：** 只读。
 
@@ -280,18 +266,18 @@ def read_value(instance):
 ## nameTag {#nameTag}
 
 ```python
-nameTag
+nameTag: str | None
 ```
 
-读取 `nameTag` 的当前值。
+当前显示名称或 [None](../../common/type-system.md#none)；新名称最多二百五十五个字符。
 
 **访问：** 可读写。
 
-写入方式：`instance.nameTag = value`。参数类型线索：`(value)`。
+写入方式：`instance.nameTag = value`。参数类型线索：`(value: str \| None) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[str](../../common/type-system.md#str) \| [None](../../common/type-system.md#none)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [str](../../common/type-system.md#str) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -310,18 +296,18 @@ def write_value(instance, value):
 ## keepOnDeath {#keepOnDeath}
 
 ```python
-keepOnDeath
+keepOnDeath: bool
 ```
 
-读取 `keepOnDeath` 的当前值。
+当前死亡保留标记；写入要求 [bool](../../common/type-system.md#bool)，槽位必须存在物品。
 
 **访问：** 可读写。
 
-写入方式：`instance.keepOnDeath = value`。参数类型线索：`(value)`。
+写入方式：`instance.keepOnDeath = value`。参数类型线索：`(value: bool) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[bool](../../common/type-system.md#bool)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -340,18 +326,18 @@ def write_value(instance, value):
 ## lockMode {#lockMode}
 
 ```python
-lockMode
+lockMode: str
 ```
 
-读取 `lockMode` 的当前值。
+当前 [ItemLockMode](../../common/reference/ItemLockMode.md) 值；拒绝未知的锁定模式。
 
 **访问：** 可读写。
 
-写入方式：`instance.lockMode = value`。参数类型线索：`(value)`。
+写入方式：`instance.lockMode = value`。参数类型线索：`(value: str) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[str](../../common/type-system.md#str)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [str](../../common/type-system.md#str)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -373,7 +359,7 @@ def write_value(instance, value):
 getLore() -> list[str]
 ```
 
-读取 `getLore` 操作。参数形态和结果约定如下。
+从当前槽位物品读取普通文本描述的副本。
 
 **返回类型：** [list](../../common/type-system.md#list)[[str](../../common/type-system.md#str)]。静态声明不替代本页的实现限制。
 
@@ -391,12 +377,12 @@ def call_getLore(instance):
 ## getRawLore {#getRawLore}
 
 ```python
-getRawLore() -> list[dict]
+getRawLore() -> list[dict[str, str]]
 ```
 
-读取 `getRawLore` 操作。参数形态和结果约定如下。
+读取当前物品描述的 RawMessage 文本记录副本。
 
-**返回类型：** [list](../../common/type-system.md#list)[[dict](../../common/type-system.md#dict)]。静态声明不替代本页的实现限制。
+**返回类型：** [list](../../common/type-system.md#list)[[dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [str](../../common/type-system.md#str)]]。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -415,7 +401,7 @@ def call_getRawLore(instance):
 setLore(loreList: list[str] | None = None) -> None
 ```
 
-设置 `setLore` 操作。参数形态和结果约定如下。
+先校验全部普通文本描述，再写回物品。
 
 ### 参数
 
@@ -442,7 +428,7 @@ def call_setLore(instance):
 getTags() -> list[str]
 ```
 
-读取 `getTags` 操作。参数形态和结果约定如下。
+读取当前物品原生定义标签的副本。
 
 **返回类型：** [list](../../common/type-system.md#list)[[str](../../common/type-system.md#str)]。静态声明不替代本页的实现限制。
 
@@ -463,7 +449,7 @@ def call_getTags(instance):
 hasTag(tag: str) -> bool
 ```
 
-检查 `hasTag` 操作。参数形态和结果约定如下。
+当前物品定义是否包含指定标签。
 
 ### 参数
 
@@ -490,7 +476,7 @@ def call_hasTag(instance, tag):
 isStackableWith(itemStack: ItemStack) -> bool
 ```
 
-检查 `isStackableWith` 操作。参数形态和结果约定如下。
+比较当前物品与 [ItemStack](../apis/itemStack.md)，保留原生元数据参与比较。
 
 ### 参数
 
@@ -514,10 +500,10 @@ def call_isStackableWith(instance, itemStack):
 ## getDynamicProperty {#getDynamicProperty}
 
 ```python
-getDynamicProperty(identifier: str)
+getDynamicProperty(identifier: str) -> Any
 ```
 
-读取 `getDynamicProperty` 操作。参数形态和结果约定如下。
+读取当前物品属性值的独立副本；缺失时为 [None](../../common/type-system.md#none)。
 
 ### 参数
 
@@ -525,7 +511,7 @@ getDynamicProperty(identifier: str)
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [Any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -544,7 +530,7 @@ def call_getDynamicProperty(instance, identifier):
 getDynamicPropertyIds() -> list[str]
 ```
 
-读取 `getDynamicPropertyIds` 操作。参数形态和结果约定如下。
+读取当前物品属性标识列表的副本。
 
 **返回类型：** [list](../../common/type-system.md#list)[[str](../../common/type-system.md#str)]。静态声明不替代本页的实现限制。
 
@@ -562,17 +548,17 @@ def call_getDynamicPropertyIds(instance):
 ## setDynamicProperty {#setDynamicProperty}
 
 ```python
-setDynamicProperty(identifier: str, value = None) -> None
+setDynamicProperty(identifier: str, value: Any = None) -> None
 ```
 
-设置 `setDynamicProperty` 操作。参数形态和结果约定如下。
+校验并保存当前物品的一个属性；[None](../../common/type-system.md#none) 删除该属性。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
-| `value` | 由值/所属选项确定 | [None](../../common/type-system.md#none) | 需要写入的值，类型、范围及副本语义见本成员说明。 |
+| `value` | [Any](../../common/type-system.md#any) | [None](../../common/type-system.md#none) | 需要写入的值，类型、范围及副本语义见本成员说明。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -590,16 +576,20 @@ def call_setDynamicProperty(instance, identifier):
 ## setDynamicProperties {#setDynamicProperties}
 
 ```python
-setDynamicProperties(values: dict) -> None
+setDynamicProperties(values: dict[str, Any]) -> None
 ```
 
-设置 `setDynamicProperties` 操作。参数形态和结果约定如下。
+先校验完整属性批次，再写回修改后的物品。
+
+:::note 当前实现说明
+先验证完整属性批次，再写回当前物品。保留其他模组的 extraId 和原生标签；写回失败沿用容器恢复错误。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `values` | [dict](../../common/type-system.md#dict) | `必填` | 传给 [ContainerSlot.setDynamicProperties](ContainerSlot.md#setDynamicProperties) 的 values 参数；结合上方功能说明和下方调用示例使用。 |
+| `values` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [Any](../../common/type-system.md#any)] | `必填` | 传给 [ContainerSlot.setDynamicProperties](ContainerSlot.md#setDynamicProperties) 的 values 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -620,7 +610,7 @@ def call_setDynamicProperties(instance, values):
 clearDynamicProperties() -> None
 ```
 
-移除或清理 `clearDynamicProperties` 操作。参数形态和结果约定如下。
+清除当前物品的本库属性，保留其他模组的 extraId 数据。
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
