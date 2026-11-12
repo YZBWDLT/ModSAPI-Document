@@ -100,7 +100,7 @@ const config: Config = {
             position: 'left',
             to: '/docs/packs/server/intro',
             label: '接口文档',
-            activeBaseRegex: '^/docs/packs/(?!ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls)(?:/|$))',
+            activeBaseRegex: '^/docs/packs/(?!ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets)(?:/|$))',
         },
         {
             type: 'doc',
@@ -112,7 +112,7 @@ const config: Config = {
             position: 'left',
             to: '/docs/packs/ui/intro',
             label: '界面',
-            activeBaseRegex: '^/docs/(?:packs/(?:ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls)(?:/|$))|extra_lib/(?:FormUI|Interfaces)(?:/|$))',
+            activeBaseRegex: '^/docs/(?:packs/(?:ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets)(?:/|$))|extra_lib/(?:FormUI|Interfaces)(?:/|$))',
         },
         {
           href: 'https://github.com/jincarrot/ModSAPI',

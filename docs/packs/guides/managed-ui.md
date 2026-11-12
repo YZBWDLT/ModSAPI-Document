@@ -87,13 +87,20 @@ def configure(view):
 | 控件种类 | 返回类型 | 常用成员 |
 | --- | --- | --- |
 | `control` | [UiControl](../ui/reference/UiControl.md) | visible、position、size、setLayout、bind、remove |
-| `label` | [UiLabel](../ui/reference/UiLabel.md) | text、color、setFontScale |
+| `label` | [UiLabel](../ui/reference/UiLabel.md) | text、color、textAlignment、lineSpacing、textShadow |
 | `button` | [UiButton](../ui/reference/UiButton.md) | afterEvents.click、指针和悬浮事件 |
-| `image` | [UiImage](../ui/reference/UiImage.md) | setImage、setClipRatio |
+| `image` | [UiImage](../ui/reference/UiImage.md) | setImage、setClipRatio、clipDirection、rotate |
 | `textField` | [UiTextField](../ui/reference/UiTextField.md) | value、setMaxLength |
 | `slider` | [UiSlider](../ui/reference/UiSlider.md) | value，范围由模板决定 |
 | `toggle` | [UiToggle](../ui/reference/UiToggle.md) | 布尔类型的 value |
-| `scrollView` | [UiScrollView](../ui/reference/UiScrollView.md) | 取值为 0～1 的 progress |
+| `scrollView` | [UiScrollView](../ui/reference/UiScrollView.md) | progress、scrollOffset、content |
+| `grid` | [UiGrid](../ui/reference/UiGrid.md) | setDimensions、getItem |
+| `stackPanel` | [UiStackPanel](../ui/reference/UiStackPanel.md) | orientation |
+| `inputPanel` | [UiInputPanel](../ui/reference/UiInputPanel.md) | isModal、swallowInput、dragOffset |
+| `progressBar` | [UiProgressBar](../ui/reference/UiProgressBar.md) | 取值为 0～1 的 setProgress |
+| `itemRenderer` | [UiItemRenderer](../ui/reference/UiItemRenderer.md) | setItem、item |
+
+锚点、裁剪、网格与物品预览的配套模板见 [布局与常用控件](ui-layout-and-widgets.md)。[UiAnchor](../ui/reference/UiAnchor.md) 和 [UiImageClipDirection](../ui/reference/UiImageClipDirection.md) 提供可直接导入的常量，减少手写原生字符串。
 
 种类必须与模板实际控件相符。控件路径不存在时抛出 [KeyError](../common/type-system.md#keyerror)；视图已关闭或控件已移除时抛出 [InvalidClientObjectError](../common/reference/InvalidClientObjectError.md)。`isValid` 用于检查存活情况，仍需处理检查之后发生的原生失败。
 

@@ -31,6 +31,8 @@ def control_animation(animation):
 
 启动失败会抛出 [NativeOperationError](../common/reference/NativeOperationError.md) 并尝试清理已经取得的资源。异步结束时的失败由 `animation.afterEvents.error` 或创建选项 onError 接收，`animation.error` 保留异常。
 
+清理失败后可再次调用 `animation.dispose()`，只重试尚未成功释放的部分。启动失败且回滚也失败时，异常的 animation 属性保留对应 [UiAnimation](../ui/reference/UiAnimation.md)，cleanupErrors 列出回滚错误。`view.close()` 和 `client.ui.closeAllViews()` 也会重试自己拥有的残留动画注册；界面已经关闭时仍可重试这些清理。
+
 ## 常驻界面
 
 先用 `registerView` 声明模板，再在原生界面就绪后创建：

@@ -877,5 +877,7 @@
   "Reject pending work and release this endpoint's handlers and signals.": "使待完成请求失败，并释放此入口持有的处理器、信号订阅和原生传输资源。",
   "Bridge failure with a stable code and optional remote exception name.": "桥接失败异常，包含稳定的 code 和可选的远端异常名称 remoteName。",
   "Bidirectional SAPI bridge with explicit handlers and incoming messages.": "与 SAPI 双向通信的入口，支持显式处理器注册和消息通知。",
-  "Bidirectional SAPI bridge for this local client and its wrapped player.": "此本地客户端与 SAPI 双向通信的入口；消息中的玩家使用包装对象。"
+  "Bidirectional SAPI bridge for this local client and its wrapped player.": "此本地客户端与 SAPI 双向通信的入口；消息中的玩家使用包装对象。",
+  "Set native day time in whole ticks from 0 through 24000. NetEase advances to the next day when the requested time precedes the current time. Native rejection raises NativeOperationError.": "以整数刻设置一天内的时间，范围为 0～24000。网易原生接口在目标时间早于当前时间时前进到次日；原生拒绝时抛出 NativeOperationError。",
+  "Set world time in whole ticks, reporting native rejection or failure.": "以整数刻设置世界绝对时间；原生拒绝或调用失败时抛出 NativeOperationError。"
 }

@@ -30,6 +30,17 @@ sidebar_label: "UiControl"
 | [setOpacity](#setOpacity) | 方法 |
 | [setEnabled](#setEnabled) | 方法 |
 | [setLayer](#setLayer) | 方法 |
+| [globalPosition](#globalPosition) | 只读属性 |
+| [anchorFrom](#anchorFrom) | 可读写属性 |
+| [anchorTo](#anchorTo) | 可读写属性 |
+| [setAnchors](#setAnchors) | 方法 |
+| [minimumSize](#minimumSize) | 可读写属性 |
+| [maximumSize](#maximumSize) | 可读写属性 |
+| [clipsChildren](#clipsChildren) | 可读写属性 |
+| [clipOffset](#clipOffset) | 可读写属性 |
+| [focus](#focus) | 方法 |
+| [blur](#blur) | 方法 |
+| [getChildren](#getChildren) | 方法 |
 | [setLayout](#setLayout) | 方法 |
 | [setProperties](#setProperties) | 方法 |
 | [getProperties](#getProperties) | 方法 |
@@ -348,6 +359,321 @@ def call_setLayer(instance, value):
     return instance.setLayer(value)
 ```
 
+## globalPosition {#globalPosition}
+
+```python
+globalPosition: tuple[float, float]
+```
+
+控件当前的全局位置，单位为原生界面像素。
+
+**访问：** 只读。
+
+**返回类型：** [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.globalPosition
+```
+
+## anchorFrom {#anchorFrom}
+
+```python
+anchorFrom: str
+```
+
+位置和百分比布局使用的父控件锚点。
+
+**访问：** 可读写。
+
+写入方式：`instance.anchorFrom = value`。参数类型线索：`(value: str) -> None`。
+
+写入参数 `value`：[str](../../common/type-system.md#str)。
+
+**返回类型：** [str](../../common/type-system.md#str)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.anchorFrom
+
+def write_value(instance, value):
+    instance.anchorFrom = value
+```
+
+## anchorTo {#anchorTo}
+
+```python
+anchorTo: str
+```
+
+此控件自身的锚点，使用 [UiAnchor](UiAnchor.md) 常量。
+
+**访问：** 可读写。
+
+写入方式：`instance.anchorTo = value`。参数类型线索：`(value: str) -> None`。
+
+写入参数 `value`：[str](../../common/type-system.md#str)。
+
+**返回类型：** [str](../../common/type-system.md#str)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.anchorTo
+
+def write_value(instance, value):
+    instance.anchorTo = value
+```
+
+## setAnchors {#setAnchors}
+
+```python
+setAnchors(fromAnchor: str, toAnchor: str | None = None) -> None
+```
+
+一次设置两个锚点；省略 toAnchor 时，两者均使用 fromAnchor。原生更新失败时尝试恢复原来的锚点；恢复失败的信息保存在 rollbackErrors。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `fromAnchor` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiControl.setAnchors](UiControl.md#setAnchors) 的 fromAnchor 参数；结合上方功能说明和下方调用示例使用。 |
+| `toAnchor` | [str](../../common/type-system.md#str) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [UiControl.setAnchors](UiControl.md#setAnchors) 的 toAnchor 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetAnchorFrom`, `SetAnchorTo`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setAnchors(instance, fromAnchor):
+    return instance.setAnchors(fromAnchor)
+```
+
+## minimumSize {#minimumSize}
+
+```python
+minimumSize: tuple[float, float]
+```
+
+原生最小像素尺寸；(0, 0) 表示取消限制。
+
+**访问：** 可读写。
+
+写入方式：`instance.minimumSize = value`。参数类型线索：`(value: tuple[float, float]) -> None`。
+
+写入参数 `value`：[tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。
+
+**返回类型：** [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.minimumSize
+
+def write_value(instance, value):
+    instance.minimumSize = value
+```
+
+## maximumSize {#maximumSize}
+
+```python
+maximumSize: tuple[float, float]
+```
+
+原生最大像素尺寸；(0, 0) 表示取消限制。
+
+**访问：** 可读写。
+
+写入方式：`instance.maximumSize = value`。参数类型线索：`(value: tuple[float, float]) -> None`。
+
+写入参数 `value`：[tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。
+
+**返回类型：** [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.maximumSize
+
+def write_value(instance, value):
+    instance.maximumSize = value
+```
+
+## clipsChildren {#clipsChildren}
+
+```python
+clipsChildren: bool
+```
+
+是否根据此控件的裁剪范围裁剪子控件。
+
+**访问：** 可读写。
+
+写入方式：`instance.clipsChildren = value`。参数类型线索：`(value: bool) -> None`。
+
+写入参数 `value`：[bool](../../common/type-system.md#bool)。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.clipsChildren
+
+def write_value(instance, value):
+    instance.clipsChildren = value
+```
+
+## clipOffset {#clipOffset}
+
+```python
+clipOffset: tuple[float, float]
+```
+
+原生二维裁剪偏移，单位为界面像素。
+
+**访问：** 可读写。
+
+写入方式：`instance.clipOffset = value`。参数类型线索：`(value: tuple[float, float]) -> None`。
+
+写入参数 `value`：[tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。
+
+**返回类型：** [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.clipOffset
+
+def write_value(instance, value):
+    instance.clipOffset = value
+```
+
+## focus {#focus}
+
+```python
+focus() -> None
+```
+
+选中此控件；选中文本框时，原生系统可能弹出键盘。
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetSelectControl`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_focus(instance):
+    return instance.focus()
+```
+
+## blur {#blur}
+
+```python
+blur() -> None
+```
+
+请求取消此控件的原生选中状态。
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetSelectControl`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_blur(instance):
+    return instance.blur()
+```
+
+## getChildren {#getChildren}
+
+```python
+getChildren(recursive: bool = False) -> tuple[UiControl, ...]
+```
+
+重新获取子控件对象；可选择包含全部后代控件。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `recursive` | [bool](../../common/type-system.md#bool) | `False` | 传给 [UiControl.getChildren](UiControl.md#getChildren) 的 recursive 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [tuple](../../common/type-system.md#tuple)[[UiControl](UiControl.md), ...]。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'Native child enumeration must return a sequence'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `method` |
+| [ValueError](../../common/type-system.md#valueerror) | `'Native child names must be single path components'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'Native child path must stay below its parent'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getChildren(instance):
+    return instance.getChildren()
+```
+
 ## setLayout {#setLayout}
 
 ```python
@@ -506,7 +832,7 @@ def call_animate(instance, propertyName, to):
 ## getChild {#getChild}
 
 ```python
-getChild(path: str, kind: str = 'control') -> UiControl
+getChild(path: str, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] = 'control') -> UiControl
 ```
 
 读取 `getChild` 操作。参数形态和结果约定如下。
@@ -516,7 +842,7 @@ getChild(path: str, kind: str = 'control') -> UiControl
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `path` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiControl.getChild](UiControl.md#getChild) 的 path 参数；结合上方功能说明和下方调用示例使用。 |
-| `kind` | [str](../../common/type-system.md#str) | `'control'` | 传给 [UiControl.getChild](UiControl.md#getChild) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
+| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] | `'control'` | 传给 [UiControl.getChild](UiControl.md#getChild) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [UiControl](UiControl.md)。静态声明不替代本页的实现限制。
 

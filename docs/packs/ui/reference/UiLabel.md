@@ -24,6 +24,9 @@ sidebar_label: "UiLabel"
 | [text](#text) | 可读写属性 |
 | [color](#color) | 可读写属性 |
 | [setFontScale](#setFontScale) | 方法 |
+| [textAlignment](#textAlignment) | 可读写属性 |
+| [lineSpacing](#lineSpacing) | 可读写属性 |
+| [textShadow](#textShadow) | 可读写属性 |
 
 ## 继承成员
 
@@ -31,15 +34,26 @@ sidebar_label: "UiLabel"
 
 | 成员 | 定义位置 |
 | --- | --- |
+| [anchorFrom](UiControl.md#anchorFrom) | [UiControl](UiControl.md) |
+| [anchorTo](UiControl.md#anchorTo) | [UiControl](UiControl.md) |
 | [animate](UiControl.md#animate) | [UiControl](UiControl.md) |
 | [bind](UiControl.md#bind) | [UiControl](UiControl.md) |
+| [blur](UiControl.md#blur) | [UiControl](UiControl.md) |
+| [clipOffset](UiControl.md#clipOffset) | [UiControl](UiControl.md) |
+| [clipsChildren](UiControl.md#clipsChildren) | [UiControl](UiControl.md) |
+| [focus](UiControl.md#focus) | [UiControl](UiControl.md) |
 | [getChild](UiControl.md#getChild) | [UiControl](UiControl.md) |
+| [getChildren](UiControl.md#getChildren) | [UiControl](UiControl.md) |
 | [getProperties](UiControl.md#getProperties) | [UiControl](UiControl.md) |
+| [globalPosition](UiControl.md#globalPosition) | [UiControl](UiControl.md) |
 | [isValid](UiControl.md#isValid) | [UiControl](UiControl.md) |
+| [maximumSize](UiControl.md#maximumSize) | [UiControl](UiControl.md) |
+| [minimumSize](UiControl.md#minimumSize) | [UiControl](UiControl.md) |
 | [native](UiControl.md#native) | [UiControl](UiControl.md) |
 | [path](UiControl.md#path) | [UiControl](UiControl.md) |
 | [position](UiControl.md#position) | [UiControl](UiControl.md) |
 | [remove](UiControl.md#remove) | [UiControl](UiControl.md) |
+| [setAnchors](UiControl.md#setAnchors) | [UiControl](UiControl.md) |
 | [setEnabled](UiControl.md#setEnabled) | [UiControl](UiControl.md) |
 | [setLayer](UiControl.md#setLayer) | [UiControl](UiControl.md) |
 | [setLayout](UiControl.md#setLayout) | [UiControl](UiControl.md) |
@@ -137,6 +151,96 @@ setFontScale(value: float) -> None
 ```python
 def call_setFontScale(instance, value):
     return instance.setFontScale(value)
+```
+
+## textAlignment {#textAlignment}
+
+```python
+textAlignment: Literal['left', 'center', 'right']
+```
+
+文字的水平对齐方式：left、center 或 right。
+
+**访问：** 可读写。
+
+写入方式：`instance.textAlignment = value`。参数类型线索：`(value: Literal['left', 'center', 'right']) -> None`。
+
+写入参数 `value`：[Literal](../../common/type-system.md#literal)['left', 'center', 'right']。
+
+**返回类型：** [Literal](../../common/type-system.md#literal)['left', 'center', 'right']。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.textAlignment
+
+def write_value(instance, value):
+    instance.textAlignment = value
+```
+
+## lineSpacing {#lineSpacing}
+
+```python
+lineSpacing: float
+```
+
+原生行间距，单位为像素，不随字体缩放设置改变。
+
+**访问：** 可读写。
+
+写入方式：`instance.lineSpacing = value`。参数类型线索：`(value: float) -> None`。
+
+写入参数 `value`：[float](../../common/type-system.md#float)。
+
+**返回类型：** [float](../../common/type-system.md#float)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.lineSpacing
+
+def write_value(instance, value):
+    instance.lineSpacing = value
+```
+
+## textShadow {#textShadow}
+
+```python
+textShadow: bool
+```
+
+是否启用原生文字阴影。
+
+**访问：** 可读写。
+
+写入方式：`instance.textShadow = value`。参数类型线索：`(value: bool) -> None`。
+
+写入参数 `value`：[bool](../../common/type-system.md#bool)。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.textShadow
+
+def write_value(instance, value):
+    instance.textShadow = value
 ```
 
 ## 使用示例

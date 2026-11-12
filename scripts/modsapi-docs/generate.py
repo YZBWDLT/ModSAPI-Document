@@ -168,7 +168,7 @@ def load():
               BASE/'utils/event_values.py', BASE/'utils/event_data.py', BASE/'utils/event_facade.py',
               BASE/'utils/expression.py', BASE/'utils/script_bridge.py', BASE/'utils/bridge_protocol.py']
     paths += [BASE / value for value in (
-        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py',
+        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py',
         '_ui/core/general/form.py', '_ui/core/general/observable.py',
         '_ui/core/utils/type.py', '_ui/interfaces/base/control.py',
         '_ui/interfaces/base/controls.py', '_ui/interfaces/base/theme.py',
@@ -217,7 +217,7 @@ def load():
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
             if cls['group'] == 'ui' and name not in (
                     'Form', 'Observable', 'ControlDescriptor', 'Button', 'Custom', 'Divider',
-                    'Dropdown', 'Group', 'Label', 'ListView', 'ScrollingPanel', 'Slider', 'TextField', 'Toggle'):
+                    'Dropdown', 'Group', 'Label', 'ListView', 'ScrollingPanel', 'Slider', 'TextField', 'Toggle', 'UiItem'):
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):
@@ -792,7 +792,7 @@ def indexes():
         if group=='server':lines+=['入口：`from ModSAPI.server.beta import world, system`。其他导出见 [导出符号](../exports.md)。','']
         elif group=='client':lines+=['入口：`from ModSAPI.client.beta import client`。所有操作只影响本机；客户端数据不能替代服务端权限校验。','']
         elif group=='server_ui':lines+=['标准表单入口：`from ModSAPI.serverui.beta import ActionFormData, ModalFormData, MessageFormData`。其他类型与入口见 [导出符号](../exports.md)。','', '标准构建器在服务端调用；JSON UI 控件底层类型在客户端工作，不要混用执行端。','']
-        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
+        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
         lines+=['[场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)','',
                 '<div className="modsapi-table-scroll" tabIndex={0} aria-label="接口表格，可横向滚动">','',
                 '| 类型 | 说明 |','| --- | --- |']
@@ -904,7 +904,7 @@ def modsdk_coverage():
 
 def site_navigation(config):
     """Avoid two active doc items sharing Docusaurus's API sidebar."""
-    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls)'
+    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets)'
     definitions={
         'packs/server/intro': ('接口文档', '/docs/packs/server/intro',
             '^/docs/packs/(?!ui(?:/|$)|guides/'+ui_guides+'(?:/|$))'),
@@ -916,6 +916,9 @@ def site_navigation(config):
         pattern=r"\{\s*type: 'doc',\s*position: 'left',\s*docId: '"+re.escape(document)+r"',\s*label: '"+label+r"',\s*\}"
         replacement="{\n            position: 'left',\n            to: '"+route+"',\n            label: '"+label+"',\n            activeBaseRegex: '"+active+"',\n        }"
         config=re.sub(pattern,lambda match:replacement,config)
+        # Update already converted entries when a new UI guide is added.
+        existing=r"(to: '"+re.escape(route)+r"',\s*label: '"+label+r"',\s*activeBaseRegex: ')[^']*(')"
+        config=re.sub(existing,lambda match:match[1]+active+match[2],config)
     return config
 
 
@@ -943,7 +946,7 @@ def generate():
     server_events = server_events.replace('(../server/native-events.md)', '(../native-events.md)').replace('(native-events.md)', '(../../guides/native-events.md)')
     put('packs/server/events/event_listen.md',server_events+'\n\n[全部 after 事件](afterEvents.md) · [全部 before 事件](beforeEvents.md)')
     custom_ui=GUIDES['packs/guides/custom-screen.md']
-    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls'):
+    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls', 'ui-layout-and-widgets'):
         custom_ui=custom_ui.replace('('+guide+'.md)', '(../../guides/'+guide+'.md)')
     put('packs/client/apis/customUI.md', custom_ui)
     options=['# 选项与数据结构','', '使用 Python 字典传入选项，以下参考列出当前包装类的字段、默认值和限制。','']
@@ -996,9 +999,9 @@ def generate():
         path='tutorials/'+name+'.md'
         text=(SITE/'docs'/path).read_text(encoding='utf-8-sig')
         put(path,text.replace('#entityhurt','#entityHurt'))
+    STAGE.mkdir(parents=True,exist_ok=True)
+    (STAGE/'missing-translations.json').write_text(json.dumps(sorted(MISSING),ensure_ascii=False,indent=2),encoding='utf-8')
     if MISSING:
-        STAGE.mkdir(parents=True,exist_ok=True)
-        (STAGE/'missing-translations.json').write_text(json.dumps(sorted(MISSING),ensure_ascii=False,indent=2),encoding='utf-8')
         raise ValueError('Missing Chinese translations: %d; see missing-translations.json' % len(MISSING))
     for relative,text in list(PAGES.items()):
         if relative.endswith('.md'):

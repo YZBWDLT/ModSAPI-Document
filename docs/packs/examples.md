@@ -30,3 +30,4 @@ title: 使用示例与场景指南
 - [主题表单与响应式状态](guides/themed-forms.md)
 - [界面动画与跟随界面](guides/ui-animation-and-hud.md)
 - [自定义控件与组合模板](guides/ui-custom-controls.md)
+- [布局与常用控件](guides/ui-layout-and-widgets.md)

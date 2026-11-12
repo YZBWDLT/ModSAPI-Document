@@ -220,7 +220,7 @@ def call_play(instance):
 cancel() -> None
 ```
 
-释放当前动画，不重置无关的原生动画通道。
+释放本动画通道；之前清理失败时，仅重试尚未成功释放的资源。
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 

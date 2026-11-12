@@ -137,3 +137,9 @@ title: 类型别名
 | 名称 | 类型 | 声明来源 |
 | --- | --- | --- |
 | [VectorLike](type-aliases.md#vectorlike) | [Vector3](../server/extra/vector.md) \| [tuple](type-system.md#tuple)[[float](type-system.md#float), [float](type-system.md#float), [float](type-system.md#float)] \| [dict](type-system.md#dict)[[str](type-system.md#str), [float](type-system.md#float)] | `core_behavior/ModSAPI/modules/client/options.pyi` |
+
+## UiControlKind {#uicontrolkind}
+
+| 名称 | 类型 | 声明来源 |
+| --- | --- | --- |
+| [UiControlKind](type-aliases.md#uicontrolkind) | [Literal](type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] | `core_behavior/ModSAPI/ui/controls.pyi` |

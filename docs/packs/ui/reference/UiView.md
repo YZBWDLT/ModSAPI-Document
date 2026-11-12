@@ -244,17 +244,17 @@ def read_value(instance):
 ## getControl {#getControl}
 
 ```python
-getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView'] = 'control') -> UiControl
+getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] = 'control') -> UiControl
 ```
 
-按绝对路径取得相应控件句柄。支持文字、按钮、图片、输入框、滑动条、开关和滚动容器；指定种类必须与资源模板中的实际控件相符。
+通过现有界面绝对路径获取指定类型的控件对象。kind 支持网格、堆叠面板、输入面板、物品预览和进度条等控件；类型必须与模板匹配。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `path` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiView.getControl](UiView.md#getControl) 的 path 参数；结合上方功能说明和下方调用示例使用。 |
-| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView'] | `'control'` | 传给 [UiView.getControl](UiView.md#getControl) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
+| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] | `'control'` | 传给 [UiView.getControl](UiView.md#getControl) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [UiControl](UiControl.md)。静态声明不替代本页的实现限制。
 
@@ -262,7 +262,6 @@ getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'text
 
 | 异常 | 校验信息 / 条件线索 |
 | --- | --- |
-| [ValueError](../../common/type-system.md#valueerror) | `'Control paths must be absolute and cannot contain ..'` |
 | [ValueError](../../common/type-system.md#valueerror) | `'Unknown UI control kind'` |
 | [KeyError](../../common/type-system.md#keyerror) | `'UI control not found: ' + path` |
 
@@ -310,7 +309,7 @@ createControl(template: str, name: str, parent: UiControl | None = None, kind: s
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateChildControl`, `GetPath`。
+**原生调用：** `CreateChildControl`, `RemoveChildControl`。
 
 ### 调用形状
 

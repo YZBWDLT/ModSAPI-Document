@@ -531,8 +531,6 @@ getTimeOfDay() -> int
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetTime`, `GetLevelId`。
-
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -552,9 +550,13 @@ getAbsoluteTime() -> int
 
 **返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
 
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+### 显式异常
 
-**原生调用：** `GetTime`, `GetLevelId`。
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetTime'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
 ### 调用形状
 
@@ -794,7 +796,7 @@ def call_setDynamicProperties(type_object, properties):
 setTimeOfDay(timeOfDay: int)
 ```
 
-设置一天中的时间。
+以整数刻设置一天内的时间，范围为 0～24000。网易原生接口在目标时间早于当前时间时前进到次日；原生拒绝时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)。
 
 ### 参数
 
@@ -804,9 +806,13 @@ setTimeOfDay(timeOfDay: int)
 
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 
-引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+### 显式异常
 
-**原生调用：** `SetTimeOfDay`, `GetLevelId`。
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [ValueError](../../common/type-system.md#valueerror) | `'timeOfDay must be between 0 and 24000'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
 ### 调用形状
 
@@ -823,7 +829,7 @@ def call_setTimeOfDay(type_object, timeOfDay):
 setAbsoluteTime(absoluteTime: int)
 ```
 
-设置世界时间。
+以整数刻设置世界绝对时间；原生拒绝或调用失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)。
 
 ### 参数
 
@@ -834,8 +840,6 @@ setAbsoluteTime(absoluteTime: int)
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
-
-**原生调用：** `SetTime`, `GetLevelId`。
 
 ### 调用形状
 

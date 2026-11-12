@@ -90,13 +90,20 @@ def configure(view):
 | 控件种类 | 返回类型 | 常用成员 |
 | --- | --- | --- |
 | `control` | UiControl | visible、position、size、setLayout、bind、remove |
-| `label` | UiLabel | text、color、setFontScale |
+| `label` | UiLabel | text、color、textAlignment、lineSpacing、textShadow |
 | `button` | UiButton | afterEvents.click、指针和悬浮事件 |
-| `image` | UiImage | setImage、setClipRatio |
+| `image` | UiImage | setImage、setClipRatio、clipDirection、rotate |
 | `textField` | UiTextField | value、setMaxLength |
 | `slider` | UiSlider | value，范围由模板决定 |
 | `toggle` | UiToggle | 布尔类型的 value |
-| `scrollView` | UiScrollView | 取值为 0～1 的 progress |
+| `scrollView` | UiScrollView | progress、scrollOffset、content |
+| `grid` | UiGrid | setDimensions、getItem |
+| `stackPanel` | UiStackPanel | orientation |
+| `inputPanel` | UiInputPanel | isModal、swallowInput、dragOffset |
+| `progressBar` | UiProgressBar | 取值为 0～1 的 setProgress |
+| `itemRenderer` | UiItemRenderer | setItem、item |
+
+锚点、裁剪、网格与物品预览的配套模板见 [布局与常用控件](ui-layout-and-widgets.md)。UiAnchor 和 UiImageClipDirection 提供可直接导入的常量，减少手写原生字符串。
 
 种类必须与模板实际控件相符。控件路径不存在时抛出 KeyError；视图已关闭或控件已移除时抛出 InvalidClientObjectError。`isValid` 用于检查存活情况，仍需处理检查之后发生的原生失败。
 
@@ -262,6 +269,8 @@ def control_animation(animation):
 
 启动失败会抛出 NativeOperationError 并尝试清理已经取得的资源。异步结束时的失败由 `animation.afterEvents.error` 或创建选项 onError 接收，`animation.error` 保留异常。
 
+清理失败后可再次调用 `animation.dispose()`，只重试尚未成功释放的部分。启动失败且回滚也失败时，异常的 animation 属性保留对应 UiAnimation，cleanupErrors 列出回滚错误。`view.close()` 和 `client.ui.closeAllViews()` 也会重试自己拥有的残留动画注册；界面已经关闭时仍可重试这些清理。
+
 ## 常驻界面
 
 先用 `registerView` 声明模板，再在原生界面就绪后创建：
@@ -392,6 +401,15 @@ UI_ACQUIRE = {
     'UiSlider': '使用 view.getControl(path, "slider")。',
     'UiToggle': '使用 view.getControl(path, "toggle")。',
     'UiScrollView': '使用 view.getControl(path, "scrollView")。',
+    'UiGrid': '使用 view.getControl(path, "grid")，格子由资源包模板创建。',
+    'UiStackPanel': '使用 view.getControl(path, "stackPanel")。',
+    'UiInputPanel': '使用 view.getControl(path, "inputPanel")。',
+    'UiProgressBar': '使用 view.getControl(path, "progressBar")，模板内需要填充图片子控件。',
+    'UiItemRenderer': '使用 view.getControl(path, "itemRenderer")，或从 UiGrid.getItem 取得。',
+    'UiItem': '从 ModSAPI.ui 导入并构造，或通过 UiItemRenderer.item 读取。',
+    'UiItemOptions': '将普通字典传给 UiItem 或 UiItemRenderer.setItem 的字符串重载。',
+    'UiAnchor': '从 ModSAPI.ui 导入，作为锚点属性和 setAnchors 的参数。',
+    'UiImageClipDirection': '从 ModSAPI.ui 导入，赋给 UiImage.clipDirection。',
     'UiAnimation': '由 UiControl.animate 返回；使用 pause、play、cancel 和 dispose 管理。',
     'UiEvent': '从视图生命周期或按钮交互的订阅回调取得。',
     'UiEventSignal': '通过拥有它的 afterEvents 容器获取。subscribe 返回取消函数。',
@@ -425,6 +443,14 @@ UI_EXAMPLES = {
     'UiSlider': 'def read_slider(slider):\n    return slider.value',
     'UiToggle': 'def enable(toggle):\n    toggle.value = True',
     'UiScrollView': 'def scroll_to_top(scroll):\n    scroll.progress = 0',
+    'UiGrid': 'def fill_grid(grid):\n    grid.setDimensions(2, 1)\n    cell = grid.getItem(0, 0, "itemRenderer")\n    if cell is not None:\n        cell.setItem("minecraft:diamond")',
+    'UiStackPanel': 'def arrange(stack):\n    stack.orientation = "vertical"',
+    'UiInputPanel': 'def modal(panel):\n    panel.isModal = True\n    panel.swallowInput = True\n    panel.dragOffset = (0, 0)',
+    'UiProgressBar': 'def update_progress(progress):\n    progress.setProgress(0.65)',
+    'UiItemRenderer': 'def show_item(renderer):\n    renderer.setItem("minecraft:diamond", {"isEnchanted": True})',
+    'UiItem': 'from ModSAPI.ui import UiItem\n\npreview = UiItem("minecraft:diamond", {"isEnchanted": True})',
+    'UiAnchor': 'from ModSAPI.ui import UiAnchor\n\ndef align(control):\n    control.setAnchors(UiAnchor.TopLeft)',
+    'UiImageClipDirection': 'from ModSAPI.ui import UiImageClipDirection\n\ndef configure(image):\n    image.clipDirection = UiImageClipDirection.LeftToRight',
     'UiAnimation': 'def stop_animation(animation):\n    animation.cancel()',
     'Form': 'from ModSAPI.client.beta import client\n\ndef create_form():\n    form = client.ui.createForm(u"设置", {"theme": "fluent"})\n    form.button(u"关闭", lambda player: form.close())\n    return form',
     'Observable': 'from ModSAPI.client.beta import client\n\nstate = client.ui.createState(0)\nstop = state.watch(lambda value: print(value))\nstate.update(lambda value: value + 1)\nstop()\nstate.dispose()',
@@ -442,7 +468,200 @@ title: 界面流程与原生扩展
 - [完整视图流程与模板示例](managed-ui.md)
 - [主题表单与响应式状态](themed-forms.md)
 - [动画、常驻和跟随界面](ui-animation-and-hud.md)
+- [布局、网格与物品预览](ui-layout-and-widgets.md)
 - [自定义模板与控件组](ui-custom-controls.md)
 
 已有的 client.screen 提供直接管理原生 ScreenNode 的兼容入口；通过它创建的节点由调用者管理。需要本库统一释放控件、订阅和动画时，使用 client.ui 管理视图。
+'''
+
+UI_GUIDES['packs/guides/ui-layout-and-widgets.md'] = r'''---
+title: 布局与常用控件
+---
+
+# 布局与常用控件
+
+UiView 负责界面生命周期，UiControl 提供位置、尺寸、锚点、裁剪与状态绑定。需要专用能力时，通过 getControl 的种类参数取得 UiGrid、UiStackPanel、UiItemRenderer 等类型。控件种类必须与资源包模板一致。
+
+## 锚点与尺寸
+
+```python
+from ModSAPI.ui import UiAnchor
+
+def arrange(view):
+    panel = view.getControl("/panel")
+    panel.setAnchors(UiAnchor.TopLeft)
+    panel.position = (12, 12)
+    panel.setLayout({"width": "100%-24px", "height": 180})
+    panel.minimumSize = (120, 80)
+    panel.clipsChildren = True
+    panel.clipOffset = (0, 0)
+```
+
+setAnchors 同时设置父参照点和控件参照点；第二个参数省略时，两者使用相同锚点。若第二步失败，库会尝试恢复原来的两个值，恢复失败附在异常的 rollbackErrors 中。maximumSize 的 `(0, 0)` 沿用原生的无限制语义。
+
+position、size、globalPosition 和 clipOffset 使用界面像素；globalPosition 为只读。布局表达式通过 setLayout 设置。不要把界面像素与世界坐标混用。
+
+## 可直接配套的模板
+
+将以下内容保存为资源包的 `ui/demo_widgets.json`：
+
+```json
+{
+  "namespace": "demo_widgets",
+  "screen": {
+    "type": "screen",
+    "is_showing_menu": true,
+    "controls": [{"panel": {
+      "type": "input_panel",
+      "size": [240, 200],
+      "modal": true,
+      "is_swallow": true,
+      "draggable": "both",
+      "button_mappings": [{
+        "from_button_id": "button.menu_select",
+        "to_button_id": "#netease_to_button_id",
+        "mapping_type": "pressed"
+      }],
+      "controls": [
+        {"headings": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [200, 40],
+          "offset": [0, -70],
+          "controls": [
+            {"title": {"type": "label", "text": "物品预览", "size": [200, 20]}},
+            {"hint": {"type": "label", "text": "可拖动面板", "size": [200, 20]}}
+          ]
+        }},
+        {"preview": {
+          "type": "custom",
+          "renderer": "inventory_item_renderer",
+          "property_bag": {"#item_id_aux": 0},
+          "size": [48, 48],
+          "offset": [-72, -8]
+        }},
+        {"items": {
+          "type": "grid",
+          "collection_name": "demo_items",
+          "grid_dimensions": [2, 1],
+          "grid_item_template": "demo_widgets.item_cell",
+          "grid_rescaling_type": "none",
+          "size": [96, 48],
+          "offset": [28, -8]
+        }},
+        {"progress": {
+          "type": "panel",
+          "size": [180, 10],
+          "offset": [0, 54],
+          "controls": [
+            {"empty_progress_bar": {
+              "type": "image",
+              "texture": "textures/ui/empty_progress_bar",
+              "size": ["100%", "100%"],
+              "layer": 1
+            }},
+            {"filled_progress_bar": {
+              "type": "image",
+              "texture": "textures/ui/filled_progress_bar",
+              "size": ["100%", "100%"],
+              "clip_direction": "left",
+              "clip_ratio": 1,
+              "layer": 2
+            }}
+          ]
+        }}
+      ]
+    }}]
+  },
+  "item_cell": {
+    "type": "custom",
+    "renderer": "inventory_item_renderer",
+    "property_bag": {"#item_id_aux": 0},
+    "size": [48, 48]
+  }
+}
+```
+
+在资源包的 `ui/_ui_defs.json` 中追加文件路径，保留原有条目：
+
+```json
+{"ui_defs": ["ui/demo_widgets.json"]}
+```
+
+这里的物品数值仅用于空白占位，实际预览通过 setItem 传入名称，避免依赖随游戏和模组变化的数字物品编号。模板结构仍需在目标网易游戏版本中验证；离线测试只校验调用契约。
+
+## 初始化与网格刷新
+
+```python
+# -*- coding: utf-8 -*-
+from ModSAPI.client.beta import client
+from ModSAPI.ui import UiItem
+
+def ready(event):
+    view = event.view
+    view.getControl("/panel/preview", "itemRenderer").setItem(
+        UiItem("minecraft:diamond", {"isEnchanted": True}))
+    view.getControl("/panel/progress", "progressBar").setProgress(0.65)
+    view.getControl("/panel/headings", "stackPanel").orientation = "vertical"
+
+    def refresh_cells():
+        if not view.isReady:
+            return
+        grid = view.getControl("/panel/items", "grid")
+        for column, type_id in enumerate(("minecraft:apple", "minecraft:diamond")):
+            cell = grid.getItem(column, 0, "itemRenderer")
+            if cell is not None:
+                cell.setItem(type_id)
+
+    client.run(refresh_cells)
+    grid_path = "/panel/items"
+
+    def grid_changed(changed):
+        if changed.path == grid_path:
+            refresh_cells()
+
+    signal = client.afterEvents.gridComponentSizeChange
+    signal.subscribe(grid_changed)
+    view.afterEvents.close.subscribe(lambda closed: signal.unsubscribe(grid_changed))
+
+client.ui.registerView("demo:widgets", "demo_widgets.screen", {"onReady": ready})
+
+def open_widgets(event):
+    client.ui.openView("demo:widgets")
+
+client.afterEvents.uiReady.subscribe(open_widgets)
+```
+
+网格的格子在渲染阶段创建，onReady 中可能还不存在；getItem 此时返回 None。示例将首次填充安排到下一次客户端调度，未创建的格子留给后续渲染更新。改变 setDimensions、滚动回收或重新布局后，应重新调用 getItem 取得当前格子，不要长期保存格子路径与序号的对应关系。
+
+滚动网格还应监听 `client.afterEvents.gridComponentSizeChange`，按当前数据重新取得并填充格子；该原生事件仅提供 path，不提供本库视图身份，多个视图有同名路径时需要结合自己的打开状态筛选。订阅应在视图关闭时取消。高频刷新只更新变化的项目，避免每帧重建整个网格。
+
+UiItem 表示渲染快照，设置预览不会修改背包。setItem 接受物品名称、UiItem 或 EventItemStack。读取 item 只能得到原生返回的名称、附加值和附魔显示标记；原生读取接口不返回 userData，因此无法从已有预览恢复这部分数据。
+
+## 文字、图片与滚动区域
+
+```python
+from ModSAPI.ui import UiImageClipDirection
+
+def decorate(view):
+    label = view.getControl("/panel/headings/title", "label")
+    label.textAlignment = "center"
+    label.lineSpacing = 2
+    label.textShadow = True
+    progress = view.getControl("/panel/progress/filled_progress_bar", "image")
+    progress.clipDirection = UiImageClipDirection.LeftToRight
+    progress.setClipRatio(0.35)
+```
+
+图片支持 rotationPivot、rotate 和 rotateAround；旋转角度使用度数，具体变换沿用原生语义。rotation、orbitPoint 和 orbitRotation 可读取当前结果。progressBar 的 setProgress 使用完成比例，而 image 的 setClipRatio 使用裁剪比例，两者含义不同。
+
+UiScrollView.progress 使用 0～1 的滚动比例，scrollOffset 使用原生滚动像素。content 每次查询当前内容控件，适应触控与键鼠模板路径切换。不要自行拼接固定的内容子路径。
+
+UiInputPanel 的 isModal 限制界面输入范围，swallowInput 控制输入是否穿透到世界。dragOffset 是原生累计拖动位移，与 position 分别存储；JSON 中还需配置 draggable 和 button_mappings 才能接收拖动。
+
+## 错误与释放
+
+错误参数在调用原生接口前抛出 TypeError 或 ValueError；控件种类与模板不符时抛出 UnsupportedFeatureError；失效视图和控件抛出 InvalidClientObjectError。原生布尔失败、异常及不符合契约的读取结果会报告 NativeOperationError，并保留 operation 等诊断信息。
+
+focus 与 blur 使用引擎的选中控件入口，实际键盘输入能力取决于控件种类。动态创建后若包装失败，库会尝试移除已创建的原生节点；清理失败记录在异常的 cleanupErrors 中。使用完毕后调用 view.close，绑定、按钮订阅和动画由视图释放。
 '''

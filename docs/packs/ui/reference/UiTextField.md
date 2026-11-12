@@ -30,15 +30,26 @@ sidebar_label: "UiTextField"
 
 | 成员 | 定义位置 |
 | --- | --- |
+| [anchorFrom](UiControl.md#anchorFrom) | [UiControl](UiControl.md) |
+| [anchorTo](UiControl.md#anchorTo) | [UiControl](UiControl.md) |
 | [animate](UiControl.md#animate) | [UiControl](UiControl.md) |
 | [bind](UiControl.md#bind) | [UiControl](UiControl.md) |
+| [blur](UiControl.md#blur) | [UiControl](UiControl.md) |
+| [clipOffset](UiControl.md#clipOffset) | [UiControl](UiControl.md) |
+| [clipsChildren](UiControl.md#clipsChildren) | [UiControl](UiControl.md) |
+| [focus](UiControl.md#focus) | [UiControl](UiControl.md) |
 | [getChild](UiControl.md#getChild) | [UiControl](UiControl.md) |
+| [getChildren](UiControl.md#getChildren) | [UiControl](UiControl.md) |
 | [getProperties](UiControl.md#getProperties) | [UiControl](UiControl.md) |
+| [globalPosition](UiControl.md#globalPosition) | [UiControl](UiControl.md) |
 | [isValid](UiControl.md#isValid) | [UiControl](UiControl.md) |
+| [maximumSize](UiControl.md#maximumSize) | [UiControl](UiControl.md) |
+| [minimumSize](UiControl.md#minimumSize) | [UiControl](UiControl.md) |
 | [native](UiControl.md#native) | [UiControl](UiControl.md) |
 | [path](UiControl.md#path) | [UiControl](UiControl.md) |
 | [position](UiControl.md#position) | [UiControl](UiControl.md) |
 | [remove](UiControl.md#remove) | [UiControl](UiControl.md) |
+| [setAnchors](UiControl.md#setAnchors) | [UiControl](UiControl.md) |
 | [setEnabled](UiControl.md#setEnabled) | [UiControl](UiControl.md) |
 | [setLayer](UiControl.md#setLayer) | [UiControl](UiControl.md) |
 | [setLayout](UiControl.md#setLayout) | [UiControl](UiControl.md) |
