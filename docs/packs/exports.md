@@ -594,6 +594,8 @@ from ModSAPI.ui import Form, Observable, Control, Theme
 | [UiChoiceEvent](ui/reference/UiChoiceEvent.md) | [UiChoiceEvent](ui/reference/UiChoiceEvent.md) |
 | [UiMiniMap](ui/reference/UiMiniMap.md) | [UiMiniMap](ui/reference/UiMiniMap.md) |
 | [UiMapMarker](ui/reference/UiMapMarker.md) | [UiMapMarker](ui/reference/UiMapMarker.md) |
+| [UiModelRenderer](ui/reference/UiModelRenderer.md) | [UiModelRenderer](ui/reference/UiModelRenderer.md) |
+| [UiImageFit](ui/reference/UiImageFit.md) | [UiImageFit](ui/reference/UiImageFit.md) |
 
 ## 提供器访问
 

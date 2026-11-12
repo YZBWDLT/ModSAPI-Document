@@ -19,14 +19,14 @@ sidebar_label: "BlockFilter"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `excludePermutations` | 由运行时值确定 | `data['excludePermutations'] if 'excludePermutations' in data else None` |
-| `excludeTags` | 由运行时值确定 | `data['excludeTags'] if 'excludeTags' in data else None` |
-| `excludeTypes` | 由运行时值确定 | `data['excludeTypes'] if 'excludeTypes' in data else None` |
-| `includePermutations` | 由运行时值确定 | `data['includePermutations'] if 'includePermutations' in data else None` |
-| `includeTags` | 由运行时值确定 | `data['includeTags'] if 'includeTags' in data else None` |
-| `includeTypes` | 由运行时值确定 | `data['includeTypes'] if 'includeTypes' in data else None` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `excludePermutations` | 由运行时值确定 | `data['excludePermutations'] if 'excludePermutations' in data else None` |  |
+| `excludeTags` | 由运行时值确定 | `data['excludeTags'] if 'excludeTags' in data else None` |  |
+| `excludeTypes` | 由运行时值确定 | `data['excludeTypes'] if 'excludeTypes' in data else None` |  |
+| `includePermutations` | 由运行时值确定 | `data['includePermutations'] if 'includePermutations' in data else None` |  |
+| `includeTags` | 由运行时值确定 | `data['includeTags'] if 'includeTags' in data else None` |  |
+| `includeTypes` | 由运行时值确定 | `data['includeTypes'] if 'includeTypes' in data else None` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

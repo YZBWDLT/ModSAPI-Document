@@ -15,16 +15,16 @@ sidebar_label: "EntitySwingSource"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `Attack` | [str](../type-system.md#str) | `'Attack'` |
-| `Build` | [str](../type-system.md#str) | `'Build'` |
-| `DropItem` | [str](../type-system.md#str) | `'DropItem'` |
-| `Event` | [str](../type-system.md#str) | `'Event'` |
-| `Interact` | [str](../type-system.md#str) | `'Interact'` |
-| `Mine` | [str](../type-system.md#str) | `'Mine'` |
-| `ThrowItem` | [str](../type-system.md#str) | `'ThrowItem'` |
-| `UseItem` | [str](../type-system.md#str) | `'UseItem'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `Attack` | [str](../type-system.md#str) | `'Attack'` |  |
+| `Build` | [str](../type-system.md#str) | `'Build'` |  |
+| `DropItem` | [str](../type-system.md#str) | `'DropItem'` |  |
+| `Event` | [str](../type-system.md#str) | `'Event'` |  |
+| `Interact` | [str](../type-system.md#str) | `'Interact'` |  |
+| `Mine` | [str](../type-system.md#str) | `'Mine'` |  |
+| `ThrowItem` | [str](../type-system.md#str) | `'ThrowItem'` |  |
+| `UseItem` | [str](../type-system.md#str) | `'UseItem'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

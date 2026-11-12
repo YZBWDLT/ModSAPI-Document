@@ -19,10 +19,10 @@ sidebar_label: "EntityEffectOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `amplifier` | [int](../type-system.md#int) | `self.__data['amplifier'] if 'amplifier' in self.__data else 0` |
-| `showParticles` | [bool](../type-system.md#bool) | `self.__data.get('showParticles', self.__data.get('showParticle', True))` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `amplifier` | [int](../type-system.md#int) | `self.__data['amplifier'] if 'amplifier' in self.__data else 0` | 效果的强度。 |
+| `showParticles` | [bool](../type-system.md#bool) | `self.__data.get('showParticles', self.__data.get('showParticle', True))` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

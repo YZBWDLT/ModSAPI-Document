@@ -15,18 +15,18 @@ sidebar_label: "ItemComponentTypes"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `BlockDynamicProperties` | [str](../type-system.md#str) | `'minecraft:block_actor_dynamic_properties'` |
-| `Book` | [str](../type-system.md#str) | `'minecraft:book'` |
-| `Compostable` | [str](../type-system.md#str) | `'minecraft:compostable'` |
-| `Cooldown` | [str](../type-system.md#str) | `'minecraft:cooldown'` |
-| `Durability` | [str](../type-system.md#str) | `'minecraft:durability'` |
-| `Dyeable` | [str](../type-system.md#str) | `'minecraft:dyeable'` |
-| `Enchantable` | [str](../type-system.md#str) | `'minecraft:enchantable'` |
-| `Food` | [str](../type-system.md#str) | `'minecraft:food'` |
-| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |
-| `Potion` | [str](../type-system.md#str) | `'minecraft:potion'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `BlockDynamicProperties` | [str](../type-system.md#str) | `'minecraft:block_actor_dynamic_properties'` |  |
+| `Book` | [str](../type-system.md#str) | `'minecraft:book'` |  |
+| `Compostable` | [str](../type-system.md#str) | `'minecraft:compostable'` |  |
+| `Cooldown` | [str](../type-system.md#str) | `'minecraft:cooldown'` |  |
+| `Durability` | [str](../type-system.md#str) | `'minecraft:durability'` |  |
+| `Dyeable` | [str](../type-system.md#str) | `'minecraft:dyeable'` |  |
+| `Enchantable` | [str](../type-system.md#str) | `'minecraft:enchantable'` |  |
+| `Food` | [str](../type-system.md#str) | `'minecraft:food'` |  |
+| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
+| `Potion` | [str](../type-system.md#str) | `'minecraft:potion'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

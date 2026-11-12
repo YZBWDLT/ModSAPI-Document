@@ -19,11 +19,11 @@ sidebar_label: "MusicOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `loop` | [bool](../type-system.md#bool) | `data['loop'] if 'loop' in data else False` |
-| `fade` | [float](../type-system.md#float) | `data['fade'] if 'fade' in data else 1.0` |
-| `volume` | [float](../type-system.md#float) | `data['volume'] if 'volume' in data else 1.0` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `loop` | [bool](../type-system.md#bool) | `data['loop'] if 'loop' in data else False` | 为 True 时循环播放该音乐。 |
+| `fade` | [float](../type-system.md#float) | `data['fade'] if 'fade' in data else 1.0` | 音乐结束时的淡出重叠参数；当前后端的支持情况见所属方法。 |
+| `volume` | [float](../type-system.md#float) | `data['volume'] if 'volume' in data else 1.0` | 音乐的相对音量。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

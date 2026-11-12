@@ -19,10 +19,10 @@ sidebar_label: "CustomCommandResult"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `status` | [CustomCommandStatus](CustomCommandStatus.md) | `data.get('status', 0)` |
-| `message` | [str](../type-system.md#str) | `data.get('message', '')` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `status` | [CustomCommandStatus](CustomCommandStatus.md) | `data.get('status', 0)` | 命令执行状态码；非零值通常表示错误。 |
+| `message` | [str](../type-system.md#str) | `data.get('message', '')` | 可选的命令执行结果补充信息。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

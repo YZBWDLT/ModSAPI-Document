@@ -19,12 +19,12 @@ sidebar_label: "ScrollPanel"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `name` | 由运行时值确定 | `name if name else 'scrollpanel%s' % random.randint(0, 2147483648)` |
-| `offset` | 由运行时值确定 | `offset` |
-| `size` | 由运行时值确定 | `size` |
-| `alpha` | 由运行时值确定 | `alpha` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `name` | 由运行时值确定 | `name if name else 'scrollpanel%s' % random.randint(0, 2147483648)` |  |
+| `offset` | 由运行时值确定 | `offset` |  |
+| `size` | 由运行时值确定 | `size` |  |
+| `alpha` | 由运行时值确定 | `alpha` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

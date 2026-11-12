@@ -11,11 +11,11 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 167 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 已有离线核验路径 | 172 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
 | 发现原生调用，待核对 | 288 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
-| 尚未建立映射 | 1174 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
+| 尚未建立映射 | 1169 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
-常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md) 和 [选择控件与小地图](guides/ui-choices-and-minimap.md)。原生模型控件、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
+常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
 
 微软接口的对照与已知限制另见 [官方对照与当前支持情况](compatibility.md)。以下列表中的 Apollo 标记保留原文的服务端平台限制。
 
@@ -2020,9 +2020,9 @@ title: ModSDK 功能映射与待补接口
 | [RemoveOptionByShowName](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#removeoptionbyshowname) | 客户端 | 已有离线核验路径 | [UiComboBox.removeOption](ui/reference/UiComboBox.md#removeOption) |
 | [RemoveStaticMarker](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#removestaticmarker) | 客户端 | 已有离线核验路径 | [UiMapMarker.remove](ui/reference/UiMapMarker.md#remove) |
 | [RemoveStaticTextMarker](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#removestatictextmarker) | 客户端 | 已有离线核验路径 | [UiMapMarker.remove](ui/reference/UiMapMarker.md#remove) |
-| [RenderBlockGeometryModel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderblockgeometrymodel) | 客户端 | 尚未建立映射 | — |
-| [RenderEntity](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderentity) | 客户端 | 尚未建立映射 | — |
-| [RenderSkeletonModel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderskeletonmodel) | 客户端 | 尚未建立映射 | — |
+| [RenderBlockGeometryModel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderblockgeometrymodel) | 客户端 | 已有离线核验路径 | [UiModelRenderer.setBlockGeometry](ui/reference/UiModelRenderer.md#setBlockGeometry) |
+| [RenderEntity](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderentity) | 客户端 | 已有离线核验路径 | [UiModelRenderer.setEntity](ui/reference/UiModelRenderer.md#setEntity) |
+| [RenderSkeletonModel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#renderskeletonmodel) | 客户端 | 已有离线核验路径 | [UiModelRenderer.setSkeletonModel](ui/reference/UiModelRenderer.md#setSkeletonModel) |
 | [RepaintMiniMap](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#repaintminimap) | 客户端 | 已有离线核验路径 | [UiMiniMap.refresh](ui/reference/UiMiniMap.md#refresh), [UiMiniMap.setHeightLimit](ui/reference/UiMiniMap.md#setHeightLimit) |
 | [Rotate](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#rotate) | 客户端 | 已有离线核验路径 | [UiImage.rotation](ui/reference/UiImage.md#rotation), [UiImage.rotate](ui/reference/UiImage.md#rotate) |
 | [RotateAround](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#rotatearound) | 客户端 | 已有离线核验路径 | [UiImage.rotateAround](ui/reference/UiImage.md#rotateAround), [UiImage.orbitRotation](ui/reference/UiImage.md#orbitRotation), [UiImage.orbitPoint](ui/reference/UiImage.md#orbitPoint) |
@@ -2051,7 +2051,7 @@ title: ModSDK 功能映射与待补接口
 | [SetGridDimension](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setgriddimension) | 客户端 | 已有离线核验路径 | [UiGrid.getItem](ui/reference/UiGrid.md#getItem), [UiGrid.setDimensions](ui/reference/UiGrid.md#setDimensions) |
 | [SetHighestY](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#sethighesty) | 客户端 | 已有离线核验路径 | [UiMiniMap.setHeightLimit](ui/reference/UiMiniMap.md#setHeightLimit) |
 | [SetHoverCallback](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#sethovercallback) | 客户端 | 已有离线核验路径 | [UiSelectionWheel.afterEvents](ui/reference/UiSelectionWheel.md#afterEvents) |
-| [SetImageAdaptionType](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setimageadaptiontype) | 客户端 | 尚未建立映射 | — |
+| [SetImageAdaptionType](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setimageadaptiontype) | 客户端 | 已有离线核验路径 | [UiImage.setImageFit](ui/reference/UiImage.md#setImageFit) |
 | [SetIsModal](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setismodal) | 客户端 | 已有离线核验路径 | [UiInputPanel.isModal](ui/reference/UiInputPanel.md#isModal) |
 | [SetIsSwallow](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setisswallow) | 客户端 | 已有离线核验路径 | [UiInputPanel.swallowInput](ui/reference/UiInputPanel.md#swallowInput) |
 | [SetLayer](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#setlayer) | 客户端 | 已有离线核验路径 | [UiControl.setLayer](ui/reference/UiControl.md#setLayer) |
@@ -2099,7 +2099,7 @@ title: ModSDK 功能映射与待补接口
 | [asLabel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#aslabel) | 客户端 | 发现原生调用，待核对 | — |
 | [asMiniMap](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asminimap) | 客户端 | 已有离线核验路径 | [UiMiniMap](ui/reference/UiMiniMap.md) |
 | [asNeteaseComboBox](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asneteasecombobox) | 客户端 | 已有离线核验路径 | [UiComboBox](ui/reference/UiComboBox.md) |
-| [asNeteasePaperDoll](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asneteasepaperdoll) | 客户端 | 尚未建立映射 | — |
+| [asNeteasePaperDoll](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asneteasepaperdoll) | 客户端 | 已有离线核验路径 | [UiModelRenderer.setEntity](ui/reference/UiModelRenderer.md#setEntity) |
 | [asProgressBar](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asprogressbar) | 客户端 | 已有离线核验路径 | [UiProgressBar.setProgress](ui/reference/UiProgressBar.md#setProgress) |
 | [asScrollView](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asscrollview) | 客户端 | 发现原生调用，待核对 | — |
 | [asSelectionWheel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E8%87%AA%E5%AE%9A%E4%B9%89UI/UI%E6%8E%A7%E4%BB%B6.md#asselectionwheel) | 客户端 | 已有离线核验路径 | [UiSelectionWheel](ui/reference/UiSelectionWheel.md) |

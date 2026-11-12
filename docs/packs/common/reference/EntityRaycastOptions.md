@@ -21,12 +21,12 @@ sidebar_label: "EntityRaycastOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `ignoreBlockCollision` | [bool](../type-system.md#bool) | `data['ignoreBlockCollision'] if 'ignoreBlockCollision' in data else False` |
-| `includeLiquidBlocks` | [bool](../type-system.md#bool) | `data['includeLiquidBlocks'] if 'includeLiquidBlocks' in data else False` |
-| `includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else False` |
-| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 16` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `ignoreBlockCollision` | [bool](../type-system.md#bool) | `data['ignoreBlockCollision'] if 'ignoreBlockCollision' in data else False` | 是否忽略方块碰撞。 |
+| `includeLiquidBlocks` | [bool](../type-system.md#bool) | `data['includeLiquidBlocks'] if 'includeLiquidBlocks' in data else False` | 射线检测是否包含流体方块。 |
+| `includePassableBlocks` | [bool](../type-system.md#bool) | `data['includePassableBlocks'] if 'includePassableBlocks' in data else False` | 射线检测是否包含可穿过的方块。 |
+| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else 16` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

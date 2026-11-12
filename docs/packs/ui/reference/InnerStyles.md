@@ -17,11 +17,11 @@ sidebar_label: "InnerStyles"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `oreui` | [Final](../../common/type-system.md#final)[[OreUIStyles](OreUIStyles.md)] | `OreUIStyles()` |
-| `flutter` | [Final](../../common/type-system.md#final)[[FlutterStyles](FlutterStyles.md)] | `FlutterStyles()` |
-| `fluent` | [Final](../../common/type-system.md#final)[[FluentStyles](FluentStyles.md)] | `FluentStyles()` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `oreui` | [Final](../../common/type-system.md#final)[[OreUIStyles](OreUIStyles.md)] | `OreUIStyles()` |  |
+| `flutter` | [Final](../../common/type-system.md#final)[[FlutterStyles](FlutterStyles.md)] | `FlutterStyles()` |  |
+| `fluent` | [Final](../../common/type-system.md#final)[[FluentStyles](FluentStyles.md)] | `FluentStyles()` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

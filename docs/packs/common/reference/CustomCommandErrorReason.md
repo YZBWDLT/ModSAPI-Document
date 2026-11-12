@@ -15,14 +15,14 @@ sidebar_label: "CustomCommandErrorReason"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `AlreadyRegistered` | [str](../type-system.md#str) | `'AlreadyRegistered'` |
-| `EnumDependencyMissing` | [str](../type-system.md#str) | `'EnumDependencyMissing'` |
-| `NamespaceMismatch` | [str](../type-system.md#str) | `'NamespaceMismatch'` |
-| `ParameterLimit` | [str](../type-system.md#str) | `'ParameterLimit'` |
-| `RegistryInvalid` | [str](../type-system.md#str) | `'RegistryInvalid'` |
-| `RegistryReadOnly` | [str](../type-system.md#str) | `'RegistryReadOnly'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `AlreadyRegistered` | [str](../type-system.md#str) | `'AlreadyRegistered'` |  |
+| `EnumDependencyMissing` | [str](../type-system.md#str) | `'EnumDependencyMissing'` |  |
+| `NamespaceMismatch` | [str](../type-system.md#str) | `'NamespaceMismatch'` |  |
+| `ParameterLimit` | [str](../type-system.md#str) | `'ParameterLimit'` |  |
+| `RegistryInvalid` | [str](../type-system.md#str) | `'RegistryInvalid'` |  |
+| `RegistryReadOnly` | [str](../type-system.md#str) | `'RegistryReadOnly'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

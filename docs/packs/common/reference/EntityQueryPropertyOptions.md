@@ -17,12 +17,12 @@ sidebar_label: "EntityQueryPropertyOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `exclude` | [bool](../type-system.md#bool) | `data.get('exclude', data.get('exlude', False))` |
-| `exlude` | [bool](../type-system.md#bool) | `self.exclude` |
-| `propertyId` | [str](../type-system.md#str) | `data['propertyId']` |
-| `value` | [bool](../type-system.md#bool) \| [str](../type-system.md#str) \| [EqualsComparison](EqualsComparison.md) \| [GreaterThanComparison](GreaterThanComparison.md) \| [LessThanComparison](LessThanComparison.md) \| [GreaterThanOrEqualsComparison](GreaterThanOrEqualsComparison.md) \| [LessThanOrEqualsComparison](LessThanOrEqualsComparison.md) \| [NotEqualsComparison](NotEqualsComparison.md) \| [RangeComparison](RangeComparison.md) | `data.get('value', None)` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `exclude` | [bool](../type-system.md#bool) | `data.get('exclude', data.get('exlude', False))` |  |
+| `exlude` | [bool](../type-system.md#bool) | `self.exclude` |  |
+| `propertyId` | [str](../type-system.md#str) | `data['propertyId']` |  |
+| `value` | [bool](../type-system.md#bool) \| [str](../type-system.md#str) \| [EqualsComparison](EqualsComparison.md) \| [GreaterThanComparison](GreaterThanComparison.md) \| [LessThanComparison](LessThanComparison.md) \| [GreaterThanOrEqualsComparison](GreaterThanOrEqualsComparison.md) \| [LessThanOrEqualsComparison](LessThanOrEqualsComparison.md) \| [NotEqualsComparison](NotEqualsComparison.md) \| [RangeComparison](RangeComparison.md) | `data.get('value', None)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

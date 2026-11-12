@@ -19,10 +19,10 @@ sidebar_label: "DropdownItem"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `label` | [str](../../common/type-system.md#str) | `运行时返回` |
-| `value` | [int](../../common/type-system.md#int) | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `label` | [str](../../common/type-system.md#str) | `必填字段` |  |
+| `value` | [int](../../common/type-system.md#int) | `必填字段` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

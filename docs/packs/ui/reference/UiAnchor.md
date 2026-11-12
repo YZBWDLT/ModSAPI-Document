@@ -17,17 +17,17 @@ anchorFrom、anchorTo 和 setAnchors 接受的锚点常量。
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `TopLeft` | [str](../../common/type-system.md#str) | `'top_left'` |
-| `TopCenter` | [str](../../common/type-system.md#str) | `'top_middle'` |
-| `TopRight` | [str](../../common/type-system.md#str) | `'top_right'` |
-| `CenterLeft` | [str](../../common/type-system.md#str) | `'left_middle'` |
-| `Center` | [str](../../common/type-system.md#str) | `'center'` |
-| `CenterRight` | [str](../../common/type-system.md#str) | `'right_middle'` |
-| `BottomLeft` | [str](../../common/type-system.md#str) | `'bottom_left'` |
-| `BottomCenter` | [str](../../common/type-system.md#str) | `'bottom_middle'` |
-| `BottomRight` | [str](../../common/type-system.md#str) | `'bottom_right'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `TopLeft` | [str](../../common/type-system.md#str) | `'top_left'` |  |
+| `TopCenter` | [str](../../common/type-system.md#str) | `'top_middle'` |  |
+| `TopRight` | [str](../../common/type-system.md#str) | `'top_right'` |  |
+| `CenterLeft` | [str](../../common/type-system.md#str) | `'left_middle'` |  |
+| `Center` | [str](../../common/type-system.md#str) | `'center'` |  |
+| `CenterRight` | [str](../../common/type-system.md#str) | `'right_middle'` |  |
+| `BottomLeft` | [str](../../common/type-system.md#str) | `'bottom_left'` |  |
+| `BottomCenter` | [str](../../common/type-system.md#str) | `'bottom_middle'` |  |
+| `BottomRight` | [str](../../common/type-system.md#str) | `'bottom_right'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

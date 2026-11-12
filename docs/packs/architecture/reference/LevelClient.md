@@ -15,36 +15,36 @@ sidebar_label: "LevelClient"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `levelId` | 由运行时值确定 | `levelId` |
-| `localPlayerId` | 由运行时值确定 | `localPlayerId` |
-| `localPlayer` | 由运行时值确定 | `compClient.CreatePlayer(localPlayerId)` |
-| `achievement` | 由运行时值确定 | `compClient.CreateAchievement(levelId)` |
-| `actorRender` | 由运行时值确定 | `compClient.CreateActorRender(levelId)` |
-| `biome` | 由运行时值确定 | `compClient.CreateBiome(levelId)` |
-| `block` | 由运行时值确定 | `compClient.CreateBlock(levelId)` |
-| `blockGeometry` | 由运行时值确定 | `compClient.CreateBlockGeometry(levelId)` |
-| `blockInfo` | 由运行时值确定 | `compClient.CreateBlockInfo(levelId)` |
-| `blockUseEventWhiteList` | 由运行时值确定 | `compClient.CreateBlockUseEventWhiteList(levelId)` |
-| `camera` | 由运行时值确定 | `compClient.CreateCamera(levelId)` |
-| `chunkSource` | 由运行时值确定 | `compClient.CreateChunkSource(levelId)` |
-| `configClient` | 由运行时值确定 | `compClient.CreateConfigClient(levelId)` |
-| `customAudio` | 由运行时值确定 | `compClient.CreateCustomAudio(levelId)` |
-| `dimension` | 由运行时值确定 | `compClient.CreateDimension(levelId)` |
-| `drawing` | 由运行时值确定 | `compClient.CreateDrawing(levelId)` |
-| `fog` | 由运行时值确定 | `compClient.CreateFog(levelId)` |
-| `game` | 由运行时值确定 | `compClient.CreateGame(levelId)` |
-| `model` | 由运行时值确定 | `compClient.CreateModel(levelId)` |
-| `neteaseShop` | 由运行时值确定 | `compClient.CreateNeteaseShop(levelId)` |
-| `operation` | 由运行时值确定 | `compClient.CreateOperation(levelId)` |
-| `playerView` | 由运行时值确定 | `compClient.CreatePlayerView(localPlayerId)` |
-| `postProcess` | 由运行时值确定 | `compClient.CreatePostProcess(levelId)` |
-| `recipe` | 由运行时值确定 | `compClient.CreateRecipe(levelId)` |
-| `skyRender` | 由运行时值确定 | `compClient.CreateSkyRender(levelId)` |
-| `textBoard` | 由运行时值确定 | `compClient.CreateTextBoard(levelId)` |
-| `textNotify` | 由运行时值确定 | `compClient.CreateTextNotifyClient(levelId)` |
-| `virtualWorld` | 由运行时值确定 | `compClient.CreateVirtualWorld(levelId)` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `levelId` | 由运行时值确定 | `levelId` |  |
+| `localPlayerId` | 由运行时值确定 | `localPlayerId` |  |
+| `localPlayer` | 由运行时值确定 | `compClient.CreatePlayer(localPlayerId)` |  |
+| `achievement` | 由运行时值确定 | `compClient.CreateAchievement(levelId)` |  |
+| `actorRender` | 由运行时值确定 | `compClient.CreateActorRender(levelId)` |  |
+| `biome` | 由运行时值确定 | `compClient.CreateBiome(levelId)` |  |
+| `block` | 由运行时值确定 | `compClient.CreateBlock(levelId)` |  |
+| `blockGeometry` | 由运行时值确定 | `compClient.CreateBlockGeometry(levelId)` |  |
+| `blockInfo` | 由运行时值确定 | `compClient.CreateBlockInfo(levelId)` |  |
+| `blockUseEventWhiteList` | 由运行时值确定 | `compClient.CreateBlockUseEventWhiteList(levelId)` |  |
+| `camera` | 由运行时值确定 | `compClient.CreateCamera(levelId)` |  |
+| `chunkSource` | 由运行时值确定 | `compClient.CreateChunkSource(levelId)` |  |
+| `configClient` | 由运行时值确定 | `compClient.CreateConfigClient(levelId)` |  |
+| `customAudio` | 由运行时值确定 | `compClient.CreateCustomAudio(levelId)` |  |
+| `dimension` | 由运行时值确定 | `compClient.CreateDimension(levelId)` |  |
+| `drawing` | 由运行时值确定 | `compClient.CreateDrawing(levelId)` |  |
+| `fog` | 由运行时值确定 | `compClient.CreateFog(levelId)` |  |
+| `game` | 由运行时值确定 | `compClient.CreateGame(levelId)` |  |
+| `model` | 由运行时值确定 | `compClient.CreateModel(levelId)` |  |
+| `neteaseShop` | 由运行时值确定 | `compClient.CreateNeteaseShop(levelId)` |  |
+| `operation` | 由运行时值确定 | `compClient.CreateOperation(levelId)` |  |
+| `playerView` | 由运行时值确定 | `compClient.CreatePlayerView(localPlayerId)` |  |
+| `postProcess` | 由运行时值确定 | `compClient.CreatePostProcess(levelId)` |  |
+| `recipe` | 由运行时值确定 | `compClient.CreateRecipe(levelId)` |  |
+| `skyRender` | 由运行时值确定 | `compClient.CreateSkyRender(levelId)` |  |
+| `textBoard` | 由运行时值确定 | `compClient.CreateTextBoard(levelId)` |  |
+| `textNotify` | 由运行时值确定 | `compClient.CreateTextNotifyClient(levelId)` |  |
+| `virtualWorld` | 由运行时值确定 | `compClient.CreateVirtualWorld(levelId)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

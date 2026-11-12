@@ -19,11 +19,11 @@ sidebar_label: "PlayerSoundOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `location` | [Vector3](../../server/extra/vector.md) | `Vector3(self.location)` |
-| `pitch` | [float](../type-system.md#float) | `data['pitch'] if 'pitch' in data else 1.0` |
-| `volume` | [float](../type-system.md#float) | `data['volume'] if 'volume' in data else 1.0` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `location` | [Vector3](../../server/extra/vector.md) | `Vector3(self.location)` | 声音播放位置；省略时在玩家附近播放。 |
+| `pitch` | [float](../type-system.md#float) | `data['pitch'] if 'pitch' in data else 1.0` | 可选的声音音高。 |
+| `volume` | [float](../type-system.md#float) | `data['volume'] if 'volume' in data else 1.0` | 可选的声音音量。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -15,19 +15,19 @@ sidebar_label: "BlockComponentTypes"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `DynamicProperties` | [str](../type-system.md#str) | `'minecraft:dynamic_properties'` |
-| `FluidContainer` | [str](../type-system.md#str) | `'minecraft:fluid_container'` |
-| `Instrument` | [str](../type-system.md#str) | `'minecraft:instrument_sound'` |
-| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |
-| `MapColor` | [str](../type-system.md#str) | `'minecraft:map_color'` |
-| `Movable` | [str](../type-system.md#str) | `'minecraft:movable'` |
-| `Piston` | [str](../type-system.md#str) | `'minecraft:piston'` |
-| `PrecipitationInteractions` | [str](../type-system.md#str) | `'minecraft:precipitation_interactions'` |
-| `RecordPlayer` | [str](../type-system.md#str) | `'minecraft:record_player'` |
-| `RedstoneProducer` | [str](../type-system.md#str) | `'minecraft:redstone_producer'` |
-| `Sign` | [str](../type-system.md#str) | `'minecraft:sign'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `DynamicProperties` | [str](../type-system.md#str) | `'minecraft:dynamic_properties'` |  |
+| `FluidContainer` | [str](../type-system.md#str) | `'minecraft:fluid_container'` |  |
+| `Instrument` | [str](../type-system.md#str) | `'minecraft:instrument_sound'` |  |
+| `Inventory` | [str](../type-system.md#str) | `'minecraft:inventory'` |  |
+| `MapColor` | [str](../type-system.md#str) | `'minecraft:map_color'` |  |
+| `Movable` | [str](../type-system.md#str) | `'minecraft:movable'` |  |
+| `Piston` | [str](../type-system.md#str) | `'minecraft:piston'` |  |
+| `PrecipitationInteractions` | [str](../type-system.md#str) | `'minecraft:precipitation_interactions'` |  |
+| `RecordPlayer` | [str](../type-system.md#str) | `'minecraft:record_player'` |  |
+| `RedstoneProducer` | [str](../type-system.md#str) | `'minecraft:redstone_producer'` |  |
+| `Sign` | [str](../type-system.md#str) | `'minecraft:sign'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -19,12 +19,12 @@ sidebar_label: "CustomOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `movable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `运行时返回` |
-| `resizable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `运行时返回` |
-| `style` | [str](../../common/type-system.md#str) | `'oreui'` |
-| `closable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `movable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `必填字段` |  |
+| `resizable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `必填字段` |  |
+| `style` | [str](../../common/type-system.md#str) | `'oreui'` |  |
+| `closable` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `必填字段` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

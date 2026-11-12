@@ -7,7 +7,7 @@ title: 界面与主题表单
 
 入口：[client.ui](../client/apis/manager.md#ui)、[system.ui](../server/reference/System.md#ui) 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。
 
-[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)
+[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [模型与图片](../guides/ui-models-and-images.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)
 
 [场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)
 
@@ -62,12 +62,15 @@ title: 界面与主题表单
 | [UiComboBoxEvents](reference/UiComboBoxEvents.md) | 原生下拉框弹出、收起及选中选项的事件容器。 |
 | [UiComboBoxOption](reference/UiComboBoxOption.md) | 本地原生下拉框选项的可选显示图标。 |
 | [UiControl](reference/UiControl.md) | 由视图拥有的原生控件；原生操作要求所属视图存活且已经就绪。 |
+| [UiEntityRenderOptions](reference/UiEntityRenderOptions.md) | 实体预览的变换参数与可选整数渲染深度。 |
 | [UiEvent](reference/UiEvent.md) | 本地界面事件参数，提供包装后的玩家、视图和控件引用。 |
 | [UiEventSignal](reference/UiEventSignal.md) | 由所属界面对象管理的事件信号；订阅返回可重复调用的取消函数。 |
 | [UiGrid](reference/UiGrid.md) | 由原生模板驱动的网格控件，与表单的权重布局分别使用。 |
 | [UiHudOptions](reference/UiHudOptions.md) | 签名、字段、属性、方法与调用示例 |
 | [UiImage](reference/UiImage.md) | 图片控件，支持贴图、裁剪，以及围绕自身锚点或全局位置的原生旋转。 |
 | [UiImageClipDirection](reference/UiImageClipDirection.md) | [UiImage.clipDirection](reference/UiImage.md#clipDirection) 接受的裁剪方向常量。 |
+| [UiImageFit](reference/UiImageFit.md) | [UiImage.setImageFit](reference/UiImage.md#setImageFit) 接受的图片适配方式。 |
+| [UiImageInsets](reference/UiImageInsets.md) | 九宫格的左、右、上、下边距；全部为非负有限数值。 |
 | [UiInputPanel](reference/UiInputPanel.md) | 原生输入面板，支持模态、输入拦截和拖拽偏移设置。 |
 | [UiItem](reference/UiItem.md) | 只读的物品显示值，与背包和堆叠数量无关。特殊物品可通过 userData 提供渲染数据；原生预览读取接口不返回这部分数据，因此不能从现有控件恢复。此值不导入或查询服务端组件。 |
 | [UiItemOptions](reference/UiItemOptions.md) | 签名、字段、属性、方法与调用示例 |
@@ -77,11 +80,14 @@ title: 界面与主题表单
 | [UiMapMarkerOptions](reference/UiMapMarkerOptions.md) | 地图图片标记的尺寸，以及仅用于实体标记的旋转选项。 |
 | [UiMapTextMarkerOptions](reference/UiMapTextMarkerOptions.md) | 地图文字标记的缩放选项；文字内容单独传入。 |
 | [UiMiniMap](reference/UiMiniMap.md) | 显示已加载客户端区块的小地图，可管理固定和跟随实体的标记。显示效果由原生模板与渲染规则决定；标记属于地图当前维度，只渲染 X/Z 坐标。 |
+| [UiModelRenderer](reference/UiModelRenderer.md) | 由当前视图管理的网易模型预览控件。切换预览内容只更新控件，不向世界发起创建实体的请求。省略的选项沿用原生默认值；关闭视图或移除控件时，沿用引擎的界面所有权释放预览。 |
+| [UiModelTransformOptions](reference/UiModelTransformOptions.md) | 三类模型预览共用的独立变换参数。 |
 | [UiProgressBar](reference/UiProgressBar.md) | 原生进度条，提供只写的归一化进度设置。 |
 | [UiScrollView](reference/UiScrollView.md) | 滚动容器；滚动进度统一为 0～1。 |
 | [UiSelectionWheel](reference/UiSelectionWheel.md) | 由原生模板提供可选扇区的轮盘控件。 |
 | [UiSelectionWheelEvents](reference/UiSelectionWheelEvents.md) | 悬浮选项变化与指针完成选择的事件容器。 |
 | [UiService](reference/UiService.md) | 管理本地视图以及组合表单、状态工厂。原生视图在客户端操作；服务端创建表单并向玩家对象显示，不能直接读取远端原生界面树。 |
+| [UiSkeletonRenderOptions](reference/UiSkeletonRenderOptions.md) | 骨骼预览的变换、动画播放和原生光照选项。 |
 | [UiSlider](reference/UiSlider.md) | 原生滑动条，数值范围和步进由界面模板决定。 |
 | [UiStackPanel](reference/UiStackPanel.md) | 原生堆叠布局，按水平或垂直方向排列子控件。 |
 | [UiTextField](reference/UiTextField.md) | 原生文本输入控件，通过 value 读取和设置输入内容。 |

@@ -19,12 +19,12 @@ sidebar_label: "EntityQueryScoreOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `exclude` | [bool](../type-system.md#bool) | `data['exclude'] if 'exclude' in data else False` |
-| `objective` | [str](../type-system.md#str) | `data['objective'] if 'objective' in data else ''` |
-| `minScore` | [int](../type-system.md#int) | `data['minScore'] if 'minScore' in data else -2147483648` |
-| `maxScore` | [int](../type-system.md#int) | `data['maxScore'] if 'maxScore' in data else 2147483647` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `exclude` | [bool](../type-system.md#bool) | `data['exclude'] if 'exclude' in data else False` | 为 True 时，排除分数位于给定区间的实体和玩家。 |
+| `objective` | [str](../type-system.md#str) | `data['objective'] if 'objective' in data else ''` | 用于筛选的计分板目标标识。 |
+| `minScore` | [int](../type-system.md#int) | `data['minScore'] if 'minScore' in data else -2147483648` | 只包含分数不小于 minScore 的玩家。 |
+| `maxScore` | [int](../type-system.md#int) | `data['maxScore'] if 'maxScore' in data else 2147483647` | 只包含分数不大于 maxScore 的玩家。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

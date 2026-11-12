@@ -17,9 +17,9 @@ sidebar_label: "Camera"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `playerId` | [str](../../common/type-system.md#str) | `playerId` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `playerId` | [str](../../common/type-system.md#str) | `playerId` | 微软相机预设的占位接口；原生相机控制请使用 [client.camera](../apis/manager.md#camera)。未支持的方法会抛出异常。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

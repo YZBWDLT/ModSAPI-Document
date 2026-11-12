@@ -15,11 +15,11 @@ sidebar_label: "LocatorBarErrorReason"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `WaypointAlreadyExists` | [str](../type-system.md#str) | `'WaypointAlreadyExists'` |
-| `WaypointLimitExceeded` | [str](../type-system.md#str) | `'WaypointLimitExceeded'` |
-| `WaypointNotFound` | [str](../type-system.md#str) | `'WaypointNotFound'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `WaypointAlreadyExists` | [str](../type-system.md#str) | `'WaypointAlreadyExists'` |  |
+| `WaypointLimitExceeded` | [str](../type-system.md#str) | `'WaypointLimitExceeded'` |  |
+| `WaypointNotFound` | [str](../type-system.md#str) | `'WaypointNotFound'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

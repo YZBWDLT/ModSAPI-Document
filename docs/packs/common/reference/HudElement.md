@@ -15,21 +15,21 @@ sidebar_label: "HudElement"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `PaperDoll` | [int](../type-system.md#int) | `0` |
-| `Armor` | [int](../type-system.md#int) | `1` |
-| `ToolTips` | [int](../type-system.md#int) | `2` |
-| `TouchControls` | [int](../type-system.md#int) | `3` |
-| `Crosshair` | [int](../type-system.md#int) | `4` |
-| `Hotbar` | [int](../type-system.md#int) | `5` |
-| `Health` | [int](../type-system.md#int) | `6` |
-| `ProgressBar` | [int](../type-system.md#int) | `7` |
-| `Hunger` | [int](../type-system.md#int) | `8` |
-| `AirBubbles` | [int](../type-system.md#int) | `9` |
-| `HorseHealth` | [int](../type-system.md#int) | `10` |
-| `StatusEffects` | [int](../type-system.md#int) | `11` |
-| `ItemText` | [int](../type-system.md#int) | `12` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `PaperDoll` | [int](../type-system.md#int) | `0` |  |
+| `Armor` | [int](../type-system.md#int) | `1` |  |
+| `ToolTips` | [int](../type-system.md#int) | `2` |  |
+| `TouchControls` | [int](../type-system.md#int) | `3` |  |
+| `Crosshair` | [int](../type-system.md#int) | `4` |  |
+| `Hotbar` | [int](../type-system.md#int) | `5` |  |
+| `Health` | [int](../type-system.md#int) | `6` |  |
+| `ProgressBar` | [int](../type-system.md#int) | `7` |  |
+| `Hunger` | [int](../type-system.md#int) | `8` |  |
+| `AirBubbles` | [int](../type-system.md#int) | `9` |  |
+| `HorseHealth` | [int](../type-system.md#int) | `10` |  |
+| `StatusEffects` | [int](../type-system.md#int) | `11` |  |
+| `ItemText` | [int](../type-system.md#int) | `12` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

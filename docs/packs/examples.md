@@ -32,3 +32,4 @@ title: 使用示例与场景指南
 - [自定义控件与组合模板](guides/ui-custom-controls.md)
 - [布局与常用控件](guides/ui-layout-and-widgets.md)
 - [选择控件与小地图](guides/ui-choices-and-minimap.md)
+- [模型预览与图片适配](guides/ui-models-and-images.md)

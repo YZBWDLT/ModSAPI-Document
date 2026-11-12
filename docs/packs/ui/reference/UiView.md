@@ -244,7 +244,7 @@ def read_value(instance):
 ## getControl {#getControl}
 
 ```python
-getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap'] = 'control') -> UiControl
+getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap', 'modelRenderer'] = 'control') -> UiControl
 ```
 
 通过现有界面绝对路径获取指定类型的控件对象。kind 支持网格、堆叠面板、输入面板、物品预览和进度条等控件；类型必须与模板匹配。
@@ -254,7 +254,7 @@ getControl(path: str, kind: Literal['control', 'label', 'button', 'image', 'text
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `path` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiView.getControl](UiView.md#getControl) 的 path 参数；结合上方功能说明和下方调用示例使用。 |
-| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap'] | `'control'` | 传给 [UiView.getControl](UiView.md#getControl) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
+| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap', 'modelRenderer'] | `'control'` | 传给 [UiView.getControl](UiView.md#getControl) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [UiControl](UiControl.md)。静态声明不替代本页的实现限制。
 

@@ -19,11 +19,11 @@ sidebar_label: "SpawnEntityOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `initialPersistence` | [bool](../type-system.md#bool) | `data['initialPersistence'] if 'initialPersistence' in data else False` |
-| `initialRotation` | [int](../type-system.md#int) | `data['initialRotation'] if 'initialRotation' in data else 0` |
-| `spawnEvent` | [str](../type-system.md#str) | `data['spawnEvent'] if 'spawnEvent' in data else None` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `initialPersistence` | [bool](../type-system.md#bool) | `data['initialPersistence'] if 'initialPersistence' in data else False` | 可选的持久化标记，表示是否阻止实体自动消失；具体支持情况见所属操作。 |
+| `initialRotation` | [int](../type-system.md#int) | `data['initialRotation'] if 'initialRotation' in data else 0` | 生成实体时的可选初始角度，单位为度。 |
+| `spawnEvent` | [str](../type-system.md#str) | `data['spawnEvent'] if 'spawnEvent' in data else None` | 实体生成后可选触发的生成事件。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -17,34 +17,34 @@ Fluent 风格的浅色和深色模板标识。
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `LightPanel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:light_panel']] | `'fluent:light_panel'` |
-| `DarkPanel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_panel']] | `'fluent:dark_panel'` |
-| `PrimaryBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:primary_button']] | `'fluent:primary_button'` |
-| `NormalBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:button']] | `'fluent:button'` |
-| `OutlinedBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:outlined_button']] | `'fluent:outlined_button'` |
-| `HyperlinkBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:hyperlink_button']] | `'fluent:hyperlink_button'` |
-| `DangerBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:danger_button']] | `'fluent:danger_button'` |
-| [Label](Label.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:label']] | `'fluent:label'` |
-| [Divider](Divider.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:divider']] | `'fluent:divider'` |
-| [Toggle](Toggle.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:toggle']] | `'fluent:toggle'` |
-| [Slider](Slider.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:slider']] | `'fluent:slider'` |
-| [TextField](TextField.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:textfield']] | `'fluent:textfield'` |
-| [Dropdown](Dropdown.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dropdown']] | `'fluent:dropdown'` |
-| [ListView](ListView.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:listview']] | `'fluent:listview'` |
-| `DarkListView` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_listview']] | `'fluent:dark_listview'` |
-| `DarkPrimaryBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_primary_button']] | `'fluent:dark_primary_button'` |
-| `DarkNormalBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_button']] | `'fluent:dark_button'` |
-| `DarkOutlinedBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_outlined_button']] | `'fluent:dark_outlined_button'` |
-| `DarkHyperlinkBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_hyperlink_button']] | `'fluent:dark_hyperlink_button'` |
-| `DarkDangerBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_danger_button']] | `'fluent:dark_danger_button'` |
-| `DarkLabel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_label']] | `'fluent:dark_label'` |
-| `DarkDivider` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_divider']] | `'fluent:dark_divider'` |
-| `DarkToggle` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_toggle']] | `'fluent:dark_toggle'` |
-| `DarkSlider` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_slider']] | `'fluent:dark_slider'` |
-| `DarkTextField` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_textfield']] | `'fluent:dark_textfield'` |
-| `DarkDropdown` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_dropdown']] | `'fluent:dark_dropdown'` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `LightPanel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:light_panel']] | `'fluent:light_panel'` |  |
+| `DarkPanel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_panel']] | `'fluent:dark_panel'` |  |
+| `PrimaryBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:primary_button']] | `'fluent:primary_button'` |  |
+| `NormalBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:button']] | `'fluent:button'` |  |
+| `OutlinedBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:outlined_button']] | `'fluent:outlined_button'` |  |
+| `HyperlinkBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:hyperlink_button']] | `'fluent:hyperlink_button'` |  |
+| `DangerBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:danger_button']] | `'fluent:danger_button'` |  |
+| [Label](Label.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:label']] | `'fluent:label'` |  |
+| [Divider](Divider.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:divider']] | `'fluent:divider'` |  |
+| [Toggle](Toggle.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:toggle']] | `'fluent:toggle'` |  |
+| [Slider](Slider.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:slider']] | `'fluent:slider'` |  |
+| [TextField](TextField.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:textfield']] | `'fluent:textfield'` |  |
+| [Dropdown](Dropdown.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dropdown']] | `'fluent:dropdown'` |  |
+| [ListView](ListView.md) | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:listview']] | `'fluent:listview'` |  |
+| `DarkListView` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_listview']] | `'fluent:dark_listview'` |  |
+| `DarkPrimaryBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_primary_button']] | `'fluent:dark_primary_button'` |  |
+| `DarkNormalBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_button']] | `'fluent:dark_button'` |  |
+| `DarkOutlinedBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_outlined_button']] | `'fluent:dark_outlined_button'` |  |
+| `DarkHyperlinkBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_hyperlink_button']] | `'fluent:dark_hyperlink_button'` |  |
+| `DarkDangerBtn` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_danger_button']] | `'fluent:dark_danger_button'` |  |
+| `DarkLabel` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_label']] | `'fluent:dark_label'` |  |
+| `DarkDivider` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_divider']] | `'fluent:dark_divider'` |  |
+| `DarkToggle` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_toggle']] | `'fluent:dark_toggle'` |  |
+| `DarkSlider` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_slider']] | `'fluent:dark_slider'` |  |
+| `DarkTextField` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_textfield']] | `'fluent:dark_textfield'` |  |
+| `DarkDropdown` | [Final](../../common/type-system.md#final)[[Literal](../../common/type-system.md#literal)['fluent:dark_dropdown']] | `'fluent:dark_dropdown'` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

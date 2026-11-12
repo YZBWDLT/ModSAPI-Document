@@ -19,19 +19,19 @@ sidebar_label: "FormStyle"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `class` | [str](../../common/type-system.md#str) | `运行时返回` |
-| `offsetX` | [UiLength](../../common/type-aliases.md#uilength) | `运行时返回` |
-| `offsetY` | [UiLength](../../common/type-aliases.md#uilength) | `运行时返回` |
-| `width` | [UiLength](../../common/type-aliases.md#uilength) | `运行时返回` |
-| `height` | [UiLength](../../common/type-aliases.md#uilength) | `运行时返回` |
-| `grids` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int) \| [float](../../common/type-system.md#float)] | `运行时返回` |
-| `grid` | [GridPosition](GridPosition.md) | `运行时返回` |
-| `layout` | [FormLayout](../../server_ui/reference/FormLayout.md) | `运行时返回` |
-| `hideOtherForms` | [BoolValue](../../common/type-aliases.md#boolvalue) | `运行时返回` |
-| `layer` | [int](../../common/type-system.md#int) \| [Observable](Observable.md)[[int](../../common/type-system.md#int)] | `运行时返回` |
-| `visible` | [BoolValue](../../common/type-aliases.md#boolvalue) | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `class` | [str](../../common/type-system.md#str) | `可选字段；省略规则见所属操作` |  |
+| `offsetX` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| `offsetY` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| `width` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| `height` | [UiLength](../../common/type-aliases.md#uilength) | `可选字段；省略规则见所属操作` |  |
+| `grids` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int) \| [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
+| `grid` | [GridPosition](GridPosition.md) | `可选字段；省略规则见所属操作` |  |
+| `layout` | [FormLayout](../../server_ui/reference/FormLayout.md) | `可选字段；省略规则见所属操作` |  |
+| `hideOtherForms` | [BoolValue](../../common/type-aliases.md#boolvalue) | `可选字段；省略规则见所属操作` |  |
+| `layer` | [int](../../common/type-system.md#int) \| [Observable](Observable.md)[[int](../../common/type-system.md#int)] | `可选字段；省略规则见所属操作` |  |
+| `visible` | [BoolValue](../../common/type-aliases.md#boolvalue) | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

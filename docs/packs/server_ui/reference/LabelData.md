@@ -19,13 +19,13 @@ sidebar_label: "LabelData"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `text` | 由运行时值确定 | `''` |
-| `align` | 由运行时值确定 | `'center'` |
-| `fontSize` | 由运行时值确定 | `Expression(1.0)` |
-| `linePadding` | 由运行时值确定 | `Expression(0.0)` |
-| `color` | 由运行时值确定 | `(Expression(255), Expression(255), Expression(255))` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `text` | 由运行时值确定 | `''` |  |
+| `align` | 由运行时值确定 | `'center'` |  |
+| `fontSize` | 由运行时值确定 | `Expression(1.0)` |  |
+| `linePadding` | 由运行时值确定 | `Expression(0.0)` |  |
+| `color` | 由运行时值确定 | `(Expression(255), Expression(255), Expression(255))` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

@@ -21,10 +21,10 @@ sidebar_label: "ClientParticleOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `运行时返回` |
-| `molangVariables` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `rotation` | [VectorLike](../../common/type-aliases.md#vectorlike) | `可选字段；省略规则见所属操作` |  |
+| `molangVariables` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

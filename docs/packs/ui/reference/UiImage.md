@@ -21,6 +21,7 @@ sidebar_label: "UiImage"
 
 | 名称 | 形态 |
 | --- | --- |
+| [setImageFit](#setImageFit) | 方法 |
 | [clipDirection](#clipDirection) | 可读写属性 |
 | [rotation](#rotation) | 只读属性 |
 | [rotationPivot](#rotationPivot) | 可读写属性 |
@@ -66,6 +67,44 @@ sidebar_label: "UiImage"
 | [size](UiControl.md#size) | [UiControl](UiControl.md) |
 | [view](UiControl.md#view) | [UiControl](UiControl.md) |
 | [visible](UiControl.md#visible) | [UiControl](UiControl.md) |
+
+## setImageFit {#setImageFit}
+
+```python
+setImageFit(fit: str, borders: UiImageInsets | None = None) -> None
+```
+
+设置 [UiImageFit](UiImageFit.md) 适配方式并检查原生结果。NineSlice 与 LegacyNineSlice 必须传入包含 left、right、top、bottom 的非负有限边距字典；其他模式不接受边距。原生 API 没有提供读取当前适配方式的能力。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `fit` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiImage.setImageFit](UiImage.md#setImageFit) 的 fit 参数；结合上方功能说明和下方调用示例使用。 |
+| `borders` | [UiImageInsets](UiImageInsets.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [UiImage.setImageFit](UiImage.md#setImageFit) 的 borders 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'borders must be a dictionary'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'borders requires left, right, top and bottom'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'borders require a nine-slice fitting mode'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetImageAdaptionType`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setImageFit(instance, fit):
+    return instance.setImageFit(fit)
+```
 
 ## clipDirection {#clipDirection}
 

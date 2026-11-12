@@ -21,15 +21,15 @@ sidebar_label: "EntityQueryOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `data` | [dict](../type-system.md#dict) | `data` |
-| `closest` | [int](../type-system.md#int) | `data['closest'] if 'closest' in data else -1` |
-| `farthest` | [int](../type-system.md#int) | `data['farthest'] if 'farthest' in data else -1` |
-| `location` | [Vector3](../../server/extra/vector.md) | `Vector3(data['location']) if 'location' in data else Vector3({})` |
-| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else -1` |
-| `minDistance` | [float](../type-system.md#float) | `data['minDistance'] if 'minDistance' in data else -1` |
-| `volume` | [Vector3](../../server/extra/vector.md) | `Vector3(data['volume']) if 'volume' in data else None` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `data` | [dict](../type-system.md#dict) | `data` |  |
+| `closest` | [int](../type-system.md#int) | `data['closest'] if 'closest' in data else -1` | 最多返回最近的指定数量实体；必须同时提供参考位置。 |
+| `farthest` | [int](../type-system.md#int) | `data['farthest'] if 'farthest' in data else -1` | 最多返回最远的指定数量实体；必须同时提供参考位置。 |
+| `location` | [Vector3](../../server/extra/vector.md) | `Vector3(data['location']) if 'location' in data else Vector3({})` | 查询的参考位置；与最近、最远、数量、体积和距离筛选共同使用。 |
+| `maxDistance` | [float](../type-system.md#float) | `data['maxDistance'] if 'maxDistance' in data else -1` | 只包含距离参考位置不大于该值的实体。 |
+| `minDistance` | [float](../type-system.md#float) | `data['minDistance'] if 'minDistance' in data else -1` | 只包含距离参考位置不小于该值的实体。 |
+| `volume` | [Vector3](../../server/extra/vector.md) | `Vector3(data['volume']) if 'volume' in data else None` | 与参考位置共同指定查询实体的长方体范围。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

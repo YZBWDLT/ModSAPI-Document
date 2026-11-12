@@ -170,7 +170,7 @@ def load():
               BASE/'utils/event_values.py', BASE/'utils/event_data.py', BASE/'utils/event_facade.py',
               BASE/'utils/expression.py', BASE/'utils/script_bridge.py', BASE/'utils/bridge_protocol.py']
     paths += [BASE / value for value in (
-        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py', 'ui/choices.py', 'ui/minimap.py',
+        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py', 'ui/choices.py', 'ui/minimap.py', 'ui/renderers.py',
         '_ui/core/general/form.py', '_ui/core/general/observable.py',
         '_ui/core/utils/type.py', '_ui/interfaces/base/control.py',
         '_ui/interfaces/base/controls.py', '_ui/interfaces/base/theme.py',
@@ -275,6 +275,27 @@ def load():
         flatten_private(cls)
     for cls in CLASSES:
         cls['fields'] = fields(cls)
+    # Options are passed as one mapping. Include fields inherited through all
+    # public TypedDict bases so callers need not reconstruct the dictionary
+    # across several pages. A derived declaration overrides its base field.
+    resolved=set()
+    def complete_dictionary_fields(cls, active):
+        if cls['url'] in resolved:return
+        if cls['url'] in active:
+            raise ValueError('Cyclic option inheritance: '+cls['name'])
+        active.add(cls['url'])
+        combined={}
+        for name in cls['bases']:
+            parent=find_base(cls,name)
+            if parent is not None and typed_dictionary(parent):
+                complete_dictionary_fields(parent,active)
+                combined.update(copy.deepcopy(parent['fields']))
+        combined.update(cls['fields'])
+        cls['fields']=combined
+        active.remove(cls['url'])
+        resolved.add(cls['url'])
+    for cls in CLASSES:
+        if typed_dictionary(cls):complete_dictionary_fields(cls,set())
     references.TYPE_ALIASES.clear()
     references.TYPE_ALIASES.update(name for name, value, path in alias_rows())
 
@@ -394,11 +415,18 @@ def fields(cls):
     for node in [cls['source'], cls['stub']]:
         if node is None:
             continue
-        for child in node.body:
+        total=next((keyword.value.value for keyword in node.keywords
+                    if keyword.arg=='total' and isinstance(keyword.value,ast.Constant)),True)
+        for index,child in enumerate(node.body):
             if isinstance(child, ast.AnnAssign) and isinstance(child.target, ast.Name) and not child.target.id.startswith('_'):
                 result.setdefault(child.target.id,{})['type'] = ast.unparse(child.annotation)
+                result[child.target.id]['required'] = total is not False
                 if child.value:
                     result[child.target.id]['default'] = ast.unparse(child.value)
+                if index+1<len(node.body):
+                    following=node.body[index+1]
+                    if isinstance(following,ast.Expr) and isinstance(following.value,ast.Constant) and isinstance(following.value.value,str):
+                        result[child.target.id]['description']=following.value.value
             elif isinstance(child, ast.Assign):
                 for target in child.targets:
                     if isinstance(target,ast.Name) and not target.id.startswith('_'):
@@ -712,9 +740,12 @@ def render(cls, signals):
     if any(bases):
         out+=['基类：'+', '.join('['+base['name']+']('+link(url,base['url'])+')' for base in bases if base)+'.','']
     if cls['fields']:
-        out+=['## 字段与常量','', '| 名称 | 类型线索 | 默认值 / 来源 |','| --- | --- | --- |']
+        structural=typed_dictionary(cls)
+        out+=['## 字段与常量','', '| 名称 | 类型线索 | 默认值 / 来源 | 说明 |','| --- | --- | --- | --- |']
         for key,value in cls['fields'].items():
-            out+=['| '+code(key)+' | '+references.annotation(value.get('type','由运行时值确定'),url)+' | '+code(value.get('default',value.get('assignment','运行时返回')))+' |']
+            origin=('必填字段' if value.get('required',True) else '可选字段；省略规则见所属操作') if structural else '运行时返回'
+            field_description=chinese(value['description']) if value.get('description') else NOTES.get(name+'.'+key,'')
+            out+=['| '+code(key)+' | '+references.annotation(value.get('type','由运行时值确定'),url)+' | '+code(value.get('default',value.get('assignment',origin)))+' | '+cell(field_description)+' |']
         out+=['','字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。','']
     members={key:value for key,value in cls['members'].items() if not key.startswith('_') or key=='__init__'}
     if members:
@@ -803,7 +834,7 @@ def indexes():
         if group=='server':lines+=['入口：`from ModSAPI.server.beta import world, system`。其他导出见 [导出符号](../exports.md)。','']
         elif group=='client':lines+=['入口：`from ModSAPI.client.beta import client`。所有操作只影响本机；客户端数据不能替代服务端权限校验。','']
         elif group=='server_ui':lines+=['标准表单入口：`from ModSAPI.serverui.beta import ActionFormData, ModalFormData, MessageFormData`。其他类型与入口见 [导出符号](../exports.md)。','', '标准构建器在服务端调用；JSON UI 控件底层类型在客户端工作，不要混用执行端。','']
-        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
+        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [模型与图片](../guides/ui-models-and-images.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
         lines+=['[场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)','',
                 '<div className="modsapi-table-scroll" tabIndex={0} aria-label="接口表格，可横向滚动">','',
                 '| 类型 | 说明 |','| --- | --- |']
@@ -889,7 +920,7 @@ def modsdk_coverage():
            '| 已有离线核验路径 | '+str(report['summary']['statuses'].get('reviewed_adapter_path',0))+' | 已核对公开入口并有具体契约测试；仍需游戏验证。 |',
            '| 发现原生调用，待核对 | '+str(report['summary']['statuses'].get('candidate_requires_review',0))+' | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |',
            '| 尚未建立映射 | '+str(report['summary']['statuses'].get('unmapped',0))+' | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |','',
-           '常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md) 和 [选择控件与小地图](guides/ui-choices-and-minimap.md)。原生模型控件、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。','',
+           '常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。','',
            '微软接口的对照与已知限制另见 [官方对照与当前支持情况](compatibility.md)。以下列表中的 Apollo 标记保留原文的服务端平台限制。','',
            '[网易官方接口索引]('+report['source']['url']+')','']
     groups=defaultdict(list)
@@ -915,7 +946,7 @@ def modsdk_coverage():
 
 def site_navigation(config):
     """Avoid two active doc items sharing Docusaurus's API sidebar."""
-    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets|ui-choices-and-minimap)'
+    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets|ui-choices-and-minimap|ui-models-and-images)'
     definitions={
         'packs/server/intro': ('接口文档', '/docs/packs/server/intro',
             '^/docs/packs/(?!ui(?:/|$)|guides/'+ui_guides+'(?:/|$))'),
@@ -957,7 +988,7 @@ def generate():
     server_events = server_events.replace('(../server/native-events.md)', '(../native-events.md)').replace('(native-events.md)', '(../../guides/native-events.md)')
     put('packs/server/events/event_listen.md',server_events+'\n\n[全部 after 事件](afterEvents.md) · [全部 before 事件](beforeEvents.md)')
     custom_ui=GUIDES['packs/guides/custom-screen.md']
-    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls', 'ui-layout-and-widgets', 'ui-choices-and-minimap'):
+    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls', 'ui-layout-and-widgets', 'ui-choices-and-minimap', 'ui-models-and-images'):
         custom_ui=custom_ui.replace('('+guide+'.md)', '(../../guides/'+guide+'.md)')
     put('packs/client/apis/customUI.md', custom_ui)
     options=['# 选项与数据结构','', '使用 Python 字典传入选项，以下参考列出当前包装类的字段、默认值和限制。','']

@@ -21,29 +21,24 @@ sidebar_label: "ButtonOptions"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `icon` | [str](../../common/type-system.md#str) \| [Observable](Observable.md)[[str](../../common/type-system.md#str)] | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `visible` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| `disabled` | [bool](../../common/type-system.md#bool) \| [Observable](Observable.md)[[bool](../../common/type-system.md#bool)] | `可选字段；省略规则见所属操作` |  |
+| `tooltip` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
+| `description` | [str](../../common/type-system.md#str) \| [dict](../../common/type-system.md#dict) \| [Observable](Observable.md) | `可选字段；省略规则见所属操作` |  |
+| `icon` | [str](../../common/type-system.md#str) \| [Observable](Observable.md)[[str](../../common/type-system.md#str)] | `必填字段` | 按钮图标；空字符串表示隐藏。 |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
-
-## 继承成员
-
-下列成员沿用基类约定；点击名称查看签名、参数、返回值和示例。
-
-| 成员 | 定义位置 |
-| --- | --- |
-| [description](Options.md#字段与常量) | [Options](Options.md) |
-| [disabled](Options.md#字段与常量) | [Options](Options.md) |
-| [tooltip](Options.md#字段与常量) | [Options](Options.md) |
-| [visible](Options.md#字段与常量) | [Options](Options.md) |
 
 ## 使用示例
 
 
 ```python
 def inspect_options(options):
-    print(options.get('icon'))
+    print(options.get('visible'))
+    print(options.get('disabled'))
+    print(options.get('tooltip'))
 ```
 
 需要特定资源、玩家或已加载区块的示例，应在相应引擎环境中执行。

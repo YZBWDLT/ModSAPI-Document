@@ -21,18 +21,18 @@ sidebar_label: "GroupChildData"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `label` | [TextValue](../../common/type-aliases.md#textvalue) | `运行时返回` |
-| `callbacks` | [ButtonHandler](../../common/type-aliases.md#buttonhandler) | `运行时返回` |
-| `state` | [BoolValue](../../common/type-aliases.md#boolvalue) | `运行时返回` |
-| `value` | [Any](../../common/type-system.md#any) | `运行时返回` |
-| `minValue` | [NumberValue](../../common/type-aliases.md#numbervalue) | `运行时返回` |
-| `maxValue` | [NumberValue](../../common/type-aliases.md#numbervalue) | `运行时返回` |
-| `step` | [NumberValue](../../common/type-aliases.md#numbervalue) | `运行时返回` |
-| `items` | [list](../../common/type-system.md#list)[[DropdownItem](DropdownItem.md)] \| [ListViewItems](../../common/type-aliases.md#listviewitems) | `运行时返回` |
-| `params` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [Any](../../common/type-system.md#any)] | `运行时返回` |
-| `children` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [GroupChildData](GroupChildData.md)] | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `label` | [TextValue](../../common/type-aliases.md#textvalue) | `可选字段；省略规则见所属操作` |  |
+| `callbacks` | [ButtonHandler](../../common/type-aliases.md#buttonhandler) | `可选字段；省略规则见所属操作` |  |
+| `state` | [BoolValue](../../common/type-aliases.md#boolvalue) | `可选字段；省略规则见所属操作` |  |
+| `value` | [Any](../../common/type-system.md#any) | `可选字段；省略规则见所属操作` |  |
+| `minValue` | [NumberValue](../../common/type-aliases.md#numbervalue) | `可选字段；省略规则见所属操作` |  |
+| `maxValue` | [NumberValue](../../common/type-aliases.md#numbervalue) | `可选字段；省略规则见所属操作` |  |
+| `step` | [NumberValue](../../common/type-aliases.md#numbervalue) | `可选字段；省略规则见所属操作` |  |
+| `items` | [list](../../common/type-system.md#list)[[DropdownItem](DropdownItem.md)] \| [ListViewItems](../../common/type-aliases.md#listviewitems) | `可选字段；省略规则见所属操作` |  |
+| `params` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [Any](../../common/type-system.md#any)] | `可选字段；省略规则见所属操作` |  |
+| `children` | [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [GroupChildData](GroupChildData.md)] | `可选字段；省略规则见所属操作` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

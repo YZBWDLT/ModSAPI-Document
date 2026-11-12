@@ -15,11 +15,11 @@ sidebar_label: "RGB"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `red` | [float](../../common/type-system.md#float) | `运行时返回` |
-| `green` | [float](../../common/type-system.md#float) | `运行时返回` |
-| `blue` | [float](../../common/type-system.md#float) | `运行时返回` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `red` | [float](../../common/type-system.md#float) | `运行时返回` |  |
+| `green` | [float](../../common/type-system.md#float) | `运行时返回` |  |
+| `blue` | [float](../../common/type-system.md#float) | `运行时返回` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

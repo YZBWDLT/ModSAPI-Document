@@ -15,22 +15,22 @@ sidebar_label: "SubsystemManager"
 
 ## 字段与常量
 
-| 名称 | 类型线索 | 默认值 / 来源 |
-| --- | --- | --- |
-| `registeredSubsystems` | 由运行时值确定 | `[]` |
-| `client` | 由运行时值确定 | [None](../../common/type-system.md#none) |
-| `server` | 由运行时值确定 | [None](../../common/type-system.md#none) |
-| `rawEngine` | 由运行时值确定 | [None](../../common/type-system.md#none) |
-| `rawSysName` | 由运行时值确定 | [None](../../common/type-system.md#none) |
-| `clientSubs` | 由运行时值确定 | `{}` |
-| `serverSubs` | 由运行时值确定 | `{}` |
-| `clientListeners` | 由运行时值确定 | `[]` |
-| `serverListeners` | 由运行时值确定 | `[]` |
-| `engine` | 由运行时值确定 | `engine` |
-| `sysName` | 由运行时值确定 | `sysName` |
-| `system` | 由运行时值确定 | `system` |
-| `lastTickTime` | 由运行时值确定 | `time.time()` |
-| `lastTickTimeServer` | 由运行时值确定 | `time.time()` |
+| 名称 | 类型线索 | 默认值 / 来源 | 说明 |
+| --- | --- | --- | --- |
+| `registeredSubsystems` | 由运行时值确定 | `[]` |  |
+| `client` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
+| `server` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
+| `rawEngine` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
+| `rawSysName` | 由运行时值确定 | [None](../../common/type-system.md#none) |  |
+| `clientSubs` | 由运行时值确定 | `{}` |  |
+| `serverSubs` | 由运行时值确定 | `{}` |  |
+| `clientListeners` | 由运行时值确定 | `[]` |  |
+| `serverListeners` | 由运行时值确定 | `[]` |  |
+| `engine` | 由运行时值确定 | `engine` |  |
+| `sysName` | 由运行时值确定 | `sysName` |  |
+| `system` | 由运行时值确定 | `system` |  |
+| `lastTickTime` | 由运行时值确定 | `time.time()` |  |
+| `lastTickTimeServer` | 由运行时值确定 | `time.time()` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
