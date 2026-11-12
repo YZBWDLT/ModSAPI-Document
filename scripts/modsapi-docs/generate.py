@@ -20,6 +20,7 @@ from content import GUIDES, CLASS_EXAMPLES, NOTES, ACQUIRE_EXTRA
 from ui_content import UI_GUIDES, UI_ACQUIRE, UI_EXAMPLES
 from values_content import VALUE_GUIDES, VALUE_ACQUIRE, VALUE_NOTES
 from input_content import INPUT_GUIDES, INPUT_ACQUIRE, INPUT_NOTES
+from client_state_content import CLIENT_STATE_GUIDES, CLIENT_STATE_ACQUIRE, CLIENT_STATE_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -37,9 +38,11 @@ PYTHON_EXAMPLES = []
 GUIDES.update(UI_GUIDES)
 GUIDES.update(VALUE_GUIDES)
 GUIDES.update(INPUT_GUIDES)
+GUIDES.update(CLIENT_STATE_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
 NOTES.update(VALUE_NOTES)
 NOTES.update(INPUT_NOTES)
+NOTES.update(CLIENT_STATE_NOTES)
 
 
 def digest(data):
@@ -223,7 +226,7 @@ def load():
             cls = {'name':name,'group':classify(path),'path':path,'node':node,
                    'source':actual.get(name),'stub':declared.get(name),
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
-            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride'):
+            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride', 'ClientEntityAttributeComponent'):
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):
@@ -605,7 +608,8 @@ def exception_rows(fn):
 def native_calls(fn):
     values=[]
     helpers={'_readExtraData':'readExtraData','_writeExtraData':'writeExtraData'}
-    boundaries=('call','checked','nativeCall','nativeChecked','_extraDataCall','_extraDataChecked')
+    boundaries=('call','checked','nativeCall','nativeChecked','_extraDataCall','_extraDataChecked',
+                'readVector','readVector2','readNumber','readInteger','readBoolean','readText')
     for node in ast.walk(fn):
         if isinstance(node,ast.Call):
             if isinstance(node.func,ast.Attribute) and node.func.attr[:1].isupper() and not node.func.attr.startswith('Create'):
@@ -679,6 +683,7 @@ ACQUIRE.update(ACQUIRE_EXTRA)
 ACQUIRE.update(UI_ACQUIRE)
 ACQUIRE.update(VALUE_ACQUIRE)
 ACQUIRE.update(INPUT_ACQUIRE)
+ACQUIRE.update(CLIENT_STATE_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -1104,7 +1109,7 @@ def generate():
                 if not stale.is_relative_to(STAGE.resolve()):raise ValueError('Path escaped staging')
                 if stale.is_file():stale.unlink()
     # Include the portable generator and hand-authored guide module for future synchronization.
-    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
+    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','client_state_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
         destination=STAGE/'scripts/modsapi-docs'/filename
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((Path(__file__).parent/filename).read_bytes())

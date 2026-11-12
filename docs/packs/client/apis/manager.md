@@ -708,7 +708,7 @@ spawnEntity(typeId: str, location: VectorLike, options: ClientEntitySpawnOptions
 创建可移除的本地实体，支持 rotation 选项，以俯仰角和偏航角表示。本地实体不会保存，原生维度切换会将其移除。不支持的实体模型或创建失败会抛出异常。
 
 :::note 当前实现说明
-只创建本地实体，不保存；只有此方法返回的拥有者句柄可以 remove。
+rotation 同时接受 getRotation() 返回的 [Vector2](../../common/reference/Vector2.md)、两个分量的序列或包含 x、y 的字典，统一复制为原生俯仰、偏航元组。
 :::
 
 ### 参数
@@ -725,7 +725,6 @@ spawnEntity(typeId: str, location: VectorLike, options: ClientEntitySpawnOptions
 
 | 异常 | 校验信息 / 条件线索 |
 | --- | --- |
-| [TypeError](../../common/type-system.md#typeerror) | `'rotation must contain pitch and yaw'` |
 | [NativeOperationError](../../common/reference/NativeOperationError.md) | `'CreateClientEntityByTypeStr'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。

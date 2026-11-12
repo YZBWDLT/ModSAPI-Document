@@ -25,6 +25,22 @@ sidebar_label: "ClientEntity"
 | [nameTag](#nameTag) | 只读属性 |
 | [location](#location) | 只读属性 |
 | [typeId](#typeId) | 只读属性 |
+| [isOnGround](#isOnGround) | 只读属性 |
+| [isInLava](#isInLava) | 只读属性 |
+| [bodyRotation](#bodyRotation) | 只读属性 |
+| [collisionBoxSize](#collisionBoxSize) | 只读属性 |
+| [airSupplyTicks](#airSupplyTicks) | 只读属性 |
+| [maxAirSupplyTicks](#maxAirSupplyTicks) | 只读属性 |
+| [getRotation](#getRotation) | 方法 |
+| [getViewDirection](#getViewDirection) | 方法 |
+| [getVelocity](#getVelocity) | 方法 |
+| [getTarget](#getTarget) | 方法 |
+| [getOwner](#getOwner) | 方法 |
+| [getComponent](#getComponent) | 方法 |
+| [hasComponent](#hasComponent) | 方法 |
+| [getComponents](#getComponents) | 方法 |
+| [teleport](#teleport) | 方法 |
+| [setRotation](#setRotation) | 方法 |
 | [getMolangValue](#getMolangValue) | 方法 |
 | [setMolangValue](#setMolangValue) | 方法 |
 | [getQueryVariable](#getQueryVariable) | 方法 |
@@ -86,9 +102,15 @@ isValid: bool
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'HasEntity'` |
+
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetEngineCompFactory`, `GetLevelId`, `HasEntity`。
+**原生调用：** `HasEntity`。
 
 ### 调用形状
 
@@ -138,6 +160,8 @@ location: Vector3
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
+**原生调用：** `GetFootPos`。
+
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -159,6 +183,12 @@ typeId: str
 
 **返回类型：** [str](../../common/type-system.md#str)。静态声明不替代本页的实现限制。
 
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetEngineTypeStr'` |
+
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
 **原生调用：** `GetEngineTypeStr`。
@@ -170,6 +200,422 @@ typeId: str
 ```python
 def read_value(instance):
     return instance.typeId
+```
+
+## isOnGround {#isOnGround}
+
+```python
+isOnGround: bool
+```
+
+已加载的客户端实体是否着地，骑乘也包含在内。新建本地实体在下一次引擎更新前可能返回原生默认值 True；不能用它作为服务端权威判定。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `isEntityOnGround`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isOnGround
+```
+
+## isInLava {#isInLava}
+
+```python
+isInLava: bool
+```
+
+本机已加载实体是否在岩浆中。
+
+**访问：** 只读。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `isEntityInLava`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.isInLava
+```
+
+## bodyRotation {#bodyRotation}
+
+```python
+bodyRotation: float
+```
+
+身体偏航角，单位为度；没有身体的实体由原生接口返回零。
+
+**访问：** 只读。
+
+**返回类型：** [float](../../common/type-system.md#float)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetBodyRot`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.bodyRotation
+```
+
+## collisionBoxSize {#collisionBoxSize}
+
+```python
+collisionBoxSize: Vector2
+```
+
+独立的 [Vector2](../../common/reference/Vector2.md)，x 为碰撞箱宽度，y 为高度。
+
+**访问：** 只读。
+
+**返回类型：** [Vector2](../../common/reference/Vector2.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetSize`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.collisionBoxSize
+```
+
+## airSupplyTicks {#airSupplyTicks}
+
+```python
+airSupplyTicks: int
+```
+
+已同步的空气储备，以每秒二十个逻辑刻计量；非生物实体保留原生默认值。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetCurrentAirSupply`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.airSupplyTicks
+```
+
+## maxAirSupplyTicks {#maxAirSupplyTicks}
+
+```python
+maxAirSupplyTicks: int
+```
+
+已同步的最大空气储备，以每秒二十个逻辑刻计量。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMaxAirSupply`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.maxAirSupplyTicks
+```
+
+## getRotation {#getRotation}
+
+```python
+getRotation() -> Vector2
+```
+
+独立的 [Vector2](../../common/reference/Vector2.md)，x 为头部俯仰角，y 为偏航角，单位为度。
+
+**返回类型：** [Vector2](../../common/reference/Vector2.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetRot`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getRotation(instance):
+    return instance.getRotation()
+```
+
+## getViewDirection {#getViewDirection}
+
+```python
+getViewDirection() -> Vector3
+```
+
+将当前原生头部旋转换算为独立的世界方向向量。
+
+**返回类型：** [Vector3](../../server/extra/vector.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetDirFromRot`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getViewDirection(instance):
+    return instance.getViewDirection()
+```
+
+## getVelocity {#getVelocity}
+
+```python
+getVelocity() -> Vector3
+```
+
+读取客户端上一帧的原生运动向量，返回独立的 [Vector3](../../server/extra/vector.md)。客户端不包含服务端摩擦计算，结果可能与服务端速度不同。原生失败或向量数据畸形时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)。
+
+**返回类型：** [Vector3](../../server/extra/vector.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetMotion`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getVelocity(instance):
+    return instance.getVelocity()
+```
+
+## getTarget {#getTarget}
+
+```python
+getTarget() -> ClientEntity | None
+```
+
+返回已加载的攻击目标对象；没有目标或目标不可见时返回 [None](../../common/type-system.md#none)。
+
+**返回类型：** [ClientEntity](ClientEntity.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetAttackTarget`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getTarget(instance):
+    return instance.getTarget()
+```
+
+## getOwner {#getOwner}
+
+```python
+getOwner() -> ClientEntity | None
+```
+
+返回已加载的驯服主人对象；不存在或不可见时返回 [None](../../common/type-system.md#none)。
+
+**返回类型：** [ClientEntity](ClientEntity.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetOwnerId`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getOwner(instance):
+    return instance.getOwner()
+```
+
+## getComponent {#getComponent}
+
+```python
+getComponent(componentId: str) -> ClientEntityAttributeComponent | None
+```
+
+取得一个已支持的同步属性组件，不存在时返回 [None](../../common/type-system.md#none)。生命值及陆地、水中、岩浆移动属性只读。其他标识符抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)，不会以不存在冒充客户端无法检查的原生组件。
+
+:::note 当前实现说明
+支持 health、movement、underwater_movement 和 lava_movement，可带 minecraft: 前缀。已支持但不存在时返回 [None](../../common/type-system.md#none)，未支持的标识符抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)。客户端组件只读。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `componentId` | [str](../../common/type-system.md#str) | `必填` | 传给 [ClientEntity.getComponent](ClientEntity.md#getComponent) 的 componentId 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [ClientEntityAttributeComponent](ClientEntityAttributeComponent.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md) | `'Unsupported client component: ' + identifier` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getComponent(instance, componentId):
+    return instance.getComponent(componentId)
+```
+
+## hasComponent {#hasComponent}
+
+```python
+hasComponent(componentId: str) -> bool
+```
+
+检查已支持的客户端属性；未支持的标识符会明确抛出错误。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `componentId` | [str](../../common/type-system.md#str) | `必填` | 传给 [ClientEntity.hasComponent](ClientEntity.md#hasComponent) 的 componentId 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_hasComponent(instance, componentId):
+    return instance.hasComponent(componentId)
+```
+
+## getComponents {#getComponents}
+
+```python
+getComponents() -> list[ClientEntityAttributeComponent]
+```
+
+使用一个原生组件列出当前可用且已支持的客户端属性。结果仅包含已暴露的只读属性，不是实体行为包 JSON 中全部组件的完整清单。
+
+:::note 当前实现说明
+只列出当前适配的四类已同步属性，不是行为包 JSON 的完整组件清单。一次查询复用一个原生属性组件，不会通过结果伪造其他组件的存在性。
+:::
+
+**返回类型：** [list](../../common/type-system.md#list)[[ClientEntityAttributeComponent](ClientEntityAttributeComponent.md)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getComponents(instance):
+    return instance.getComponents()
+```
+
+## teleport {#teleport}
+
+```python
+teleport(location: Vector3 | dict[str, float] | tuple[float, float, float]) -> None
+```
+
+移动 [client.spawnEntity](../apis/manager.md#spawnEntity) 创建的本地实体，不移动服务端实体。保留原生位置约定；本地玩家传送和跨维度移动应使用服务端操作。
+
+:::note 当前实现说明
+仅修改 [client.spawnEntity](../apis/manager.md#spawnEntity) 返回的本地实体；其他句柄抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)。原生位置约定保持不变，不提供服务端或跨维度传送。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `location` | [Vector3](../../server/extra/vector.md) \| [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetPosForClientEntity`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_teleport(instance, location):
+    return instance.teleport(location)
+```
+
+## setRotation {#setRotation}
+
+```python
+setRotation(rotation: Vector2 | dict[str, float] | tuple[float, float]) -> None
+```
+
+复制二维旋转并设置本地创建实体的俯仰角、偏航角，单位为度。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `rotation` | [Vector2](../../common/reference/Vector2.md) \| [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `必填` | 旋转角度，具体分量与单位参见成员说明。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetRotForClientEntity`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setRotation(instance, rotation):
+    return instance.setRotation(rotation)
 ```
 
 ## getMolangValue {#getMolangValue}

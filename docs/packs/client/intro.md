@@ -45,7 +45,9 @@ title: 客户端
 | [ClientDimension](reference/ClientDimension.md) | 客户端观察到的维度，身份信息在会话结束后仍可读取。此对象描述被观察的维度，不一定是当前可见维度；不会赋予访问未加载区块或服务端的能力。 |
 | [ClientEntity](reference/ClientEntity.md) | 客户端可见实体的包装对象；仅允许移除由本地创建的实体。 |
 | [ClientEntityAddAfterEvent](reference/ClientEntityAddAfterEvent.md) | [AddEntityClientEvent](events.md#addentityclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientEntityAttributeComponent](reference/ClientEntityAttributeComponent.md) | 通过 entity.getComponent() 取得的实时只读客户端属性。仅提供已同步的当前值和最大值；默认值、最小值及权威修改需使用服务端接口。原生客户端未同步权威的攻击伤害、击退抗性和跳跃强度，因此不提供这些属性。 |
 | [ClientEntityCollideAfterEvent](reference/ClientEntityCollideAfterEvent.md) | [OnMobHitMobClientEvent](events.md#onmobhitmobclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientEntityComponentTypes](reference/ClientEntityComponentTypes.md) | 当前支持的只读客户端属性组件标识符。 |
 | [ClientEntityHealthChangedAfterEvent](reference/ClientEntityHealthChangedAfterEvent.md) | [HealthChangeClientEvent](events.md#healthchangeclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityInsideBlockBeforeEvent](reference/ClientEntityInsideBlockBeforeEvent.md) | [OnEntityInsideBlockClientEvent](events.md#onentityinsideblockclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityLandAfterEvent](reference/ClientEntityLandAfterEvent.md) | [OnGroundClientEvent](events.md#ongroundclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
