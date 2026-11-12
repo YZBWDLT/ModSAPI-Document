@@ -25,6 +25,7 @@ from server_state_content import SERVER_STATE_GUIDES, SERVER_STATE_ACQUIRE, SERV
 from client_inventory_content import CLIENT_INVENTORY_GUIDES, CLIENT_INVENTORY_ACQUIRE, CLIENT_INVENTORY_NOTES
 from server_container_content import SERVER_CONTAINER_GUIDES, SERVER_CONTAINER_ACQUIRE, SERVER_CONTAINER_NOTES
 from item_components_content import ITEM_COMPONENT_GUIDES, ITEM_COMPONENT_ACQUIRE, ITEM_COMPONENT_NOTES
+from native_display_content import NATIVE_DISPLAY_GUIDES, NATIVE_DISPLAY_ACQUIRE, NATIVE_DISPLAY_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -47,6 +48,7 @@ GUIDES.update(SERVER_STATE_GUIDES)
 GUIDES.update(CLIENT_INVENTORY_GUIDES)
 GUIDES.update(SERVER_CONTAINER_GUIDES)
 GUIDES.update(ITEM_COMPONENT_GUIDES)
+GUIDES.update(NATIVE_DISPLAY_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
 NOTES.update(VALUE_NOTES)
 NOTES.update(INPUT_NOTES)
@@ -55,6 +57,7 @@ NOTES.update(SERVER_STATE_NOTES)
 NOTES.update(CLIENT_INVENTORY_NOTES)
 NOTES.update(SERVER_CONTAINER_NOTES)
 NOTES.update(ITEM_COMPONENT_NOTES)
+NOTES.update(NATIVE_DISPLAY_NOTES)
 
 
 def digest(data):
@@ -191,7 +194,7 @@ def load():
               BASE/'utils/event_values.py', BASE/'utils/event_data.py', BASE/'utils/event_facade.py',
               BASE/'utils/expression.py', BASE/'utils/script_bridge.py', BASE/'utils/bridge_protocol.py']
     paths += [BASE / value for value in (
-        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py', 'ui/choices.py', 'ui/minimap.py', 'ui/renderers.py',
+        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py', 'ui/choices.py', 'ui/minimap.py', 'ui/renderers.py', 'ui/display.py',
         '_ui/core/general/form.py', '_ui/core/general/observable.py',
         '_ui/core/utils/type.py', '_ui/interfaces/base/control.py',
         '_ui/interfaces/base/controls.py', '_ui/interfaces/base/theme.py',
@@ -704,6 +707,7 @@ ACQUIRE.update(SERVER_STATE_ACQUIRE)
 ACQUIRE.update(CLIENT_INVENTORY_ACQUIRE)
 ACQUIRE.update(SERVER_CONTAINER_ACQUIRE)
 ACQUIRE.update(ITEM_COMPONENT_ACQUIRE)
+ACQUIRE.update(NATIVE_DISPLAY_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -882,7 +886,7 @@ def indexes():
         if group=='server':lines+=['入口：`from ModSAPI.server.beta import world, system`。其他导出见 [导出符号](../exports.md)。','']
         elif group=='client':lines+=['入口：`from ModSAPI.client.beta import client`。所有操作只影响本机；客户端数据不能替代服务端权限校验。','']
         elif group=='server_ui':lines+=['标准表单入口：`from ModSAPI.serverui.beta import ActionFormData, ModalFormData, MessageFormData`。其他类型与入口见 [导出符号](../exports.md)。','', '标准构建器在服务端调用；JSON UI 控件底层类型在客户端工作，不要混用执行端。','']
-        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [模型与图片](../guides/ui-models-and-images.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
+        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [模型与图片](../guides/ui-models-and-images.md) · [原生抬头显示与原版界面](../guides/ui-native-hud-and-screens.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
         lines+=['[场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)','',
                 '<div className="modsapi-table-scroll" tabIndex={0} aria-label="接口表格，可横向滚动">','',
                 '| 类型 | 说明 |','| --- | --- |']
@@ -994,7 +998,7 @@ def modsdk_coverage():
 
 def site_navigation(config):
     """Avoid two active doc items sharing Docusaurus's API sidebar."""
-    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets|ui-choices-and-minimap|ui-models-and-images)'
+    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets|ui-choices-and-minimap|ui-models-and-images|ui-native-hud-and-screens)'
     definitions={
         'packs/server/intro': ('接口文档', '/docs/packs/server/intro',
             '^/docs/packs/(?!ui(?:/|$)|guides/'+ui_guides+'(?:/|$))'),

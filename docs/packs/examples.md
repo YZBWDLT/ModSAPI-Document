@@ -41,3 +41,4 @@ title: 使用示例与场景指南
 - [客户端背包与装备](guides/client-inventory-and-equipment.md)
 - [服务端容器与物品数据](guides/server-containers-and-recovery.md)
 - [物品附魔、耐久与标签](guides/item-enchantments-and-durability.md)
+- [原生抬头显示与原版界面](guides/ui-native-hud-and-screens.md)

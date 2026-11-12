@@ -15,6 +15,7 @@ title: 官方对照与当前支持情况
 
 ### 已知限制
 
+- `ScreenDisplay/native HUD parity`：本地网易原生 HUD、原版界面请求及几何读取已通过 [client.ui](client/apis/manager.md#ui) 封装；没有可验证的原生 HUD 显隐读取、未知旧值恢复和完整微软 [HudElement](common/reference/HudElement.md) 对应，未冒充服务端 ScreenDisplay 的完整实现。
 - `Container/specialized block inventories`：个人末影箱已通过 [Player.enderChest](server/apis/player.md#enderChest) 统一封装；熔炉、高炉、烟熏炉及酿造台还缺少完整全槽与元数据适配，明确拒绝通用箱子后端，不能将专用接口无结果当作空槽。
 - `Container/transient UI inventories`：合成界面及网易共享临时槽位依赖原生界面上下文、特殊槽位限制及 needBack 回退规则，尚未包装为普通容器。
 - `ItemEnchantableComponent/native parity`：按网易 primary_slots 和 incompatible 校验，批量预检后才改动；未知原生编号保留但不能猜测新增兼容性。次级槽位、原版附魔差异及实际作用仍需实机核验。

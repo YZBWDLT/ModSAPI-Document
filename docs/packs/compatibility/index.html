@@ -11,8 +11,8 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.8d7099ca.js" defer="defer"></script>
-<script src="/assets/js/main.62398180.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d47f6e88.js" defer="defer"></script>
+<script src="/assets/js/main.325efda7.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -25,6 +25,7 @@
 <p><a href="https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/minecraft-server?view=minecraft-bedrock-stable" target="_blank" rel="noopener noreferrer">微软模块文档</a></p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="已知限制">已知限制<a href="#已知限制" class="hash-link" aria-label="已知限制的直接链接" title="已知限制的直接链接" translate="no">​</a></h3>
 <ul>
+<li><code>ScreenDisplay/native HUD parity</code>：本地网易原生 HUD、原版界面请求及几何读取已通过 <a href="/docs/packs/client/apis/manager#ui">client.ui</a> 封装；没有可验证的原生 HUD 显隐读取、未知旧值恢复和完整微软 <a href="/docs/packs/common/reference/HudElement">HudElement</a> 对应，未冒充服务端 ScreenDisplay 的完整实现。</li>
 <li><code>Container/specialized block inventories</code>：个人末影箱已通过 <a href="/docs/packs/server/apis/player#enderChest">Player.enderChest</a> 统一封装；熔炉、高炉、烟熏炉及酿造台还缺少完整全槽与元数据适配，明确拒绝通用箱子后端，不能将专用接口无结果当作空槽。</li>
 <li><code>Container/transient UI inventories</code>：合成界面及网易共享临时槽位依赖原生界面上下文、特殊槽位限制及 needBack 回退规则，尚未包装为普通容器。</li>
 <li><code>ItemEnchantableComponent/native parity</code>：按网易 primary_slots 和 incompatible 校验，批量预检后才改动；未知原生编号保留但不能猜测新增兼容性。次级槽位、原版附魔差异及实际作用仍需实机核验。</li>

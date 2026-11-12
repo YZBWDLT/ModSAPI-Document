@@ -110,6 +110,8 @@ def configure(view):
 
 实体与模型预览、图片九宫格见 [模型预览与图片适配](ui-models-and-images.md)。模型预览由当前视图管理，无需额外登记系统。
 
+原版状态条、触控按钮、原生界面请求和布局区域读取见 [原生抬头显示与原版界面](ui-native-hud-and-screens.md)。这些入口也通过 [client.ui](../client/apis/manager.md#ui) 获取，实际能力由原生平台决定。
+
 种类必须与模板实际控件相符。控件路径不存在时抛出 [KeyError](../common/type-system.md#keyerror)；视图已关闭或控件已移除时抛出 [InvalidClientObjectError](../common/reference/InvalidClientObjectError.md)。`isValid` 用于检查存活情况，仍需处理检查之后发生的原生失败。
 
 `getControl` 使用绝对路径，`getChild` 使用相对路径。`createControl` 从模板动态创建子控件；移除父控件时，会使已经取得的子孙控件句柄一并失效。

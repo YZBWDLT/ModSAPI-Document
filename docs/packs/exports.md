@@ -616,6 +616,13 @@ from ModSAPI.ui import Form, Observable, Control, Theme
 | [UiMapMarker](ui/reference/UiMapMarker.md) | [UiMapMarker](ui/reference/UiMapMarker.md) |
 | [UiModelRenderer](ui/reference/UiModelRenderer.md) | [UiModelRenderer](ui/reference/UiModelRenderer.md) |
 | [UiImageFit](ui/reference/UiImageFit.md) | [UiImageFit](ui/reference/UiImageFit.md) |
+| [UiHud](ui/reference/UiHud.md) | [UiHud](ui/reference/UiHud.md) |
+| [UiHudElement](ui/reference/UiHudElement.md) | [UiHudElement](ui/reference/UiHudElement.md) |
+| [UiNativeScreen](ui/reference/UiNativeScreen.md) | [UiNativeScreen](ui/reference/UiNativeScreen.md) |
+| [UiNativeArea](ui/reference/UiNativeArea.md) | [UiNativeArea](ui/reference/UiNativeArea.md) |
+| [UiViewport](ui/reference/UiViewport.md) | [UiViewport](ui/reference/UiViewport.md) |
+| [UiRectangle](ui/reference/UiRectangle.md) | [UiRectangle](ui/reference/UiRectangle.md) |
+| [HudVisibility](common/reference/HudVisibility.md) | [HudVisibility](common/reference/HudVisibility.md) |
 
 ## 提供器访问
 

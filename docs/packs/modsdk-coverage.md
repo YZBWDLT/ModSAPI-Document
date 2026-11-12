@@ -11,9 +11,9 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 311 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
-| 发现原生调用，待核对 | 259 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
-| 尚未建立映射 | 1059 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
+| 已有离线核验路径 | 346 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 发现原生调用，待核对 | 258 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
+| 尚未建立映射 | 1025 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
 常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
 
@@ -1799,44 +1799,44 @@ title: ModSDK 功能映射与待补接口
 | --- | --- | --- | --- |
 | [ChangeSneakState](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#changesneakstate) | 客户端 | 尚未建立映射 | — |
 | [ClickInteractGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#clickinteractgui) | 客户端 | 尚未建立映射 | — |
-| [GetOriginAreaOffset](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getoriginareaoffset) | 客户端 | 尚未建立映射 | — |
-| [GetScreenSize](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getscreensize) | 客户端 | 发现原生调用，待核对 | — |
-| [GetScreenViewInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getscreenviewinfo) | 客户端 | 尚未建立映射 | — |
+| [GetOriginAreaOffset](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getoriginareaoffset) | 客户端 | 已有离线核验路径 | [UiService.getNativeArea](ui/reference/UiService.md#getNativeArea) |
+| [GetScreenSize](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getscreensize) | 客户端 | 已有离线核验路径 | [UiService.screenSize](ui/reference/UiService.md#screenSize) |
+| [GetScreenViewInfo](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getscreenviewinfo) | 客户端 | 已有离线核验路径 | [UiService.viewport](ui/reference/UiService.md#viewport) |
 | [GetWalkState](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#getwalkstate) | 客户端 | 尚未建立映射 | — |
-| [HideAirSupplyGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideairsupplygui) | 客户端 | 尚未建立映射 | — |
-| [HideArmorGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidearmorgui) | 客户端 | 尚未建立映射 | — |
-| [HideChangePersonGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidechangepersongui) | 客户端 | 尚未建立映射 | — |
-| [HideChatGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidechatgui) | 客户端 | 尚未建立映射 | — |
-| [HideCrossHairGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidecrosshairgui) | 客户端 | 尚未建立映射 | — |
-| [HideEmoteGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideemotegui) | 客户端 | 尚未建立映射 | — |
-| [HideExpGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideexpgui) | 客户端 | 尚未建立映射 | — |
-| [HideFoldGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidefoldgui) | 客户端 | 尚未建立映射 | — |
-| [HideHealthGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehealthgui) | 客户端 | 尚未建立映射 | — |
-| [HideHorseHealthGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehorsehealthgui) | 客户端 | 尚未建立映射 | — |
-| [HideHudGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehudgui) | 客户端 | 尚未建立映射 | — |
-| [HideHungerGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehungergui) | 客户端 | 尚未建立映射 | — |
-| [HideInteractGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideinteractgui) | 客户端 | 尚未建立映射 | — |
-| [HideJumpGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidejumpgui) | 客户端 | 尚未建立映射 | — |
-| [HideMoveGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidemovegui) | 客户端 | 尚未建立映射 | — |
-| [HideNeteaseStoreGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideneteasestoregui) | 客户端 | 尚未建立映射 | — |
-| [HidePauseGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidepausegui) | 客户端 | 尚未建立映射 | — |
-| [HideSlotBarGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideslotbargui) | 客户端 | 尚未建立映射 | — |
-| [HideSneakGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidesneakgui) | 客户端 | 尚未建立映射 | — |
-| [HideSwimGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideswimgui) | 客户端 | 尚未建立映射 | — |
-| [HideVoiceGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidevoicegui) | 客户端 | 尚未建立映射 | — |
-| [HideWalkGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidewalkgui) | 客户端 | 尚未建立映射 | — |
-| [OpenChatGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openchatgui) | 客户端 | 尚未建立映射 | — |
-| [OpenEmoteGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openemotegui) | 客户端 | 尚未建立映射 | — |
-| [OpenFoldGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openfoldgui) | 客户端 | 尚未建立映射 | — |
-| [OpenInventoryGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openinventorygui) | 客户端 | 尚未建立映射 | — |
-| [OpenNeteaseStoreGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openneteasestoregui) | 客户端 | 尚未建立映射 | — |
-| [OpenPauseGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openpausegui) | 客户端 | 尚未建立映射 | — |
-| [OpenReportGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openreportgui) | 客户端 | 尚未建立映射 | — |
-| [PlayHudHeartBlinkAnim](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#playhudheartblinkanim) | 客户端 | 尚未建立映射 | — |
+| [HideAirSupplyGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideairsupplygui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideArmorGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidearmorgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideChangePersonGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidechangepersongui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideChatGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidechatgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideCrossHairGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidecrosshairgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideEmoteGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideemotegui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideExpGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideexpgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideFoldGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidefoldgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideHealthGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehealthgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideHorseHealthGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehorsehealthgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideHudGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehudgui) | 客户端 | 已有离线核验路径 | [UiHud.setHidden](ui/reference/UiHud.md#setHidden) |
+| [HideHungerGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidehungergui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideInteractGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideinteractgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideJumpGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidejumpgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideMoveGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidemovegui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideNeteaseStoreGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideneteasestoregui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HidePauseGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidepausegui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideSlotBarGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideslotbargui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideSneakGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidesneakgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideSwimGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hideswimgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideVoiceGUI](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidevoicegui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [HideWalkGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#hidewalkgui) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
+| [OpenChatGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openchatgui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenEmoteGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openemotegui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenFoldGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openfoldgui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenInventoryGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openinventorygui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenNeteaseStoreGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openneteasestoregui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenPauseGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openpausegui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [OpenReportGui](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#openreportgui) | 客户端 | 已有离线核验路径 | [UiService.openNativeScreen](ui/reference/UiService.md#openNativeScreen) |
+| [PlayHudHeartBlinkAnim](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#playhudheartblinkanim) | 客户端 | 已有离线核验路径 | [UiHud.playHealthBlink](ui/reference/UiHud.md#playHealthBlink) |
 | [SetCrossHair](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#setcrosshair) | 客户端 | 尚未建立映射 | — |
 | [SetEmoteSwitch](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#setemoteswitch) | 客户端 | 尚未建立映射 | — |
-| [SetHudChatStackPosition](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#sethudchatstackposition) | 客户端 | 尚未建立映射 | — |
-| [SetHudChatStackVisible](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#sethudchatstackvisible) | 客户端 | 尚未建立映射 | — |
+| [SetHudChatStackPosition](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#sethudchatstackposition) | 客户端 | 已有离线核验路径 | [UiHud.setChatPosition](ui/reference/UiHud.md#setChatPosition) |
+| [SetHudChatStackVisible](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#sethudchatstackvisible) | 客户端 | 已有离线核验路径 | [UiHud.setHudVisibility](ui/reference/UiHud.md#setHudVisibility) |
 | [SetResponse](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#setresponse) | 客户端 | 尚未建立映射 | — |
 | [SimulateJump](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%8E%9F%E7%94%9FUI.md#simulatejump) | 客户端 | 尚未建立映射 | — |
 

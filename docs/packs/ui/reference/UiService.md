@@ -22,6 +22,11 @@ sidebar_label: "UiService"
 | [isReady](#isReady) | 只读属性 |
 | [views](#views) | 只读属性 |
 | [currentView](#currentView) | 只读属性 |
+| [hud](#hud) | 只读属性 |
+| [screenSize](#screenSize) | 只读属性 |
+| [viewport](#viewport) | 只读属性 |
+| [getNativeArea](#getNativeArea) | 方法 |
+| [openNativeScreen](#openNativeScreen) | 方法 |
 | [registerView](#registerView) | 方法 |
 | [openView](#openView) | 方法 |
 | [createHud](#createHud) | 方法 |
@@ -102,6 +107,142 @@ currentView: UiView | None
 ```python
 def read_value(instance):
     return instance.currentView
+```
+
+## hud {#hud}
+
+```python
+hud: UiHud
+```
+
+本机原生抬头显示的直接控制入口；不会缓存并推断未知显隐状态。
+
+:::note 当前实现说明
+本机原生显隐写入入口；没有原生显隐状态查询，也不会通过缓存冒充实际可见性。详见原生抬头显示与原版界面指南。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [UiHud](UiHud.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.hud
+```
+
+## screenSize {#screenSize}
+
+```python
+screenSize: Vector2
+```
+
+界面就绪后重新读取物理窗口宽度和高度，单位为像素。
+
+**访问：** 只读。
+
+**返回类型：** [Vector2](../../common/reference/Vector2.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.screenSize
+```
+
+## viewport {#viewport}
+
+```python
+viewport: UiViewport
+```
+
+界面就绪后读取原生视角宽高和横纵偏移，返回独立快照。
+
+**访问：** 只读。
+
+**返回类型：** [UiViewport](UiViewport.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.viewport
+```
+
+## getNativeArea {#getNativeArea}
+
+```python
+getNativeArea(area: str) -> UiRectangle
+```
+
+读取 [UiNativeArea](UiNativeArea.md) 指定区域在基类画布中的矩形。区域不可用时保留原生全零结果，不能将其视为控件可见或可点击的保证。
+
+:::note 当前实现说明
+返回基类画布矩形；全零保留为原生不可用结果，不视为可见或可点击的证明。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `area` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiService.getNativeArea](UiService.md#getNativeArea) 的 area 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [UiRectangle](UiRectangle.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getNativeArea(instance, area):
+    return instance.getNativeArea(area)
+```
+
+## openNativeScreen {#openNativeScreen}
+
+```python
+openNativeScreen(screen: str, options: UiNativeScreenOptions | None = None) -> None
+```
+
+界面就绪后请求打开 [UiNativeScreen](UiNativeScreen.md) 指定的原版界面，返回 [None](../../common/type-system.md#none)。聊天、暂停和背包支持 force，默认 False；背包还支持 categoryName，默认建筑分页 construction，也可使用自定义分页。商店要求 categoryName 和 itemName，其他界面不接受选项。原生无返回值不证明界面已打开，不会伪造托管视图或自动关闭回调。不要从聊天按钮事件再次打开聊天；同步递归请求会被拒绝，失败后会释放重入保护。
+
+:::note 当前实现说明
+请求打开七种原版界面。返回 [None](../../common/type-system.md#none) 不证明已显示；不是托管视图，不会伪造 [UiView](UiView.md) 或关闭回调。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `screen` | [str](../../common/type-system.md#str) | `必填` | 传给 [UiService.openNativeScreen](UiService.md#openNativeScreen) 的 screen 参数；结合上方功能说明和下方调用示例使用。 |
+| `options` | [UiNativeScreenOptions](UiNativeScreenOptions.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_openNativeScreen(instance, screen):
+    return instance.openNativeScreen(screen)
 ```
 
 ## registerView {#registerView}
