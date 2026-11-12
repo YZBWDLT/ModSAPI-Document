@@ -7,11 +7,11 @@ sidebar_label: "TickingAreaOptions"
 
 作用域：公共数据、选项、枚举与错误。
 
-源码：`core_behavior/ModSAPI/interfaces/TickingAreaOptions.py`。
+源码：`core_behavior/ModSAPI/interfaces/TickingAreaOptions.py`；声明补充了静态类型信息。
 
 选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
 
-动画播放的附加选项。
+包含所请求区域的维度对象和两个对角坐标。
 
 ## 获取方式
 
@@ -21,8 +21,8 @@ sidebar_label: "TickingAreaOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `dimension` | 由运行时值确定 | `data['dimension']` |  |
-| `to` | 由运行时值确定 | `Vector3(self.to)` |  |
+| `dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
+| `to` | [Vector3](../../server/extra/vector.md) | `Vector3(self.to)` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -35,7 +35,7 @@ sidebar_label: "TickingAreaOptions"
 ## 构造器 {#constructor}
 
 ```python
-TickingAreaOptions(data: dict[str, str]) -> None
+TickingAreaOptions(data: dict) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -44,7 +44,7 @@ TickingAreaOptions(data: dict[str, str]) -> None
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../type-system.md#dict)[[str](../type-system.md#str), [str](../type-system.md#str)] | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [dict](../type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 

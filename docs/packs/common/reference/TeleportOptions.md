@@ -7,11 +7,11 @@ sidebar_label: "TeleportOptions"
 
 作用域：公共数据、选项、枚举与错误。
 
-源码：`core_behavior/ModSAPI/interfaces/TeleportOptions.py`。
+源码：`core_behavior/ModSAPI/interfaces/TeleportOptions.py`；声明补充了静态类型信息。
 
 选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
 
-沿实体视线方向查找首个相交方块的射线选项。
+包含传送目标、朝向、碰撞和速度处理选项。
 
 ## 获取方式
 
@@ -21,11 +21,11 @@ sidebar_label: "TeleportOptions"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `checkForBlocks` | 由运行时值确定 | `data['checkForBlocks'] if 'checkForBlocks' in data else False` |  |
-| `dimension` | 由运行时值确定 | `data.get('dimension')` |  |
-| `facingLocation` | 由运行时值确定 | `Vector3(data['facingLocation']) if data.get('facingLocation') is not None else None` |  |
-| `keepVelocity` | 由运行时值确定 | `data['keepVelocity'] if 'keepVelocity' in data else False` |  |
-| `rotation` | 由运行时值确定 | `Vector2(data['rotation']) if data.get('rotation') is not None else None` |  |
+| `checkForBlocks` | [bool](../type-system.md#bool) | `data['checkForBlocks'] if 'checkForBlocks' in data else False` |  |
+| `dimension` | [Dimension](../../server/apis/dimension.md) \| [None](../type-system.md#none) | `data.get('dimension')` |  |
+| `facingLocation` | [Vector3](../../server/extra/vector.md) \| [None](../type-system.md#none) | `Vector3(data['facingLocation']) if data.get('facingLocation') is not None else None` |  |
+| `keepVelocity` | [bool](../type-system.md#bool) | `data['keepVelocity'] if 'keepVelocity' in data else False` |  |
+| `rotation` | [Vector2](Vector2.md) \| [None](../type-system.md#none) | `Vector2(data['rotation']) if data.get('rotation') is not None else None` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -38,7 +38,7 @@ sidebar_label: "TeleportOptions"
 ## 构造器 {#constructor}
 
 ```python
-TeleportOptions(data)
+TeleportOptions(data: dict) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -47,9 +47,9 @@ TeleportOptions(data)
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | 由值/所属选项确定 | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [dict](../type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../type-system.md#none)。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

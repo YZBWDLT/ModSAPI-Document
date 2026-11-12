@@ -21,6 +21,7 @@ from ModSAPI.server.beta import world, system
 | [ItemStack](server/apis/itemStack.md) | [ItemStack](server/apis/itemStack.md) |
 | [MolangVariableMap](server/reference/MolangVariableMap.md) | [MolangVariableMap](server/reference/MolangVariableMap.md) |
 | [Vector3](server/extra/vector.md) | [Vector3](server/extra/vector.md) |
+| [DimensionLocation](common/reference/DimensionLocation.md) | [DimensionLocation](common/reference/DimensionLocation.md) |
 | [StructureSaveMode](common/reference/StructureSaveMode.md) | [StructureSaveMode](common/reference/StructureSaveMode.md) |
 | [StructureMirrorAxis](common/reference/StructureMirrorAxis.md) | [StructureMirrorAxis](common/reference/StructureMirrorAxis.md) |
 | [StructureRotation](common/reference/StructureRotation.md) | [StructureRotation](common/reference/StructureRotation.md) |

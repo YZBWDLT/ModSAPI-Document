@@ -9,7 +9,7 @@ sidebar_label: "Vector3"
 
 源码：`core_behavior/ModSAPI/interfaces/Vector.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
 创建描述空间位置或方向的向量。
 
@@ -41,7 +41,7 @@ sidebar_label: "Vector3"
 ## 构造器 {#constructor}
 
 ```python
-Vector3(data: dict | tuple) -> None
+Vector3(data: Vector3 | dict[str, float] | tuple[float, float, float] | list[float]) -> None
 ```
 
 创建描述空间位置或方向的向量。
@@ -50,7 +50,7 @@ Vector3(data: dict | tuple) -> None
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../../common/type-system.md#dict) \| [tuple](../../common/type-system.md#tuple) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [Vector3](vector.md) \| [dict](../../common/type-system.md#dict)[[str](../../common/type-system.md#str), [float](../../common/type-system.md#float)] \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] \| [list](../../common/type-system.md#list)[[float](../../common/type-system.md#float)] | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -96,7 +96,7 @@ def call_rotateY(instance, angle):
 getData() -> dict
 ```
 
-获取字典数据
+以独立字典返回坐标。
 
 **返回类型：** [dict](../../common/type-system.md#dict)。静态声明不替代本页的实现限制。
 

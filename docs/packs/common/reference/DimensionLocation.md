@@ -9,13 +9,13 @@ sidebar_label: "DimensionLocation"
 
 源码：`core_behavior/ModSAPI/interfaces/Vector.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
-世界中的精确坐标，包含维度和位置。
+关联维度对象的可变坐标值。输入坐标通过 [Vector3](../../server/extra/vector.md) 复制，并且必须为有限数值。读取或修改该值不会移动实体，也不会查询世界。
 
 ## 获取方式
 
-使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+从服务端入口导入 [DimensionLocation](DimensionLocation.md)；构造时传入 [Dimension](../../server/apis/dimension.md) 对象和 [Vector3](../../server/extra/vector.md)、三项序列或坐标字典。也可从返回该类型的操作取得。
 
 ## 成员索引
 
@@ -30,29 +30,33 @@ sidebar_label: "DimensionLocation"
 ## 构造器 {#constructor}
 
 ```python
-DimensionLocation(dimension, location)
+DimensionLocation(dimension: Dimension, location: Vector3 | tuple[float, float, float] | list[float] | dict[str, float]) -> None
 ```
 
-构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
+复制兼容 [Vector3](../../server/extra/vector.md) 的坐标，并保留传入的维度对象。
+
+:::note 当前实现说明
+复制坐标并保留维度对象；无 SDK 端的查询或实体移动。布尔值、非数值以及非有限数会被拒绝，坐标属性写入失败保留旧值。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `dimension` | 由值/所属选项确定 | `必填` | 传给 [DimensionLocation.__init__](DimensionLocation.md#constructor) 的 dimension 参数；结合上方功能说明和下方调用示例使用。 |
-| `location` | 由值/所属选项确定 | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
+| `dimension` | [Dimension](../../server/apis/dimension.md) | `必填` | 传给 [DimensionLocation.__init__](DimensionLocation.md#constructor) 的 dimension 参数；结合上方功能说明和下方调用示例使用。 |
+| `location` | [Vector3](../../server/extra/vector.md) \| [tuple](../type-system.md#tuple)[[float](../type-system.md#float), [float](../type-system.md#float), [float](../type-system.md#float)] \| [list](../type-system.md#list)[[float](../type-system.md#float)] \| [dict](../type-system.md#dict)[[str](../type-system.md#str), [float](../type-system.md#float)] | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../type-system.md#none)。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
 ## dimension {#dimension}
 
 ```python
-dimension
+dimension: Dimension
 ```
 
-读取 `dimension` 的当前值。
+关联的维度对象；读取时不会执行原生查询。
 
 **访问：** 可读写。
 
@@ -60,7 +64,7 @@ dimension
 
 写入参数 `value`：[Dimension](../../server/apis/dimension.md)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [Dimension](../../server/apis/dimension.md)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -79,18 +83,18 @@ def write_value(instance, value):
 ## x {#x}
 
 ```python
-x
+x: float
 ```
 
-读取 `x` 的当前值。
+有限数值形式的 X 坐标。
 
 **访问：** 可读写。
 
-写入方式：`instance.x = value`。参数类型线索：`(value)`。
+写入方式：`instance.x = value`。参数类型线索：`(value: float) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[float](../type-system.md#float)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [float](../type-system.md#float)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -109,18 +113,18 @@ def write_value(instance, value):
 ## y {#y}
 
 ```python
-y
+y: float
 ```
 
-读取 `y` 的当前值。
+有限数值形式的 Y 坐标。
 
 **访问：** 可读写。
 
-写入方式：`instance.y = value`。参数类型线索：`(value)`。
+写入方式：`instance.y = value`。参数类型线索：`(value: float) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[float](../type-system.md#float)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [float](../type-system.md#float)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -139,18 +143,18 @@ def write_value(instance, value):
 ## z {#z}
 
 ```python
-z
+z: float
 ```
 
-读取 `z` 的当前值。
+有限数值形式的 Z 坐标。
 
 **访问：** 可读写。
 
-写入方式：`instance.z = value`。参数类型线索：`(value)`。
+写入方式：`instance.z = value`。参数类型线索：`(value: float) -> None`。
 
-写入参数 `value`：由值/所属选项确定。
+写入参数 `value`：[float](../type-system.md#float)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [float](../type-system.md#float)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

@@ -674,7 +674,7 @@ def call_sendToast(instance, message):
 ## spawnParticle {#spawnParticle}
 
 ```python
-spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariableMap = None)
+spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariableMap | None = None)
 ```
 
 在世界指定位置创建粒子发射器。
@@ -685,7 +685,7 @@ spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariabl
 | --- | --- | --- | --- |
 | `effectName` | [str](../../common/type-system.md#str) | `必填` | 资源包内存在的粒子效果标识。 |
 | `location` | [Vector3](../extra/vector.md) | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
-| `molangVariables` | [MolangVariableMap](../reference/MolangVariableMap.md) | [None](../../common/type-system.md#none) | 传给 [Player.spawnParticle](player.md#spawnParticle) 的 molangVariables 参数；结合上方功能说明和下方调用示例使用。 |
+| `molangVariables` | [MolangVariableMap](../reference/MolangVariableMap.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Player.spawnParticle](player.md#spawnParticle) 的 molangVariables 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 

@@ -9,9 +9,9 @@ sidebar_label: "Motion"
 
 源码：`core_behavior/ModSAPI/interfaces/Vector.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
-运动器
+保存运动类型及其原生句柄的包装对象。
 
 ## 获取方式
 
@@ -28,7 +28,7 @@ sidebar_label: "Motion"
 ## 构造器 {#constructor}
 
 ```python
-Motion(type, id)
+Motion(type, id) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -40,7 +40,7 @@ Motion(type, id)
 | [type](../type-system.md#type) | 由值/所属选项确定 | `必填` | 传给 [Motion.__init__](Motion.md#constructor) 的 [type](../type-system.md#type) 参数；结合上方功能说明和下方调用示例使用。 |
 | `id` | 由值/所属选项确定 | `必填` | 运行标识或类型标识，按本成员的说明传入。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../type-system.md#none)。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

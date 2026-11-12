@@ -145,7 +145,7 @@ def call_getEquipment(instance, equipmentSlot):
 ## setEquipment {#setEquipment}
 
 ```python
-setEquipment(equipmentSlot: EquipmentSlot, itemStack: ItemStack = None) -> None
+setEquipment(equipmentSlot: EquipmentSlot, itemStack: ItemStack | None = None) -> None
 ```
 
 替换指定 [EquipmentSlot](../../common/reference/EquipmentSlot.md) 中的物品。
@@ -155,7 +155,7 @@ setEquipment(equipmentSlot: EquipmentSlot, itemStack: ItemStack = None) -> None
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `equipmentSlot` | [EquipmentSlot](../../common/reference/EquipmentSlot.md) | `必填` | 传给 [EntityEquippableComponent.setEquipment](EntityEquippableComponent.md#setEquipment) 的 equipmentSlot 参数；结合上方功能说明和下方调用示例使用。 |
-| `itemStack` | [ItemStack](../apis/itemStack.md) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](../apis/itemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 

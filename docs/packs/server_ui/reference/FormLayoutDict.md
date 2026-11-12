@@ -21,10 +21,10 @@ sidebar_label: "FormLayoutDict"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `position` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `(0, 0)` |  |
-| `size` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] | `(1, 1)` |  |
-| `offset` | [list](../../common/type-system.md#list)[[float](../../common/type-system.md#float)] | `(0, 0)` |  |
-| `margin` | [list](../../common/type-system.md#list)[[float](../../common/type-system.md#float)] | `(0, 0)` |  |
+| `position` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] \| [tuple](../../common/type-system.md#tuple)[[int](../../common/type-system.md#int), [int](../../common/type-system.md#int)] | `必填字段` |  |
+| `size` | [list](../../common/type-system.md#list)[[int](../../common/type-system.md#int)] \| [tuple](../../common/type-system.md#tuple)[[int](../../common/type-system.md#int), [int](../../common/type-system.md#int)] | `必填字段` |  |
+| `offset` | [list](../../common/type-system.md#list)[[float](../../common/type-system.md#float)] \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `必填字段` |  |
+| `margin` | [list](../../common/type-system.md#list)[[float](../../common/type-system.md#float)] \| [tuple](../../common/type-system.md#tuple)[[float](../../common/type-system.md#float), [float](../../common/type-system.md#float)] | `必填字段` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

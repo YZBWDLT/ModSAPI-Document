@@ -67,14 +67,14 @@ def read_value(instance):
 ## data {#data}
 
 ```python
-data: any
+data: Any
 ```
 
 从服务端发送的数据。
 
 **访问：** 只读。
 
-**返回类型：** [any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
+**返回类型：** [Any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

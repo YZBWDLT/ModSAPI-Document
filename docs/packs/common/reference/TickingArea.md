@@ -7,9 +7,9 @@ sidebar_label: "TickingArea"
 
 作用域：公共数据、选项、枚举与错误。
 
-源码：`core_behavior/ModSAPI/interfaces/TickingArea.py`。
+源码：`core_behavior/ModSAPI/interfaces/TickingArea.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
 特定常加载区域的上下文信息。
 
@@ -21,10 +21,10 @@ sidebar_label: "TickingArea"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `dimension` | 由运行时值确定 | `data['dimension']` |  |
-| `identifier` | 由运行时值确定 | `data['identifier']` |  |
-| `chunkCount` | 由运行时值确定 | `data['chunkCount']` |  |
-| `boundingBox` | 由运行时值确定 | `data['boundingBox']` |  |
+| `dimension` | [Dimension](../../server/apis/dimension.md) | `data['dimension']` |  |
+| `identifier` | [str](../type-system.md#str) | `data['identifier']` |  |
+| `chunkCount` | [int](../type-system.md#int) | `data['chunkCount']` |  |
+| `boundingBox` | [BlockBoundingBox](BlockBoundingBox.md) | `data['boundingBox']` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -38,7 +38,7 @@ sidebar_label: "TickingArea"
 ## 构造器 {#constructor}
 
 ```python
-TickingArea(data: dict[str, str]) -> None
+TickingArea(data: dict) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -47,7 +47,7 @@ TickingArea(data: dict[str, str]) -> None
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../type-system.md#dict)[[str](../type-system.md#str), [str](../type-system.md#str)] | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [dict](../type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -56,14 +56,14 @@ TickingArea(data: dict[str, str]) -> None
 ## isFullyLoaded {#isFullyLoaded}
 
 ```python
-isFullyLoaded
+isFullyLoaded: bool
 ```
 
 所有区块是否均已加载。ModSDK 的 SetAddArea 不会开启区块内的逻辑更新。
 
 **访问：** 只读。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [bool](../type-system.md#bool)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

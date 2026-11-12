@@ -9,7 +9,7 @@ sidebar_label: "EntityHitInformation"
 
 源码：`core_behavior/ModSAPI/interfaces/Sources.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
 被命中实体的附加信息。
 
@@ -21,7 +21,7 @@ sidebar_label: "EntityHitInformation"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `entity` | 由运行时值确定 | `createEntity(data['entity'])` |  |
+| `entity` | [Entity](../../server/apis/entity.md) \| [None](../type-system.md#none) | `createEntity(data['entity'])` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -34,7 +34,7 @@ sidebar_label: "EntityHitInformation"
 ## 构造器 {#constructor}
 
 ```python
-EntityHitInformation(data)
+EntityHitInformation(data: dict) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -43,9 +43,9 @@ EntityHitInformation(data)
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | 由值/所属选项确定 | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [dict](../type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../type-system.md#none)。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

@@ -41,7 +41,7 @@ ProtectedEntityRegistry()
 ## register {#register}
 
 ```python
-register(typeId, condition = lambda entity: True)
+register(typeId: str, condition: Callable[[Entity], bool] = lambda entity: True) -> None
 ```
 
 注册受保护的实体类型。
@@ -50,10 +50,10 @@ register(typeId, condition = lambda entity: True)
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `typeId` | 由值/所属选项确定 | `必填` | 带命名空间的实体、物品或资源类型名称。 |
-| `condition` | 由值/所属选项确定 | `lambda entity: True` | 传给 [ProtectedEntityRegistry.register](ProtectedEntityRegistry.md#register) 的 condition 参数；结合上方功能说明和下方调用示例使用。 |
+| `typeId` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的实体、物品或资源类型名称。 |
+| `condition` | [Callable](../../common/type-system.md#callable)[[[Entity](../apis/entity.md)], [bool](../../common/type-system.md#bool)] | `lambda entity: True` | 传给 [ProtectedEntityRegistry.register](ProtectedEntityRegistry.md#register) 的 condition 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

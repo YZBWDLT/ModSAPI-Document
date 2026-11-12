@@ -9,7 +9,7 @@ sidebar_label: "GameRules"
 
 源码：`core_behavior/ModSAPI/interfaces/Game.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
 游戏规则，也可通过 /gamerule 命令控制。
 

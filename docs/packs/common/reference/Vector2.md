@@ -9,13 +9,13 @@ sidebar_label: "Vector2"
 
 源码：`core_behavior/ModSAPI/interfaces/Vector.py`；声明补充了静态类型信息。
 
-选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
+这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。
 
 二维向量。
 
 ## 获取方式
 
-使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+从返回二维坐标或旋转的操作取得。它是具有 x、y 属性的对象；模板入口未直接导出该构造器。
 
 ## 字段与常量
 
@@ -35,7 +35,7 @@ sidebar_label: "Vector2"
 ## 构造器 {#constructor}
 
 ```python
-Vector2(data: dict | tuple) -> None
+Vector2(data: Vector2 | dict[str, float] | tuple[float, float] | list[float]) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -44,7 +44,7 @@ Vector2(data: dict | tuple) -> None
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | [dict](../type-system.md#dict) \| [tuple](../type-system.md#tuple) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [Vector2](Vector2.md) \| [dict](../type-system.md#dict)[[str](../type-system.md#str), [float](../type-system.md#float)] \| [tuple](../type-system.md#tuple)[[float](../type-system.md#float), [float](../type-system.md#float)] \| [list](../type-system.md#list)[[float](../type-system.md#float)] | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 

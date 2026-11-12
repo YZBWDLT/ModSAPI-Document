@@ -331,7 +331,7 @@ def call_clearRun(instance, runId):
 ## sendToClient {#sendToClient}
 
 ```python
-sendToClient(player, eventName: str, data: any = None)
+sendToClient(player, eventName: str, data: typing.Any = None)
 ```
 
 向客户端发送数据。
@@ -342,7 +342,7 @@ sendToClient(player, eventName: str, data: any = None)
 | --- | --- | --- | --- |
 | `player` | 由值/所属选项确定 | `必填` | 目标玩家对象；需要运行时有效且与操作所在端匹配。 |
 | `eventName` | [str](../../common/type-system.md#str) | `必填` | 事件或请求名称，推荐加入自己的命名空间。 |
-| `data` | [any](../../common/type-system.md#any) | [None](../../common/type-system.md#none) | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [typing.Any](../../common/type-system.md#any) | [None](../../common/type-system.md#none) | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 
@@ -368,7 +368,7 @@ def call_sendToClient(instance, player, eventName):
 ## sendToAllClients {#sendToAllClients}
 
 ```python
-sendToAllClients(eventName: str, data: any)
+sendToAllClients(eventName: str, data: typing.Any)
 ```
 
 向全部客户端发送数据。
@@ -378,7 +378,7 @@ sendToAllClients(eventName: str, data: any)
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `eventName` | [str](../../common/type-system.md#str) | `必填` | 事件或请求名称，推荐加入自己的命名空间。 |
-| `data` | [any](../../common/type-system.md#any) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [typing.Any](../../common/type-system.md#any) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 

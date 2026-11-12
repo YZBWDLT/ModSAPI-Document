@@ -429,7 +429,7 @@ def call_moveItem(instance, fromSlot, toSlot):
 ## setItem {#setItem}
 
 ```python
-setItem(slot: int, itemStack: ItemStack = None) -> None
+setItem(slot: int, itemStack: ItemStack | None = None) -> None
 ```
 
 设置指定槽位的物品堆叠。
@@ -439,7 +439,7 @@ setItem(slot: int, itemStack: ItemStack = None) -> None
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `slot` | [int](../../common/type-system.md#int) | `必填` | 零起始槽位索引，必须在容器容量内。 |
-| `itemStack` | [ItemStack](itemStack.md) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
+| `itemStack` | [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 物品堆叠对象；不是物品名称字符串。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 

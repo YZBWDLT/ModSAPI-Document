@@ -336,7 +336,7 @@ def call_getAllPlayers(type_object):
 ## getPlayers {#getPlayers}
 
 ```python
-getPlayers(options: EntityQueryOptions = None) -> list[Player]
+getPlayers(options: EntityQueryOptions | dict = None) -> list[Player]
 ```
 
 根据 [EntityQueryOptions](../../common/reference/EntityQueryOptions.md) 中的条件筛选玩家。
@@ -345,7 +345,7 @@ getPlayers(options: EntityQueryOptions = None) -> list[Player]
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `options` | [EntityQueryOptions](../../common/reference/EntityQueryOptions.md) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | [EntityQueryOptions](../../common/reference/EntityQueryOptions.md) \| [dict](../../common/type-system.md#dict) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
 **返回类型：** [list](../../common/type-system.md#list)[[Player](player.md)]。静态声明不替代本页的实现限制。
 

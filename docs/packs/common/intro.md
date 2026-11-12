@@ -40,7 +40,7 @@ title: 公共类型与错误
 | [CustomCommandStatus](reference/CustomCommandStatus.md) | 自定义命令执行结果的状态码。 |
 | [CustomComponentNameErrorReason](reference/CustomComponentNameErrorReason.md) | 签名、字段、属性、方法与调用示例 |
 | [Difficulty](reference/Difficulty.md) | 签名、字段、属性、方法与调用示例 |
-| [DimensionLocation](reference/DimensionLocation.md) | 世界中的精确坐标，包含维度和位置。 |
+| [DimensionLocation](reference/DimensionLocation.md) | 关联维度对象的可变坐标值。输入坐标通过 [Vector3](../server/extra/vector.md) 复制，并且必须为有限数值。读取或修改该值不会移动实体，也不会查询世界。 |
 | [Direction](reference/Direction.md) | 通用的相对方向枚举。 |
 | [DisplaySlotId](reference/DisplaySlotId.md) | 签名、字段、属性、方法与调用示例 |
 | [DyeColor](reference/DyeColor.md) | 签名、字段、属性、方法与调用示例 |
@@ -112,7 +112,7 @@ title: 公共类型与错误
 | [LootGenerateBeforeEvent](reference/LootGenerateBeforeEvent.md) | [LootGenerateBeforeEvent](reference/LootGenerateBeforeEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
 | [MemoryTier](reference/MemoryTier.md) | 签名、字段、属性、方法与调用示例 |
 | [MoonPhase](reference/MoonPhase.md) | 签名、字段、属性、方法与调用示例 |
-| [Motion](reference/Motion.md) | 运动器 |
+| [Motion](reference/Motion.md) | 保存运动类型及其原生句柄的包装对象。 |
 | [MovementType](reference/MovementType.md) | 签名、字段、属性、方法与调用示例 |
 | [MusicOptions](reference/MusicOptions.md) | 为玩家播放音乐的附加选项。 |
 | [NamespaceNameErrorReason](reference/NamespaceNameErrorReason.md) | 签名、字段、属性、方法与调用示例 |
@@ -156,10 +156,10 @@ title: 公共类型与错误
 | [StructureRotation](reference/StructureRotation.md) | 签名、字段、属性、方法与调用示例 |
 | [StructureSaveMode](reference/StructureSaveMode.md) | 签名、字段、属性、方法与调用示例 |
 | [StructureUneditableError](reference/StructureUneditableError.md) | 结构无效时抛出。结构被删除后会失效。 |
-| [TeleportOptions](reference/TeleportOptions.md) | 沿实体视线方向查找首个相交方块的射线选项。 |
+| [TeleportOptions](reference/TeleportOptions.md) | 包含传送目标、朝向、碰撞和速度处理选项。 |
 | [TickingArea](reference/TickingArea.md) | 特定常加载区域的上下文信息。 |
 | [TickingAreaErrorReason](reference/TickingAreaErrorReason.md) | 签名、字段、属性、方法与调用示例 |
-| [TickingAreaOptions](reference/TickingAreaOptions.md) | 动画播放的附加选项。 |
+| [TickingAreaOptions](reference/TickingAreaOptions.md) | 包含所请求区域的维度对象和两个对角坐标。 |
 | [TimeOfDay](reference/TimeOfDay.md) | 签名、字段、属性、方法与调用示例 |
 | [TintMethod](reference/TintMethod.md) | 签名、字段、属性、方法与调用示例 |
 | [UnloadedChunksError](reference/UnloadedChunksError.md) | 请求的方块区域包含尚未加载的区块。 |

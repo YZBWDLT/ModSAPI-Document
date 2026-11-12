@@ -229,7 +229,7 @@ def call_getEntitiesAtBlockLocation(instance, location):
 ## getPlayers {#getPlayers}
 
 ```python
-getPlayers(options: EntityQueryOptions = None) -> list[Player]
+getPlayers(options: EntityQueryOptions | dict | None = None) -> list[Player]
 ```
 
 读取 `getPlayers` 操作。参数形态和结果约定如下。
@@ -238,7 +238,7 @@ getPlayers(options: EntityQueryOptions = None) -> list[Player]
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `options` | [EntityQueryOptions](../../common/reference/EntityQueryOptions.md) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | [EntityQueryOptions](../../common/reference/EntityQueryOptions.md) \| [dict](../../common/type-system.md#dict) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
 **返回类型：** [list](../../common/type-system.md#list)[[Player](player.md)]。静态声明不替代本页的实现限制。
 
@@ -389,7 +389,7 @@ def call_spawnItem(instance, itemStack, location):
 ## spawnParticle {#spawnParticle}
 
 ```python
-spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariableMap = None)
+spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariableMap | None = None)
 ```
 
 在世界指定位置创建粒子发射器。
@@ -400,7 +400,7 @@ spawnParticle(effectName: str, location: Vector3, molangVariables: MolangVariabl
 | --- | --- | --- | --- |
 | `effectName` | [str](../../common/type-system.md#str) | `必填` | 资源包内存在的粒子效果标识。 |
 | `location` | [Vector3](../extra/vector.md) | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
-| `molangVariables` | [MolangVariableMap](../reference/MolangVariableMap.md) | [None](../../common/type-system.md#none) | 传给 [Dimension.spawnParticle](dimension.md#spawnParticle) 的 molangVariables 参数；结合上方功能说明和下方调用示例使用。 |
+| `molangVariables` | [MolangVariableMap](../reference/MolangVariableMap.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 传给 [Dimension.spawnParticle](dimension.md#spawnParticle) 的 molangVariables 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 

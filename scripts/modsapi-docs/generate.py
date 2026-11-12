@@ -18,6 +18,7 @@ from pathlib import Path
 
 from content import GUIDES, CLASS_EXAMPLES, NOTES, ACQUIRE_EXTRA
 from ui_content import UI_GUIDES, UI_ACQUIRE, UI_EXAMPLES
+from values_content import VALUE_GUIDES, VALUE_ACQUIRE, VALUE_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -33,7 +34,9 @@ UI_CONSTRUCTORS = {'Form', 'Observable', 'ControlDescriptor', 'Button', 'Custom'
                    'Dropdown', 'Group', 'Label', 'ListView', 'ScrollingPanel', 'Slider', 'TextField', 'Toggle', 'UiItem'}
 PYTHON_EXAMPLES = []
 GUIDES.update(UI_GUIDES)
+GUIDES.update(VALUE_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
+NOTES.update(VALUE_NOTES)
 
 
 def digest(data):
@@ -658,6 +661,7 @@ ACQUIRE = {
 }
 ACQUIRE.update(ACQUIRE_EXTRA)
 ACQUIRE.update(UI_ACQUIRE)
+ACQUIRE.update(VALUE_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -723,8 +727,10 @@ def render(cls, signals):
         out+=[':::info 字典结构或静态声明','此类型只出现在补全声明中，不是可从模板直接实例化的运行时类。作为选项时使用符合字段约定的 Python 字典。',':::','']
     elif cls['group'] == 'ui' and '/interfaces/base/' in source:
         out+=['这是界面模板描述或登记入口，通过 ModSAPI.ui 获取。控件登记需要相应描述对象，不能用普通字典替代。','']
-    elif 'interfaces/' in source or any('TypedDict' in ast.unparse(b) for b in cls['node'].bases):
+    elif typed_dictionary(cls) or name.endswith('Options') or name in ('BlockFilter', 'EntityFilter'):
         out+=['选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。','']
+    elif 'interfaces/' in source:
+        out+=['这是值对象或结果包装对象，成员通过属性访问；是否接受字典输入由所属操作的签名决定。包装类型不一定是模板入口的直接导出符号。','']
     doc=ast.get_docstring(cls['node']) or (ast.get_docstring(cls['stub']) if cls['stub'] else None)
     if doc:out+=[clean(chinese(doc)),'']
     acquire = ('通过下方所属信号的回调参数取得；类型可从对应端 beta 导入，用于识别事件类型。' if cls.get('dynamic_native') or name in signals else
@@ -1081,7 +1087,7 @@ def generate():
                 if not stale.is_relative_to(STAGE.resolve()):raise ValueError('Path escaped staging')
                 if stale.is_file():stale.unlink()
     # Include the portable generator and hand-authored guide module for future synchronization.
-    for filename in ('generate.py','content.py','ui_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
+    for filename in ('generate.py','content.py','ui_content.py','values_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
         destination=STAGE/'scripts/modsapi-docs'/filename
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((Path(__file__).parent/filename).read_bytes())

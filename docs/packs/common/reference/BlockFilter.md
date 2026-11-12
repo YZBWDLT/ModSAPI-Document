@@ -7,7 +7,7 @@ sidebar_label: "BlockFilter"
 
 作用域：公共数据、选项、枚举与错误。
 
-源码：`core_behavior/ModSAPI/interfaces/BlockOptions.py`。
+源码：`core_behavior/ModSAPI/interfaces/BlockOptions.py`；声明补充了静态类型信息。
 
 选项通常可直接传 Python 字典；包装类名本身不保证通过模板导出。只使用所属操作已经实现的字段。
 
@@ -21,12 +21,12 @@ sidebar_label: "BlockFilter"
 
 | 名称 | 类型线索 | 默认值 / 来源 | 说明 |
 | --- | --- | --- | --- |
-| `excludePermutations` | 由运行时值确定 | `data['excludePermutations'] if 'excludePermutations' in data else None` |  |
-| `excludeTags` | 由运行时值确定 | `data['excludeTags'] if 'excludeTags' in data else None` |  |
-| `excludeTypes` | 由运行时值确定 | `data['excludeTypes'] if 'excludeTypes' in data else None` |  |
-| `includePermutations` | 由运行时值确定 | `data['includePermutations'] if 'includePermutations' in data else None` |  |
-| `includeTags` | 由运行时值确定 | `data['includeTags'] if 'includeTags' in data else None` |  |
-| `includeTypes` | 由运行时值确定 | `data['includeTypes'] if 'includeTypes' in data else None` |  |
+| `excludePermutations` | [list](../type-system.md#list)[[BlockPermutation](../../server/reference/BlockPermutation.md)] \| [None](../type-system.md#none) | `data['excludePermutations'] if 'excludePermutations' in data else None` |  |
+| `excludeTags` | [list](../type-system.md#list)[[str](../type-system.md#str)] \| [None](../type-system.md#none) | `data['excludeTags'] if 'excludeTags' in data else None` |  |
+| `excludeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] \| [None](../type-system.md#none) | `data['excludeTypes'] if 'excludeTypes' in data else None` |  |
+| `includePermutations` | [list](../type-system.md#list)[[BlockPermutation](../../server/reference/BlockPermutation.md)] \| [None](../type-system.md#none) | `data['includePermutations'] if 'includePermutations' in data else None` |  |
+| `includeTags` | [list](../type-system.md#list)[[str](../type-system.md#str)] \| [None](../type-system.md#none) | `data['includeTags'] if 'includeTags' in data else None` |  |
+| `includeTypes` | [list](../type-system.md#list)[[str](../type-system.md#str)] \| [None](../type-system.md#none) | `data['includeTypes'] if 'includeTypes' in data else None` |  |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 
@@ -39,7 +39,7 @@ sidebar_label: "BlockFilter"
 ## 构造器 {#constructor}
 
 ```python
-BlockFilter(data)
+BlockFilter(data: dict) -> None
 ```
 
 构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
@@ -48,9 +48,9 @@ BlockFilter(data)
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `data` | 由值/所属选项确定 | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
+| `data` | [dict](../type-system.md#dict) | `必填` | 传入的数据。跨端通信必须可传输；创建选项需符合该类型的数据结构。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../type-system.md#none)。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

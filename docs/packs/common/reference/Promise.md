@@ -26,7 +26,7 @@ sidebar_label: "Promise"
 ## 构造器 {#constructor}
 
 ```python
-Promise(type: T = None) -> Promise[T]
+Promise(type: T | None = None) -> None
 ```
 
 创建 [Promise](Promise.md)。callback 用于定义异步结果何时完成。
@@ -35,9 +35,9 @@ Promise(type: T = None) -> Promise[T]
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| [type](../type-system.md#type) | [T](../type-system.md#typevar) | [None](../type-system.md#none) | 传给 [Promise.__init__](Promise.md#constructor) 的 [type](../type-system.md#type) 参数；结合上方功能说明和下方调用示例使用。 |
+| [type](../type-system.md#type) | [T](../type-system.md#typevar) \| [None](../type-system.md#none) | [None](../type-system.md#none) | 传给 [Promise.__init__](Promise.md#constructor) 的 [type](../type-system.md#type) 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回类型：** [Promise](Promise.md)[[T](../type-system.md#typevar)]。静态声明不替代本页的实现限制。
+**返回类型：** [None](../type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

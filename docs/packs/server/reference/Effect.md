@@ -7,13 +7,13 @@ sidebar_label: "Effect"
 
 作用域：服务端。
 
-源码：`core_behavior/ModSAPI/modules/server/Effect.py`。
+源码：`core_behavior/ModSAPI/modules/server/Effect.py`；声明补充了静态类型信息。
 
 已添加到实体的状态效果，例如中毒。
 
 ## 获取方式
 
-使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+从 entity.getEffect、entity.getEffects 或效果事件取得；没有指定效果时，getEffect 返回 [None](../../common/type-system.md#none)。
 
 ## 成员索引
 

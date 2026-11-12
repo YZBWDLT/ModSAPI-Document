@@ -935,5 +935,19 @@
   "Whether to ignore block collision.": "是否忽略方块碰撞。",
   "Whether to include liquid blocks in the raycast.": "射线检测是否包含流体方块。",
   "Whether to include passable blocks in the raycast.": "射线检测是否包含可穿过的方块。",
-  "If specified, includes entities at most this distance from the query location.": "只包含距离参考位置不大于该值的实体。"
+  "If specified, includes entities at most this distance from the query location.": "只包含距离参考位置不大于该值的实体。",
+  "A mutable coordinate value associated with a dimension handle.\n\nCoordinate inputs are copied through Vector3 and must be finite numbers.\nReading or updating this value does not move an entity or query the world.": "关联维度对象的可变坐标值。输入坐标通过 Vector3 复制，并且必须为有限数值。读取或修改该值不会移动实体，也不会查询世界。",
+  "An opaque motion type and its associated native handle.": "保存运动类型及其原生句柄的包装对象。",
+  "Contains destination, orientation, collision and velocity options for teleportation.": "包含传送目标、朝向、碰撞和速度处理选项。",
+  "Contains the dimension and opposite corners of a requested ticking area.": "包含所请求区域的维度对象和两个对角坐标。",
+  "Copy Vector3-compatible coordinates and retain the dimension handle.": "复制兼容 Vector3 的坐标，并保留传入的维度对象。",
+  "Location relative to the bottom north-west corner of the block.": "相对于方块西北底角的坐标。",
+  "Minimum and maximum coordinates of an axis-aligned block region.": "沿坐标轴对齐的方块区域的最小、最大坐标。",
+  "Return the coordinates as a detached dictionary.": "以独立字典返回坐标。",
+  "The associated dimension handle; no native lookup is performed.": "关联的维度对象；读取时不会执行原生查询。",
+  "The effect identifier retained by this value object.": "此值对象保存的效果标识符。",
+  "The finite X coordinate.": "有限数值形式的 X 坐标。",
+  "The finite Y coordinate.": "有限数值形式的 Y 坐标。",
+  "The finite Z coordinate.": "有限数值形式的 Z 坐标。",
+  "Return the nearest native block hit; only maxDistance is supported.\n\nUnsupported block filters raise before native dispatch instead of being\nsilently ignored. A missing hit returns None; an unresolved surface\nnormal leaves the returned hit's face property as None.": "返回最近的原生方块命中结果；目前只支持 maxDistance。尚未实现的筛选会在原生调用前报错，不会静默忽略。没有命中时返回 None；无法确定表面方向时，返回对象的 face 属性为 None。"
 }

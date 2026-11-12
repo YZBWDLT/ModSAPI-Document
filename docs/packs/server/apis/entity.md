@@ -543,7 +543,7 @@ def read_value(instance):
 ## addEffect {#addEffect}
 
 ```python
-addEffect(effectType: 'str|EffectType', duration: int, options: 'EntityEffectOptions|dict' = None) -> 'Effect'
+addEffect(effectType: 'str|EffectType', duration: int, options: 'EntityEffectOptions|dict|None' = None) -> 'Effect'
 ```
 
 为实体添加或更新状态效果，例如中毒。
@@ -554,7 +554,7 @@ addEffect(effectType: 'str|EffectType', duration: int, options: 'EntityEffectOpt
 | --- | --- | --- | --- |
 | `effectType` | `'str\|EffectType'` | `必填` | 传给 [Entity.addEffect](entity.md#addEffect) 的 effectType 参数；结合上方功能说明和下方调用示例使用。 |
 | `duration` | [int](../../common/type-system.md#int) | `必填` | 传给 [Entity.addEffect](entity.md#addEffect) 的 duration 参数；结合上方功能说明和下方调用示例使用。 |
-| `options` | `'EntityEffectOptions\|dict'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | `'EntityEffectOptions\|dict\|None'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
 **返回类型：** [Effect](../reference/Effect.md)。静态声明不替代本页的实现限制。
 
@@ -785,24 +785,30 @@ def call_extinguishFire(instance):
 ## getBlockFromViewDirection {#getBlockFromViewDirection}
 
 ```python
-getBlockFromViewDirection(options: 'dict|BlockRaycastOptions' = None) -> 'BlockRaycastHit'
+getBlockFromViewDirection(options: 'dict|BlockRaycastOptions|None' = None) -> 'BlockRaycastHit|None'
 ```
 
-读取 `getBlockFromViewDirection` 操作。原生实现使用 [Block](block.md)，行为受网易运行环境约束。
+返回最近的原生方块命中结果；目前只支持 maxDistance。尚未实现的筛选会在原生调用前报错，不会静默忽略。没有命中时返回 [None](../../common/type-system.md#none)；无法确定表面方向时，返回对象的 face 属性为 [None](../../common/type-system.md#none)。
+
+:::note 当前实现说明
+当前只支持 maxDistance，且必须是非负有限数；布尔值和数值字符串会被拒绝。液体、可穿过方块以及类型、标签、状态筛选尚未实现，显式设置会抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)，未知选项抛出 [ValueError](../../common/type-system.md#valueerror)。没有命中时返回 [None](../../common/type-system.md#none)；表面方向无法确定时，返回对象的 face 为 [None](../../common/type-system.md#none)。原生射线检测还会忽略没有有效碰撞盒的方块。
+:::
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `options` | `'dict\|BlockRaycastOptions'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | `'dict\|BlockRaycastOptions\|None'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
-**返回类型：** [BlockRaycastHit](../../common/reference/BlockRaycastHit.md)。静态声明不替代本页的实现限制。
+**返回类型：** `'BlockRaycastHit\|None'`。静态声明不替代本页的实现限制。
 
 ### 显式异常
 
 | 异常 | 校验信息 / 条件线索 |
 | --- | --- |
-| [ValueError](../../common/type-system.md#valueerror) | `'maxDistance must be finite and non-negative'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'Unknown block raycast option: %s' % ', '.join(sorted((str(key) for key in unknown)))` |
+| [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md) | `'Block raycast filters are not implemented: %s' % ', '.join(sorted(unsupported))` |
+| [TypeError](../../common/type-system.md#typeerror) | `'options must be a dictionary or BlockRaycastOptions'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -945,7 +951,7 @@ def call_getDynamicPropertyTotalByteCount(instance):
 ## getEffect {#getEffect}
 
 ```python
-getEffect(effectType: 'str|EffectType') -> 'Effect'
+getEffect(effectType: 'str|EffectType') -> 'Effect|None'
 ```
 
 读取 `getEffect` 操作。原生实现使用 `GetAllEffects`，行为受网易运行环境约束。
@@ -956,7 +962,7 @@ getEffect(effectType: 'str|EffectType') -> 'Effect'
 | --- | --- | --- | --- |
 | `effectType` | `'str\|EffectType'` | `必填` | 传给 [Entity.getEffect](entity.md#getEffect) 的 effectType 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回类型：** [Effect](../reference/Effect.md)。静态声明不替代本页的实现限制。
+**返回类型：** `'Effect\|None'`。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -997,7 +1003,7 @@ def call_getEffects(instance):
 ## getEntitiesFromViewDirection {#getEntitiesFromViewDirection}
 
 ```python
-getEntitiesFromViewDirection(options: 'dict' = None) -> 'list[EntityRaycastHit]'
+getEntitiesFromViewDirection(options: 'dict|None' = None) -> 'list[EntityRaycastHit]'
 ```
 
 读取 `getEntitiesFromViewDirection` 操作。参数形态和结果约定如下。
@@ -1006,7 +1012,7 @@ getEntitiesFromViewDirection(options: 'dict' = None) -> 'list[EntityRaycastHit]'
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `options` | [dict](../../common/type-system.md#dict) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | `'dict\|None'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
 **返回类型：** `'list[EntityRaycastHit]'`。静态声明不替代本页的实现限制。
 
@@ -1370,7 +1376,7 @@ def call_kill(instance):
 ## matches {#matches}
 
 ```python
-matches(options: 'dict' = None) -> bool
+matches(options: 'dict|None' = None) -> bool
 ```
 
 检查 `matches` 操作。参数形态和结果约定如下。
@@ -1379,7 +1385,7 @@ matches(options: 'dict' = None) -> bool
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `options` | [dict](../../common/type-system.md#dict) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+| `options` | `'dict\|None'` | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
@@ -1793,7 +1799,7 @@ def call_triggerEvent(instance, eventName):
 ## tryTeleport {#tryTeleport}
 
 ```python
-tryTeleport(location: 'Vector3', teleportOptions: 'dict' = None) -> bool
+tryTeleport(location: 'Vector3', teleportOptions: 'dict|None' = None) -> bool
 ```
 
 尝试传送实体；目标位置被方块阻挡等情况可能导致传送失败。
@@ -1803,7 +1809,7 @@ tryTeleport(location: 'Vector3', teleportOptions: 'dict' = None) -> bool
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `location` | [Vector3](../extra/vector.md) | `必填` | 位置向量；常用 (x, y, z)，维度由接收对象或选项确定。 |
-| `teleportOptions` | [dict](../../common/type-system.md#dict) | [None](../../common/type-system.md#none) | 传给 [Entity.tryTeleport](entity.md#tryTeleport) 的 teleportOptions 参数；结合上方功能说明和下方调用示例使用。 |
+| `teleportOptions` | `'dict\|None'` | [None](../../common/type-system.md#none) | 传给 [Entity.tryTeleport](entity.md#tryTeleport) 的 teleportOptions 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
 
