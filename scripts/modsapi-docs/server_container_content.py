@@ -31,7 +31,7 @@ def get_chest_container(dimension, location):
     return None if inventory is None else inventory.container
 ```
 
-`getItems()` 保留真实槽位顺序和空位置的 None。玩家背包优先使用一次原生批量读取；其他容器在一次容量查询后逐格读取。`emptySlotsCount`、`firstItem()`、`firstEmptySlot()` 使用轻量扫描，不为统计用途创建完整物品组件。后两项返回下标，未找到时为 None。
+`getItems()` 保留真实槽位顺序和空位置的 None。玩家背包优先使用一次原生批量读取；其他容器在一次容量校验后逐格读取。`emptySlotsCount`、`firstItem()`、`firstEmptySlot()` 使用轻量扫描，不为统计用途创建完整物品组件。后两项返回下标，未找到时为 None。
 
 [ContainerReadOptions](../server/reference/ContainerReadOptions.md) 的 includeUserData 默认 True。只显示类型和数量时可以关闭，减少嵌套数据；这种结果是有意省略元数据的物品值，不能直接写回原槽位以保留全部内容。需要编辑时重新使用完整的 `getItem()` 或默认 `getItems()`。
 
@@ -68,6 +68,53 @@ def clear_first_slot(container):
 `moveItem()` 按目标槽覆盖，`swapItems()` 交换两格；省略目标容器时使用当前容器。同格操作仍检查有效性和下标。`transferItem()` 按可用空间放入并返回余量，也支持传入当前容器，此时跳过来源格，避免重复计入来源内容。
 
 `find()`、`findLast()` 和 `contains()` 比较物品类型及完整原生元数据，忽略数量。名称、附加值、附魔、描述或自定义数据不同的物品不会被仅按类型误认为相同。
+
+## 同时修改多格
+
+```python
+def replace_reward_slots(player):
+    player.container.setItems({
+        0: ItemStack("minecraft:diamond", 3),
+        1: None,
+        2: ItemStack("minecraft:apple", 8),
+    })
+```
+
+`setItems()` 是本库扩展，接收槽位下标到物品值的字典。只有列出的槽位会被替换；None 清空，返回 None。整批参数先复制并校验，非法物品、布尔下标或越界位置不会造成前面几格已经写入的情况。空字典不执行写入，但仍会检查容器是否可用。
+
+玩家背包优先使用一次原生批量写入，修改前复用一次完整批量读取取得请求槽位的原内容；没有请求的槽位不创建物品组件。SDK 完全缺少批量写入方法时，才改用逐格写入。方块、实体和末影箱沿用各自的逐格后端。
+
+原生批量结果会逐槽检查：False、缺失状态、非法状态类型或不属于本次请求的键，都视为失败。即使原生方法抛出异常或返回失败，它也可能已经修改了一部分内容，因此所有请求槽位都会纳入恢复核对。恢复不完整时沿用下文的 ContainerRollbackError。一次原生批量调用仍不等于事务，不能据此承诺跨模组隔离。
+
+## 个人末影箱
+
+```python
+def store_reward_in_ender_chest(player):
+    storage = player.enderChest
+    remaining = storage.addItem(ItemStack("minecraft:diamond", 1))
+    return remaining
+
+def move_first_slot_to_ender_chest(player):
+    player.container.moveItem(0, 0, player.enderChest)
+```
+
+[Player.enderChest](../server/apis/player.md#enderChest) 返回同一个玩家绑定的 Container 句柄，容量为二十七格。无需提供末影箱方块的位置，不能从世界中某个末影箱方块推断它属于哪个玩家。
+
+读取、槽位句柄、添加、转移、交换、清空、批量设置以及失败恢复都沿用同一组容器方法。末影箱和背包的相同下标是不同槽位，不会把 `moveItem(0, 0, player.enderChest)` 错判为同格空操作。末影箱读取包含 userData 的选择；全部读取需要逐格查询，不伪称一次原生批量快照。
+
+句柄按需创建并缓存，操作时重新检查玩家、所属会话和在线状态。玩家断开后不能继续读取；损坏的在线列表或物品数据仍报告真实原生错误。
+
+## 快捷栏与主手
+
+```python
+def select_first_hotbar_slot(player):
+    player.selectedSlotIndex = 0
+    return player.mainHand
+```
+
+[Player.selectedSlotIndex](../server/apis/player.md#selectedSlotIndex) 可在服务端读取和设置零到八的快捷栏位置。零不会被当作未提供；布尔值、浮点数、字符串和越界下标都拒绝。读取到原生错误标记时保留 GetSelectSlotId 操作名称，设置失败保留 ChangeSelectSlot，不再静默忽略失败。
+
+[Player.mainHand](../server/apis/player.md#mainHand) 返回当前选中槽位的独立 ItemStack 或 None；设置 None 清空该位置。读取和写入都会使用经过校验的当前快捷栏下标。
 
 ## 实时槽位
 
@@ -149,6 +196,8 @@ def write_item_properties(container):
 
 ## 尚未提供的能力
 
+熔炉、烟熏炉、高炉和酿造台尚未接入统一的全槽容器后端。网易为它们提供专用接口，不能套用通用箱子读写并把无结果当作空槽；当前会明确报告 UnsupportedFeatureError。合成界面和网易共享临时槽位也尚未作为普通容器开放，它们的上下文、槽位限制和原物品回退规则需要另行适配。
+
 容器规则、重量、虚拟容器、完整冒险模式放置与破坏限制，以及原生动态属性总字节计量尚未完成可靠适配。当前没有伪造这些值；完整差异见 [接口覆盖与待补能力](../compatibility.md) 和 [ModSDK 功能映射](../modsdk-coverage.md)。
 
 接口对照：[微软容器文档](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/container?view=minecraft-bedrock-stable)、[微软物品文档](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/itemstack?view=minecraft-bedrock-stable)。本页所述错误恢复、批量读取和 JSON 属性属于本库适配行为。
@@ -166,9 +215,10 @@ SERVER_CONTAINER_ACQUIRE = {
 }
 
 SERVER_CONTAINER_NOTES = {
-    'Container.size': '返回当前整数容量；失效时抛出 InvalidContainerError，不再返回 None。玩家原生批量方法缺失时才回退到三十六格。',
+    'Container.size': '返回当前整数容量；失效时抛出 InvalidContainerError，不再返回 None。玩家背包原生批量方法缺失时才回退到三十六格；个人末影箱为二十七格。',
     'Container.getItems': '本库批量扩展，保留 None 与真实槽位顺序。关闭 includeUserData 的部分结果不应直接用于保留数据的写回。多次原生读取不是事务。',
     'Container.setItem': '返回 None。仅 None 表示清空；其他非法空值明确拒绝。失败会核对并尝试恢复，恢复不完整时抛出 ContainerRollbackError。',
+    'Container.setItems': '本库批量扩展：只修改字典中的槽位。先校验整批参数，玩家优先一次原生批量写入并逐槽检查返回值；失败核对并恢复所有请求槽位，不承诺原子事务。',
     'Container.addItem': '返回因容量不足未能放入的剩余 ItemStack，全部放入时为 None。原生写入失败会报告错误并尝试恢复，不会冒充空间不足。',
     'Container.transferItem': '同容器转移跳过来源格，返回尚未转入的余量或 None。多次读写不是原生事务，不能保证其他模组不会在中途改变内容。',
     'ContainerSlot.setDynamicProperties': '先验证完整属性批次，再写回当前物品。保留其他模组的 extraId 和原生标签；写回失败沿用容器恢复错误。',
@@ -177,4 +227,7 @@ SERVER_CONTAINER_NOTES = {
     'ItemStack.clearDynamicProperties': '仅清除本库属性视图。兼容读取的旧字面字典也不会被删除；独立空标记防止旧属性再次出现。',
     'ItemStack.setLore': '当前仅支持普通文本，最多二十行、每行五十个字符。RawMessage 写入未实现；原生已有超长描述在读取和克隆时保留。',
     'ItemStack.clone': '克隆保留原生数量和外部元数据；不会重写或删除其他模组的 extraId。',
+    'Player.enderChest': '网易扩展的个人二十七格容器，使用玩家绑定的原生末影箱方法；它与玩家背包是不同容器。操作要求玩家仍在线。',
+    'Player.selectedSlotIndex': '零到八的服务端快捷栏位置；严格校验参数、原生错误标记与设置返回值。',
+    'Container.isValid': '明确的对象缺失返回 False；损坏原生值及未适配的特殊容器后端仍会报告错误，不会冒充空箱子。',
 }

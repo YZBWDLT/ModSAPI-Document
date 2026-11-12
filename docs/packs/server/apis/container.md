@@ -31,6 +31,7 @@ sidebar_label: "Container"
 | [findLast](#findLast) | 方法 |
 | [contains](#contains) | 方法 |
 | [setItem](#setItem) | 方法 |
+| [setItems](#setItems) | 方法 |
 | [addItem](#addItem) | 方法 |
 | [clearAll](#clearAll) | 方法 |
 | [moveItem](#moveItem) | 方法 |
@@ -43,10 +44,10 @@ sidebar_label: "Container"
 size: int
 ```
 
-读取当前容量；失效容器报告 [InvalidContainerError](../../common/reference/InvalidContainerError.md)。玩家采用原生批量列表的长度，只有 SDK 缺少该方法时回退到三十六格。方块与实体容量每次重新查询，异常原生值不会变成空容器。
+读取当前容量；失效容器报告 [InvalidContainerError](../../common/reference/InvalidContainerError.md)。玩家背包使用原生批量列表的长度，个人末影箱为二十七格。SDK 缺少背包批量方法时回退到三十六格。方块与实体容量重新查询，异常值不会被当作空容器。
 
 :::note 当前实现说明
-返回当前整数容量；失效时抛出 [InvalidContainerError](../../common/reference/InvalidContainerError.md)，不再返回 [None](../../common/type-system.md#none)。玩家原生批量方法缺失时才回退到三十六格。
+返回当前整数容量；失效时抛出 [InvalidContainerError](../../common/reference/InvalidContainerError.md)，不再返回 [None](../../common/type-system.md#none)。玩家背包原生批量方法缺失时才回退到三十六格；个人末影箱为二十七格。
 :::
 
 **访问：** 只读。
@@ -71,6 +72,10 @@ isValid: bool
 ```
 
 所属会话和原生容器是否仍可使用。明确的原生缺失返回 False，损坏的返回值或缺少的能力仍作为诊断错误报告。
+
+:::note 当前实现说明
+明确的对象缺失返回 False；损坏原生值及未适配的特殊容器后端仍会报告错误，不会冒充空箱子。
+:::
 
 **访问：** 只读。
 
@@ -356,6 +361,45 @@ setItem(slot: int, itemStack: ItemStack | EventItemStack | None = None) -> None
 ```python
 def call_setItem(instance, slot):
     return instance.setItem(slot)
+```
+
+## setItems {#setItems}
+
+```python
+setItems(items: dict[int, ItemStack | EventItemStack | None]) -> None
+```
+
+按槽位到物品的字典替换指定位置，[None](../../common/type-system.md#none) 清空。完整复制与校验输入后才查询引擎；玩家背包优先使用一次原生批量写入，缺少批量能力或其他容器使用逐格写入。逐槽结果为 False、缺失或损坏时视为失败；即使原生已经部分改动，也会核对并恢复所有已尝试槽位，恢复不完整时报告 [ContainerRollbackError](../../common/reference/ContainerRollbackError.md)。
+
+:::note 当前实现说明
+本库批量扩展：只修改字典中的槽位。先校验整批参数，玩家优先一次原生批量写入并逐槽检查返回值；失败核对并恢复所有请求槽位，不承诺原子事务。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `items` | [dict](../../common/type-system.md#dict)[[int](../../common/type-system.md#int), [ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none)] | `必填` | 下拉选项集合；标准构建器使用文本列表，[CustomForm](../../server_ui/reference/CustomForm.md) 使用 label/value 字典列表。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'items must be a slot-to-item dictionary'` |
+| [InvalidContainerSlotError](../../common/reference/InvalidContainerSlotError.md) | `'A batch slot is outside the current container bounds'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'SetPlayerAllItems'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_setItems(instance, items):
+    return instance.setItems(items)
 ```
 
 ## addItem {#addItem}

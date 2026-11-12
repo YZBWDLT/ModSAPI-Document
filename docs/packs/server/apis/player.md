@@ -35,6 +35,7 @@ sidebar_label: "Player"
 | [clientSystemInfo](#clientSystemInfo) | 只读属性 |
 | [playerPermissionLevel](#playerPermissionLevel) | 只读属性 |
 | [container](#container) | 只读属性 |
+| [enderChest](#enderChest) | 只读属性 |
 | [mainHand](#mainHand) | 可读写属性 |
 | [applyKnockback](#applyKnockback) | 方法 |
 | [playSound](#playSound) | 方法 |
@@ -417,10 +418,14 @@ def call_resetLevel(instance):
 ## selectedSlotIndex {#selectedSlotIndex}
 
 ```python
-selectedSlotIndex
+selectedSlotIndex: int
 ```
 
-当前选中槽位的索引。
+当前快捷栏下标，范围零到八；保留零值，拒绝原生错误标记。
+
+:::note 当前实现说明
+零到八的服务端快捷栏位置；严格校验参数、原生错误标记与设置返回值。
+:::
 
 **访问：** 可读写。
 
@@ -428,7 +433,14 @@ selectedSlotIndex
 
 写入参数 `slotId`：[int](../../common/type-system.md#int)。
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetSelectSlotId'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'ChangeSelectSlot'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -499,7 +511,7 @@ def read_value(instance):
 container: con.Container
 ```
 
-玩家的库存容器。
+玩家的实时背包容器，通过明确的写入方法修改内容。
 
 **访问：** 只读。
 
@@ -518,21 +530,52 @@ def read_value(instance):
     return instance.container
 ```
 
+## enderChest {#enderChest}
+
+```python
+enderChest: Container
+```
+
+网易扩展：当前在线玩家的个人二十七格容器。句柄按需创建并缓存，与背包槽位具有不同身份；读取、写入和恢复使用玩家绑定的末影箱方法，不依赖世界中末影箱方块的位置。
+
+:::note 当前实现说明
+网易扩展的个人二十七格容器，使用玩家绑定的原生末影箱方法；它与玩家背包是不同容器。操作要求玩家仍在线。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Container](container.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** [Container](container.md)。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.enderChest
+```
+
 ## mainHand {#mainHand}
 
 ```python
-mainHand: ItemStack
+mainHand: ItemStack | None
 ```
 
-读取主手物品。
+读取当前快捷栏槽位中的独立 [ItemStack](itemStack.md)；空槽返回 [None](../../common/type-system.md#none)。
 
 **访问：** 可读写。
 
-写入方式：`instance.mainHand = value`。参数类型线索：`(item: ItemStack) -> None`。
+写入方式：`instance.mainHand = value`。参数类型线索：`(item: ItemStack \| EventItemStack \| None) -> None`。
 
-写入参数 `item`：[ItemStack](itemStack.md)。
+替换当前快捷栏物品；校验所选下标后，[None](../../common/type-system.md#none) 清空该槽位。
 
-**返回类型：** [ItemStack](itemStack.md)。静态声明不替代本页的实现限制。
+写入参数 `item`：[ItemStack](itemStack.md) \| [EventItemStack](../../common/reference/EventItemStack.md) \| [None](../../common/type-system.md#none)。
+
+**返回类型：** [ItemStack](itemStack.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -654,12 +697,12 @@ def call_sendMessage(instance, message):
 ## getSpawnPoint {#getSpawnPoint}
 
 ```python
-getSpawnPoint() -> DimensionLocation | None
+getSpawnPoint()
 ```
 
 读取配置的重生位置及其维度；原生数据可用时返回。
 
-**返回类型：** [DimensionLocation](../../common/reference/DimensionLocation.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 

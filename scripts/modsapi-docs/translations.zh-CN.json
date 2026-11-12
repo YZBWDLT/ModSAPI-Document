@@ -1237,5 +1237,12 @@
   "The enchantment conflicts with an item slot or an existing enchantment.": "附魔与当前物品槽位或已有附魔冲突。",
   "The current native enchantment catalog does not contain the identifier.": "当前原生附魔目录中没有该标识。",
   "NetEase extension: the native variant used by definition and tag queries.": "网易扩展的原生变种值，用于基础定义与标签查询。",
-  "Read copied definition tags with GetItemTags and this native variant.": "使用 GetItemTags 和当前原生变种读取定义标签副本。"
+  "Read copied definition tags with GetItemTags and this native variant.": "使用 GetItemTags 和当前原生变种读取定义标签副本。",
+  "Current hotbar index in 0..8; preserve zero and reject native sentinels.": "当前快捷栏下标，范围零到八；保留零值，拒绝原生错误标记。",
+  "The player's live inventory container; modify it through explicit writes.": "玩家的实时背包容器，通过明确的写入方法修改内容。",
+  "NetEase extension: this connected player's personal 27-slot Container. The handle is lazy and cached, with separate identity from inventory slots. Reads, writes and recovery use the player-bound ender methods, rather than the location of an ender-chest block in the world.": "网易扩展：当前在线玩家的个人二十七格容器。句柄按需创建并缓存，与背包槽位具有不同身份；读取、写入和恢复使用玩家绑定的末影箱方法，不依赖世界中末影箱方块的位置。",
+  "Read a detached ItemStack from the selected hotbar slot, or None if empty.": "读取当前快捷栏槽位中的独立 ItemStack；空槽返回 None。",
+  "Replace the selected hotbar item; None clears it after validating selection.": "替换当前快捷栏物品；校验所选下标后，None 清空该槽位。",
+  "Read the current capacity; invalid containers raise InvalidContainerError. Player inventory uses the native batch length; personal ender storage has 27 slots. SDKs without the inventory batch use the documented 36 inventory slots. Block/entity capacities are read afresh; malformed native values are not converted to empty containers.": "读取当前容量；失效容器报告 InvalidContainerError。玩家背包使用原生批量列表的长度，个人末影箱为二十七格。SDK 缺少背包批量方法时回退到三十六格。方块与实体容量重新查询，异常值不会被当作空容器。",
+  "Replace selected slots from a slot-to-item mapping; None clears a slot. Validate and copy the complete input before querying the engine. Player inventories use one native batch write when available; missing batch support and other container kinds use individual validated writes. False, missing or malformed per-slot results are failures. Every attempted slot is checked/restored on failure, including partial native mutations; incomplete restoration raises ContainerRollbackError.": "按槽位到物品的字典替换指定位置，None 清空。完整复制与校验输入后才查询引擎；玩家背包优先使用一次原生批量写入，缺少批量能力或其他容器使用逐格写入。逐槽结果为 False、缺失或损坏时视为失败；即使原生已经部分改动，也会核对并恢复所有已尝试槽位，恢复不完整时报告 ContainerRollbackError。"
 }
