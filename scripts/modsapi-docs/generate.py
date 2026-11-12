@@ -229,7 +229,7 @@ def load():
             cls = {'name':name,'group':classify(path),'path':path,'node':node,
                    'source':actual.get(name),'stub':declared.get(name),
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
-            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride', 'ClientEntityAttributeComponent', 'InvalidEntityError'):
+            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride', 'ClientEntityAttributeComponent', 'InvalidEntityError', 'EntityAttributeModifier'):
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):

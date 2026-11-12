@@ -13,6 +13,9 @@ title: 公共类型与错误
 | --- | --- |
 | [AimAssistTargetMode](reference/AimAssistTargetMode.md) | 签名、字段、属性、方法与调用示例 |
 | [ArgumentOutOfBoundsError](reference/ArgumentOutOfBoundsError.md) | 数值参数超出了该操作当前的原生边界。 |
+| [AttributeModifierOperand](reference/AttributeModifierOperand.md) | 修饰器所影响的原生属性值。 |
+| [AttributeModifierOperation](reference/AttributeModifierOperation.md) | 网易原生属性修饰器支持的运算类型，使用含义明确的字符串。运算次序和各运算的具体计算规则由引擎决定，本库不自行重算。 |
+| [AttributeModifierOptions](reference/AttributeModifierOptions.md) | 原生修饰器选项；省略字段时使用 Addition 运算和 Maximum 操作数。 |
 | [BlockBoundingBox](reference/BlockBoundingBox.md) | 签名、字段、属性、方法与调用示例 |
 | [BlockComponentTypes](reference/BlockComponentTypes.md) | 签名、字段、属性、方法与调用示例 |
 | [BlockEventOptions](reference/BlockEventOptions.md) | 方块事件订阅的可选参数。 |
@@ -56,6 +59,7 @@ title: 公共类型与错误
 | [EntityApplyDamageOptions](reference/EntityApplyDamageOptions.md) | 伤害操作的附加说明与元数据。 |
 | [EntityAreaEvent](reference/EntityAreaEvent.md) | [EntityAreaEvent](reference/EntityAreaEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
 | [EntityAttachPoint](reference/EntityAttachPoint.md) | 签名、字段、属性、方法与调用示例 |
+| [EntityAttributeModifier](reference/EntityAttributeModifier.md) | 只读且独立的属性修饰器快照，通过 [EntityAttributeComponent.getModifiers](../server/reference/EntityAttributeComponent.md#getModifiers)() 或 getModifier() 取得。不保留实体或原生组件，也不会随引擎后续修改自动更新。修改接口直接接受标识符、数值和选项字典，无需主动构造快照。 |
 | [EntityComponentTypes](reference/EntityComponentTypes.md) | 可通过 [Entity.getComponent](../server/apis/entity.md#getComponent) 访问的实体组件类型。 |
 | [EntityDamageCause](reference/EntityDamageCause.md) | 描述实体受到伤害的原因。 |
 | [EntityDamageSource](reference/EntityDamageSource.md) | 实体受到伤害的来源信息。 |

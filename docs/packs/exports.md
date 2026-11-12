@@ -111,6 +111,9 @@ from ModSAPI.server.beta import world, system
 | [ScriptBridgeError](common/reference/ScriptBridgeError.md) | [ScriptBridgeError](common/reference/ScriptBridgeError.md) |
 | [InvalidEntityError](common/reference/InvalidEntityError.md) | [InvalidEntityError](common/reference/InvalidEntityError.md) |
 | [ArgumentOutOfBoundsError](common/reference/ArgumentOutOfBoundsError.md) | [ArgumentOutOfBoundsError](common/reference/ArgumentOutOfBoundsError.md) |
+| [AttributeModifierOperation](common/reference/AttributeModifierOperation.md) | [AttributeModifierOperation](common/reference/AttributeModifierOperation.md) |
+| [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) | [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) |
+| [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) | [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) |
 | [NativeEventData](common/reference/NativeEventData.md) | [NativeEventData](common/reference/NativeEventData.md) |
 | [NativeEventSignal](common/reference/NativeEventSignal.md) | [NativeEventSignal](common/reference/NativeEventSignal.md) |
 | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) |

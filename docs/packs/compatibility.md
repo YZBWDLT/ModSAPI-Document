@@ -16,6 +16,7 @@ title: 官方对照与当前支持情况
 ### 已知限制
 
 - [EntityAttributeComponent.effectiveMin](server/reference/EntityAttributeComponent.md#effectiveMin)：当前读取属性 NBT 的 Min；尚未证明额外最小值修饰因素与微软有效最小值完全等价。
+- `EntityAttributeComponent/modifier persistence`：原生五项修饰器接口已封装；没有证据表明修饰器跨存档或重载持久化，不能将 ModAttr.SaveAttr 冒充修饰器保存。叠加次序、上限运算和最小值修饰器影响仍待实测。
 - [EntityAttributeComponent.resetToMaxValue](server/reference/EntityAttributeComponent.md#resetToMaxValue)：使用原生重置；未显式设置过的无穷上限按网易规则恢复默认值，不能宣称所有无穷边界行为与微软运行时一致。
 - `EntityEquippableComponent.getEquipment/setEquipment Body`：网易 ArmorSlotType.BODY 是胸甲槽，不是 SAPI 的 Body 槽；尚无经核验的 Body 映射，当前明确拒绝。
 - [Player.playSound](server/apis/player.md#playSound)：仅向指定在线玩家播放一次并上报失败；loopCount 非零会明确拒绝，当前后端不能返回新版 SoundInstance 句柄。

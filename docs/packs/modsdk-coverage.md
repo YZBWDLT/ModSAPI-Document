@@ -11,9 +11,9 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 285 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 已有离线核验路径 | 290 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
 | 发现原生调用，待核对 | 270 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
-| 尚未建立映射 | 1074 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
+| 尚未建立映射 | 1069 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
 常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
 
@@ -646,10 +646,10 @@ title: ModSDK 功能映射与待补接口
 
 | 原生接口 | 执行端 | 当前记录 | 已核对的公开入口 |
 | --- | --- | --- | --- |
-| [AddModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#addmodifier) | 服务端 | 尚未建立映射 | — |
+| [AddModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#addmodifier) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.addModifier](server/reference/EntityAttributeComponent.md#addModifier) |
 | [ChangeEntityDimension](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#changeentitydimension) | 服务端 | 发现原生调用，待核对 | — |
 | [GetAllComponentsName](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getallcomponentsname) | 服务端 | 发现原生调用，待核对 | — |
-| [GetAllModifiers](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getallmodifiers) | 服务端 | 尚未建立映射 | — |
+| [GetAllModifiers](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getallmodifiers) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.getModifiers](server/reference/EntityAttributeComponent.md#getModifiers) |
 | [GetAttrMaxValue](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getattrmaxvalue) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.effectiveMax](server/reference/EntityAttributeComponent.md#effectiveMax), [EntityAttributeComponent.setCurrentValue](server/reference/EntityAttributeComponent.md#setCurrentValue) |
 | [GetAttrMaxValue](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getattrmaxvalue) | 客户端 | 已有离线核验路径 | [ClientEntityAttributeComponent.effectiveMax](client/reference/ClientEntityAttributeComponent.md#effectiveMax) |
 | [GetAttrValue](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getattrvalue) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.currentValue](server/reference/EntityAttributeComponent.md#currentValue), [EntityAttributeComponent.isValid](server/reference/EntityAttributeComponent.md#isValid), [Entity.health](server/apis/entity.md#health) |
@@ -689,7 +689,7 @@ title: ModSDK 功能映射与待补接口
 | [GetVariant](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#getvariant) | 服务端 | 已有离线核验路径 | [Entity.variant](server/apis/entity.md#variant) |
 | [HasChest](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#haschest) | 服务端 | 已有离线核验路径 | [Entity.isChested](server/apis/entity.md#isChested) |
 | [HasComponent](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#hascomponent) | 服务端 | 发现原生调用，待核对 | — |
-| [HasModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#hasmodifier) | 服务端 | 尚未建立映射 | — |
+| [HasModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#hasmodifier) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.hasModifier](server/reference/EntityAttributeComponent.md#hasModifier) |
 | [HasSaddle](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#hassaddle) | 服务端 | 已有离线核验路径 | [Entity.isSaddled](server/apis/entity.md#isSaddled) |
 | [IsAngry](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#isangry) | 服务端 | 已有离线核验路径 | [Entity.isAngry](server/apis/entity.md#isAngry) |
 | [IsBaby](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#isbaby) | 服务端 | 已有离线核验路径 | [Entity.isBaby](server/apis/entity.md#isBaby) |
@@ -703,7 +703,7 @@ title: ModSDK 功能映射与待补接口
 | [IsTamed](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#istamed) | 服务端 | 已有离线核验路径 | [Entity.isTamed](server/apis/entity.md#isTamed) |
 | [LockLocalPlayerRot](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#locklocalplayerrot) | 客户端 | 尚未建立映射 | — |
 | [PromoteToIllagerCaptain](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#promotetoillagercaptain) | 服务端 | 已有离线核验路径 | [Entity.promoteToIllagerCaptain](server/apis/entity.md#promoteToIllagerCaptain) |
-| [RemoveModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#removemodifier) | 服务端 | 尚未建立映射 | — |
+| [RemoveModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#removemodifier) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.removeModifier](server/reference/EntityAttributeComponent.md#removeModifier) |
 | [ResetToDefaultValue](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#resettodefaultvalue) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.resetToDefaultValue](server/reference/EntityAttributeComponent.md#resetToDefaultValue) |
 | [ResetToMaxValue](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#resettomaxvalue) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.resetToMaxValue](server/reference/EntityAttributeComponent.md#resetToMaxValue) |
 | [SetAngry](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#setangry) | 服务端 | 已有离线核验路径 | [Entity.setAngry](server/apis/entity.md#setAngry) |
@@ -736,7 +736,7 @@ title: ModSDK 功能映射与待补接口
 | [SetSize](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#setsize) | 服务端 | 发现原生调用，待核对 | — |
 | [SetTradeLevel](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#settradelevel) | 服务端 | 已有离线核验路径 | [Entity.setTradeLevel](server/apis/entity.md#setTradeLevel) |
 | [SetVariant](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#setvariant) | 服务端 | 已有离线核验路径 | [Entity.setVariant](server/apis/entity.md#setVariant) |
-| [UpdateModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#updatemodifier) | 服务端 | 尚未建立映射 | — |
+| [UpdateModifier](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#updatemodifier) | 服务端 | 已有离线核验路径 | [EntityAttributeComponent.updateModifier](server/reference/EntityAttributeComponent.md#updateModifier) |
 | [isEntityInLava](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#isentityinlava) | 客户端 | 已有离线核验路径 | [ClientEntity.isInLava](client/reference/ClientEntity.md#isInLava) |
 | [isEntityOnGround](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E5%B1%9E%E6%80%A7.md#isentityonground) | 客户端 | 已有离线核验路径 | [ClientEntity.isOnGround](client/reference/ClientEntity.md#isOnGround) |
 

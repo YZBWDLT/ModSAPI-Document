@@ -3,6 +3,10 @@
 使用 Python 字典传入选项，以下参考列出当前包装类的字段、默认值和限制。
 
 - [PlayAnimationOptions](../../common/reference/PlayAnimationOptions.md)
+- [AttributeModifierOperand](../../common/reference/AttributeModifierOperand.md)
+- [AttributeModifierOperation](../../common/reference/AttributeModifierOperation.md)
+- [AttributeModifierOptions](../../common/reference/AttributeModifierOptions.md)
+- [EntityAttributeModifier](../../common/reference/EntityAttributeModifier.md)
 - [BlockBoundingBox](../../common/reference/BlockBoundingBox.md)
 - [BlockEventOptions](../../common/reference/BlockEventOptions.md)
 - [BlockFilter](../../common/reference/BlockFilter.md)

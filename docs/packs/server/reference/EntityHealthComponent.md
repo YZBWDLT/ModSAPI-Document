@@ -37,18 +37,24 @@ sidebar_label: "EntityHealthComponent"
 
 | 成员 | 定义位置 |
 | --- | --- |
+| [addModifier](EntityAttributeComponent.md#addModifier) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [currentValue](EntityAttributeComponent.md#currentValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [defaultValue](EntityAttributeComponent.md#defaultValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [effectiveMax](EntityAttributeComponent.md#effectiveMax) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [effectiveMin](EntityAttributeComponent.md#effectiveMin) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [entity](EntityComponent.md#entity) | [EntityComponent](EntityComponent.md) |
+| [getModifier](EntityAttributeComponent.md#getModifier) | [EntityAttributeComponent](EntityAttributeComponent.md) |
+| [getModifiers](EntityAttributeComponent.md#getModifiers) | [EntityAttributeComponent](EntityAttributeComponent.md) |
+| [hasModifier](EntityAttributeComponent.md#hasModifier) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [isValid](EntityAttributeComponent.md#isValid) | [EntityAttributeComponent](EntityAttributeComponent.md) |
+| [removeModifier](EntityAttributeComponent.md#removeModifier) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToDefaultValue](EntityAttributeComponent.md#resetToDefaultValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToMaxValue](EntityAttributeComponent.md#resetToMaxValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [resetToMinValue](EntityAttributeComponent.md#resetToMinValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [setCurrentValue](EntityAttributeComponent.md#setCurrentValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [setMaxValue](EntityAttributeComponent.md#setMaxValue) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 | [typeId](Component.md#typeId) | [Component](Component.md) |
+| [updateModifier](EntityAttributeComponent.md#updateModifier) | [EntityAttributeComponent](EntityAttributeComponent.md) |
 
 ## 构造器 {#constructor}
 

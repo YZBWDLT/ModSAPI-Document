@@ -40,6 +40,12 @@ sidebar_label: "EntityAttributeComponent"
 | [resetToMinValue](#resetToMinValue) | 方法 |
 | [setCurrentValue](#setCurrentValue) | 方法 |
 | [setMaxValue](#setMaxValue) | 方法 |
+| [addModifier](#addModifier) | 方法 |
+| [updateModifier](#updateModifier) | 方法 |
+| [getModifiers](#getModifiers) | 方法 |
+| [getModifier](#getModifier) | 方法 |
+| [hasModifier](#hasModifier) | 方法 |
+| [removeModifier](#removeModifier) | 方法 |
 
 ## 继承成员
 
@@ -346,6 +352,208 @@ setMaxValue(value: float) -> bool
 ```python
 def call_setMaxValue(instance, value):
     return instance.setMaxValue(value)
+```
+
+## addModifier {#addModifier}
+
+```python
+addModifier(modifierId: str, amount: float, options: AttributeModifierOptions | None = None) -> bool
+```
+
+添加原生属性修饰器，返回文档约定的布尔结果。选项包含 operation（默认 Addition）和 operand（默认 Maximum）。自定义标识符应包含模组命名空间，数值必须有限。叠加、重复标识符和运算由引擎处理；此方法不会更新已有修饰器，也不改变定义默认值。不承诺持久化或与微软接口等价。
+
+:::note 当前实现说明
+网易扩展；默认使用 Addition 运算并影响 Maximum。仅增加指定修饰器，重复标识符的处理由引擎决定，不会自动覆盖。实际计算与持久化限制见属性修饰器教程。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `modifierId` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityAttributeComponent.addModifier](EntityAttributeComponent.md#addModifier) 的 modifierId 参数；结合上方功能说明和下方调用示例使用。 |
+| `amount` | [float](../../common/type-system.md#float) | `必填` | 物品数量；新物品要求 1–255 的整数，并按最大堆叠数限制。 |
+| `options` | [AttributeModifierOptions](../../common/reference/AttributeModifierOptions.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `AddModifier`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_addModifier(instance, modifierId, amount):
+    return instance.addModifier(modifierId, amount)
+```
+
+## updateModifier {#updateModifier}
+
+```python
+updateModifier(modifierId: str, amount: float, options: AttributeModifierOptions | None = None) -> bool
+```
+
+替换已有原生修饰器的字段，返回布尔结果。选项默认值与 addModifier 相同，省略字段不会保留旧值。原生正常拒绝返回 False；输入校验在查询属主或写入引擎前完成。
+
+:::note 当前实现说明
+网易扩展；更新完整的 amount、operation、operand。省略选项会使用默认值，不表示保留旧字段。原生正常拒绝返回 False。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `modifierId` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityAttributeComponent.updateModifier](EntityAttributeComponent.md#updateModifier) 的 modifierId 参数；结合上方功能说明和下方调用示例使用。 |
+| `amount` | [float](../../common/type-system.md#float) | `必填` | 物品数量；新物品要求 1–255 的整数，并按最大堆叠数限制。 |
+| `options` | [AttributeModifierOptions](../../common/reference/AttributeModifierOptions.md) \| [None](../../common/type-system.md#none) | [None](../../common/type-system.md#none) | 附加选项字典。字段及默认值见本页选项与关联类型；未实现字段不会因此生效。 |
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `UpdateModifier`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_updateModifier(instance, modifierId, amount):
+    return instance.updateModifier(modifierId, amount)
+```
+
+## getModifiers {#getModifiers}
+
+```python
+getModifiers() -> list[EntityAttributeModifier]
+```
+
+将全部原生修饰器读取为独立的只读值对象。空原生列表返回空列表；字段损坏、未知原生枚举或重复标识符会抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)，不返回不完整结果，也不缓存原生列表。
+
+:::note 当前实现说明
+每次执行一次原生列表查询，返回 [EntityAttributeModifier](../../common/reference/EntityAttributeModifier.md) 只读快照。空列表正常返回；缺失字段、未知原生枚举或重复标识符会报告 [NativeOperationError](../../common/reference/NativeOperationError.md)，不返回不完整结果。
+:::
+
+**返回类型：** [list](../../common/type-system.md#list)[[EntityAttributeModifier](../../common/reference/EntityAttributeModifier.md)]。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [TypeError](../../common/type-system.md#typeerror) | `'Expected a native modifier list'` |
+| [ValueError](../../common/type-system.md#valueerror) | `'Native modifiers have duplicate identifiers'` |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetAllModifiers'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetAllModifiers`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getModifiers(instance):
+    return instance.getModifiers()
+```
+
+## getModifier {#getModifier}
+
+```python
+getModifier(modifierId: str) -> EntityAttributeModifier | None
+```
+
+使用一次原生列表查询返回指定修饰器的独立快照，未找到返回 [None](../../common/type-system.md#none)。
+
+:::note 当前实现说明
+通过一次原生列表查询查找指定修饰器，未找到返回 [None](../../common/type-system.md#none)。只检查存在性时使用 hasModifier，避免读取整个列表。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `modifierId` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityAttributeComponent.getModifier](EntityAttributeComponent.md#getModifier) 的 modifierId 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [EntityAttributeModifier](../../common/reference/EntityAttributeModifier.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_getModifier(instance, modifierId):
+    return instance.getModifier(modifierId)
+```
+
+## hasModifier {#hasModifier}
+
+```python
+hasModifier(modifierId: str) -> bool
+```
+
+通过原生布尔查询检查指定修饰器，不读取整个列表。
+
+:::note 当前实现说明
+使用原生布尔查询检查指定标识符，不读取修饰器列表。False 表示原生报告不存在。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `modifierId` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityAttributeComponent.hasModifier](EntityAttributeComponent.md#hasModifier) 的 modifierId 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `HasModifier`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_hasModifier(instance, modifierId):
+    return instance.hasModifier(modifierId)
+```
+
+## removeModifier {#removeModifier}
+
+```python
+removeModifier(modifierId: str) -> bool
+```
+
+移除一个修饰器，原生正常拒绝时返回 False。仅操作指定标识符，本库不会因此重置其他脚本的修饰器或属性的定义默认值。
+
+:::note 当前实现说明
+仅移除指定标识符，正常拒绝返回 False；不会重置属性默认值或清除其他修饰器。
+:::
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `modifierId` | [str](../../common/type-system.md#str) | `必填` | 传给 [EntityAttributeComponent.removeModifier](EntityAttributeComponent.md#removeModifier) 的 modifierId 参数；结合上方功能说明和下方调用示例使用。 |
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `RemoveModifier`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def call_removeModifier(instance, modifierId):
+    return instance.removeModifier(modifierId)
 ```
 
 ## 使用示例
