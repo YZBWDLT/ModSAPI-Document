@@ -11,9 +11,9 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 290 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 已有离线核验路径 | 295 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
 | 发现原生调用，待核对 | 270 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
-| 尚未建立映射 | 1069 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
+| 尚未建立映射 | 1064 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
 常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md)、[选择控件与小地图](guides/ui-choices-and-minimap.md) 和 [模型预览与图片适配](guides/ui-models-and-images.md)。模型高级挂接、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
 
@@ -1196,20 +1196,20 @@ title: ModSDK 功能映射与待补接口
 | [AddModEnchantToInvItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#addmodenchanttoinvitem) | 服务端 | 尚未建立映射 | — |
 | [ChangePlayerItemTipsAndExtraId](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#changeplayeritemtipsandextraid) | 服务端 | 尚未建立映射 | — |
 | [ChangeSelectSlot](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#changeselectslot) | 服务端 | 发现原生调用，待核对 | — |
-| [GetCarriedItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getcarrieditem) | 客户端 | 尚未建立映射 | — |
+| [GetCarriedItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getcarrieditem) | 客户端 | 已有离线核验路径 | [ClientEntityEquippableComponent.getEquipment](client/reference/ClientEntityEquippableComponent.md#getEquipment), [ClientEntityEquippableComponent.getEquipmentItems](client/reference/ClientEntityEquippableComponent.md#getEquipmentItems) |
 | [GetInvItemEnchantData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getinvitemenchantdata) | 服务端 | 尚未建立映射 | — |
 | [GetInvItemModEnchantData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getinvitemmodenchantdata) | 服务端 | 尚未建立映射 | — |
-| [GetOffhandItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getoffhanditem) | 客户端 | 尚未建立映射 | — |
-| [GetPlayerAllItems](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerallitems) | 服务端 | 尚未建立映射 | — |
-| [GetPlayerAllItems](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerallitems) | 客户端 | 尚未建立映射 | — |
+| [GetOffhandItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getoffhanditem) | 客户端 | 已有离线核验路径 | [ClientEntityEquippableComponent.getEquipment](client/reference/ClientEntityEquippableComponent.md#getEquipment), [ClientEntityEquippableComponent.getEquipmentItems](client/reference/ClientEntityEquippableComponent.md#getEquipmentItems) |
+| [GetPlayerAllItems](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerallitems) | 服务端 | 发现原生调用，待核对 | — |
+| [GetPlayerAllItems](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerallitems) | 客户端 | 已有离线核验路径 | [ClientContainer.getItems](client/reference/ClientContainer.md#getItems), [ClientContainer.getItem](client/reference/ClientContainer.md#getItem), [ClientContainer.size](client/reference/ClientContainer.md#size), [ClientEntityEquippableComponent.getEquipmentItems](client/reference/ClientEntityEquippableComponent.md#getEquipmentItems) |
 | [GetPlayerFishHookEntity](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerfishhookentity) | 服务端 | 尚未建立映射 | — |
 | [GetPlayerFishHookEntity](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerfishhookentity) | 客户端 | 尚未建立映射 | — |
 | [GetPlayerFishItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerfishitem) | 服务端 | 尚未建立映射 | — |
 | [GetPlayerFishItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayerfishitem) | 客户端 | 尚未建立映射 | — |
 | [GetPlayerItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayeritem) | 服务端 | 发现原生调用，待核对 | — |
-| [GetPlayerItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayeritem) | 客户端 | 发现原生调用，待核对 | — |
+| [GetPlayerItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getplayeritem) | 客户端 | 已有离线核验路径 | [ClientContainer.getItem](client/reference/ClientContainer.md#getItem), [ClientEntityEquippableComponent.getEquipment](client/reference/ClientEntityEquippableComponent.md#getEquipment) |
 | [GetSelectSlotId](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getselectslotid) | 服务端 | 发现原生调用，待核对 | — |
-| [GetSlotId](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getslotid) | 客户端 | 尚未建立映射 | — |
+| [GetSlotId](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#getslotid) | 客户端 | 已有离线核验路径 | [ClientPlayer.selectedSlotIndex](client/reference/ClientPlayer.md#selectedSlotIndex) |
 | [RemoveEnchantToInvItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#removeenchanttoinvitem) | 服务端 | 尚未建立映射 | — |
 | [RemoveModEnchantToInvItem](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#removemodenchanttoinvitem) | 服务端 | 尚未建立映射 | — |
 | [SetInvItemExchange](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E7%8E%A9%E5%AE%B6/%E8%83%8C%E5%8C%85.md#setinvitemexchange) | 服务端 | 尚未建立映射 | — |

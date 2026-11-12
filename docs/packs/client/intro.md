@@ -37,6 +37,8 @@ title: 客户端
 | [ClientChunkUnloadBeforeEvent](reference/ClientChunkUnloadBeforeEvent.md) | [ChunkAcquireDiscardedClientEvent](events.md#chunkacquirediscardedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCloseNeteaseShopAfterEvent](reference/ClientCloseNeteaseShopAfterEvent.md) | [CloseNeteaseShopEvent](events.md#closeneteaseshopevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCommandOutputAfterEvent](reference/ClientCommandOutputAfterEvent.md) | [OnCommandOutputClientEvent](events.md#oncommandoutputclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientContainer](reference/ClientContainer.md) | 实时只读的本地玩家背包，容量来自原生结果。不长期缓存物品或容量。检查多个槽位时优先使用 getItems，一次完成批量读取；单格完整读取先查询轻量边界，再使用 GetPlayerItem 获取目标格数据。 |
+| [ClientContainerSlot](reference/ClientContainerSlot.md) | 实时只读的背包或装备槽位，空槽位仍然有效。 |
 | [ClientCraftUpdateResultItemAfterEvent](reference/ClientCraftUpdateResultItemAfterEvent.md) | [CraftUpdateResultItemClientEvent](events.md#craftupdateresultitemclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCustomGamepadChangeAfterEvent](reference/ClientCustomGamepadChangeAfterEvent.md) | [OnCustomGamepadChangedEvent](events.md#oncustomgamepadchangedevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientCustomGamepadPressInGameAfterEvent](reference/ClientCustomGamepadPressInGameAfterEvent.md) | [OnCustomGamepadPressInGame](events.md#oncustomgamepadpressingame) 的事件参数；同步分发结束后不能再写入输出字段。 |
@@ -47,9 +49,11 @@ title: 客户端
 | [ClientEntityAddAfterEvent](reference/ClientEntityAddAfterEvent.md) | [AddEntityClientEvent](events.md#addentityclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityAttributeComponent](reference/ClientEntityAttributeComponent.md) | 通过 entity.getComponent() 取得的实时只读客户端属性。仅提供已同步的当前值和最大值；默认值、最小值及权威修改需使用服务端接口。原生客户端未同步权威的攻击伤害、击退抗性和跳跃强度，因此不提供这些属性。 |
 | [ClientEntityCollideAfterEvent](reference/ClientEntityCollideAfterEvent.md) | [OnMobHitMobClientEvent](events.md#onmobhitmobclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
-| [ClientEntityComponentTypes](reference/ClientEntityComponentTypes.md) | 当前支持的只读客户端属性组件标识符。 |
+| [ClientEntityComponentTypes](reference/ClientEntityComponentTypes.md) | 已支持的只读客户端组件标识符，包括本地背包。 |
+| [ClientEntityEquippableComponent](reference/ClientEntityEquippableComponent.md) | 本地玩家只读六槽装备，实际写入应在服务端完成。 |
 | [ClientEntityHealthChangedAfterEvent](reference/ClientEntityHealthChangedAfterEvent.md) | [HealthChangeClientEvent](events.md#healthchangeclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityInsideBlockBeforeEvent](reference/ClientEntityInsideBlockBeforeEvent.md) | [OnEntityInsideBlockClientEvent](events.md#onentityinsideblockclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientEntityInventoryComponent](reference/ClientEntityInventoryComponent.md) | 本地玩家只读背包入口，不提供全部背包 JSON 配置。 |
 | [ClientEntityLandAfterEvent](reference/ClientEntityLandAfterEvent.md) | [OnGroundClientEvent](events.md#ongroundclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityModelChangeAfterEvent](reference/ClientEntityModelChangeAfterEvent.md) | [EntityModelChangedClientEvent](events.md#entitymodelchangedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientEntityRemoveAfterEvent](reference/ClientEntityRemoveAfterEvent.md) | [RemoveEntityClientEvent](events.md#removeentityclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
@@ -76,6 +80,7 @@ title: 客户端
 | [ClientInputPermission](reference/ClientInputPermission.md) | 网易原生输入通道，与微软输入权限类别的含义和组合规则不同。 |
 | [ClientInventoryCloseAfterEvent](reference/ClientInventoryCloseAfterEvent.md) | [ClientPlayerInventoryCloseEvent](events.md#clientplayerinventorycloseevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientInventoryOpenBeforeEvent](reference/ClientInventoryOpenBeforeEvent.md) | [ClientPlayerInventoryOpenEvent](events.md#clientplayerinventoryopenevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientItemReadOptions](reference/ClientItemReadOptions.md) | 原生读取选项，includeUserData 默认 True。 |
 | [ClientItemReleaseUsingBeforeEvent](reference/ClientItemReleaseUsingBeforeEvent.md) | [ItemReleaseUsingClientEvent](events.md#itemreleaseusingclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientItemSlotButtonClickedAfterEvent](reference/ClientItemSlotButtonClickedAfterEvent.md) | [OnItemSlotButtonClickedEvent](events.md#onitemslotbuttonclickedevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientItemUseBeforeEvent](reference/ClientItemUseBeforeEvent.md) | [ClientItemTryUseEvent](events.md#clientitemtryuseevent) 的事件参数；同步分发结束后不能再写入输出字段。 |

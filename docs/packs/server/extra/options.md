@@ -40,6 +40,7 @@
 - [SpawnEntityOptions](../../common/reference/SpawnEntityOptions.md)
 - [ScriptEventMessageFilterOptions](../../common/reference/ScriptEventMessageFilterOptions.md)
 - [GameRules](../../common/reference/GameRules.md)
+- [ItemStackSnapshot](../../common/reference/ItemStackSnapshot.md)
 - [DynamicParticleOptions](../../common/reference/DynamicParticleOptions.md)
 - [DynamicParticlePattern](../../common/reference/DynamicParticlePattern.md)
 - [ParticleBindEntityOptions](../../common/reference/ParticleBindEntityOptions.md)

@@ -22,6 +22,7 @@ sidebar_label: "ClientPlayer"
 | 名称 | 形态 |
 | --- | --- |
 | [__init__](#constructor) | 构造器 |
+| [selectedSlotIndex](#selectedSlotIndex) | 只读属性 |
 | [name](#name) | 只读属性 |
 | [dimension](#dimension) | 只读属性 |
 | [isGliding](#isGliding) | 只读属性 |
@@ -97,6 +98,37 @@ ClientPlayer(owner: Any = None) -> None
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
 **原生调用：** `GetLocalPlayerId`。
+
+## selectedSlotIndex {#selectedSlotIndex}
+
+```python
+selectedSlotIndex: int
+```
+
+读取本地当前快捷栏下标，范围为零到八；修改应在服务端完成。
+
+**访问：** 只读。
+
+**返回类型：** [int](../../common/type-system.md#int)。静态声明不替代本页的实现限制。
+
+### 显式异常
+
+| 异常 | 校验信息 / 条件线索 |
+| --- | --- |
+| [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetSlotId'` |
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetSlotId`。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.selectedSlotIndex
+```
 
 ## name {#name}
 

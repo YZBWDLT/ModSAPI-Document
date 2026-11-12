@@ -114,6 +114,7 @@ from ModSAPI.server.beta import world, system
 | [AttributeModifierOperation](common/reference/AttributeModifierOperation.md) | [AttributeModifierOperation](common/reference/AttributeModifierOperation.md) |
 | [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) | [AttributeModifierOperand](common/reference/AttributeModifierOperand.md) |
 | [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) | [EntityAttributeModifier](common/reference/EntityAttributeModifier.md) |
+| [ItemStackSnapshot](common/reference/ItemStackSnapshot.md) | [ItemStackSnapshot](common/reference/ItemStackSnapshot.md) |
 | [NativeEventData](common/reference/NativeEventData.md) | [NativeEventData](common/reference/NativeEventData.md) |
 | [NativeEventSignal](common/reference/NativeEventSignal.md) | [NativeEventSignal](common/reference/NativeEventSignal.md) |
 | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) | [WorldAchievementCompleteAfterEvent](server/reference/WorldAchievementCompleteAfterEvent.md) |

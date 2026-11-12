@@ -108,6 +108,7 @@ title: 公共类型与错误
 | [InventoryChangeEvent](reference/InventoryChangeEvent.md) | [InventoryChangeEvent](reference/InventoryChangeEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
 | [ItemComponentTypes](reference/ItemComponentTypes.md) | 签名、字段、属性、方法与调用示例 |
 | [ItemLockMode](reference/ItemLockMode.md) | 描述物品在容器中的移动限制。 |
+| [ItemStackSnapshot](reference/ItemStackSnapshot.md) | 只读物品值，不会回写背包槽位。原生元数据在输入和输出时复制，原生已有的超量堆叠保持可读。clone 和 withAmount 创建独立值；实际背包写入应使用服务端容器接口。 |
 | [ItemUseAttemptEvent](reference/ItemUseAttemptEvent.md) | [ItemUseAttemptEvent](reference/ItemUseAttemptEvent.md) 类型的语义事件参数。可通过 nativeEvent 读取原生详情；对象引用按需创建，容器值均为独立副本。 |
 | [KeyValueStorage](reference/KeyValueStorage.md) | 通过 [client.getStorage](../client/apis/manager.md#getStorage) 或 [world.getStorage](../server/apis/world.md#getStorage) 获取的网易扩展。每个命名空间保存一个文档，最多为 1 MiB 的 UTF-8 JSON，嵌套深度最多 32 层。读写均使用副本。[None](type-system.md#none) 表示存储的空值；删除键须调用 delete()。操作同步执行，不提供跨线程、进程或命名空间的事务。 |
 | [LessThanComparison](reference/LessThanComparison.md) | 实体筛选中的小于比较。 |

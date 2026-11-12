@@ -22,10 +22,10 @@ if health is not None:
     print(health.currentValue, health.effectiveMax)
 
 for component in player.getComponents():
-    print(component.typeId, component.currentValue)
+    print(component.typeId)
 ```
 
-[getComponent](../client/reference/ClientEntity.md#getComponent) 返回只读的 [ClientEntityAttributeComponent](../client/reference/ClientEntityAttributeComponent.md)，支持以下 [ClientEntityComponentTypes](../client/reference/ClientEntityComponentTypes.md)：
+[getComponent](../client/reference/ClientEntity.md#getComponent) 读取下表属性时返回只读的 [ClientEntityAttributeComponent](../client/reference/ClientEntityAttributeComponent.md)，对应 [ClientEntityComponentTypes](../client/reference/ClientEntityComponentTypes.md) 中的属性常量。本地玩家还支持 inventory 和 equippable，详见 [客户端背包与装备](client-inventory-and-equipment.md)。
 
 | 常量 | 标识符 | 含义 |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ for component in player.getComponents():
 
 也可以使用 `"health"` 或 `"minecraft:health"`。支持的属性在该实体上不存在时返回 [None](../common/type-system.md#none)，零值不会被当作不存在。[hasComponent](../client/reference/ClientEntity.md#hasComponent) 接受同一组标识符；未适配的标识符会抛出 [UnsupportedFeatureError](../common/reference/UnsupportedFeatureError.md)，不会以 `False` 冒充“不存在”。
 
-[getComponents](../client/reference/ClientEntity.md#getComponents) 只枚举上述可读取属性，不是行为包 JSON 的全部组件清单。整批查询使用一个原生属性组件，并只检查一次实体可见性；返回对象在每次读取值时重新查询，不缓存陈旧数值。
+[getComponents](../client/reference/ClientEntity.md#getComponents) 枚举本库支持的可读组件，本地玩家还包含背包和装备句柄，不是行为包 JSON 的全部组件清单。属性部分使用一个原生属性组件，并只检查一次实体可见性；创建背包和装备句柄时不会读取物品内容。返回对象在每次读取值时重新查询，不缓存陈旧数值。
 
 组件保留所属 `entity` 包装对象。实体消失或属性被移除后，`isValid` 变为 `False`，继续读取当前值或最大值会报告失效。组件没有客户端写入方法，也没有伪造默认值、最小值。攻击伤害、击退抗性和跳跃强度没有可靠同步到客户端，因此不在这组接口中。
 

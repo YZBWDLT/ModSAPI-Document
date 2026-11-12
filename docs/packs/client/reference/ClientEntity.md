@@ -474,13 +474,13 @@ def call_getOwner(instance):
 ## getComponent {#getComponent}
 
 ```python
-getComponent(componentId: str) -> ClientEntityAttributeComponent | None
+getComponent(componentId: str) -> ClientEntityAttributeComponent | ClientEntityInventoryComponent | ClientEntityEquippableComponent | None
 ```
 
-取得一个已支持的同步属性组件，不存在时返回 [None](../../common/type-system.md#none)。生命值及陆地、水中、岩浆移动属性只读。其他标识符抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)，不会以不存在冒充客户端无法检查的原生组件。
+取得已支持的只读组件；受支持属性不存在时返回 [None](../../common/type-system.md#none)。生命和陆地、水中、岩浆移动速度读取已同步属性；背包和装备组件当前仅支持本地玩家。其他标识符及不能访问的远端背包抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)，不会伪装成原生行为组件不存在。
 
 :::note 当前实现说明
-支持 health、movement、underwater_movement 和 lava_movement，可带 minecraft: 前缀。已支持但不存在时返回 [None](../../common/type-system.md#none)，未支持的标识符抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)。客户端组件只读。
+已支持四种同步属性；本地玩家另支持 inventory 和 equippable。其他实体的背包与装备当前不由这两个客户端组件提供，会抛出 [UnsupportedFeatureError](../../common/reference/UnsupportedFeatureError.md)，不能把不支持的范围当作不存在。
 :::
 
 ### 参数
@@ -489,7 +489,7 @@ getComponent(componentId: str) -> ClientEntityAttributeComponent | None
 | --- | --- | --- | --- |
 | `componentId` | [str](../../common/type-system.md#str) | `必填` | 传给 [ClientEntity.getComponent](ClientEntity.md#getComponent) 的 componentId 参数；结合上方功能说明和下方调用示例使用。 |
 
-**返回类型：** [ClientEntityAttributeComponent](ClientEntityAttributeComponent.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+**返回类型：** [ClientEntityAttributeComponent](ClientEntityAttributeComponent.md) \| [ClientEntityInventoryComponent](ClientEntityInventoryComponent.md) \| [ClientEntityEquippableComponent](ClientEntityEquippableComponent.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 ### 显式异常
 
@@ -514,7 +514,7 @@ def call_getComponent(instance, componentId):
 hasComponent(componentId: str) -> bool
 ```
 
-检查已支持的客户端属性；未支持的标识符会明确抛出错误。
+检查已支持的可读组件；不能访问的范围会明确报告错误。
 
 ### 参数
 
@@ -538,18 +538,20 @@ def call_hasComponent(instance, componentId):
 ## getComponents {#getComponents}
 
 ```python
-getComponents() -> list[ClientEntityAttributeComponent]
+getComponents() -> list[ClientEntityAttributeComponent | ClientEntityInventoryComponent | ClientEntityEquippableComponent]
 ```
 
-使用一个原生组件列出当前可用且已支持的客户端属性。结果仅包含已暴露的只读属性，不是实体行为包 JSON 中全部组件的完整清单。
+列出已支持属性及本地背包、装备组件。属性使用一个原生代理；背包和装备句柄延迟创建，不在此处读取物品数据。这是已开放的可读组件目录，不是行为包 JSON 中每个组件的完整清单。
 
 :::note 当前实现说明
-只列出当前适配的四类已同步属性，不是行为包 JSON 的完整组件清单。一次查询复用一个原生属性组件，不会通过结果伪造其他组件的存在性。
+本地玩家的目录包括已支持属性、背包和装备句柄；创建后两种句柄时不读取物品。并非行为包 JSON 的完整组件清单。
 :::
 
-**返回类型：** [list](../../common/type-system.md#list)[[ClientEntityAttributeComponent](ClientEntityAttributeComponent.md)]。静态声明不替代本页的实现限制。
+**返回类型：** [list](../../common/type-system.md#list)[[ClientEntityAttributeComponent](ClientEntityAttributeComponent.md) \| [ClientEntityInventoryComponent](ClientEntityInventoryComponent.md) \| [ClientEntityEquippableComponent](ClientEntityEquippableComponent.md)]。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetLocalPlayerId`。
 
 ### 调用形状
 
