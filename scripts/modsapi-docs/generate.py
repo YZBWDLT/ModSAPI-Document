@@ -19,6 +19,7 @@ from pathlib import Path
 from content import GUIDES, CLASS_EXAMPLES, NOTES, ACQUIRE_EXTRA
 from ui_content import UI_GUIDES, UI_ACQUIRE, UI_EXAMPLES
 from values_content import VALUE_GUIDES, VALUE_ACQUIRE, VALUE_NOTES
+from input_content import INPUT_GUIDES, INPUT_ACQUIRE, INPUT_NOTES
 from localization import chinese, MISSING
 import references
 
@@ -35,8 +36,10 @@ UI_CONSTRUCTORS = {'Form', 'Observable', 'ControlDescriptor', 'Button', 'Custom'
 PYTHON_EXAMPLES = []
 GUIDES.update(UI_GUIDES)
 GUIDES.update(VALUE_GUIDES)
+GUIDES.update(INPUT_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
 NOTES.update(VALUE_NOTES)
+NOTES.update(INPUT_NOTES)
 
 
 def digest(data):
@@ -220,7 +223,7 @@ def load():
             cls = {'name':name,'group':classify(path),'path':path,'node':node,
                    'source':actual.get(name),'stub':declared.get(name),
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
-            if cls['group'] == 'ui' and name not in UI_CONSTRUCTORS:
+            if (cls['group'] == 'ui' and name not in UI_CONSTRUCTORS) or name in ('ClientInput', 'ClientInputOverride'):
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):
@@ -576,13 +579,26 @@ def empty(fn):
 
 def exception_rows(fn):
     result=[]
+    parents={child: parent for parent in ast.walk(fn) for child in ast.iter_child_nodes(parent)}
     for node in ast.walk(fn):
         if isinstance(node,ast.Raise) and node.exc:
             target=node.exc.func if isinstance(node.exc,ast.Call) else node.exc
-            name=ast.unparse(target) if isinstance(target,(ast.Name,ast.Attribute)) else 'Exception'
+            targets=[target]
+            # A caught exception instance is not a type named "error". Resolve
+            # the enclosing handler, retaining tuple alternatives when known.
+            if isinstance(node.exc,ast.Name):
+                parent=parents.get(node)
+                while parent is not None:
+                    if isinstance(parent,ast.ExceptHandler) and parent.name==node.exc.id:
+                        targets=(parent.type.elts if isinstance(parent.type,ast.Tuple)
+                                 else [parent.type] if parent.type is not None else [])
+                        break
+                    parent=parents.get(parent)
             message=ast.unparse(node.exc.args[0]) if isinstance(node.exc,ast.Call) and node.exc.args else '参见本成员的前置条件。'
-            row=(name,message)
-            if row not in result: result.append(row)
+            for target in targets or [None]:
+                name=ast.unparse(target) if isinstance(target,(ast.Name,ast.Attribute)) else 'Exception'
+                row=(name,message)
+                if row not in result: result.append(row)
     return result
 
 
@@ -662,6 +678,7 @@ ACQUIRE = {
 ACQUIRE.update(ACQUIRE_EXTRA)
 ACQUIRE.update(UI_ACQUIRE)
 ACQUIRE.update(VALUE_ACQUIRE)
+ACQUIRE.update(INPUT_ACQUIRE)
 
 
 def member_example(cls,name,member):
@@ -1087,7 +1104,7 @@ def generate():
                 if not stale.is_relative_to(STAGE.resolve()):raise ValueError('Path escaped staging')
                 if stale.is_file():stale.unlink()
     # Include the portable generator and hand-authored guide module for future synchronization.
-    for filename in ('generate.py','content.py','ui_content.py','values_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
+    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
         destination=STAGE/'scripts/modsapi-docs'/filename
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((Path(__file__).parent/filename).read_bytes())

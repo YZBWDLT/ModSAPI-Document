@@ -146,7 +146,11 @@ def call_registerView(instance, name, template):
 openView(name: str, options: UiViewOptions | None = None) -> UiView
 ```
 
-打开由本库管理的界面栈视图，在就绪事件中操作控件。
+打开托管的界面栈视图，可通过 inputPermissions 指定所属视图的临时输入权限。控件在就绪回调中可用；输入覆盖在原生创建前应用，并在关闭或创建失败时尝试释放。
+
+:::note 当前实现说明
+可在 inputPermissions 中传入本地输入通道与布尔值。覆盖在原生创建前应用，视图关闭或创建失败时尝试释放；不影响服务端权限。
+:::
 
 ### 参数
 

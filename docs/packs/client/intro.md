@@ -69,6 +69,9 @@ title: 客户端
 | [ClientGyroSensorChangeAfterEvent](reference/ClientGyroSensorChangeAfterEvent.md) | [GyroSensorChangedClientEvent](events.md#gyrosensorchangedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientHoldBeforeEvent](reference/ClientHoldBeforeEvent.md) | [HoldBeforeClientEvent](events.md#holdbeforeclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientHudButtonChangeAfterEvent](reference/ClientHudButtonChangeAfterEvent.md) | [HudButtonChangedClientEvent](events.md#hudbuttonchangedclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
+| [ClientInput](reference/ClientInput.md) | 通过 [client.input](apis/manager.md#input) 取得的本地输入服务。权限写入只影响当前设备的输入处理，不代表服务端授权。临时覆盖层可组合，无需轮询；直接写入修改有效覆盖层下的基础值。reset() 与客户端退出时尝试恢复本服务持有的初始值，释放时保留外部写入的不同值。 |
+| [ClientInputOverride](reference/ClientInputOverride.md) | 持有独立所有权的权限覆盖层；所属界面关闭时应释放。重叠通道由较晚创建的层优先控制。原生释放失败后可重试，不会释放其他层持有的权限。 |
+| [ClientInputPermission](reference/ClientInputPermission.md) | 网易原生输入通道，与微软输入权限类别的含义和组合规则不同。 |
 | [ClientInventoryCloseAfterEvent](reference/ClientInventoryCloseAfterEvent.md) | [ClientPlayerInventoryCloseEvent](events.md#clientplayerinventorycloseevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientInventoryOpenBeforeEvent](reference/ClientInventoryOpenBeforeEvent.md) | [ClientPlayerInventoryOpenEvent](events.md#clientplayerinventoryopenevent) 的事件参数；同步分发结束后不能再写入输出字段。 |
 | [ClientItemReleaseUsingBeforeEvent](reference/ClientItemReleaseUsingBeforeEvent.md) | [ItemReleaseUsingClientEvent](events.md#itemreleaseusingclientevent) 的事件参数；同步分发结束后不能再写入输出字段。 |

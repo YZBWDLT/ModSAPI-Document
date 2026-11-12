@@ -378,7 +378,7 @@ def call_setVisible(instance, visible):
 close() -> None
 ```
 
-删除当前视图自己的界面节点，并释放它拥有的回调和绑定。
+关闭视图并释放回调、绑定和输入覆盖。输入恢复失败在最终关闭事件后报告；即使视图已经关闭，也可再次调用 close 重试恢复。
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 

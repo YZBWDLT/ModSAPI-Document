@@ -25,6 +25,7 @@ sidebar_label: "Client"
 | [levelId](#levelId) | 只读属性 |
 | [localPlayer](#localPlayer) | 只读属性 |
 | [camera](#camera) | 只读属性 |
+| [input](#input) | 只读属性 |
 | [ui](#ui) | 只读属性 |
 | [afterEvents](#afterEvents) | 只读属性 |
 | [beforeEvents](#beforeEvents) | 只读属性 |
@@ -183,6 +184,33 @@ camera: ClientCamera
 ```python
 def read_value(instance):
     return instance.camera
+```
+
+## input {#input}
+
+```python
+input: ClientInput
+```
+
+本地输入快照及持有所有权、可以恢复的权限覆盖。
+
+:::note 当前实现说明
+本地输入服务按需创建。临时覆盖使用可释放句柄；原生视图可通过 inputPermissions 选项自动持有并释放。教程见“本地输入与界面权限”。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [ClientInput](../reference/ClientInput.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.input
 ```
 
 ## ui {#ui}

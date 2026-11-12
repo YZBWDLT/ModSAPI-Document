@@ -34,3 +34,4 @@ title: 使用示例与场景指南
 - [选择控件与小地图](guides/ui-choices-and-minimap.md)
 - [模型预览与图片适配](guides/ui-models-and-images.md)
 - [坐标对象、选项与空结果](guides/values-and-options.md)
+- [本地输入与界面权限](guides/input-and-view-permissions.md)
