@@ -557,17 +557,20 @@ def exception_rows(fn):
 
 def native_calls(fn):
     values=[]
+    helpers={'_readExtraData':'readExtraData','_writeExtraData':'writeExtraData'}
+    boundaries=('call','checked','nativeCall','nativeChecked','_extraDataCall','_extraDataChecked')
     for node in ast.walk(fn):
         if isinstance(node,ast.Call):
             if isinstance(node.func,ast.Attribute) and node.func.attr[:1].isupper() and not node.func.attr.startswith('Create'):
                 values.append(node.func.attr)
-            elif isinstance(node.func,ast.Name) and node.func.id in ('call','checked') and len(node.args)>1 and isinstance(node.args[1],ast.Constant) and isinstance(node.args[1].value,str):
-                values.append(node.args[1].value)
-            elif isinstance(node.func,ast.Name) and node.func.id=='_readExtraData':
-                # This shared adapter replaced a direct native read. Derive its
-                # operation from the maintained helper, retaining traceability.
+            elif isinstance(node.func,ast.Name) and node.func.id in boundaries and len(node.args)>1 and isinstance(node.args[1],ast.Constant) and isinstance(node.args[1].value,str):
+                if not node.args[1].value.startswith('Create'):
+                    values.append(node.args[1].value)
+            elif isinstance(node.func,ast.Name) and node.func.id in helpers:
+                # Shared adapters retain the native trace of the maintained
+                # helper rather than silently dropping it from public pages.
                 helper=next(value for value in parse(BASE/'utils/extra_data.py').body
-                            if isinstance(value,ast.FunctionDef) and value.name=='readExtraData')
+                            if isinstance(value,ast.FunctionDef) and value.name==helpers[node.func.id])
                 values.extend(native_calls(helper))
     return list(dict.fromkeys(values))
 

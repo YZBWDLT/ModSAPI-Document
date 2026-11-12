@@ -11,7 +11,7 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.84237736.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cd9e4dd0.js" defer="defer"></script>
 <script src="/assets/js/main.9416a45a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -42,7 +42,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="显式异常">显式异常<a href="#显式异常" class="hash-link" aria-label="显式异常的直接链接" title="显式异常的直接链接" translate="no">​</a></h3>
 <table><thead><tr><th>异常</th><th>校验信息 / 条件线索</th></tr></thead><tbody><tr><td><a href="/docs/packs/common/reference/NativeOperationError">NativeOperationError</a></td><td><code>&#x27;PlayCustomMusic&#x27;</code></td></tr></tbody></table>
 <p>引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。</p>
-<p><strong>原生调用：</strong> <code>PlayCustomMusic</code>, <code>CreatePos</code>, <code>GetPos</code>, <code>GetEngineCompFactory</code>, <code>GetLocalPlayerId</code>。</p>
+<p><strong>原生调用：</strong> <code>PlayCustomMusic</code>, <code>GetPos</code>, <code>GetEngineCompFactory</code>, <code>GetLocalPlayerId</code>。</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="调用形状">调用形状<a href="#调用形状" class="hash-link" aria-label="调用形状的直接链接" title="调用形状的直接链接" translate="no">​</a></h3>
 <p>此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。</p>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">call_playSound</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">instance</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> soundId</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">return</span><span class="token plain"> instance</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">playSound</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">soundId</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><br></span></code></pre></div></div>

@@ -309,7 +309,7 @@ createControl(template: str, name: str, parent: UiControl | None = None, kind: s
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateChildControl`, `RemoveChildControl`。
+**原生调用：** `RemoveChildControl`。
 
 ### 调用形状
 

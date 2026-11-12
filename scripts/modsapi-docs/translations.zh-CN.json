@@ -879,5 +879,9 @@
   "Bidirectional SAPI bridge with explicit handlers and incoming messages.": "与 SAPI 双向通信的入口，支持显式处理器注册和消息通知。",
   "Bidirectional SAPI bridge for this local client and its wrapped player.": "此本地客户端与 SAPI 双向通信的入口；消息中的玩家使用包装对象。",
   "Set native day time in whole ticks from 0 through 24000. NetEase advances to the next day when the requested time precedes the current time. Native rejection raises NativeOperationError.": "以整数刻设置一天内的时间，范围为 0～24000。网易原生接口在目标时间早于当前时间时前进到次日；原生拒绝时抛出 NativeOperationError。",
-  "Set world time in whole ticks, reporting native rejection or failure.": "以整数刻设置世界绝对时间；原生拒绝或调用失败时抛出 NativeOperationError。"
+  "Set world time in whole ticks, reporting native rejection or failure.": "以整数刻设置世界绝对时间；原生拒绝或调用失败时抛出 NativeOperationError。",
+  "Clears all dynamic properties that have been set on this entity.\nNative deletion or persistence failure raises NativeOperationError.\nThe SDK does not guarantee rollback of earlier native changes.": "清除该实体的全部动态属性。原生删除或保存失败时抛出 NativeOperationError；引擎不保证回滚此前已经发生的修改。",
+  "Validate and copy a batch, apply its changes, then save once.\n\nNone deletes an identifier. An empty batch makes no native calls.\nNative write or save failure raises NativeOperationError; the SDK\ndoes not guarantee rollback of earlier native changes.": "预先校验所有标识并复制值，再批量修改，最后统一保存一次。None 表示删除，空字典不调用引擎。原生写入或保存失败时抛出 NativeOperationError；引擎不保证回滚此前已经发生的修改。",
+  "Sets a specified property to a value.\nNone deletes the identifier. Values are copied before native mutation.\nNative write or persistence failure raises NativeOperationError.": "设置指定动态属性，None 表示删除。写入前复制值；原生写入或保存失败时抛出 NativeOperationError。",
+  "Set or delete a copied world property and save it once.\n\nNone deletes the identifier. Native write or persistence failure raises\nNativeOperationError; the SDK does not guarantee rollback.": "设置世界动态属性，或以 None 删除它；写入前复制值，每次统一保存一次。原生写入或保存失败时抛出 NativeOperationError；引擎不保证回滚此前已经发生的修改。"
 }

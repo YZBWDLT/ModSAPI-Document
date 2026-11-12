@@ -709,7 +709,7 @@ def call_applyKnockback(instance, horizontalForce, verticalStrength):
 clearDynamicProperties() -> None
 ```
 
-清除实体上的全部动态属性。
+清除该实体的全部动态属性。原生删除或保存失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)；引擎不保证回滚此前已经发生的修改。
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
@@ -870,7 +870,7 @@ def call_getComponents(instance):
 ## getDynamicProperty {#getDynamicProperty}
 
 ```python
-getDynamicProperty(identifier: str)
+getDynamicProperty(identifier: str) -> Any
 ```
 
 读取属性值。
@@ -881,7 +881,7 @@ getDynamicProperty(identifier: str)
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
 
-**返回值：** 源码/声明未给出精确类型，请按上方语义及原生调用的实际结果使用；不要套用未实现的官方返回契约。
+**返回类型：** [Any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
@@ -1582,7 +1582,7 @@ def call_runCommand(instance, commandString):
 setDynamicProperties(values: dict) -> None
 ```
 
-设置 `setDynamicProperties` 操作。参数形态和结果约定如下。
+预先校验所有标识并复制值，再批量修改，最后统一保存一次。[None](../../common/type-system.md#none) 表示删除，空字典不调用引擎。原生写入或保存失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)；引擎不保证回滚此前已经发生的修改。
 
 ### 参数
 
@@ -1592,13 +1592,9 @@ setDynamicProperties(values: dict) -> None
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [TypeError](../../common/type-system.md#typeerror) | `'Dynamic properties must be a dictionary'` |
-
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SaveExtraData`, `CleanExtraData`, `SetExtraData`。
 
 ### 调用形状
 
@@ -1612,17 +1608,17 @@ def call_setDynamicProperties(instance, values):
 ## setDynamicProperty {#setDynamicProperty}
 
 ```python
-setDynamicProperty(identifier: str, value = None) -> None
+setDynamicProperty(identifier: str, value: Any = None) -> None
 ```
 
-将指定属性设置为给定值。
+设置指定动态属性，[None](../../common/type-system.md#none) 表示删除。写入前复制值；原生写入或保存失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
-| `value` | 由值/所属选项确定 | [None](../../common/type-system.md#none) | 需要写入的值，类型、范围及副本语义见本成员说明。 |
+| `value` | [Any](../../common/type-system.md#any) | [None](../../common/type-system.md#none) | 需要写入的值，类型、范围及副本语义见本成员说明。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 

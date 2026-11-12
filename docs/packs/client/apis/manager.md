@@ -323,7 +323,7 @@ isGlobal=False 为本机存档配置，True 为本机全局配置；不会自动
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateConfigClient`, `GetConfigData`, `SetConfigData`, `GetEngineCompFactory`, `GetLevelId`。
+**原生调用：** `GetConfigData`, `SetConfigData`, `GetEngineCompFactory`, `GetLevelId`。
 
 ### 调用形状
 
@@ -359,7 +359,7 @@ registerQueryVariable(name: str, defaultValue: float = 0) -> None
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateQueryVariable`, `Register`, `GetEngineCompFactory`。
+**原生调用：** `Register`, `GetEngineCompFactory`。
 
 ### 调用形状
 
@@ -394,7 +394,7 @@ unregisterQueryVariable(name: str) -> None
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateQueryVariable`, `UnRegister`, `GetEngineCompFactory`。
+**原生调用：** `UnRegister`, `GetEngineCompFactory`。
 
 ### 调用形状
 
@@ -604,7 +604,7 @@ getDataFromServer(dataName: str, data: Any = None, timeout: float = 10.0) -> Pro
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateGame`, `GetEngineCompFactory`, `GetLevelId`。
+**原生调用：** `GetEngineCompFactory`, `GetLevelId`。
 
 ### 调用形状
 
@@ -702,8 +702,6 @@ spawnEntity(typeId: str, location: VectorLike, options: ClientEntitySpawnOptions
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateClientEntityByTypeStr`。
-
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -744,7 +742,7 @@ spawnParticle(typeId: str, location: VectorLike, options: ClientParticleOptions 
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `CreateParticleSystem`, `Create`, `GetEngineCompFactory`, `GetLevelId`。
+**原生调用：** `GetEngineCompFactory`, `GetLevelId`。
 
 ### 调用形状
 

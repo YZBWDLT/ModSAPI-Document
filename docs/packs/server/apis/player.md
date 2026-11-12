@@ -573,7 +573,7 @@ playSound(soundId: str, soundOptions: dict | PlayerSoundOptions | None = None) -
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `SetCommand`, `CreateCommand`, `GetPlayerList`, `GetPos`, `GetLevelId`, `CreatePos`。
+**原生调用：** `SetCommand`, `GetPlayerList`, `GetPos`, `GetLevelId`。
 
 ### 调用形状
 

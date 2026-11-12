@@ -68,7 +68,7 @@ playSound(soundId: str, soundOptions: ClientSoundOptions | PlayerSoundOptions | 
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `PlayCustomMusic`, `CreatePos`, `GetPos`, `GetEngineCompFactory`, `GetLocalPlayerId`。
+**原生调用：** `PlayCustomMusic`, `GetPos`, `GetEngineCompFactory`, `GetLocalPlayerId`。
 
 ### 调用形状
 

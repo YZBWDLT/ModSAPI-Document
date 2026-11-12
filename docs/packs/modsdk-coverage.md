@@ -11,8 +11,8 @@ title: ModSDK 功能映射与待补接口
 
 | 当前记录 | 数量 | 含义 |
 | --- | --- | --- |
-| 已有离线核验路径 | 157 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
-| 发现原生调用，待核对 | 298 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
+| 已有离线核验路径 | 167 | 已核对公开入口并有具体契约测试；仍需游戏验证。 |
+| 发现原生调用，待核对 | 288 | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |
 | 尚未建立映射 | 1174 | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |
 
 常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md) 和 [选择控件与小地图](guides/ui-choices-and-minimap.md)。原生模型控件、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。
@@ -546,11 +546,11 @@ title: ModSDK 功能映射与待补接口
 
 | 原生接口 | 执行端 | 当前记录 | 已核对的公开入口 |
 | --- | --- | --- | --- |
-| [CleanExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#cleanextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [GetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [GetWholeExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getwholeextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [SaveExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#saveextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [SetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#setextradata) | 服务端 | 发现原生调用，待核对 | — |
+| [CleanExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#cleanextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
+| [GetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getextradata) | 服务端 | 已有离线核验路径 | [Entity.getDynamicProperty](server/apis/entity.md#getDynamicProperty), [World.getDynamicProperty](server/apis/world.md#getDynamicProperty) |
+| [GetWholeExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getwholeextradata) | 服务端 | 已有离线核验路径 | [Entity.getDynamicPropertyIds](server/apis/entity.md#getDynamicPropertyIds), [World.getDynamicPropertyIds](server/apis/world.md#getDynamicPropertyIds) |
+| [SaveExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#saveextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
+| [SetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E4%B8%96%E7%95%8C/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#setextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
 
 </div>
 
@@ -940,11 +940,11 @@ title: ModSDK 功能映射与待补接口
 
 | 原生接口 | 执行端 | 当前记录 | 已核对的公开入口 |
 | --- | --- | --- | --- |
-| [CleanExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#cleanextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [GetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [GetWholeExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getwholeextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [SaveExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#saveextradata) | 服务端 | 发现原生调用，待核对 | — |
-| [SetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#setextradata) | 服务端 | 发现原生调用，待核对 | — |
+| [CleanExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#cleanextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
+| [GetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getextradata) | 服务端 | 已有离线核验路径 | [Entity.getDynamicProperty](server/apis/entity.md#getDynamicProperty), [World.getDynamicProperty](server/apis/world.md#getDynamicProperty) |
+| [GetWholeExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#getwholeextradata) | 服务端 | 已有离线核验路径 | [Entity.getDynamicPropertyIds](server/apis/entity.md#getDynamicPropertyIds), [World.getDynamicPropertyIds](server/apis/world.md#getDynamicPropertyIds) |
+| [SaveExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#saveextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
+| [SetExtraData](https://github.com/MCNeteaseDevs/mc-netease-sdk/blob/main/1-ModAPI/%E6%8E%A5%E5%8F%A3/%E5%AE%9E%E4%BD%93/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE.md#setextradata) | 服务端 | 已有离线核验路径 | [Entity.setDynamicProperties](server/apis/entity.md#setDynamicProperties), [World.setDynamicProperties](server/apis/world.md#setDynamicProperties) |
 
 </div>
 

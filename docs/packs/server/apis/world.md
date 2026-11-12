@@ -299,7 +299,7 @@ getStorage(namespace: str) -> KeyValueStorage
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetExtraData`, `SetExtraData`, `CreateExtraData`。
+**原生调用：** `GetExtraData`, `SetExtraData`。
 
 ### 调用形状
 
@@ -390,37 +390,37 @@ def call_getDimension(type_object, dimensionId):
 ## setDynamicProperty {#setDynamicProperty}
 
 ```python
-setDynamicProperty(identifier: str, value: any)
+setDynamicProperty(identifier: str, value: typing.Any = None) -> None
 ```
 
-将指定属性设置为给定值。
+设置世界动态属性，或以 [None](../../common/type-system.md#none) 删除它；写入前复制值，每次统一保存一次。原生写入或保存失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)；引擎不保证回滚此前已经发生的修改。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
-| `value` | [any](../../common/type-system.md#any) | `必填` | 需要写入的值，类型、范围及副本语义见本成员说明。 |
+| `value` | [typing.Any](../../common/type-system.md#any) | [None](../../common/type-system.md#none) | 需要写入的值，类型、范围及副本语义见本成员说明。 |
 
-**返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetLevelId`, `CleanExtraData`, `SetExtraData`。
+**原生调用：** `SaveExtraData`, `CleanExtraData`, `SetExtraData`, `GetLevelId`。
 
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
 
 ```python
-def call_setDynamicProperty(type_object, identifier, value):
-    return type_object.setDynamicProperty(identifier, value)
+def call_setDynamicProperty(type_object, identifier):
+    return type_object.setDynamicProperty(identifier)
 ```
 
 ## getDynamicProperty {#getDynamicProperty}
 
 ```python
-getDynamicProperty(identifier) -> any
+getDynamicProperty(identifier: str) -> typing.Any
 ```
 
 读取属性值。
@@ -429,13 +429,13 @@ getDynamicProperty(identifier) -> any
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `identifier` | 由值/所属选项确定 | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
+| `identifier` | [str](../../common/type-system.md#str) | `必填` | 带命名空间的标识，推荐使用本模组前缀。 |
 
-**返回类型：** [any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
+**返回类型：** [typing.Any](../../common/type-system.md#any)。静态声明不替代本页的实现限制。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
-**原生调用：** `GetExtraData`, `GetLevelId`。
+**原生调用：** `GetLevelId`, `GetExtraData`。
 
 ### 调用形状
 
@@ -557,6 +557,8 @@ getAbsoluteTime() -> int
 | [NativeOperationError](../../common/reference/NativeOperationError.md) | `'GetTime'` |
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `GetTime`。
 
 ### 调用形状
 
@@ -760,26 +762,22 @@ def call_setDifficulty(type_object, difficulty):
 ## setDynamicProperties {#setDynamicProperties}
 
 ```python
-setDynamicProperties(properties) -> None
+setDynamicProperties(properties: dict) -> None
 ```
 
-设置 `setDynamicProperties` 操作。参数形态和结果约定如下。
+预先校验所有标识并复制值，再批量修改，最后统一保存一次。[None](../../common/type-system.md#none) 表示删除，空字典不调用引擎。原生写入或保存失败时抛出 [NativeOperationError](../../common/reference/NativeOperationError.md)；引擎不保证回滚此前已经发生的修改。
 
 ### 参数
 
 | 名称 | 类型线索 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `properties` | 由值/所属选项确定 | `必填` | 传给 [World.setDynamicProperties](world.md#setDynamicProperties) 的 properties 参数；结合上方功能说明和下方调用示例使用。 |
+| `properties` | [dict](../../common/type-system.md#dict) | `必填` | 传给 [World.setDynamicProperties](world.md#setDynamicProperties) 的 properties 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
-### 显式异常
-
-| 异常 | 校验信息 / 条件线索 |
-| --- | --- |
-| [TypeError](../../common/type-system.md#typeerror) | `'Dynamic properties must be a dictionary'` |
-
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SaveExtraData`, `CleanExtraData`, `SetExtraData`, `GetLevelId`。
 
 ### 调用形状
 
@@ -814,6 +812,8 @@ setTimeOfDay(timeOfDay: int)
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
 
+**原生调用：** `SetTimeOfDay`。
+
 ### 调用形状
 
 此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
@@ -840,6 +840,8 @@ setAbsoluteTime(absoluteTime: int)
 **返回值：** 当前实现不显式返回结果，Python 返回 [None](../../common/type-system.md#none)。
 
 引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+**原生调用：** `SetTime`。
 
 ### 调用形状
 
