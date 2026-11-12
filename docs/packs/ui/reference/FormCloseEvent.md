@@ -11,7 +11,7 @@ sidebar_label: "FormCloseEvent"
 
 ## 获取方式
 
-通过 [Form.show](Form.md#show) 的关闭回调取得，player 为当前端的玩家包装对象。
+通过 [Form.show](Form.md#show) 的关闭回调取得，player 按表单所属端包装为 [Player](../../server/apis/player.md) 或本地 [ClientPlayer](../../client/reference/ClientPlayer.md)。
 
 ## 成员索引
 
@@ -49,7 +49,7 @@ def read_value(instance):
 player: Player | ClientPlayer
 ```
 
-界面被关闭的玩家，按当前执行端包装为相应玩家对象。
+界面已关闭的玩家，按表单所属端包装为对应玩家对象。
 
 **访问：** 只读。
 

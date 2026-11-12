@@ -414,7 +414,7 @@ def call_closeAllViews(instance):
 createForm(title: str | Observable, options: dict[str, Any] | None = None) -> Form
 ```
 
-创建主题表单；客户端显示时可以省略玩家目标。
+创建绑定当前界面服务运行时的主题表单。客户端显示时可以省略玩家；后续操作、目标校验和回调玩家类型始终沿用表单所属端。
 
 ### 参数
 

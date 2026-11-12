@@ -557,6 +557,7 @@ PARAMS = {
 def signature(fn, stub=None):
     args = fn.args
     typed = {arg.arg:ast.unparse(arg.annotation) for arg in (stub.args.args if stub else []) if arg.annotation}
+    declared = {arg.arg for arg in (list(stub.args.posonlyargs)+list(stub.args.args) if stub else [])}
     type_comment = getattr(fn,'type_comment',None) or (getattr(stub,'type_comment',None) if stub else None)
     comment_types=[]
     comment_return=None
@@ -582,6 +583,9 @@ def signature(fn, stub=None):
         if not annotation and comment_index<len(comment_types):
             annotation=comment_types[comment_index]
         comment_index+=1
+        # Runtime-only ownership injection is not part of the declared API.
+        if stub and arg.arg.startswith('_') and arg.arg not in declared:
+            continue
         item=arg.arg
         if annotation: item+=': '+annotation
         if default is not None: item+=' = '+ast.unparse(default)
@@ -1110,8 +1114,8 @@ def generate():
     for relative,text in list(PAGES.items()):
         if relative.endswith('.md'):
             PAGES[relative]=references.prose(text,relative)
+    (STAGE/'unresolved-types.json').write_text(json.dumps(sorted(references.UNRESOLVED),ensure_ascii=False,indent=2),encoding='utf-8')
     if references.UNRESOLVED:
-        (STAGE/'unresolved-types.json').write_text(json.dumps(sorted(references.UNRESOLVED),ensure_ascii=False,indent=2),encoding='utf-8')
         raise ValueError('Unresolved type references: %d; see unresolved-types.json' % len(references.UNRESOLVED))
     for relative,text in list(PAGES.items()):
         data=text.encode('utf-8')
@@ -1143,7 +1147,7 @@ def generate():
                 if not stale.is_relative_to(STAGE.resolve()):raise ValueError('Path escaped staging')
                 if stale.is_file():stale.unlink()
     # Include the portable generator and hand-authored guide module for future synchronization.
-    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','client_state_content.py','server_state_content.py','client_inventory_content.py','server_container_content.py','item_components_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','build.cjs','api-tables.css'):
+    for filename in ('generate.py','content.py','ui_content.py','values_content.py','input_content.py','client_state_content.py','server_state_content.py','client_inventory_content.py','server_container_content.py','item_components_content.py','native_display_content.py','interaction_content.py','localization.py','references.py','translations.zh-CN.json','ui-translations.zh-CN.json','native-display-translations.zh-CN.json','interaction-translations.zh-CN.json','build.cjs','api-tables.css'):
         destination=STAGE/'scripts/modsapi-docs'/filename
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((Path(__file__).parent/filename).read_bytes())

@@ -11,7 +11,7 @@
 
 <link rel="search" type="application/opensearchdescription+xml" title="ModSAPI" href="/opensearch.xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.faa40676.css">
-<script src="/assets/js/runtime~main.870f2c73.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4b8a979c.js" defer="defer"></script>
 <script src="/assets/js/main.b7a27e57.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -22,7 +22,7 @@
 <p>作用域：界面、控件和两端组合表单。</p>
 <p>源码：<code>core_behavior/ModSAPI/_ui/core/utils/type.py</code>；声明补充了静态类型信息。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="获取方式">获取方式<a href="#获取方式" class="hash-link" aria-label="获取方式的直接链接" title="获取方式的直接链接" translate="no">​</a></h2>
-<p>通过 <a href="/docs/packs/ui/reference/Form#show">Form.show</a> 的关闭回调取得，player 为当前端的玩家包装对象。</p>
+<p>通过 <a href="/docs/packs/ui/reference/Form#show">Form.show</a> 的关闭回调取得，player 按表单所属端包装为 <a href="/docs/packs/server/apis/player">Player</a> 或本地 <a href="/docs/packs/client/reference/ClientPlayer">ClientPlayer</a>。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="成员索引">成员索引<a href="#成员索引" class="hash-link" aria-label="成员索引的直接链接" title="成员索引的直接链接" translate="no">​</a></h2>
 <table><thead><tr><th>名称</th><th>形态</th></tr></thead><tbody><tr><td><a href="#closeReason">closeReason</a></td><td>只读属性</td></tr><tr><td><a href="#player">player</a></td><td>只读属性</td></tr></tbody></table>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="closeReason">closeReason<a href="#closeReason" class="hash-link" aria-label="closeReason的直接链接" title="closeReason的直接链接" translate="no">​</a></h2>
@@ -36,7 +36,7 @@
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">read_value</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">instance</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">return</span><span class="token plain"> instance</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">closeReason</span><br></span></code></pre></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="player">player<a href="#player" class="hash-link" aria-label="player的直接链接" title="player的直接链接" translate="no">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">player</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Player </span><span class="token operator">|</span><span class="token plain"> ClientPlayer</span><br></span></code></pre></div></div>
-<p>界面被关闭的玩家，按当前执行端包装为相应玩家对象。</p>
+<p>界面已关闭的玩家，按表单所属端包装为对应玩家对象。</p>
 <p><strong>访问：</strong> 只读。</p>
 <p><strong>返回类型：</strong> <a href="/docs/packs/server/apis/player">Player</a> | <a href="/docs/packs/client/reference/ClientPlayer">ClientPlayer</a>。静态声明不替代本页的实现限制。</p>
 <p>引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。</p>

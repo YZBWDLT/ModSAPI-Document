@@ -27,7 +27,7 @@ def closed(event):
 session = form.show(onClose=closed)
 ```
 
-也可以从 `ModSAPI.ui` 导入 [Form](../ui/reference/Form.md)、[Observable](../ui/reference/Observable.md) 后直接创建。[FormSession](../ui/reference/FormSession.md) 负责本次显示的关闭监听；它不是 [Promise](../common/reference/Promise.md)。关闭表单后可再次显示，彻底结束该功能时调用 `form.dispose()`，并对不再需要的状态调用 `dispose()`。
+优先通过所属端的 [client.ui](../client/apis/manager.md#ui) 或 [system.ui](../server/reference/System.md#ui) 创建表单和状态。也可以从 `ModSAPI.ui` 导入 [Form](../ui/reference/Form.md)、[Observable](../ui/reference/Observable.md) 后直接创建，但这些便捷入口会在创建时根据当前环境选择运行时，初始化早期应使用明确所属端的服务入口。[FormSession](../ui/reference/FormSession.md) 负责本次显示的关闭监听；它不是 [Promise](../common/reference/Promise.md)。关闭表单后可再次显示，彻底结束该功能时调用 `form.dispose()`，并对不再需要的状态调用 `dispose()`。
 
 表单可以在原生界面初始化前准备和请求显示。客户端会等待初始化、服务端控件注册和通信会话，再创建对应界面。创建等待有超时；失败时关闭结果中的 `closeReason` 为 `error`。
 
@@ -51,6 +51,25 @@ world.afterEvents.playerSpawn.subscribe(spawned)
 `show(player)` 和 `close(player)` 接受玩家对象或玩家对象集合；不接受裸玩家编号。服务端省略 `close` 的目标时关闭当前受众；省略 `show` 的目标不会隐式广播。关闭结果中的 `event.player` 也是包装对象。
 
 同一表单可以同时面向多个玩家；同一个状态对象在这些玩家间共享。玩家各自的设置应创建各自的表单和状态，不能把共享状态误当作个人状态。
+
+## 所属端与生命周期
+
+表单在创建时绑定所属运行时，之后不再通过全局玩家状态重新判端。即使客户端尚未取得本地玩家、或共享解释器的当前环境发生变化，[client.ui.createForm](../ui/reference/UiService.md#createForm) 仍创建客户端表单，[system.ui.createForm](../ui/reference/UiService.md#createForm) 仍创建服务端表单。
+
+| 行为 | 客户端表单 | 服务端表单 |
+| --- | --- | --- |
+| 显示、追加控件和关闭 | 交给所属客户端运行时 | 通过所属服务端发送给玩家 |
+| 目标类型 | [ClientPlayer](../client/reference/ClientPlayer.md)；显示时可以省略 | [Player](../server/apis/player.md)；显示时必须指定 |
+| 按钮回调参数 | 本地 [ClientPlayer](../client/reference/ClientPlayer.md) | 激活按钮的 [Player](../server/apis/player.md) |
+| 关闭结果中的 player | 本地 [ClientPlayer](../client/reference/ClientPlayer.md) | 关闭表单的 [Player](../server/apis/player.md) |
+
+类型错误会在发送前报告 [TypeError](../common/type-system.md#typeerror)，不会因全局判端变化而接受另一端的玩家对象。表单编号属于内部通信数据：由各运行时独立、固定方向分配，调用者无需管理，也不应将编号当作玩家或表单对象使用。
+
+界面默认配置和样式同步沿用所属运行时；客户端样式更新不会因为环境变化而变成服务端广播。本地控件输入写入客户端状态管理器，服务端关闭会话仍登记玩家离开监听，玩家离开后释放对应监听和受众记录。
+
+运行时销毁后，工厂与编号分配拒绝继续工作并报告 [RuntimeError](../common/type-system.md#runtimeerror)；已有表单在清理时仍沿用自己的传输端，释放显示会话、回调和管理器记录。表单关闭不会自动销毁应用创建的共享状态，应在状态不再被其他界面使用时单独释放。
+
+这些保证已通过运行时切换、目标校验、关闭回调和销毁路径的离线回归；实际界面渲染和多人消息时序仍需游戏内验证。
 
 ## 可观察状态
 

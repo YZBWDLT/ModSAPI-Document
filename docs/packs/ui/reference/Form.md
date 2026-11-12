@@ -15,7 +15,7 @@ import ApiFieldAnchor from '@docusaurus/Link';
 
 ## 获取方式
 
-从 ModSAPI.ui 导入 [Form](Form.md)，或使用 [client.ui.createForm](UiService.md#createForm) / [system.ui.createForm](UiService.md#createForm)。
+优先使用 [client.ui.createForm](UiService.md#createForm) / [system.ui.createForm](UiService.md#createForm)，明确绑定所属端。直接从 ModSAPI.ui 导入 [Form](Form.md) 后创建时，会在创建阶段按当前环境选择运行时。
 
 ## 字段与常量
 

@@ -15,7 +15,7 @@ import ApiFieldAnchor from '@docusaurus/Link';
 
 ## 获取方式
 
-从 ModSAPI.ui 导入，或使用 [client.ui.createState](../../ui/reference/UiService.md#createState) / [system.ui.createState](../../ui/reference/UiService.md#createState)。
+优先使用 [client.ui.createState](../../ui/reference/UiService.md#createState) / [system.ui.createState](../../ui/reference/UiService.md#createState)。直接从 ModSAPI.ui 导入 [Observable](Observable.md) 后创建时，会按当前环境选择运行时。
 
 ## 字段与常量
 
