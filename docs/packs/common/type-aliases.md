@@ -142,4 +142,4 @@ title: 类型别名
 
 | 名称 | 类型 | 声明来源 |
 | --- | --- | --- |
-| [UiControlKind](type-aliases.md#uicontrolkind) | [Literal](type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] | `core_behavior/ModSAPI/ui/controls.pyi` |
+| [UiControlKind](type-aliases.md#uicontrolkind) | [Literal](type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap'] | `core_behavior/ModSAPI/ui/controls.pyi` |

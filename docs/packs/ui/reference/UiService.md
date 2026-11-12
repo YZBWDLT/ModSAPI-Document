@@ -110,7 +110,7 @@ def read_value(instance):
 registerView(name: str, template: str, options: UiViewCallbacks | None = None) -> UiViewDefinition
 ```
 
-声明界面模板，可提供就绪、更新和关闭回调。初始化前可以声明；原生界面就绪后首次打开时执行一次登记。
+声明带生命周期回调和可选小地图支持的 JSON 界面。可在界面初始化前声明，首次在 uiReady 后打开时才注册原生界面。miniMap=True 会使用原生小地图基类，并保留该基类的生命周期方法。
 
 ### 参数
 

@@ -7,7 +7,7 @@ title: 界面与主题表单
 
 入口：[client.ui](../client/apis/manager.md#ui)、[system.ui](../server/reference/System.md#ui) 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。
 
-[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)
+[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)
 
 [场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)
 
@@ -57,6 +57,10 @@ title: 界面与主题表单
 | [UiAnimationOptions](reference/UiAnimationOptions.md) | 签名、字段、属性、方法与调用示例 |
 | [UiButton](reference/UiButton.md) | 按钮控件，提供可取消的指针与悬浮事件订阅。 |
 | [UiButtonEvents](reference/UiButtonEvents.md) | 按需启用的原生按钮订阅，事件参数使用包装对象。 |
+| [UiChoiceEvent](reference/UiChoiceEvent.md) | 选择事件的独立快照，不公开原生事件字典中的其他字段。 |
+| [UiComboBox](reference/UiComboBox.md) | 本地原生下拉框，与表单中的组合下拉控件分别使用。选项值为普通数据的独立副本；原生读取接口只提供文字和索引，不提供已有选项自定义值的读取方法。 |
+| [UiComboBoxEvents](reference/UiComboBoxEvents.md) | 原生下拉框弹出、收起及选中选项的事件容器。 |
+| [UiComboBoxOption](reference/UiComboBoxOption.md) | 本地原生下拉框选项的可选显示图标。 |
 | [UiControl](reference/UiControl.md) | 由视图拥有的原生控件；原生操作要求所属视图存活且已经就绪。 |
 | [UiEvent](reference/UiEvent.md) | 本地界面事件参数，提供包装后的玩家、视图和控件引用。 |
 | [UiEventSignal](reference/UiEventSignal.md) | 由所属界面对象管理的事件信号；订阅返回可重复调用的取消函数。 |
@@ -69,8 +73,14 @@ title: 界面与主题表单
 | [UiItemOptions](reference/UiItemOptions.md) | 签名、字段、属性、方法与调用示例 |
 | [UiItemRenderer](reference/UiItemRenderer.md) | 物品预览控件；修改显示内容不会改变任何背包。 |
 | [UiLabel](reference/UiLabel.md) | 文字标签控件，支持读取和设置文字及三通道颜色。 |
+| [UiMapMarker](reference/UiMapMarker.md) | 由界面管理的图片或文字标记，移除时不影响其他标记。 |
+| [UiMapMarkerOptions](reference/UiMapMarkerOptions.md) | 地图图片标记的尺寸，以及仅用于实体标记的旋转选项。 |
+| [UiMapTextMarkerOptions](reference/UiMapTextMarkerOptions.md) | 地图文字标记的缩放选项；文字内容单独传入。 |
+| [UiMiniMap](reference/UiMiniMap.md) | 显示已加载客户端区块的小地图，可管理固定和跟随实体的标记。显示效果由原生模板与渲染规则决定；标记属于地图当前维度，只渲染 X/Z 坐标。 |
 | [UiProgressBar](reference/UiProgressBar.md) | 原生进度条，提供只写的归一化进度设置。 |
 | [UiScrollView](reference/UiScrollView.md) | 滚动容器；滚动进度统一为 0～1。 |
+| [UiSelectionWheel](reference/UiSelectionWheel.md) | 由原生模板提供可选扇区的轮盘控件。 |
+| [UiSelectionWheelEvents](reference/UiSelectionWheelEvents.md) | 悬浮选项变化与指针完成选择的事件容器。 |
 | [UiService](reference/UiService.md) | 管理本地视图以及组合表单、状态工厂。原生视图在客户端操作；服务端创建表单并向玩家对象显示，不能直接读取远端原生界面树。 |
 | [UiSlider](reference/UiSlider.md) | 原生滑动条，数值范围和步进由界面模板决定。 |
 | [UiStackPanel](reference/UiStackPanel.md) | 原生堆叠布局，按水平或垂直方向排列子控件。 |

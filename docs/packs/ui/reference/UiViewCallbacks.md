@@ -24,6 +24,7 @@ sidebar_label: "UiViewCallbacks"
 | `onReady` | [Callable](../../common/type-system.md#callable)[[[UiEvent](UiEvent.md)], [None](../../common/type-system.md#none)] | `运行时返回` |
 | `onUpdate` | [Callable](../../common/type-system.md#callable)[[[UiEvent](UiEvent.md)], [None](../../common/type-system.md#none)] | `运行时返回` |
 | `onClose` | [Callable](../../common/type-system.md#callable)[[[UiEvent](UiEvent.md)], [None](../../common/type-system.md#none)] | `运行时返回` |
+| `miniMap` | [bool](../../common/type-system.md#bool) | `运行时返回` |
 
 字段显示为源码赋值来源时，该表达式不是调用者应直接执行的初始化代码。常量值以当前 Python 实现为准。
 

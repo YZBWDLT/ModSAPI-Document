@@ -102,8 +102,13 @@ def configure(view):
 | `inputPanel` | UiInputPanel | isModal、swallowInput、dragOffset |
 | `progressBar` | UiProgressBar | 取值为 0～1 的 setProgress |
 | `itemRenderer` | UiItemRenderer | setItem、item |
+| `comboBox` | UiComboBox | addOption、selectedIndex、afterEvents |
+| `selectionWheel` | UiSelectionWheel | sliceCount、selectedIndex、afterEvents |
+| `miniMap` | UiMiniMap | addMarker、addTextMarker、zoomIn、zoomOut |
 
 锚点、裁剪、网格与物品预览的配套模板见 [布局与常用控件](ui-layout-and-widgets.md)。UiAnchor 和 UiImageClipDirection 提供可直接导入的常量，减少手写原生字符串。
+
+原生下拉框、选择轮盘与小地图见 [选择控件与小地图](ui-choices-and-minimap.md)。小地图视图在 registerView 中传入 miniMap=True，库会保留原生地图基类的初始化和更新逻辑。
 
 种类必须与模板实际控件相符。控件路径不存在时抛出 KeyError；视图已关闭或控件已移除时抛出 InvalidClientObjectError。`isValid` 用于检查存活情况，仍需处理检查之后发生的原生失败。
 
@@ -410,6 +415,16 @@ UI_ACQUIRE = {
     'UiItemOptions': '将普通字典传给 UiItem 或 UiItemRenderer.setItem 的字符串重载。',
     'UiAnchor': '从 ModSAPI.ui 导入，作为锚点属性和 setAnchors 的参数。',
     'UiImageClipDirection': '从 ModSAPI.ui 导入，赋给 UiImage.clipDirection。',
+    'UiComboBox': '使用 view.getControl(path, "comboBox")；模板继承原生 combo_box.comboBoxPanel。',
+    'UiSelectionWheel': '使用 view.getControl(path, "selectionWheel")；扇区由模板决定。',
+    'UiMiniMap': '先以 miniMap=True 注册视图，再使用 view.getControl(path, "miniMap")。',
+    'UiMapMarker': '由 UiMiniMap.addMarker 或 addTextMarker 返回；使用 remove 移除。',
+    'UiChoiceEvent': '从下拉框的 selectionChange 或轮盘的选择回调取得。',
+    'UiComboBoxEvents': '使用 UiComboBox.afterEvents。',
+    'UiSelectionWheelEvents': '使用 UiSelectionWheel.afterEvents。',
+    'UiComboBoxOption': '使用包含可选 icon 字段的字典传给 UiComboBox.addOption。',
+    'UiMapMarkerOptions': '将尺寸和实体旋转选项传给 UiMiniMap.addMarker。',
+    'UiMapTextMarkerOptions': '将文字缩放选项传给 UiMiniMap.addTextMarker。',
     'UiAnimation': '由 UiControl.animate 返回；使用 pause、play、cancel 和 dispose 管理。',
     'UiEvent': '从视图生命周期或按钮交互的订阅回调取得。',
     'UiEventSignal': '通过拥有它的 afterEvents 容器获取。subscribe 返回取消函数。',
@@ -451,6 +466,10 @@ UI_EXAMPLES = {
     'UiItem': 'from ModSAPI.ui import UiItem\n\npreview = UiItem("minecraft:diamond", {"isEnchanted": True})',
     'UiAnchor': 'from ModSAPI.ui import UiAnchor\n\ndef align(control):\n    control.setAnchors(UiAnchor.TopLeft)',
     'UiImageClipDirection': 'from ModSAPI.ui import UiImageClipDirection\n\ndef configure(image):\n    image.clipDirection = UiImageClipDirection.LeftToRight',
+    'UiComboBox': 'def configure(combo):\n    combo.addOption(u"低", "low").addOption(u"高", "high")\n    combo.selectedIndex = 0\n    return combo.afterEvents.selectionChange.subscribe(lambda event: print(event.value))',
+    'UiSelectionWheel': 'def select_first(wheel):\n    if wheel.sliceCount:\n        wheel.selectedIndex = 0\n    return wheel.afterEvents.select.subscribe(lambda event: print(event.index))',
+    'UiMiniMap': 'def mark_location(mini_map):\n    marker = mini_map.addTextMarker((10, 70, 20), u"目标")\n    mini_map.zoomIn(0.1)\n    return marker',
+    'UiMapMarker': 'def remove_marker(marker):\n    marker.remove()\n    marker.remove()',
     'UiAnimation': 'def stop_animation(animation):\n    animation.cancel()',
     'Form': 'from ModSAPI.client.beta import client\n\ndef create_form():\n    form = client.ui.createForm(u"设置", {"theme": "fluent"})\n    form.button(u"关闭", lambda player: form.close())\n    return form',
     'Observable': 'from ModSAPI.client.beta import client\n\nstate = client.ui.createState(0)\nstop = state.watch(lambda value: print(value))\nstate.update(lambda value: value + 1)\nstop()\nstate.dispose()',
@@ -469,6 +488,7 @@ title: 界面流程与原生扩展
 - [主题表单与响应式状态](themed-forms.md)
 - [动画、常驻和跟随界面](ui-animation-and-hud.md)
 - [布局、网格与物品预览](ui-layout-and-widgets.md)
+- [原生下拉框、轮盘与小地图](ui-choices-and-minimap.md)
 - [自定义模板与控件组](ui-custom-controls.md)
 
 已有的 client.screen 提供直接管理原生 ScreenNode 的兼容入口；通过它创建的节点由调用者管理。需要本库统一释放控件、订阅和动画时，使用 client.ui 管理视图。
@@ -664,4 +684,167 @@ UiInputPanel 的 isModal 限制界面输入范围，swallowInput 控制输入是
 错误参数在调用原生接口前抛出 TypeError 或 ValueError；控件种类与模板不符时抛出 UnsupportedFeatureError；失效视图和控件抛出 InvalidClientObjectError。原生布尔失败、异常及不符合契约的读取结果会报告 NativeOperationError，并保留 operation 等诊断信息。
 
 focus 与 blur 使用引擎的选中控件入口，实际键盘输入能力取决于控件种类。动态创建后若包装失败，库会尝试移除已创建的原生节点；清理失败记录在异常的 cleanupErrors 中。使用完毕后调用 view.close，绑定、按钮订阅和动画由视图释放。
+'''
+
+UI_GUIDES['packs/guides/ui-choices-and-minimap.md'] = r'''---
+title: 选择控件与小地图
+---
+
+# 选择控件与小地图
+
+UiComboBox、UiSelectionWheel 与 UiMiniMap 使用原生控件模板，并接入 UiView 的生命周期。它们适合已有资源包界面；只需要组合设置表单时，也可以直接使用 Form.dropdown。
+
+以下模板分别保存到资源包的 `ui` 目录，并将路径追加到 `ui/_ui_defs.json` 的 ui_defs 列表中。三个场景独立使用。原生模板名与真实渲染表现仍需在目标网易游戏版本中验证。
+
+## 原生下拉框
+
+将以下内容保存为 `ui/demo_combo.json`：
+
+```json
+{
+  "namespace": "demo_combo",
+  "screen": {
+    "type": "screen",
+    "is_showing_menu": true,
+    "controls": [{"menu@combo_box.comboBoxPanel": {
+      "size": [160, 24],
+      "$content_size": [160, 96],
+      "$item_size": ["100%", 24]
+    }}]
+  }
+}
+```
+
+```python
+# -*- coding: utf-8 -*-
+from ModSAPI.client.beta import client
+
+def ready(event):
+    menu = event.view.getControl("/menu", "comboBox")
+    menu.addOption(u"低", {"quality": "low"})
+    menu.addOption(u"高", {"quality": "high"}, {"icon": "textures/items/diamond"})
+    menu.selectedIndex = 0
+
+    def selected(choice):
+        if choice.index is not None:
+            choice.player.sendToast(choice.label)
+            print(choice.value)
+
+    menu.afterEvents.selectionChange.subscribe(selected)
+
+client.ui.registerView("demo:combo", "demo_combo.screen", {"onReady": ready})
+client.afterEvents.uiReady.subscribe(lambda event: client.ui.openView("demo:combo"))
+```
+
+selectedIndex 使用零起始索引，没有选中时为 None；赋值 None 会清除选择。findOption 按显示文字查询，未找到时也返回 None。selectLabel 按文字选中，removeOption 接受索引或显示文字，clearOptions 清空所有内容。
+
+addOption 会复制普通数据；事件中的 UiChoiceEvent.value 每次读取也返回副本。原生读取接口不提供已有选项自定义值的读取能力，因此库只提供 selectedIndex、selectedLabel 和 getOptionLabel，不虚构可恢复全部选项数据的属性。
+
+afterEvents.open 与 close 表示下拉菜单展开和收起，不是整个视图的打开和关闭。selectionChange 对应原生选项通知，提供 index、label、value，以及继承的 player、view 和 control 对象。
+
+## 选择轮盘
+
+将以下内容保存为 `ui/demo_wheel.json`。示例使用文字显示状态，正式界面的圆环和图标可自行替换；响应区域仍由轮盘的半径和尺寸决定。
+
+```json
+{
+  "namespace": "demo_wheel",
+  "content": {
+    "type": "panel",
+    "controls": [
+      {"idle": {"type": "label", "text": "请选择"}},
+      {"first": {"type": "label", "text": "选项一"}},
+      {"second": {"type": "label", "text": "选项二"}},
+      {"third": {"type": "label", "text": "选项三"}}
+    ]
+  },
+  "screen": {
+    "type": "screen",
+    "is_showing_menu": true,
+    "gamepad_cursor_deflection_mode": true,
+    "controls": [{"wheel@common_selection_wheels.base_selection_wheel": {
+      "size": [200, 200],
+      "inner_radius": 0.35,
+      "outer_radius": 1,
+      "slice_count": 3,
+      "initial_button_slice": -1,
+      "$content": "demo_wheel.content",
+      "state_controls": ["idle", "first", "second", "third"]
+    }}]
+  }
+}
+```
+
+```python
+# -*- coding: utf-8 -*-
+from ModSAPI.client.beta import client
+
+def ready(event):
+    wheel = event.view.getControl("/wheel", "selectionWheel")
+
+    def chosen(choice):
+        if choice.index is not None:
+            choice.player.sendToast(u"选择：%s" % choice.index)
+            choice.view.close()
+
+    wheel.afterEvents.select.subscribe(chosen)
+
+client.ui.registerView("demo:wheel", "demo_wheel.screen", {"onReady": ready})
+client.afterEvents.uiReady.subscribe(lambda event: client.ui.openView("demo:wheel"))
+```
+
+sliceCount 来自模板，selectedIndex 没有选中时为 None。selectionChange 读取原生悬浮通知中的当前索引，仅在观察到索引变化时通知，过滤重复的进入和离开通知；select 表示指针按下并抬起，允许 index 为 None。UiChoiceEvent 的 label 和 value 在轮盘中为 None。
+
+轮盘通过 openView 加入界面栈，可沿用原生栈界面的贴图预加载行为；创建常驻轮盘时应另外处理首次加载贴图的表现。
+
+## 小地图与标记
+
+将以下内容保存为 `ui/demo_map.json`：
+
+```json
+{
+  "namespace": "demo_map",
+  "screen": {
+    "type": "screen",
+    "controls": [{"mainPanel@mini_map.mini_map_wrapper": {
+      "anchor_from": "top_right",
+      "anchor_to": "top_right",
+      "size": [140, 140],
+      "offset": [-12, 12],
+      "$enable_live_update": false,
+      "$live_update_interval": 5,
+      "$use_default_face_icon": true
+    }}]
+  }
+}
+```
+
+```python
+# -*- coding: utf-8 -*-
+from ModSAPI.client.beta import client
+
+def ready(event):
+    mini_map = event.view.getControl("/mainPanel/netease_mini_map", "miniMap")
+    mini_map.addMarker(client.localPlayer, "textures/items/diamond", {"rotate": True})
+    destination = mini_map.addTextMarker((10, 70, 20), u"目标", {"scale": 0.8})
+    mini_map.zoomIn(0.1)
+    # 目标完成时可调用 destination.remove()
+
+client.ui.registerView("demo:map", "demo_map.screen", {"onReady": ready, "miniMap": True})
+client.afterEvents.uiReady.subscribe(lambda event: client.ui.createHud("demo:map"))
+```
+
+miniMap=True 使库使用网易的小地图界面基类，并调用该基类的创建、更新和销毁方法。它是注册选项，不需要自行继承或登记第二套系统；没有该原生能力的 SDK 会明确报错。
+
+addMarker 和 addTextMarker 接受三维位置或客户端实体对象，返回 UiMapMarker。固定位置只把 X/Z 交给地图；Y 保留在 location 的输入副本中。实体标记的 entity 是包装对象，固定标记的 entity 为 None。相同实体的图片与文字可同时存在，同一种标记重复添加会报错，以免旧句柄误删新标记。
+
+marker.remove 只移除当前标记，成功后重复调用无副作用。clearMarkers 会尝试所有标记，保留失败句柄，并在异常的 cleanupErrors 中列出错误；随后可以重试。关闭视图或移除地图控件也会使相关句柄失效。
+
+setHeightLimit 默认重绘已有区块；多次调整时可传 repaint=False，最后只调用一次 refresh。zoomIn 和 zoomOut 接受非负增量，resetZoom 恢复默认缩放。小地图不会因此加载远处区块，过度缩小可能影响标记显示；不要每帧重绘整个地图。
+
+## 回调与释放约定
+
+业务回调始终接收包装事件。库负责将下拉框和轮盘的原生通知绑定到界面节点，再分发到对应控件；同一视图中的多个控件互不覆盖。subscribe 返回取消函数，关闭视图或移除控件会释放订阅。
+
+原生回调替换失败时，保留清理信息以便重试；重新订阅会重新建立回调，过期的回调不会通知新订阅者。注册后回滚失败的错误记录在 cleanupErrors 中。原生读取结果不符合约定时抛出 NativeOperationError，参数错误在写入前报告。
 '''

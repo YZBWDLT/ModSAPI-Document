@@ -29,6 +29,8 @@ PAGES = {}
 CLASSES = []
 BY_NAME = defaultdict(list)
 PRIVATE = {}
+UI_CONSTRUCTORS = {'Form', 'Observable', 'ControlDescriptor', 'Button', 'Custom', 'Divider',
+                   'Dropdown', 'Group', 'Label', 'ListView', 'ScrollingPanel', 'Slider', 'TextField', 'Toggle', 'UiItem'}
 PYTHON_EXAMPLES = []
 GUIDES.update(UI_GUIDES)
 CLASS_EXAMPLES.update(UI_EXAMPLES)
@@ -168,7 +170,7 @@ def load():
               BASE/'utils/event_values.py', BASE/'utils/event_data.py', BASE/'utils/event_facade.py',
               BASE/'utils/expression.py', BASE/'utils/script_bridge.py', BASE/'utils/bridge_protocol.py']
     paths += [BASE / value for value in (
-        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py',
+        'ui/service.py', 'ui/views.py', 'ui/controls.py', 'ui/events.py', 'ui/animations.py', 'ui/constants.py', 'ui/widgets.py', 'ui/choices.py', 'ui/minimap.py',
         '_ui/core/general/form.py', '_ui/core/general/observable.py',
         '_ui/core/utils/type.py', '_ui/interfaces/base/control.py',
         '_ui/interfaces/base/controls.py', '_ui/interfaces/base/theme.py',
@@ -215,9 +217,7 @@ def load():
             cls = {'name':name,'group':classify(path),'path':path,'node':node,
                    'source':actual.get(name),'stub':declared.get(name),
                    'members':methods(node),'stub_members':methods(declared[name]) if name in declared else {}}
-            if cls['group'] == 'ui' and name not in (
-                    'Form', 'Observable', 'ControlDescriptor', 'Button', 'Custom', 'Divider',
-                    'Dropdown', 'Group', 'Label', 'ListView', 'ScrollingPanel', 'Slider', 'TextField', 'Toggle', 'UiItem'):
+            if cls['group'] == 'ui' and name not in UI_CONSTRUCTORS:
                 cls['members'].pop('__init__', None)
             cls['bases'] = [ast.unparse(base).split('.')[-1] for base in node.bases if isinstance(base,(ast.Name,ast.Attribute))]
             if name in ('ClientAfterEvents', 'ClientBeforeEvents', 'WorldAfterEvents', 'WorldBeforeEvents'):
@@ -263,7 +263,9 @@ def load():
                 continue
             flatten_private(parent,seen)
             for key,member in parent['members'].items():
-                if (not key.startswith('_') or key=='__init__') and not (key=='__init__' and cls.get('path',Path()).name=='event_data.py'):
+                hidden_constructor = key=='__init__' and (cls.get('path',Path()).name=='event_data.py'
+                    or (cls.get('group')=='ui' and cls['name'] not in UI_CONSTRUCTORS))
+                if (not key.startswith('_') or key=='__init__') and not hidden_constructor:
                     cls['members'].setdefault(key,member)
             cls['stub_members']={**parent['stub_members'],**cls['stub_members']}
             cls.setdefault('inherited_fields',{}).update(fields(parent))
@@ -561,6 +563,12 @@ def native_calls(fn):
                 values.append(node.func.attr)
             elif isinstance(node.func,ast.Name) and node.func.id in ('call','checked') and len(node.args)>1 and isinstance(node.args[1],ast.Constant) and isinstance(node.args[1].value,str):
                 values.append(node.args[1].value)
+            elif isinstance(node.func,ast.Name) and node.func.id=='_readExtraData':
+                # This shared adapter replaced a direct native read. Derive its
+                # operation from the maintained helper, retaining traceability.
+                helper=next(value for value in parse(BASE/'utils/extra_data.py').body
+                            if isinstance(value,ast.FunctionDef) and value.name=='readExtraData')
+                values.extend(native_calls(helper))
     return list(dict.fromkeys(values))
 
 
@@ -792,7 +800,7 @@ def indexes():
         if group=='server':lines+=['入口：`from ModSAPI.server.beta import world, system`。其他导出见 [导出符号](../exports.md)。','']
         elif group=='client':lines+=['入口：`from ModSAPI.client.beta import client`。所有操作只影响本机；客户端数据不能替代服务端权限校验。','']
         elif group=='server_ui':lines+=['标准表单入口：`from ModSAPI.serverui.beta import ActionFormData, ModalFormData, MessageFormData`。其他类型与入口见 [导出符号](../exports.md)。','', '标准构建器在服务端调用；JSON UI 控件底层类型在客户端工作，不要混用执行端。','']
-        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
+        elif group=='ui':lines+=['入口：client.ui、system.ui 和 ModSAPI.ui。视图、控件、主题、状态和组合表单共用现有运行时。','', '[视图与生命周期](../guides/managed-ui.md) · [布局与控件](../guides/ui-layout-and-widgets.md) · [选择控件与小地图](../guides/ui-choices-and-minimap.md) · [组合表单](../guides/themed-forms.md) · [动画与跟随界面](../guides/ui-animation-and-hud.md) · [自定义模板](../guides/ui-custom-controls.md)','']
         lines+=['[场景与完整示例](../examples.md) · [支持情况与差异](../compatibility.md)','',
                 '<div className="modsapi-table-scroll" tabIndex={0} aria-label="接口表格，可横向滚动">','',
                 '| 类型 | 说明 |','| --- | --- |']
@@ -878,7 +886,7 @@ def modsdk_coverage():
            '| 已有离线核验路径 | '+str(report['summary']['statuses'].get('reviewed_adapter_path',0))+' | 已核对公开入口并有具体契约测试；仍需游戏验证。 |',
            '| 发现原生调用，待核对 | '+str(report['summary']['statuses'].get('candidate_requires_review',0))+' | 源码出现了相同原生调用名，不能据此判断功能覆盖。 |',
            '| 尚未建立映射 | '+str(report['summary']['statuses'].get('unmapped',0))+' | 尚未建立可追溯记录；不能直接解释为原生能力不存在或无法封装。 |','',
-           '常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md) 和 [主题表单](guides/themed-forms.md)。原生模型控件、小地图、组合框、选择轮盘、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。','',
+           '常用界面流程见 [界面、控件与生命周期](guides/managed-ui.md)、[主题表单](guides/themed-forms.md) 和 [选择控件与小地图](guides/ui-choices-and-minimap.md)。原生模型控件、专有渲染和平台能力仍有大量接口待适配。使用 native 访问原生对象，不会自动使这些能力成为本库已实现的接口。','',
            '微软接口的对照与已知限制另见 [官方对照与当前支持情况](compatibility.md)。以下列表中的 Apollo 标记保留原文的服务端平台限制。','',
            '[网易官方接口索引]('+report['source']['url']+')','']
     groups=defaultdict(list)
@@ -904,7 +912,7 @@ def modsdk_coverage():
 
 def site_navigation(config):
     """Avoid two active doc items sharing Docusaurus's API sidebar."""
-    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets)'
+    ui_guides='(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls|ui-layout-and-widgets|ui-choices-and-minimap)'
     definitions={
         'packs/server/intro': ('接口文档', '/docs/packs/server/intro',
             '^/docs/packs/(?!ui(?:/|$)|guides/'+ui_guides+'(?:/|$))'),
@@ -946,7 +954,7 @@ def generate():
     server_events = server_events.replace('(../server/native-events.md)', '(../native-events.md)').replace('(native-events.md)', '(../../guides/native-events.md)')
     put('packs/server/events/event_listen.md',server_events+'\n\n[全部 after 事件](afterEvents.md) · [全部 before 事件](beforeEvents.md)')
     custom_ui=GUIDES['packs/guides/custom-screen.md']
-    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls', 'ui-layout-and-widgets'):
+    for guide in ('observable-forms', 'managed-ui', 'themed-forms', 'ui-animation-and-hud', 'ui-custom-controls', 'ui-layout-and-widgets', 'ui-choices-and-minimap'):
         custom_ui=custom_ui.replace('('+guide+'.md)', '(../../guides/'+guide+'.md)')
     put('packs/client/apis/customUI.md', custom_ui)
     options=['# 选项与数据结构','', '使用 Python 字典传入选项，以下参考列出当前包装类的字段、默认值和限制。','']

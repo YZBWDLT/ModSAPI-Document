@@ -587,6 +587,13 @@ from ModSAPI.ui import Form, Observable, Control, Theme
 | [UiProgressBar](ui/reference/UiProgressBar.md) | [UiProgressBar](ui/reference/UiProgressBar.md) |
 | [UiItemRenderer](ui/reference/UiItemRenderer.md) | [UiItemRenderer](ui/reference/UiItemRenderer.md) |
 | [UiItem](ui/reference/UiItem.md) | [UiItem](ui/reference/UiItem.md) |
+| [UiComboBox](ui/reference/UiComboBox.md) | [UiComboBox](ui/reference/UiComboBox.md) |
+| [UiComboBoxEvents](ui/reference/UiComboBoxEvents.md) | [UiComboBoxEvents](ui/reference/UiComboBoxEvents.md) |
+| [UiSelectionWheel](ui/reference/UiSelectionWheel.md) | [UiSelectionWheel](ui/reference/UiSelectionWheel.md) |
+| [UiSelectionWheelEvents](ui/reference/UiSelectionWheelEvents.md) | [UiSelectionWheelEvents](ui/reference/UiSelectionWheelEvents.md) |
+| [UiChoiceEvent](ui/reference/UiChoiceEvent.md) | [UiChoiceEvent](ui/reference/UiChoiceEvent.md) |
+| [UiMiniMap](ui/reference/UiMiniMap.md) | [UiMiniMap](ui/reference/UiMiniMap.md) |
+| [UiMapMarker](ui/reference/UiMapMarker.md) | [UiMapMarker](ui/reference/UiMapMarker.md) |
 
 ## 提供器访问
 

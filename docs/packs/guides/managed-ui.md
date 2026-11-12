@@ -99,8 +99,13 @@ def configure(view):
 | `inputPanel` | [UiInputPanel](../ui/reference/UiInputPanel.md) | isModal、swallowInput、dragOffset |
 | `progressBar` | [UiProgressBar](../ui/reference/UiProgressBar.md) | 取值为 0～1 的 setProgress |
 | `itemRenderer` | [UiItemRenderer](../ui/reference/UiItemRenderer.md) | setItem、item |
+| `comboBox` | [UiComboBox](../ui/reference/UiComboBox.md) | addOption、selectedIndex、afterEvents |
+| `selectionWheel` | [UiSelectionWheel](../ui/reference/UiSelectionWheel.md) | sliceCount、selectedIndex、afterEvents |
+| `miniMap` | [UiMiniMap](../ui/reference/UiMiniMap.md) | addMarker、addTextMarker、zoomIn、zoomOut |
 
 锚点、裁剪、网格与物品预览的配套模板见 [布局与常用控件](ui-layout-and-widgets.md)。[UiAnchor](../ui/reference/UiAnchor.md) 和 [UiImageClipDirection](../ui/reference/UiImageClipDirection.md) 提供可直接导入的常量，减少手写原生字符串。
+
+原生下拉框、选择轮盘与小地图见 [选择控件与小地图](ui-choices-and-minimap.md)。小地图视图在 registerView 中传入 miniMap=True，库会保留原生地图基类的初始化和更新逻辑。
 
 种类必须与模板实际控件相符。控件路径不存在时抛出 [KeyError](../common/type-system.md#keyerror)；视图已关闭或控件已移除时抛出 [InvalidClientObjectError](../common/reference/InvalidClientObjectError.md)。`isValid` 用于检查存活情况，仍需处理检查之后发生的原生失败。
 

@@ -93,7 +93,7 @@ def call_setDimensions(instance, columns, rows):
 ## getItem {#getItem}
 
 ```python
-getItem(column: int, row: int, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] = 'control') -> UiControl | None
+getItem(column: int, row: int, kind: Literal['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap'] = 'control') -> UiControl | None
 ```
 
 按从零开始的行列坐标获取网格项，并返回包装后的控件；不存在时返回 [None](../../common/type-system.md#none)。
@@ -104,7 +104,7 @@ getItem(column: int, row: int, kind: Literal['control', 'label', 'button', 'imag
 | --- | --- | --- | --- |
 | `column` | [int](../../common/type-system.md#int) | `必填` | 传给 [UiGrid.getItem](UiGrid.md#getItem) 的 column 参数；结合上方功能说明和下方调用示例使用。 |
 | `row` | [int](../../common/type-system.md#int) | `必填` | 传给 [UiGrid.getItem](UiGrid.md#getItem) 的 row 参数；结合上方功能说明和下方调用示例使用。 |
-| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer'] | `'control'` | 传给 [UiGrid.getItem](UiGrid.md#getItem) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
+| `kind` | [Literal](../../common/type-system.md#literal)['control', 'label', 'button', 'image', 'textField', 'slider', 'toggle', 'scrollView', 'grid', 'stackPanel', 'inputPanel', 'progressBar', 'itemRenderer', 'comboBox', 'selectionWheel', 'miniMap'] | `'control'` | 传给 [UiGrid.getItem](UiGrid.md#getItem) 的 kind 参数；结合上方功能说明和下方调用示例使用。 |
 
 **返回类型：** [UiControl](UiControl.md) \| [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
 
