@@ -1,53 +1,17 @@
 ---
-sidebar_position: 4
+title: 控件与布局类型
 ---
 
-# 枚举与常量
+# 控件与布局类型
 
-## ButtonCallbacks {#ButtonCallbacks}
+界面功能已整合到 ModSAPI.ui。通过 [client.ui](../../packs/client/apis/manager.md#ui) 或 [system.ui](../../packs/server/reference/System.md#ui) 使用现有运行时，不需要额外注册系统。
 
-创建按钮时需要传入的回调函数。
+[完整教程与示例](../../packs/guides/ui-custom-controls.md) · [界面模块全部类型](../../packs/ui/intro.md)
 
-### 键
+```python
+from ModSAPI.ui import Form, Observable, Control, Theme
+```
 
-onClick: () -> None
+服务端显示表单时传入 [Player](../../packs/server/apis/player.md) 对象；客户端省略目标时使用本地玩家。关闭结果通过 player 属性取得包装对象。
 
-按钮按下时触发（按下并抬起时）
-
-onMoveIn: () -> None
-
-手指移动入按钮范围内时触发
-
-onMoveOut: () -> None
-
-手指移出按钮范围时触发
-
-## ControlStyle {#ControlStyle}
-
-控件样式定义
-
-### 键
-
-class: str
-
-控件样式定义，由`Control.register`注册
-
-offsetX: str | int | float | [Observable](./observable)
-
-X方向位移。
-
-offsetY: str | int | float | [Observable](./observable)
-
-Y方向位移。
-
-width: str | int | float | [Observable](./observable)
-
-宽度。
-
-height: str | int | float | [Observable](./observable)
-
-高度。
-
-visible: bool | [Observable](./observable)
-
-可见性。
+[Form](../../packs/ui/reference/Form.md) · [Observable](../../packs/ui/reference/Observable.md) · [Control](../../packs/ui/reference/Control.md) · [Theme](../../packs/ui/reference/Theme.md)

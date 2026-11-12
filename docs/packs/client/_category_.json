@@ -1,6 +1,6 @@
 {
-  "label": "客户端-Client",
-  "position": 2,
+  "label": "客户端",
+  "position": 3,
   "link": {
     "type": "doc",
     "id": "intro"

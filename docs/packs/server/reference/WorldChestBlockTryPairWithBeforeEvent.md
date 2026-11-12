@@ -1,0 +1,215 @@
+---
+title: "WorldChestBlockTryPairWithBeforeEvent"
+sidebar_label: "WorldChestBlockTryPairWithBeforeEvent"
+---
+
+# WorldChestBlockTryPairWithBeforeEvent
+
+作用域：服务端。
+
+源码：`core_behavior/ModSAPI/modules/server/NativeEventTypes.py`；声明补充了静态类型信息。
+
+此类型由运行时事件契约创建，并通过对应端的 `beta` 导出。通过 `subscribe` 回调取得实例；不要自行构造事件参数。
+
+[ChestBlockTryPairWithServerEvent](../native-events.md#chestblocktrypairwithserverevent) 的事件参数；同步分发结束后不能再写入输出字段。
+
+## 获取方式
+
+通过下方所属信号的回调参数取得；类型可从对应端 beta 导入，用于识别事件类型。
+
+所属信号：[world.beforeEvents.chestBlockTryPairWith](../events/beforeEvents.md#chestBlockTryPairWith).
+
+基类：[NativeEventData](../../common/reference/NativeEventData.md).
+
+## 成员索引
+
+| 名称 | 形态 |
+| --- | --- |
+| [cancel](#cancel) | 可读写属性 |
+| [blockX](#blockX) | 只读属性 |
+| [blockY](#blockY) | 只读属性 |
+| [blockZ](#blockZ) | 只读属性 |
+| [otherBlockX](#otherBlockX) | 只读属性 |
+| [otherBlockY](#otherBlockY) | 只读属性 |
+| [otherBlockZ](#otherBlockZ) | 只读属性 |
+| [dimension](#dimension) | 只读属性 |
+
+## 继承成员
+
+下列成员沿用基类约定；点击名称查看签名、参数、返回值和示例。
+
+| 成员 | 定义位置 |
+| --- | --- |
+| [getNativeData](../../common/reference/NativeEventData.md#getNativeData) | [NativeEventData](../../common/reference/NativeEventData.md) |
+| [getNativeValue](../../common/reference/NativeEventData.md#getNativeValue) | [NativeEventData](../../common/reference/NativeEventData.md) |
+| [nativeEventName](../../common/reference/NativeEventData.md#nativeEventName) | [NativeEventData](../../common/reference/NativeEventData.md) |
+| [setNativeValue](../../common/reference/NativeEventData.md#setNativeValue) | [NativeEventData](../../common/reference/NativeEventData.md) |
+
+## cancel {#cancel}
+
+```python
+cancel: bool
+```
+
+数据来源为原生字段 `cancel`；仅可在同步回调内写入。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+是否允许触发，默认为False，若设为True，可阻止小箱子组合成为一个大箱子；此字段可在同步回调中赋值。
+:::
+
+**访问：** 可读写。
+
+写入方式：`instance.cancel = value`。参数类型线索：`(value: bool) -> None`。
+
+在同步分发期间校验并写入原生 cancel 输出。
+
+写入参数 `value`：[bool](../../common/type-system.md#bool)。
+
+**返回类型：** [bool](../../common/type-system.md#bool)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## blockX {#blockX}
+
+```python
+blockX: Optional[int]
+```
+
+数据来源为原生字段 `blockX`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+小箱子方块x坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## blockY {#blockY}
+
+```python
+blockY: Optional[int]
+```
+
+数据来源为原生字段 `blockY`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+小箱子方块y坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## blockZ {#blockZ}
+
+```python
+blockZ: Optional[int]
+```
+
+数据来源为原生字段 `blockZ`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+小箱子方块z坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## otherBlockX {#otherBlockX}
+
+```python
+otherBlockX: Optional[int]
+```
+
+数据来源为原生字段 `otherBlockX`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+将要与之组合的另外一个小箱子方块x坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## otherBlockY {#otherBlockY}
+
+```python
+otherBlockY: Optional[int]
+```
+
+数据来源为原生字段 `otherBlockY`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+将要与之组合的另外一个小箱子方块y坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## otherBlockZ {#otherBlockZ}
+
+```python
+otherBlockZ: Optional[int]
+```
+
+数据来源为原生字段 `otherBlockZ`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+将要与之组合的另外一个小箱子方块z坐标；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[int](../../common/type-system.md#int)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## dimension {#dimension}
+
+```python
+dimension: Optional[Dimension]
+```
+
+数据来源为原生字段 `dimensionId`；只读。字段缺失时返回 [None](../../common/type-system.md#none)。公开类型及对象包装以本成员的返回类型为准。
+
+:::note 当前实现说明
+维度id；只读。
+:::
+
+**访问：** 只读。
+
+**返回类型：** [Optional](../../common/type-system.md#optional)[[Dimension](../apis/dimension.md)]。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## 使用示例
+
+
+```python
+from ModSAPI.server.beta import world
+
+def on_event(event):
+    print(event)
+
+world.beforeEvents.chestBlockTryPairWith.subscribe(on_event)
+
+def cleanup():
+    world.beforeEvents.chestBlockTryPairWith.unsubscribe(on_event)
+```
+
+需要特定资源、玩家或已加载区块的示例，应在相应引擎环境中执行。
+
+[返回接口总览](../../guide.md) · [场景指南](../../examples.md)

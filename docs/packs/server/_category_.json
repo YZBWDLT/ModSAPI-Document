@@ -1,6 +1,6 @@
 {
-  "label": "服务端-Server",
-  "position": 3,
+  "label": "服务端",
+  "position": 2,
   "link": {
     "type": "doc",
     "id": "intro"

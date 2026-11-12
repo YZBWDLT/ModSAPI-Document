@@ -1,6 +1,6 @@
 {
-  "label": "表单-Server_ui",
-  "position": 3,
+  "label": "标准表单",
+  "position": 4,
   "link": {
     "type": "doc",
     "id": "intro"

@@ -97,10 +97,10 @@ const config: Config = {
             label: '快速开始',
         },
         {
-            type: 'doc',
             position: 'left',
-            docId: 'packs/server/intro',
+            to: '/docs/packs/server/intro',
             label: '接口文档',
+            activeBaseRegex: '^/docs/packs/(?!ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls)(?:/|$))',
         },
         {
             type: 'doc',
@@ -109,10 +109,10 @@ const config: Config = {
             label: '教程',
         },
         {
-            type: 'doc',
             position: 'left',
-            docId: 'extra_lib/FormUI/intro',
-            label: '独立库',
+            to: '/docs/packs/ui/intro',
+            label: '界面',
+            activeBaseRegex: '^/docs/(?:packs/(?:ui(?:/|$)|guides/(?:managed-ui|themed-forms|ui-animation-and-hud|ui-custom-controls)(?:/|$))|extra_lib/(?:FormUI|Interfaces)(?:/|$))',
         },
         {
           href: 'https://github.com/jincarrot/ModSAPI',

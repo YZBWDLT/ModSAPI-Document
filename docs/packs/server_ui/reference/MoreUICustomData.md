@@ -1,0 +1,101 @@
+---
+title: "MoreUICustomData"
+sidebar_label: "MoreUICustomData"
+---
+
+# MoreUICustomData
+
+作用域：服务端表单 / 客户端 [UI](UI.md) 底层类型。
+
+源码：`core_behavior/ModSAPI/modules/server_ui/FormData.py`；声明补充了静态类型信息。
+
+## 获取方式
+
+使用下方构造签名，或从拥有它的对象/事件读取。底层包装类型不一定是模板入口的直接导出符号。
+
+## 成员索引
+
+| 名称 | 形态 |
+| --- | --- |
+| [__init__](#constructor) | 构造器 |
+| [form](#form) | 只读属性 |
+| [layout](#layout) | 只读属性 |
+
+## 构造器 {#constructor}
+
+```python
+MoreUICustomData(form: CustomForm, layout: FormLayout) -> None
+```
+
+构造该类型。通常通过下方获取方式使用；需要引擎上下文的包装器不建议自行构造。
+
+### 参数
+
+| 名称 | 类型线索 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `form` | [CustomForm](CustomForm.md) | `必填` | 传给 [MoreUICustomData.__init__](MoreUICustomData.md#constructor) 的 form 参数；结合上方功能说明和下方调用示例使用。 |
+| `layout` | [FormLayout](FormLayout.md) | `必填` | 布局字典；字段与长度约束见 [FormLayout](FormLayout.md) 或 [MoreUILayout](MoreUILayout.md)。 |
+
+**返回类型：** [None](../../common/type-system.md#none)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+## form {#form}
+
+```python
+form: CustomForm
+```
+
+读取 `form` 的当前值。
+
+**访问：** 只读。
+
+**返回类型：** [CustomForm](CustomForm.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.form
+```
+
+## layout {#layout}
+
+```python
+layout: FormLayout
+```
+
+读取 `layout` 的当前值。
+
+**访问：** 只读。
+
+**返回类型：** [FormLayout](FormLayout.md)。静态声明不替代本页的实现限制。
+
+引擎调用、失效对象或下层校验仍可能抛出其他异常；这里只列出当前成员内显式写出的错误。
+
+### 调用形状
+
+此函数接收已经取得的有效对象和业务参数，展示准确调用形状；完整场景见下方示例与模块使用指南。
+
+```python
+def read_value(instance):
+    return instance.layout
+```
+
+## 使用示例
+
+
+```python
+def inspect_value(value):
+    # value 是上方获取方式取得的 MoreUICustomData 对象。
+    print(value.form)
+    print(value.layout)
+```
+
+需要特定资源、玩家或已加载区块的示例，应在相应引擎环境中执行。
+
+[返回接口总览](../../guide.md) · [场景指南](../../examples.md)

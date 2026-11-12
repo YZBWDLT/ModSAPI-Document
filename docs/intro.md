@@ -77,9 +77,7 @@ ENTRY_PATH_CLIENT = "example_client"
 使用`from ModSAPI.server.beta import *`导入ModSAPI并开始使用。
 
 :::info
-您可以指定导入的ModSAPI版本，本教程编写时最新稳定版（0.0.3）尚未发布，因此教程导入beta版。
-
-要导入指定版本，使用`from ModSAPI.server.版本号 import *`语句。
+当前文档以正在维护的模板入口和核心实现为准。官方对照版本与本库发布版本不是同一概念，详见 [接口总览](packs/guide.md)。
 :::
 
 ## 运行测试
@@ -122,3 +120,11 @@ ENTRY_PATH_CLIENT = "example_client"
 - `[Error][ModSAPI] Load scripts failed! Cannot find entry file 'xxx'.`
   - 此报错说明没有找到对应的入口文件或入口文件的内容编写有误，请确保您在config.py文件中已经正确定义了入口文件名，并确保文件存在且代码逻辑无误。
 
+
+
+## 继续学习
+
+- [接口总览与模块入口](packs/guide.md)
+- [完整场景与使用示例](packs/examples.md)
+- [当前支持情况与官方差异](packs/compatibility.md)
+- [ModSDK 功能映射与待补接口](packs/modsdk-coverage.md)

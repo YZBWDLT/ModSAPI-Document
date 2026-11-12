@@ -24,7 +24,7 @@ sidebar_position: 2
 若满足条件，则将受伤实体直接击杀
 
 ## 相关接口
-- 事件[`entityHurt`](../packs/server/events/afterEvents.md#entityhurt)
+- 事件[`entityHurt`](../packs/server/events/afterEvents.md#entityHurt)
     - 参数详解：
         - damageSource
             - 攻击者信息
@@ -40,7 +40,7 @@ sidebar_position: 2
     - 属性：
         - isInWater
             - 是否处于水中
-            - 类型：bool
+            - 类型：[bool](../packs/common/type-system.md#bool)
     - 方法：
         - kill()
             - 杀死生物

@@ -19,7 +19,7 @@ sidebar_position: 3
 :::
 
 ## 相关接口
-- 事件[`entityHurt`](../packs/server/events/afterEvents.md#entityhurt)
+- 事件[`entityHurt`](../packs/server/events/afterEvents.md#entityHurt)
     - 参数详解：
         - damageSource
             - 攻击者信息
@@ -71,4 +71,3 @@ def onEntityHurt(arg):
 
 world.afterEvents.entityHurt.subscribe(onEntityHurt) # 监听实体受伤事件
 ```
-

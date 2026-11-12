@@ -1,15 +1,17 @@
 ---
-sidebar_position: 1
+title: 组合表单入门
 ---
 
-# 快速开始
+# 组合表单入门
 
-[下载链接](https://github.com/jincarrot/FormUI)
+界面功能已整合到 ModSAPI.ui。通过 [client.ui](../../packs/client/apis/manager.md#ui) 或 [system.ui](../../packs/server/reference/System.md#ui) 使用现有运行时，不需要额外注册系统。
 
-将资源包复制到自己的项目内
+[完整教程与示例](../../packs/guides/themed-forms.md) · [界面模块全部类型](../../packs/ui/intro.md)
 
-行为包代码文件夹中的FormUI文件夹复制到自己的代码文件夹内
+```python
+from ModSAPI.ui import Form, Observable, Control, Theme
+```
 
-服务端，客户端均使用from FormUI.lib import *导入
+服务端显示表单时传入 [Player](../../packs/server/apis/player.md) 对象；客户端省略目标时使用本地玩家。关闭结果通过 player 属性取得包装对象。
 
-且双端必须分别导入一次，否则无法使用。
+[Form](../../packs/ui/reference/Form.md) · [Observable](../../packs/ui/reference/Observable.md) · [Control](../../packs/ui/reference/Control.md) · [Theme](../../packs/ui/reference/Theme.md)
